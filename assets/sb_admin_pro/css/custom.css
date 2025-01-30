@@ -1,0 +1,78 @@
+div.dataTables_filter {
+    /*width: 50%;*/
+    float: right !important;
+    text-align: right !important;
+}
+
+div.dataTables_paginate {
+    /*width: 50%;*/
+    float: right;
+    text-align: right;
+}
+
+table thead {background-color:#d5dbec}
+.table {
+    /*color: #353748;*/
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 0 !important;
+}
+
+.btn-submit{
+    width: 130px;
+}
+
+.card-body {
+    padding: 10px !important;
+}
+
+@media (max-width: 575.98px) {
+    .modal-fullscreen {
+        padding: 0 !important;
+    }
+    .modal-fullscreen .modal-dialog {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+}
+@media (max-width: 767.98px) {
+    .modal-fullscreen-sm {
+        padding: 0 !important;
+    }
+    .modal-fullscreen-sm .modal-dialog {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+}
+@media (max-width: 991.98px) {
+    .modal-fullscreen-md {
+        padding: 0 !important;
+    }
+    .modal-fullscreen-md .modal-dialog {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+}
+@media (max-width: 1199.98px) {
+    .modal-fullscreen-lg {
+        padding: 0 !important;
+    }
+    .modal-fullscreen-lg .modal-dialog {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+}
+.modal-fullscreen-xl {
+    padding: 0 !important;
+}
+.modal-fullscreen-xl .modal-dialog {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
