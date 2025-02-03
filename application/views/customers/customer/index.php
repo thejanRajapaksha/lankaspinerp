@@ -217,9 +217,11 @@
                             <div class="row">
                                 <div class="col-9">
                                     <div class="form-group mt-2 text-right" style="padding-top: 5px;">
-                                        <button type="submit" id="submitBtn" class="btn btn-primary btn-sm px-5"
-                                            <?php if($addcheck==0){echo 'disabled';} ?>><i
-                                                class="far fa-save"></i>&nbsp;Add</button>
+                                    <?php if (in_array('createCustomerInfo', $user_permission)) : ?>
+                                        <button type="submit" id="submitBtn" class="btn btn-primary btn-sm px-5">
+                                            <i class="far fa-save"></i>&nbsp;Add Customer
+                                        </button>
+                                    <?php endif; ?>
                                     </div>
                                 </div>
                             </div>

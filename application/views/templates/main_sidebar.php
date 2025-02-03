@@ -416,38 +416,64 @@
 
                     <?php endif; ?>
 
-                    <a class="nav-link collapsed" id="customers_main_nav_link" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayoutsCustomers" aria-expanded="false" aria-controls="collapseLayoutsCustomers">
-                        <div class="nav-link-icon"><i class="fas fa-tools "></i></div>Customers
-                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseLayoutsCustomers" data-parent="#accordionSidenav">
-                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayoutCustomers">
+                    <?php if (
+                        in_array('createCustomerInfo', $user_permission) ||
+                        in_array('updateCustomerInfo', $user_permission) ||
+                        in_array('viewCustomerInfo', $user_permission) ||
+                        in_array('deleteCustomerInfo', $user_permission)
+                    ) : ?>
+                        <a class="nav-link collapsed" id="customers_main_nav_link" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayoutsCustomers" aria-expanded="false" aria-controls="collapseLayoutsCustomers">
+                            <div class="nav-link-icon"><i class="fas fa-users"></i></div>Customers
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutsCustomers" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayoutCustomers">
 
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customer/'); ?>">Customer Info </a>
+                                <?php if (
+                                    in_array('createCustomerInfo', $user_permission) ||
+                                    in_array('updateCustomerInfo', $user_permission) ||
+                                    in_array('viewCustomerInfo', $user_permission) ||
+                                    in_array('deleteCustomerInfo', $user_permission)
+                                ) : ?>
+                                    <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customer/'); ?>">Customer Info</a>
+                                <?php endif; ?>
 
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customerbank/'); ?>">Customer Bank </a>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customerbank/'); ?>">Customer Bank</a>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customercontact'); ?>">Customer Contact</a>
 
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customercontact'); ?>">Customer Contact </a>
+                            </nav>
+                        </div>
+                    <?php endif; ?>
 
-                        </nav>
-                    </div>
 
-                    
-                    <a class="nav-link collapsed" id="suppliers_main_nav_link" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayoutsSuppliers" aria-expanded="false" aria-controls="collapseLayoutsSuppliers">
-                        <div class="nav-link-icon"><i class="fas fa-tools "></i></div>Suppliers
-                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseLayoutsSuppliers" data-parent="#accordionSidenav">
-                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayoutSuppliers">
+                    <?php if (
+                        in_array('createSupplierInfo', $user_permission) ||
+                        in_array('updateSupplierInfo', $user_permission) ||
+                        in_array('viewSupplierInfo', $user_permission) ||
+                        in_array('deleteSupplierInfo', $user_permission)
+                    ) : ?>
+                        <a class="nav-link collapsed" id="suppliers_main_nav_link" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayoutsSuppliers" aria-expanded="false" aria-controls="collapseLayoutsSuppliers">
+                            <div class="nav-link-icon"><i class="fas fa-truck"></i></div>Suppliers
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutsSuppliers" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayoutSuppliers">
 
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Supplier'); ?>">Supplier Info </a>
+                                <?php if (
+                                    in_array('createSupplierInfo', $user_permission) ||
+                                    in_array('updateSupplierInfo', $user_permission) ||
+                                    in_array('viewSupplierInfo', $user_permission) ||
+                                    in_array('deleteSupplierInfo', $user_permission)
+                                ) : ?>
+                                    <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Supplier'); ?>">Supplier Info</a>
+                                <?php endif; ?>
 
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Supplierbank'); ?>">Supplier Bank </a>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Supplierbank'); ?>">Supplier Bank</a>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Suppliercontact'); ?>">Supplier Contact</a>
 
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Suppliercontact'); ?>">Supplier Contact </a>
-
-                        </nav>
-                    </div>
+                            </nav>
+                        </div>
+                    <?php endif; ?>
 
 
                     <?php if (in_array('createUser', $user_permission) || in_array('updateUser', $user_permission) || in_array('viewUser', $user_permission) || in_array('deleteUser', $user_permission) || in_array('createGroup', $user_permission) || in_array('updateGroup', $user_permission) || in_array('viewGroup', $user_permission) || in_array('deleteGroup', $user_permission)) : ?>

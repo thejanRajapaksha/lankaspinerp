@@ -1,9 +1,9 @@
 <script>
 	$(document).ready(function () {
-		var addcheck = '<?php echo $addcheck; ?>';
-		var editcheck = '<?php echo $editcheck; ?>';
-		var statuscheck = '<?php echo $statuscheck; ?>';
-		var deletecheck = '<?php echo $deletecheck; ?>';
+		var addcheck = '<?php echo (in_array('createSupplierInfo', $user_permission)) ? 1 : 0; ?>';
+		var editcheck = '<?php echo (in_array('updateSupplierInfo', $user_permission)) ? 1 : 0; ?>';
+		var statuscheck = '<?php echo (in_array('updateSupplierInfo', $user_permission) || in_array('deleteSupplierInfo', $user_permission)) ? 1 : 0; ?>';
+		var deletecheck = '<?php echo (in_array('deleteSupplierInfo', $user_permission)) ? 1 : 0; ?>';
 
 		$('#tblsuppliertype').DataTable({
 			"destroy": true,
@@ -71,9 +71,9 @@
 					"data": "svat_no"
 				},
 				{
-					"targets": [4],
-					"render": function (data, type, row) {
-						return row.address_line1 + ',' + row.address_line2 + '';
+					"data": null,
+					"render": function(data, type, row) {
+						return row.address_line1 + ', ' + row.address_line2;
 					}
 				},
 				{

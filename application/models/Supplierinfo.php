@@ -12,7 +12,7 @@
 	public function Supplierinsertupdate() {
 		$this->db->trans_begin();
 
-		$userID=$_SESSION['userid'];
+		$userID=$_SESSION['id'];
 
 		$supplier_name=$this->input->post('supplier_name');
 		$suppliertype=$this->input->post('suppliertype');
@@ -253,7 +253,7 @@
 	public function Supplierstatus($x, $y) {
 		$this->db->trans_begin();
 
-		$userID=$_SESSION['userid'];
+		$userID=$_SESSION['id'];
 		$recordID=$x;
 		$type=$y;
 		$updatedatetime=date('Y-m-d H:i:s');

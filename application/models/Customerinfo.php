@@ -3,7 +3,7 @@
 public function Customerinsertupdate() {
 	$this->db->trans_begin();
 
-	$userID = $_SESSION['userid'];
+	$userID = $_SESSION['id'];
 
 	$supplier_name = $this->input->post('customer_name');
 	$business_regno = $this->input->post('business_regno');
@@ -196,7 +196,7 @@ public function Customerinsertupdate() {
 public function Customerstatus($x, $y) {
 	$this->db->trans_begin();
 
-	$userID=$_SESSION['userid'];
+	$userID=$_SESSION['id'];
 	$recordID=$x;
 	$type=$y;
 	$updatedatetime=date('Y-m-d H:i:s');
