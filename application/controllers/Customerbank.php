@@ -7,7 +7,7 @@ class Customerbank extends Admin_Controller {
     public function index($x){
 		$this->load->model('Customerbankinfo');
 		$this->load->model('Customercontactinfo');
-
+		$this->data['customer_id'] = $x;
 		$this->load->model('Commeninfo');
 		// $result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
 		$result['Customerbankdetails']=$this->Customerbankinfo->GetCustomerbankid($x);

@@ -7,7 +7,7 @@ class Supplierbank extends Admin_Controller {
     public function index($x){
 		$this->load->model('Supplierbankinfo');
 		$this->load->model('Suppliercontactinfo');
-		
+		$this->data['supplier_id'] = $x;
 		$result['Suppliercontactdetails']=$this->Suppliercontactinfo->GetSupplierid($x);
 		$result['Supplierbankdetails']=$this->Supplierbankinfo->GetSupplierbankid($x);
 		$this->data['result'] = $result;

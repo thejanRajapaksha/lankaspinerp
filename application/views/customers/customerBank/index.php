@@ -55,9 +55,9 @@
         							</div>
         							<input type="hidden" name="recordOption" id="recordOption" value="1">
         							<input type="hidden" name="recordID" id="recordID" value="">
-									<input type="hidden" name="customerid" id="customerid" value="<?php echo isset($result['Customerbankdetails'][0]->tbl_customer_idtbl_customer) ? $result['Customerbankdetails'][0]->tbl_customer_idtbl_customer : ''; ?>">
+									<input type="hidden" name="customerid" id="customerid" value="<?php echo $customer_id; ?>">
         						</form>
-								<input type="hidden" name="hiddenid" id="hiddenid" value="<?php echo isset($result['Customerbankdetails'][0]->tbl_customer_idtbl_customer) ? $result['Customerbankdetails'][0]->tbl_customer_idtbl_customer : ''; ?>">
+								<input type="hidden" name="hiddenid" id="hiddenid" value="<?php echo $customer_id; ?>">
         						<hr style="border: 1px solid black;">
         						<div class="row">
         							<div class="col-12">

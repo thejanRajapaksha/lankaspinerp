@@ -5,8 +5,8 @@ date_default_timezone_set('Asia/Colombo');
 
 class Customercontact extends Admin_Controller {
     public function index($x){
-		
 		$this->load->model('Customercontactinfo');
+		$this->data['customer_id'] = $x;
 		//$this->load->model('Commeninfo');
 		//$result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
 		$result['Customercontactdetails']=$this->Customercontactinfo->GetCustomerid($x);
