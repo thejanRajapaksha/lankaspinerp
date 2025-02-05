@@ -6,8 +6,8 @@ date_default_timezone_set('Asia/Colombo');
 class Supplierbank extends Admin_Controller {
     public function index($x){
 		$this->load->model('Supplierbankinfo');
-		$this->load->model('Commeninfo');
-		$result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
+		//$this->load->model('Commeninfo');
+		//$result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
 		$result['Supplierbankdetails']=$this->Supplierbankinfo->GetSupplierbankid($x);
 		$this->data['result'] = $result;
 		$this->data['js'] = 'application/views/suppliers/supplierBank/index-js.php';

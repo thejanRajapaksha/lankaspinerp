@@ -438,8 +438,8 @@
                                     <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customer/'); ?>">Customer Info</a>
                                 <?php endif; ?>
 
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customerbank/'); ?>">Customer Bank</a>
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customercontact'); ?>">Customer Contact</a>
+                                <!-- <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customerbank/'); ?>">Customer Bank</a> -->
+                                <!-- <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Customercontact'); ?>">Customer Contact</a> -->
 
                             </nav>
                         </div>
@@ -468,8 +468,8 @@
                                     <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Supplier'); ?>">Supplier Info</a>
                                 <?php endif; ?>
 
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Supplierbank'); ?>">Supplier Bank</a>
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Suppliercontact'); ?>">Supplier Contact</a>
+                                <!-- <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Supplierbank'); ?>">Supplier Bank</a> -->
+                                <!-- <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Suppliercontact'); ?>">Supplier Contact</a> -->
 
                             </nav>
                         </div>

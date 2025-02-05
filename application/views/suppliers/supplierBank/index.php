@@ -93,7 +93,7 @@
 											<i class="fas fa-paper-plane"></i>&nbsp; Bank Details
 										</a>
 										<hr>
-										<a href="<?php echo base_url(); ?>Suppliercontact/index/<?php echo isset($result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier) ? $result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier : ''; ?>"
+										<a href="<?php echo base_url(); ?>Suppliercontact/index/<?php echo isset($result['Supplierbankdetails']) ?>"
 											class="btn font-weight-bold">
 											<i class="fas fa-paper-plane"></i>&nbsp; Contact Details
 										</a>
