@@ -55,9 +55,9 @@
         							</div>
         							<input type="hidden" name="recordOption" id="recordOption" value="1">
         							<input type="hidden" name="recordID" id="recordID" value="">
-									<input type="hidden" name="supplierid" id="supplierid" value="<?php echo isset($result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier) ? $result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier : ''; ?>">
+									<input type="hidden" name="supplierid" id="supplierid" value="<?php echo isset($result['Supplierbankdetails']->tbl_supplier_idtbl_supplier) ?>">
         						</form>
-								<input type="hidden" name="hiddenid" id="hiddenid" value="<?php echo isset($result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier) ? $result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier : ''; ?>">
+								<input type="hidden" name="hiddenid" id="hiddenid" value="<?php echo isset($result['Supplierbankdetails']) ?> ">
         						<hr style="border: 1px solid black;">
         						<div class="row">
         							<div class="col-12">
@@ -73,27 +73,16 @@
         												<th class="text-right">Actions</th>
         											</tr>
         										</thead>
-												<tbody>
-													<?php foreach ($result['Supplierbankdetails'] as $detail): ?>
-														<tr>
-															<td><?php echo $detail->idtbl_supplier_bank_details; ?></td>
-															<td><?php echo $detail->bank_name; ?></td>
-															<td><?php echo $detail->branch; ?></td>
-															<td><?php echo $detail->account_no; ?></td>
-															<td><?php echo $detail->account_name; ?></td>												
-														</tr>
-													<?php endforeach; ?>
-												</tbody>
         									</table>
 											<div class="col-3">
 											<div class="card">
 									<div class="card-body p-0 p-2">
-										<a href="<?php echo base_url(); ?>Supplierbank/index/<?php echo isset($result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier) ? $result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier : ''; ?>"
+										<a href="<?php echo base_url(); ?>Supplierbank/index/<?php echo isset($result['Supplierbankdetails']) ?>"
 											class="btn font-weight-bold">
 											<i class="fas fa-paper-plane"></i>&nbsp; Bank Details
 										</a>
 										<hr>
-										<a href="<?php echo base_url(); ?>Suppliercontact/index/<?php echo isset($result['Supplierbankdetails']) ?>"
+										<a href="<?php echo base_url(); ?>Suppliercontact/index/<?php echo isset($result['Suppliercontactdetails']) ?>"
 											class="btn font-weight-bold">
 											<i class="fas fa-paper-plane"></i>&nbsp; Contact Details
 										</a>

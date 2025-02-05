@@ -6,8 +6,7 @@ date_default_timezone_set('Asia/Colombo');
 class Suppliercontact extends Admin_Controller {
     public function index($x){
 		$this->load->model('Suppliercontactinfo');
-	//	$this->load->model('Commeninfo');
-	//	$result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
+
 		$result['Suppliercontactdetails']=$this->Suppliercontactinfo->GetSupplierid($x);
 		$this->data['result'] = $result;
 		$this->data['js'] = 'application/views/suppliers/supplierContact/index-js.php';

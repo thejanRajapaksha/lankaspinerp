@@ -90,19 +90,19 @@
         							</div>
         						</div>
         					</div>
-        					<!-- <div class="col-3">
+        					<div class="col-3">
         						<div class="card">
         							<div class="card-body p-0 p-2">
-        								<a href="<?php echo base_url() ?>Customerbank/index/<?php echo $Customerbankdetails ?>"
+        								<a href="<?php echo base_url() ?>Customerbank/index/<?php echo isset($result['Customerbankdetails'])?>"
         									class="btn font-weight-bold"><i
         										class="fas fa-paper-plane"></i>&nbsp;Bank Details</a>
         								<hr>
-        								<a href="<?php echo base_url() ?>Customercontact/index/<?php echo $Customerbankdetails ?>"
+        								<a href="<?php echo base_url() ?>Customercontact/index/<?php echo isset($result['Customercontactdetails']) ?>"
         									class="btn font-weight-bold"><i
         										class="fas fa-paper-plane"></i>&nbsp; Contact Details</a>
         							</div>
         						</div>
-        					</div> -->
+        					</div>
         				</div>
         			</div>
         		</div>

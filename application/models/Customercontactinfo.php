@@ -2,9 +2,9 @@
 class Customercontactinfo extends CI_Model{
 
 	public function GetCustomerid($x){
-		if (empty($x) || !is_numeric($x)) {
-            return []; 
-        }
+		// if (empty($x) || !is_numeric($x)) {
+        //     return []; 
+        // }
         $this->db->where('tbl_customer_idtbl_customer', $x); 
         $query = $this->db->get('tbl_customer_contact_details');
         return $query->result();

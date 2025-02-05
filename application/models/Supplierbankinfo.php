@@ -285,5 +285,6 @@ class Supplierbankinfo extends CI_Model{
 		$obj->account_no=$respond->row(0)->account_no;
 		$obj->account_name=$respond->row(0)->account_name;
         echo json_encode($obj);
+        
     }
 }
