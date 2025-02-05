@@ -47,7 +47,7 @@
 		$insertdatetime=date('Y-m-d H:i:s');
 
 		if($recordOption==1) {
-			$data=array('name'=> $supplier_name,
+			$data=array('suppliername'=> $supplier_name,
 				'bus_reg_no'=> $business_regno,
 				'nbt_no'=> $nbtno,
 				'svat_no'=> $svatno,
@@ -141,7 +141,7 @@
 		}
 
 		else {
-			$data=array('name'=> $supplier_name,
+			$data=array('suppliername'=> $supplier_name,
 				'bus_reg_no'=> $business_regno,
 				'nbt_no'=> $nbtno,
 				'svat_no'=> $svatno,
@@ -406,7 +406,7 @@
 
 		$obj=new stdClass();
 		$obj->id=$respond->row(0)->idtbl_supplier;
-		$obj->name=$respond->row(0)->name;
+		$obj->name=$respond->row(0)->suppliername;
 		$obj->business_regno=$respond->row(0)->bus_reg_no;
 		$obj->nbtno=$respond->row(0)->nbt_no;
 		$obj->svatno=$respond->row(0)->svat_no;
@@ -434,7 +434,7 @@
 
 
 	public function GetSupplierList() {
-		$this->db->select('idtbl_supplier, name');
+		$this->db->select('idtbl_supplier, suppliername');
 		$this->db->from('tbl_supplier');
 		$this->db->where('status', 1);
 

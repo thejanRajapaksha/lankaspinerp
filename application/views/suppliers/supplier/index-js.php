@@ -53,7 +53,7 @@
 					"data": "idtbl_supplier"
 				},
 				{
-					"data": "name"
+					"data": "suppliername"
 				},
 				{
 					"data": "type"

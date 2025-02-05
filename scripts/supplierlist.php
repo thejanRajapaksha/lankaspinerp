@@ -30,7 +30,7 @@ $primaryKey = 'idtbl_supplier';
 // indexes
 $columns = array(
 	array( 'db' => '`u`.`idtbl_supplier`', 'dt' => 'idtbl_supplier', 'field' => 'idtbl_supplier' ),
-	array( 'db' => '`u`.`name`', 'dt' => 'name', 'field' => 'name' ),
+	array( 'db' => '`u`.`suppliername`', 'dt' => 'suppliername', 'field' => 'suppliername' ),
 	array( 'db' => '`u`.`address_line1`', 'dt' => 'address_line1', 'field' => 'address_line1' ),
 	array( 'db' => '`u`.`address_line2`', 'dt' => 'address_line2', 'field' => 'address_line2' ),
 	array( 'db' => '`u`.`city`', 'dt' => 'city', 'field' => 'city' ),
