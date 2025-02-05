@@ -6,10 +6,7 @@ date_default_timezone_set('Asia/Colombo');
 class Supplier extends Admin_Controller {
     public function index(){
 		$this->load->model('Supplierinfo');
-		$this->load->model('Commeninfo');
-		$result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
-		$result['Suppliercategory']=$this->Supplierinfo->GetSuppliercategory();
-		// $this->data['result'] = $result;
+		$this->data['Suppliercategory']=$this->Supplierinfo->GetSuppliercategory();
 		$this->data['js'] = 'application/views/suppliers/supplier/index-js.php';
 		$this->render_template('suppliers/supplier/index', $this->data);
 	}

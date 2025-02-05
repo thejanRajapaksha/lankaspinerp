@@ -85,6 +85,21 @@
 													<?php endforeach; ?>
 												</tbody>
         									</table>
+											<div class="col-3">
+											<div class="card">
+									<div class="card-body p-0 p-2">
+										<a href="<?php echo base_url(); ?>Supplierbank/index/<?php echo isset($result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier) ? $result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier : ''; ?>"
+											class="btn font-weight-bold">
+											<i class="fas fa-paper-plane"></i>&nbsp; Bank Details
+										</a>
+										<hr>
+										<a href="<?php echo base_url(); ?>Suppliercontact/index/<?php echo isset($result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier) ? $result['Supplierbankdetails'][0]->tbl_supplier_idtbl_supplier : ''; ?>"
+											class="btn font-weight-bold">
+											<i class="fas fa-paper-plane"></i>&nbsp; Contact Details
+										</a>
+									</div>
+								</div>
+
         								</div>
         							</div>
         						</div>

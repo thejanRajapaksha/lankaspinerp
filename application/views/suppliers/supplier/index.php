@@ -246,7 +246,7 @@
 							<div class="col-12">
 								<div class="scrollbar pb-3" id="style-2">
 									<table class="table table-bordered table-striped table-sm nowrap"
-										id="tblsuppliertype">
+										id="tblsuppliertype" width="100%">
 										<thead>
 											<tr>
 												<th>#</th>

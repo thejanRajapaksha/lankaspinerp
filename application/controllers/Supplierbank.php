@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('Asia/Colombo');
 
 class Supplierbank extends Admin_Controller {
-    public function index(){
+    public function index($x){
 		$this->load->model('Supplierbankinfo');
 		$this->load->model('Commeninfo');
 		$result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
