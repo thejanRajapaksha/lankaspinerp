@@ -65,7 +65,6 @@ class MachineIns extends Admin_Controller
                 $value['machine_model_name'],
                 $value['s_no'],
                 $value['bar_code'],
-                $value['in_type_name'],
                 $value['next_service_date'],
                 $value['origin_date'],
                 $value['reference'],

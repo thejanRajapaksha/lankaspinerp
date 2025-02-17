@@ -23,7 +23,6 @@
                         <th>Model</th>
                         <th>S NO</th>
                         <th>Bar Code</th>
-                        <th>In Type</th>
                         <th>Next Service Date</th>
                         <th>Origin Date</th>
                         <th>Reference</th>
@@ -93,16 +92,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label for="in_type_id">In Type <span class="text-danger">*</span></label>
-                            <select name="in_type_id" id="in_type_id" class="select2 form-control-sm">
-                                <option value="">Select In Type</option>
-                                <?php foreach ($in_types as $in_type): ?>
-                                    <option value="<?php echo $in_type['id'] ?>"><?php echo $in_type['name'] ?></option>
-                                <?php endforeach ?>
-                            </select>
-                            <div id="in_type_id_error"></div>
-                        </div>
+                        <input type="hidden" name="in_type_id" id="in_type_id" value="1">
 
                         <div class="col-md-6 form-group">
                             <label for="next_service_date">Next Service Date</label>
@@ -194,14 +184,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="in_type_id">In Type <span class="text-danger">*</span></label>
-                            <select name="in_type_id" id="edit_in_type_id" class="select2 form-control-sm">
-                                <option value="">Select In Type</option>
-                                <?php foreach ($in_types as $in_type): ?>
-                                    <option value="<?php echo $in_type['id'] ?>"><?php echo $in_type['name'] ?></option>
-                                <?php endforeach ?>
-                            </select>
-                            <div id="edit_in_type_id_error"></div>
+                            <input type="hidden" name="in_type_id" id="in_type_id" value="1">
                         </div>
 
                         <div class="form-group">

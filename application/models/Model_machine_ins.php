@@ -12,8 +12,7 @@ class Model_machine_ins extends CI_Model
         if($id) {
             $sql = "SELECT machine_ins.*,
                 mt.name as machine_type_name,
-                mm.name as machine_model_name,  
-                it.name as in_type_name
+                mm.name as machine_model_name  
                 FROM machine_ins 
                 LEFT JOIN machine_types mt on machine_ins.machine_type_id = mt.id
                 LEFT JOIN machine_models mm on machine_ins.machine_model_id = mm.id 
@@ -27,8 +26,7 @@ class Model_machine_ins extends CI_Model
 
         $sql = "SELECT machine_ins.*,
                mt.name as machine_type_name,
-               mm.name as machine_model_name,  
-               it.name as in_type_name
+               mm.name as machine_model_name  
                 FROM machine_ins 
                 LEFT JOIN machine_types mt on machine_ins.machine_type_id = mt.id
                 LEFT JOIN machine_models mm on machine_ins.machine_model_id = mm.id 
@@ -84,8 +82,7 @@ class Model_machine_ins extends CI_Model
     public function getMachineInDataBySNo(){
         $sql = "SELECT machine_ins.*,
                 mt.name as machine_type_name,
-                mm.name as machine_model_name,  
-                it.name as in_type_name
+                mm.name as machine_model_name  
                 FROM machine_ins 
                 LEFT JOIN machine_types mt on machine_ins.machine_type_id = mt.id
                 LEFT JOIN machine_models mm on machine_ins.machine_model_id = mm.id 
