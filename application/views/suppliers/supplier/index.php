@@ -23,13 +23,6 @@
 											id="supplier_name" required>
 									</div>
 								</div>
-								<!-- <div class="col-3">
-								<div class="form-group mb-1">
-									<label class="small font-weight-bold">NIC *</label>
-									<input type="text" class="form-control form-control-sm" name="nic" id="nic"
-										required>
-								</div>
-							</div> -->
 								<div class=" col-3 form-group">
 									<label class="small font-weight-bold">Supplier Type*</label>
 									<select class="form-control form-control-sm" name="suppliertype" id="suppliertype"
@@ -42,28 +35,6 @@
 									</select>
 								</div>
 
-								<div class="col-3">
-									<div class="form-group mb-1">
-										<label class="small font-weight-bold">Business registration No *</label>
-										<input type="text" class="form-control form-control-sm" name="business_regno"
-											id="business_regno">
-									</div>
-								</div>
-								<!-- Add Business reg no cetificate -->
-								<div class="col-3">
-									<div class="form-group mb-1">
-										<label class="small font-weight-bold">Submit copy of BR Cetificate*</label>
-										<input type="file" class="form-control form-control-sm" name="image">
-									</div>
-								</div>
-								<!-- <div class="col-3">
-								<div class="form-group mb-1">
-									<label class="small font-weight-bold">Postal Code*</label>
-									<input type="text" class="form-control form-control-sm" name="potalcode" id="potalcode"
-										required>
-								</div>
-							</div> -->
-
 							</div>
 							<div class="row">
 								<div class="col-2">
@@ -72,19 +43,7 @@
 										<input type="text" class="form-control form-control-sm" name="vatno" id="vatno">
 									</div>
 								</div>
-								<div class="col-2">
-									<div class="form-group mb-1">
-										<label class="small font-weight-bold">NBT Registration No*</label>
-										<input type="text" class="form-control form-control-sm" name="nbtno" id="nbtno">
-									</div>
-								</div>
-								<div class="col-2">
-									<div class="form-group mb-1">
-										<label class="small font-weight-bold">SVAT Registration No*</label>
-										<input type="text" class="form-control form-control-sm" name="svatno"
-											id="svatno">
-									</div>
-								</div>
+
 								<div class="col-2">
 									<div class="form-group mb-1">
 										<label class="small font-weight-bold">Telephone No*</label>
@@ -97,24 +56,22 @@
 									<input type="text" id="f_company_name" name="f_company_name"
 										class="form-control form-control-sm" required readonly>
 								</div>
-								<div class="col-2">
+								<!-- <div class="col-2">
 									<label class="small font-weight-bold ">Company
 										Branch*</label>
 									<input type="text" id="f_branch_name" name="f_branch_name"
-										class="form-control form-control-sm" required readonly>
+										class="form-control form-control-sm">
+								</div> -->
+								<div class="col-2">
+								<div class="form-group mb-1">
+										<label class="small font-weight-bold"> Company Branch*</label>
+										<input type="text" class="form-control form-control-sm" name="f_branch_name" id="f_branch_name">
+									</div>
 								</div>
 								<input type="hidden" name="f_company_id" id="f_company_id">
 								<input type="hidden" name="f_branch_id" id="f_branch_id">
 							</div>
 
-							<div class="row">
-								<div class="col-3">
-									<div class="form-group mb-1">
-										<label class="small font-weight-bold">FAX No*</label>
-										<input type="text" class="form-control form-control-sm" name="faxno" id="faxno">
-									</div>
-								</div>
-							</div>
 							<hr>
 							<div class="row">
 								<div class="col-3">
@@ -127,14 +84,14 @@
 								</div>
 								<div class="col-2">
 								</div>
-								<div class="col-3">
+								<!-- <div class="col-3">
 									<label class="small font-weight-bold"><b>Delivery Address*</b></label>
 									<div class="form-group mb-1">
 										<label class="small font-weight-bold">Delivery Address Line 1*</label>
 										<input type="text" class="form-control form-control-sm" name="dline1"
 											id="dline1" required>
 									</div>
-								</div>
+								</div> -->
 							</div>
 							<div class="row">
 								<div class="col-3">
@@ -146,13 +103,13 @@
 								</div>
 								<div class="col-2">
 								</div>
-								<div class="col-3">
+								<!-- <div class="col-3">
 									<div class="form-group mb-1">
 										<label class="small font-weight-bold">Delivery Address Line 2*</label>
 										<input type="text" class="form-control form-control-sm" name="dline2"
 											id="dline2" required>
 									</div>
-								</div>
+								</div> -->
 							</div>
 							<div class="row">
 								<div class="col-3">
@@ -163,12 +120,12 @@
 								</div>
 								<div class="col-2">
 								</div>
-								<div class="col-3">
+								<!-- <div class="col-3">
 									<div class="form-group mb-1">
 										<label class="small font-weight-bold">City*</label>
 										<input type="text" class="form-control form-control-sm" name="dcity" id="dcity">
 									</div>
-								</div>
+								</div> -->
 							</div>
 							<div class="row">
 								<div class="col-3">
@@ -179,13 +136,13 @@
 								</div>
 								<div class="col-2">
 								</div>
-								<div class="col-3">
+								<!-- <div class="col-3">
 									<div class="form-group mb-1">
 										<label class="small font-weight-bold">State*</label>
 										<input type="text" class="form-control form-control-sm" name="dstate"
 											id="dstate">
 									</div>
-								</div>
+								</div> -->
 							</div>
 							<br>
 							<!-- Add VAT,NBT,SVAT cetificate -->
@@ -252,13 +209,9 @@
 												<th>#</th>
 												<th>Name</th>
 												<th>Supplier Type</th>
-												<th>BR No</th>
-												<th>VAT No</th>
-												<th>NBT No</th>
-												<th>SVAT No</th>
+												<th>Company Branch</th>
 												<th>Address</th>
 												<th>City</th>
-												<th>BR Cetificate</th>
 												<th class="text-right">Actions</th>
 											</tr>
 										</thead>

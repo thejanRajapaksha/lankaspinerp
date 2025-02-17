@@ -40,7 +40,8 @@ $columns = array(
 	array( 'db' => '`u`.`vat_no`', 'dt' => 'vat_no', 'field' => 'vat_no' ),
 	array( 'db' => '`ua`.`type`', 'dt' => 'type', 'field' => 'type' ),
 	array( 'db' => '`u`.`svat_no`', 'dt' => 'svat_no', 'field' => 'svat_no' ),
-	array( 'db' => '`u`.`status`', 'dt' => 'status', 'field' => 'status' )
+	array( 'db' => '`u`.`status`', 'dt' => 'status', 'field' => 'status' ),
+	array( 'db' => '`u`.`company_branch_id`', 'dt' => 'branch', 'field' => 'company_branch_id' )
 );
 
 // SQL server connection information

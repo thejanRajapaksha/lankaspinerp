@@ -17,24 +17,25 @@
 		$supplier_name=$this->input->post('supplier_name');
 		$suppliertype=$this->input->post('suppliertype');
 		$business_regno=$this->input->post('business_regno');
-		$nbtno=$this->input->post('nbtno');
-		$svatno=$this->input->post('svatno');
+		// $nbtno=$this->input->post('nbtno');
+		// $svatno=$this->input->post('svatno');
 		$telephoneno=$this->input->post('telephoneno');
-		$faxno=$this->input->post('faxno');
+		// $faxno=$this->input->post('faxno');
 		$vatno=$this->input->post('vatno');
 		$line1=$this->input->post('line1');
 		$line2=$this->input->post('line2');
 		$city=$this->input->post('city');
 		$state=$this->input->post('state');
-		$dline1=$this->input->post('dline1');
-		$dline2=$this->input->post('dline2');
-		$dcity=$this->input->post('dcity');
-		$dstate=$this->input->post('dstate');
+		// $dline1=$this->input->post('dline1');
+		// $dline2=$this->input->post('dline2');
+		// $dcity=$this->input->post('dcity');
+		// $dstate=$this->input->post('dstate');
 		$business_status=$this->input->post('bstatus');
 		$payementmethod=$this->input->post('payementmethod');
 		$credit_days=$this->input->post('credit_days');
 		$company_id=$this->input->post('f_company_id');
-		$branch_id=$this->input->post('f_branch_id');
+		//$branch_id=$this->input->post('f_branch_id');
+		$branch_id=$this->input->post('f_branch_name');
 		// $potalcode=$this->input->post('potalcode');
 		// $country=$this->input->post('country');
 
@@ -48,19 +49,22 @@
 
 		if($recordOption==1) {
 			$data=array('suppliername'=> $supplier_name,
-				'bus_reg_no'=> $business_regno,
-				'nbt_no'=> $nbtno,
-				'svat_no'=> $svatno,
+				//'bus_reg_no'=> $business_regno,
+				//'nbt_no'=> $nbtno,
+				//'svat_no'=> $svatno,
 				'telephone_no'=> $telephoneno,
-				'fax_no'=> $faxno,
+				'primarycontactno'=>$telephoneno,
+				'secondarycontactno'=>$telephoneno,
+				//'fax_no'=> $faxno,
+				'address' => $line1 . ',' . $line2,
 				'address_line1'=> $line1,
-				'delivery_address_line1'=> $dline1,
+				//'delivery_address_line1'=> $dline1,
 				'address_line2'=> $line2,
-				'delivery_address_line2'=> $dline2,
+				//'delivery_address_line2'=> $dline2,
 				'city'=> $city,
-				'delivery_city'=> $dcity,
+				//'delivery_city'=> $dcity,
 				'state'=> $state,
-				'delivery_state'=> $dstate,
+				//'delivery_state'=> $dstate,
 				// 'postal_code'=> $potalcode,
 				// 'country'=> $country,
 				'vat_no'=> $vatno,
@@ -68,7 +72,7 @@
 				'payment_method'=> $payementmethod,
 				'credit_days'=> $credit_days,
 				'tbl_supplier_type_idtbl_supplier_type'=> $suppliertype,
-				'company_id'=> $company_id, 
+				//'company_id'=> $company_id, 
 				'company_branch_id'=> $branch_id, 
 				'status'=> '1',
 				'insertdatetime'=> $insertdatetime,
@@ -142,19 +146,19 @@
 
 		else {
 			$data=array('suppliername'=> $supplier_name,
-				'bus_reg_no'=> $business_regno,
-				'nbt_no'=> $nbtno,
-				'svat_no'=> $svatno,
+				// 'bus_reg_no'=> $business_regno,
+				// 'nbt_no'=> $nbtno,
+				// 'svat_no'=> $svatno,
 				'telephone_no'=> $telephoneno,
 				'fax_no'=> $faxno,
 				'address_line1'=> $line1,
-				'delivery_address_line1'=> $dline1,
-				'address_line2'=> $line2,
-				'delivery_address_line2'=> $dline2,
+				// 'delivery_address_line1'=> $dline1,
+				 'address_line2'=> $line2,
+				// 'delivery_address_line2'=> $dline2,
 				'city'=> $city,
-				'delivery_city'=> $dcity,
+				// 'delivery_city'=> $dcity,
 				'state'=> $state,
-				'delivery_state'=> $dstate,
+				// 'delivery_state'=> $dstate,
 				'vat_no'=> $vatno,
 				'business_status'=> $business_status,
 				'payment_method'=> $payementmethod,
@@ -407,20 +411,20 @@
 		$obj=new stdClass();
 		$obj->id=$respond->row(0)->idtbl_supplier;
 		$obj->name=$respond->row(0)->suppliername;
-		$obj->business_regno=$respond->row(0)->bus_reg_no;
-		$obj->nbtno=$respond->row(0)->nbt_no;
-		$obj->svatno=$respond->row(0)->svat_no;
+		// $obj->business_regno=$respond->row(0)->bus_reg_no;
+		// $obj->nbtno=$respond->row(0)->nbt_no;
+		// $obj->svatno=$respond->row(0)->svat_no;
 		$obj->telephoneno=$respond->row(0)->telephone_no;
-		$obj->faxno=$respond->row(0)->fax_no;
+		// $obj->faxno=$respond->row(0)->fax_no;
 		// $obj->nic=$respond->row(0)->nic;
 		$obj->line1=$respond->row(0)->address_line1;
 		$obj->line2=$respond->row(0)->address_line2;
 		$obj->city=$respond->row(0)->city;
 		$obj->state=$respond->row(0)->state;
-		$obj->dline1=$respond->row(0)->delivery_address_line1;
-		$obj->dline2=$respond->row(0)->delivery_address_line2;
-		$obj->dcity=$respond->row(0)->delivery_city;
-		$obj->dstate=$respond->row(0)->delivery_state;
+		// $obj->dline1=$respond->row(0)->delivery_address_line1;
+		// $obj->dline2=$respond->row(0)->delivery_address_line2;
+		// $obj->dcity=$respond->row(0)->delivery_city;
+		// $obj->dstate=$respond->row(0)->delivery_state;
 
 		$obj->business_status=$respond->row(0)->business_status;
 		$obj->payementmethod=$respond->row(0)->payment_method;
@@ -428,6 +432,7 @@
 		// $obj->postal_code=$respond->row(0)->postal_code;
 		// $obj->country=$respond->row(0)->country;
 		$obj->vat_no=$respond->row(0)->vat_no;
+		$obj->company=$respond->row(0)->company_branch_id;
 		$obj->type=$respond->row(0)->tbl_supplier_type_idtbl_supplier_type;
 		echo json_encode($obj);
 	}

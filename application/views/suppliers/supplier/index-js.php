@@ -59,16 +59,7 @@
 					"data": "type"
 				},
 				{
-					"data": "bus_reg_no"
-				},
-				{
-					"data": "vat_no"
-				},
-				{
-					"data": "nbt_no"
-				},
-				{
-					"data": "svat_no"
+					"data":  "branch"
 				},
 				{
 					"data": null,
@@ -79,22 +70,7 @@
 				{
 					"data": "city"
 				},
-				{
-					data: "imagepath",
-					render: function (data, type, row) {
-						var imageUrl = '<?php echo base_url(); ?>images/supplier_br_cetificate/' +
-							data;
-						if (data !== null && data !== "") {
-							return '<a href="' + imageUrl + '" target="_blank">' +
-								'<img class="zoom-image" src="' + imageUrl +
-								'" alt="Supplier Image" width="50" height="50">' +
-								'</a>';
-						} else {
-							// Provide a placeholder image or icon
-							return '<img class="zoom-image" src="path_to_placeholder_image" alt="No Image" width="50" height="50">';
-						}
-					}
-				},
+
 				{
 					"targets": -1,
 					"className": 'text-right',
@@ -158,24 +134,22 @@
 						var obj = JSON.parse(result);
 						$('#recordID').val(obj.id);
 						$('#supplier_name').val(obj.name);
-						$('#business_regno').val(obj.business_regno);
-						$('#nbtno').val(obj.nbtno);
-						$('#svatno').val(obj.svatno);
+						// $('#business_regno').val(obj.business_regno);
+						// $('#nbtno').val(obj.nbtno);
+						// $('#svatno').val(obj.svatno);
 						$('#telephoneno').val(obj.telephoneno);
-						$('#faxno').val(obj.faxno);
-						$('#dline1').val(obj.dline1);
-						$('#dline2').val(obj.dline2);
-						$('#dcity').val(obj.dcity);
-						$('#dstate').val(obj.dstate);
+						// $('#faxno').val(obj.faxno);
+						// $('#dline1').val(obj.dline1);
+						// $('#dline2').val(obj.dline2);
+						// $('#dcity').val(obj.dcity);
+						// $('#dstate').val(obj.dstate);
+						$('#f_branch_name').val(obj.company);
 						$('#line1').val(obj.line1);
 						$('#line2').val(obj.line2);
 						$('#city').val(obj.city);
 						$('#state').val(obj.state);
 						$('#credit_days').val(obj.credit_days);
-						// $('#potalcode').val(obj.postal_code);
-						// $('#country').val(obj.country);
-						//$('#bstatus').val(obj.business_status);
-						// $('#payementmethod').val(obj.payementmethod);
+
 
 						var payementmethod = obj.payementmethod;
 						//alert(busstatus);

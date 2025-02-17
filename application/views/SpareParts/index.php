@@ -14,7 +14,7 @@
             <hr>
             <div id="messages"></div>
             <div class="table-responsive">
-                <table id="manageTable" class="table table-bordered table-striped table-sm">
+                <table id="manageTable" class="table table-bordered table-striped table-sm" width="100%">
                     <thead>
                     <tr>
                         <th>Spare Part name</th>

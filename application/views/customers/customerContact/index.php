@@ -63,7 +63,7 @@
         							<div class="col-12">
         								<div class="scrollbar pb-3" id="style-2">
         									<table class="table table-bordered table-striped table-sm nowrap"
-        										id="tblsuppliercontact">
+        										id="tblsuppliercontact" width="100%">
         										<thead>
         											<tr>
         												<th>#</th>
@@ -74,18 +74,6 @@
         												<th class="text-right">Actions</th>
         											</tr>
         										</thead>
-												<tbody>
-													<?php foreach ($result['Customercontactdetails'] as $detail): ?>
-														<tr>
-															<td><?php echo $detail->idtbl_customer_contact_details; ?></td>
-															<td><?php echo $detail->name; ?></td>
-															<td><?php echo $detail->position; ?></td>
-															<td><?php echo $detail->mobile_no; ?></td>
-															<td><?php echo $detail->email; ?></td>
-															
-														</tr>
-													<?php endforeach; ?>
-												</tbody>
         									</table>
         								</div>
         							</div>
