@@ -907,7 +907,7 @@ class MachineServices extends Admin_Controller
 
         // Fetch Allocated Items
         $sql = "
-        SELECT sp.name, msei.qty, IFNULL(e.emp_name_with_initial, 'N/A') AS emp_name_with_initial
+        SELECT sp.name, msei.qty, e.emp_name_with_initial
         FROM machine_service_allocated_items msei 
         LEFT JOIN spare_parts sp ON sp.id = msei.spare_part_id 
         LEFT JOIN machine_services ms ON ms.id = msei.machine_service_id
@@ -915,42 +915,48 @@ class MachineServices extends Admin_Controller
         WHERE msei.machine_service_id = '$id' 
         ";
         $query = $this->db->query($sql);
-        $sc = $query->result_array();
+        $allocatedItems = $query->result_array();
 
         $sc_label = '';
-        foreach ($sc as $s) {
+        foreach ($allocatedItems as $s) {
             $sc_label .= '<span class="badge badge-default"> ' . $s['name'] . ' <span class="badge badge-info"> ' . $s['qty'] . ' </span></span>';
         }
 
         // Fetch Issued Items
         $sql = "
-        SELECT sp.name, msei.qty, IFNULL(e.emp_name_with_initial, 'N/A') AS emp_name_with_initial
-        FROM machine_service_issued_items msei 
-        LEFT JOIN spare_parts sp ON sp.id = msei.spare_part_id 
-        LEFT JOIN machine_services ms ON ms.id = msei.machine_service_id
+        SELECT sp.name, msii.qty, e.emp_name_with_initial
+        FROM machine_service_issued_items msii 
+        LEFT JOIN spare_parts sp ON sp.id = msii.spare_part_id 
+        LEFT JOIN machine_services ms ON ms.id = msii.machine_service_id
         LEFT JOIN employees e ON e.id = ms.employee_id
-        WHERE msei.machine_service_id = '$id' 
+        WHERE msii.machine_service_id = '$id' 
         ";
         $query = $this->db->query($sql);
-        $sc = $query->result_array();
+        $issuedItems = $query->result_array();
 
         $al_label = '';
-        foreach ($sc as $s) {
+        foreach ($issuedItems as $s) {
             $al_label .= '<span class="badge badge-default"> ' . $s['name'] . ' <span class="badge badge-success"> ' . $s['qty'] . ' </span></span>';
         }
 
         // Check if this service_no has records in issued table
         $sql1 = "
-        SELECT * FROM machine_service_issued_items 
-        WHERE machine_service_id = '$id' AND is_deleted = 0
+        SELECT msii.*, e.emp_name_with_initial 
+        FROM machine_service_issued_items msii
+        LEFT JOIN machine_services ms ON ms.id = msii.machine_service_id
+        LEFT JOIN employees e ON e.id = ms.employee_id
+        WHERE msii.machine_service_id = '$id' AND msii.is_deleted = 0
         ";
         $query1 = $this->db->query($sql1);
         $sc = $query1->result_array();
 
+        // Safely access employee name
+        $emp_name_with_initial = isset($sc[0]['emp_name_with_initial']) ? $sc[0]['emp_name_with_initial'] : 'N/A';
+
         if (!empty($sc)) {
             $result['data'][] = array(
                 $value['service_no'],
-                isset($value['emp_name_with_initial']) ? $value['emp_name_with_initial'] : 'N/A',
+                $emp_name_with_initial,
                 $value['machine_type_name'],
                 $value['s_no'],
                 $value['service_date_from'],
@@ -963,6 +969,7 @@ class MachineServices extends Admin_Controller
 
     echo json_encode($result);
 }
+
 
 
     public function fetchIssuedServiceItems($service_id)
