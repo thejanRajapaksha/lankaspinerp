@@ -79,7 +79,20 @@
                                    name="repair_date" placeholder="Enter Date" autocomplete="off">
                         </div>
 
+                        <div class="form-group">
+                            <label for="item_list">Request Item List</label>
+                            <input type="textarea" class="form-control form-control-sm" id="item_list"
+                                   name="item_list" placeholder="Request Ite List..." autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comment">Comment</label>
+                            <input type="textarea" class="form-control form-control-sm" id="comment"
+                                   name="comment" placeholder="Comment..." autocomplete="off">
+                        </div>
+
                     </div>
+                    
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>

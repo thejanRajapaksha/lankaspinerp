@@ -5,8 +5,8 @@ var base_url = "<?php echo base_url(); ?>";
 
 $(document).ready(function() {
 
-    $('#machines_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
-    $('#collapseLayoutsMachines').addClass('show');
+    //$('#machines_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
+   // $('#collapseLayoutsMachines').addClass('show');
 
     $('#machine_type_id').select2({
         placeholder: 'Select...',

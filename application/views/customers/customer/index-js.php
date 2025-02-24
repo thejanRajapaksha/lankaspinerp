@@ -1,5 +1,9 @@
 <script>
 $(document).ready(function() {
+
+    $('#customers_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
+    $('#collapseLayoutsCustomers').addClass('show');
+
     var addcheck = '<?php echo (in_array('createCustomerInfo', $user_permission)) ? 1 : 0; ?>';
     var editcheck = '<?php echo (in_array('updateCustomerInfo', $user_permission)) ? 1 : 0; ?>';
     var statuscheck = '<?php echo (in_array('updateCustomerInfo', $user_permission) || in_array('deleteCustomerInfo', $user_permission)) ? 1 : 0; ?>';

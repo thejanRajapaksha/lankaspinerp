@@ -4,8 +4,8 @@ var base_url = "<?php echo base_url(); ?>";
 
 $(document).ready(function() {
 
-    $('#machine_repairs_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
-    $('#collapseLayoutsMachineRepairs').addClass('show');
+    $('#rpt_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
+    $('#collapseLayoutsRPT').addClass('show');
 
     $('.select2').select2({
         placeholder: 'Select...',

@@ -5,8 +5,8 @@
 
     $(document).ready(function () {
 
-        $('#machine_services_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
-        $('#collapseLayoutsMachineServices').addClass('show');
+        $('#rpt_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
+        $('#collapseLayoutsRPT').addClass('show');
 
         $('#service_item_filter').select2({
             placeholder: 'Select...',
