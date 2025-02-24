@@ -15,6 +15,12 @@ $(document).ready(function() {
         dropdownParent: $('#addModal'),
     });
 
+    $('#editModal').on('shown.bs.modal', function () {
+        $('#edit_machine_type_id, #edit_machine_model_id').select2({
+            width: '100%'
+        });
+    });
+
   // initialize the datatable 
   manageTable = $('#manageTable').DataTable({
     'ajax': base_url + 'MachineIns/fetchCategoryData',
@@ -51,7 +57,7 @@ $(document).ready(function() {
 
           $('#machine_type_id').val('').trigger('change');
           $('#machine_model_id').val('').trigger('change');
-          $('#in_type_id').val('').trigger('change');
+          $('#in_type_id').val('1');
 
           $("#createForm .form-group").removeClass('has-error').removeClass('has-success');
 

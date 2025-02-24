@@ -106,7 +106,8 @@
                             <div class="form-row mb-1">
                                 <div class="col">
                                     <label class="small font-weight-bold text-dark">Shelf Life*</label>
-                                    <select class="form-control form-control-sm" name="quater" id="quater" required>
+                                    <input type="checkbox" id="enableShelfLife" onclick="toggleShelfLife()">
+                                    <select class="form-control form-control-sm" name="quater" id="quater" disabled required>
                                         <option value="">Select</option>
                                         <option value="1">3 Month</option>
                                         <option value="2">6 Month</option>
@@ -118,8 +119,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="small font-weight-bold text-dark">EXP Date*</label>
-                                    <input type="date" id="expdate" name="expdate" class="form-control form-control-sm"
-                                           required>
+                                    <input type="date" id="expdate" name="expdate" class="form-control form-control-sm" disabled required>
                                 </div>
                             </div>
                             <div class="form-row mb-1">
@@ -144,6 +144,14 @@
                                           class="form-control form-control-sm" <?php if ($editcheck == 0) {
                                     echo 'readonly';
                                 } ?>></textarea>
+                            </div>
+                            <div class="form-group mt-3 text-right">
+                                <button type="button" id="formsubmit"
+                                        class="btn btn-primary btn-sm px-4" <?php if ($addcheck == 0) {
+                                    echo 'disabled';
+                                } ?>><i class="fas fa-plus"></i>&nbsp;Add to list
+                                </button>
+                                <input name="submitBtn" type="submit" value="Save" id="submitBtn" class="d-none">
                             </div>
                             <div class="form-group mb-1">
                                 <label class="small font-weight-bold text-dark">Batch No</label>
@@ -173,14 +181,7 @@
                                            class="form-control form-control-sm">
                                 </div>
                             </div>
-                            <div class="form-group mt-3 text-right">
-                                <button type="button" id="formsubmit"
-                                        class="btn btn-primary btn-sm px-4" <?php if ($addcheck == 0) {
-                                    echo 'disabled';
-                                } ?>><i class="fas fa-plus"></i>&nbsp;Add to list
-                                </button>
-                                <input name="submitBtn" type="submit" value="Save" id="submitBtn" class="d-none">
-                            </div>
+                            
                             <input type="hidden" name="refillprice" id="refillprice" value="">
                         </form>
                     </div>
@@ -942,7 +943,20 @@
 
     });
 
+    function toggleShelfLife() {
+        var checkbox = document.getElementById('enableShelfLife');
+        var quater = document.getElementById('quater');
+        var expdate = document.getElementById('expdate');
 
+        quater.disabled = !checkbox.checked;
+        expdate.disabled = !checkbox.checked;
+    }
+
+    function toggleShelfLifeEdit() {
+        var isChecked = $('#edit_enableShelfLife').is(':checked');
+        $('#edit_quater').prop('disabled', !isChecked);
+        $('#edit_expdate').prop('disabled', !isChecked);
+    }
 
     function deactive_confirm() {
         return confirm("Are you sure you want to deactive this?");

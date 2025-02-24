@@ -87,6 +87,14 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="employee_id">Employee</label>
+                                    <select class="form-control form-control-sm" id="employee_id" name="employee_id">
+                                        <option value="">Select...</option>
+                                    </select>
+                                    <div id="employee_id_error"></div>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="factory_code">Factory Code</label>
                                     <input type="text" id="factory_code" readonly class="form-control form-control-sm"
                                            name="factory_code" placeholder="">
@@ -204,6 +212,14 @@
                                         <option value="">Select...</option>
                                     </select>
                                     <div id="edit_machine_in_id_error"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="edit_employee_id">Employee</label>
+                                    <select class="form-control form-control-sm" id="edit_employee_id" name="edit_employee_id">
+                                        <option value="">Select...</option>
+                                    </select>
+                                    <div id="edit_employee_id_error"></div>
                                 </div>
 
                                 <div class="form-group">

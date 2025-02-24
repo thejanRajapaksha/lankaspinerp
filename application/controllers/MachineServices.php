@@ -91,6 +91,7 @@ class MachineServices extends Admin_Controller
 
         $this->form_validation->set_rules('service_no', 'Service No', 'trim|required');
         $this->form_validation->set_rules('machine_in_id', 'Machine', 'trim|required');
+        $this->form_validation->set_rules('employee_id', 'Employee', 'trim|required');
         $this->form_validation->set_rules('service_date_from', 'Service Date', 'trim|required');
         $this->form_validation->set_rules('service_date_to', 'Service Date', 'trim|required');
 
@@ -113,6 +114,7 @@ class MachineServices extends Admin_Controller
             $data = array(
                 'service_no' => $this->input->post('service_no'),
                 'machine_in_id' => $this->input->post('machine_in_id'),
+                'employee_id' => $this->input->post('employee_id'),
                 'service_date_from' => $this->input->post('service_date_from'),
                 'service_date_to' => $this->input->post('service_date_to'),
                 'estimated_service_hours' => $this->input->post('estimated_service_hours'),
@@ -167,6 +169,7 @@ class MachineServices extends Admin_Controller
         if ($id) {
             $this->form_validation->set_rules('edit_service_no', 'Service No', 'trim|required');
             $this->form_validation->set_rules('edit_machine_in_id', 'Machine', 'trim|required');
+            $this->form_validation->set_rules('edit_employee_id', 'Employee', 'trim|required');
             $this->form_validation->set_rules('edit_service_date_from', 'Service Date From', 'trim|required');
             $this->form_validation->set_rules('edit_service_date_to', 'Service Date To', 'trim|required');
 
@@ -187,6 +190,7 @@ class MachineServices extends Admin_Controller
                 $data = array(
                     'service_no' => $this->input->post('edit_service_no'),
                     'machine_in_id' => $this->input->post('edit_machine_in_id'),
+                    'employee_id' => $this->input->post('edit_employee_id'),
                     'service_date_from' => $this->input->post('edit_service_date_from'),
                     'service_date_to' => $this->input->post('edit_service_date_to'),
                     'estimated_service_hours' => $this->input->post('edit_estimated_service_hours'),
@@ -614,6 +618,48 @@ class MachineServices extends Admin_Controller
         echo json_encode($service_no);
     }
 
+    public function get_employee_id_select_id()
+    {
+        $term = $this->input->get('term');
+        $page = $this->input->get('page');
+
+        $resultCount = 25;
+        $offset = ($page - 1) * $resultCount;
+
+        $this->db->select('employees.* ');
+        $this->db->from('employees');
+        $this->db->like('emp_name_with_initial', $term, 'both');
+        $query = $this->db->get();
+        $this->db->limit($resultCount, $offset);
+        $machine_ins = $query->result_array();
+
+        $this->db->select('employees.* ');
+        $this->db->from('employees');
+        $this->db->like('emp_name_with_initial', $term, 'both');
+        $count = $this->db->count_all_results();
+
+        $data = array();
+        foreach ($machine_ins as $v) {
+            $data[] = array(
+                'id' => $v['id'],
+                'text' => $v['emp_name_with_initial']
+            );
+        }
+
+        $endCount = $offset + $resultCount;
+        $morePages = $endCount < $count;
+
+        $results = array(
+            "results" => $data,
+            "pagination" => array(
+                "more" => $morePages
+            )
+        );
+
+        echo json_encode($results);
+
+    }
+
     public function allocate()
     {
         if (!in_array('viewMachineServiceItemAllocate', $this->permission)) {
@@ -840,78 +886,84 @@ class MachineServices extends Admin_Controller
     }
 
     public function fetchCategoryDataIssue()
-    {
-        if (!in_array('viewMachineServiceItemIssue', $this->permission)) {
-            redirect('dashboard', 'refresh');
+{
+    if (!in_array('viewMachineServiceItemIssue', $this->permission)) {
+        redirect('dashboard', 'refresh');
+    }
+
+    $result = array('data' => array());
+
+    $data = $this->model_machine_services->getMachineServicesData();
+
+    foreach ($data as $key => $value) {
+        // button actions
+        $buttons = '<button type="button" class="btn btn-default btn-sm" onclick="viewFunc(' . $value['id'] . ')" data-toggle="modal" data-target="#viewModal"><i class="fas fa-eye text-info"></i></button>';
+
+        if (in_array('updateMachineServiceItemIssue', $this->permission)) {
+            $buttons .= '<button type="button" class="btn btn-default btn-sm" onclick="editFunc(' . $value['id'] . ')" data-toggle="modal" data-target="#editModal"><i class="text-primary fa fa-edit"></i></button>';
         }
 
-        $result = array('data' => array());
+        $id = $value['id'];
 
-        $data = $this->model_machine_services->getMachineServicesData();
+        // Fetch Allocated Items
+        $sql = "
+        SELECT sp.name, msei.qty, IFNULL(e.emp_name_with_initial, 'N/A') AS emp_name_with_initial
+        FROM machine_service_allocated_items msei 
+        LEFT JOIN spare_parts sp ON sp.id = msei.spare_part_id 
+        LEFT JOIN machine_services ms ON ms.id = msei.machine_service_id
+        LEFT JOIN employees e ON e.id = ms.employee_id
+        WHERE msei.machine_service_id = '$id' 
+        ";
+        $query = $this->db->query($sql);
+        $sc = $query->result_array();
 
-        foreach ($data as $key => $value) {
-            // button
-            $buttons = '';
+        $sc_label = '';
+        foreach ($sc as $s) {
+            $sc_label .= '<span class="badge badge-default"> ' . $s['name'] . ' <span class="badge badge-info"> ' . $s['qty'] . ' </span></span>';
+        }
 
-            $buttons .= '<button type="button" class="btn btn-default btn-sm" onclick="viewFunc(' . $value['id'] . ')" data-toggle="modal" data-target="#viewModal"><i class="fas fa-eye text-info"></i></button>';
+        // Fetch Issued Items
+        $sql = "
+        SELECT sp.name, msei.qty, IFNULL(e.emp_name_with_initial, 'N/A') AS emp_name_with_initial
+        FROM machine_service_issued_items msei 
+        LEFT JOIN spare_parts sp ON sp.id = msei.spare_part_id 
+        LEFT JOIN machine_services ms ON ms.id = msei.machine_service_id
+        LEFT JOIN employees e ON e.id = ms.employee_id
+        WHERE msei.machine_service_id = '$id' 
+        ";
+        $query = $this->db->query($sql);
+        $sc = $query->result_array();
 
-            if (in_array('updateMachineServiceItemIssue', $this->permission)) {
-                $buttons .= '<button type="button" class="btn btn-default btn-sm" onclick="editFunc(' . $value['id'] . ')" data-toggle="modal" data-target="#editModal"><i class="text-primary fa fa-edit"></i></button>';
-            }
+        $al_label = '';
+        foreach ($sc as $s) {
+            $al_label .= '<span class="badge badge-default"> ' . $s['name'] . ' <span class="badge badge-success"> ' . $s['qty'] . ' </span></span>';
+        }
 
-            $id = $value['id'];
+        // Check if this service_no has records in issued table
+        $sql1 = "
+        SELECT * FROM machine_service_issued_items 
+        WHERE machine_service_id = '$id' AND is_deleted = 0
+        ";
+        $query1 = $this->db->query($sql1);
+        $sc = $query1->result_array();
 
-            $sql = "SELECT sp.name, msei.qty
-                    FROM machine_service_allocated_items msei 
-                    LEFT JOIN spare_parts sp ON sp.id = msei.spare_part_id 
-                    WHERE msei.machine_service_id = '$id' 
-                    ";
-            $query = $this->db->query($sql);
-            $sc = $query->result_array();
+        if (!empty($sc)) {
+            $result['data'][] = array(
+                $value['service_no'],
+                isset($value['emp_name_with_initial']) ? $value['emp_name_with_initial'] : 'N/A',
+                $value['machine_type_name'],
+                $value['s_no'],
+                $value['service_date_from'],
+                $value['service_date_to'],
+                $value['estimated_service_hours'],
+                $buttons
+            );
+        }
+    } // /foreach
 
-            $sc_label = '';
-            foreach ($sc as $s) {
-                $sc_label .= ' <badge class="badge badge-default"> ' . $s['name'] . ' <badge class="badge badge-info"> ' . $s['qty'] . ' </badge> </badge>';
-            }
+    echo json_encode($result);
+}
 
-            $sql = "SELECT sp.name, msei.qty
-                    FROM machine_service_issued_items msei 
-                    LEFT JOIN spare_parts sp ON sp.id = msei.spare_part_id 
-                    WHERE msei.machine_service_id = '$id' 
-                    ";
-            $query = $this->db->query($sql);
-            $sc = $query->result_array();
-
-            $al_label = '';
-            foreach ($sc as $s) {
-                $al_label .= ' <badge class="badge badge-default"> ' . $s['name'] . ' <badge class="badge badge-success"> ' . $s['qty'] . ' </badge> </badge>';
-            }
-
-            //check if this service_no has records in issued table
-            $sql1 = "
-            SELECT * 
-            FROM machine_service_issued_items 
-            WHERE machine_service_id = '$id' AND is_deleted = 0
-            ";
-
-            $query1 = $this->db->query($sql1);
-            $sc = $query1->result_array();
-
-            if(!empty($sc)) {
-                $result['data'][] = array(
-                    $value['service_no'],
-                    $value['machine_type_name'],
-                    $value['s_no'],
-                    $value['service_date_from'],
-                    $value['service_date_to'],
-                    $value['estimated_service_hours'],
-                    $buttons
-                );
-            }
-        } // /foreach
-
-        echo json_encode($result);
-    }
 
     public function fetchIssuedServiceItems($service_id)
     {

@@ -59,6 +59,23 @@
             }
         });
 
+        $('#spare_part_name_filter').select2({
+            placeholder: 'Select...',
+            width: '100%',
+            allowClear: true,
+            ajax: {
+                url: base_url + 'Goodreceive/get_spare_part_name_from_stock',
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        term: params.term || '',
+                        page: params.page || 1
+                    }
+                },
+                cache: true
+            }
+        });
+
         $('#filter_button').click(function() {
             load_dt();
         });

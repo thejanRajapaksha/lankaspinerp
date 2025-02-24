@@ -450,7 +450,8 @@ class Goodreceiveinfo extends CI_Model
                             <div class="form-row mb-1">
                                 <div class="col">
                                     <label class="small font-weight-bold text-dark">Shelf Life*</label>
-                                    <select class="form-control form-control-sm" name="quater" id="edit_quater" required>
+                                    <input type="checkbox" id="edit_enableShelfLife" onclick="toggleShelfLifeEdit()">
+                                    <select class="form-control form-control-sm" name="quater" id="edit_quater" disabled required>
                                         <option value="">Select</option>
                                         <option value="1">3 Month</option>
                                         <option value="2">6 Month</option>
@@ -462,8 +463,7 @@ class Goodreceiveinfo extends CI_Model
                                 </div>
                                 <div class="col">
                                     <label class="small font-weight-bold text-dark">EXP Date*</label>
-                                    <input type="date" id="edit_expdate" name="expdate" class="form-control form-control-sm"
-                                           required>
+                                    <input type="date" id="edit_expdate" name="expdate" class="form-control form-control-sm" disabled required>
                                 </div>
                             </div>
                             <div class="form-row mb-1">
@@ -482,6 +482,12 @@ class Goodreceiveinfo extends CI_Model
                                 <label class="small font-weight-bold text-dark">Comment</label>
                                 <textarea name="comment" id="edit_comment"
                                           class="form-control form-control-sm" ></textarea>
+                            </div>
+                            <div class="form-group mt-3 text-right">
+                                <button type="button" id="edit_formsubmit"
+                                        class="btn btn-primary btn-sm px-4" ><i class="fas fa-plus"></i>&nbsp;Add to list
+                                </button>
+                                <input name="submitBtn" type="submit" value="Save" id="edit_submitBtn" class="d-none">
                             </div>
                             <div class="form-group mb-1">
                                 <label class="small font-weight-bold text-dark">Batch No</label>
@@ -519,12 +525,7 @@ class Goodreceiveinfo extends CI_Model
                                            >
                                 </div>
                             </div>
-                            <div class="form-group mt-3 text-right">
-                                <button type="button" id="edit_formsubmit"
-                                        class="btn btn-primary btn-sm px-4" ><i class="fas fa-plus"></i>&nbsp;Add to list
-                                </button>
-                                <input name="submitBtn" type="submit" value="Save" id="edit_submitBtn" class="d-none">
-                            </div>
+                            
                             <input type="hidden" name="refillprice" id="edit_refillprice" value="">
                         </form>
                     </div>

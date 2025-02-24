@@ -380,6 +380,50 @@ class Goodreceive extends Admin_Controller {
 
     }
 
+    public function get_spare_part_name_from_stock()
+    {
+        $term = $this->input->get('term');
+        $page = $this->input->get('page');
+
+        $resultCount = 25;
+        $offset = ($page - 1) * $resultCount;
+
+        $this->db->select('spare_parts.id, spare_parts.name');
+        $this->db->from('tbl_stock');
+        $this->db->join('spare_parts', 'spare_parts.id = tbl_stock.spare_part_id', 'left');
+        $this->db->group_by('spare_parts.id');
+        $query = $this->db->get();
+        $this->db->limit($resultCount, $offset);
+        $departments = $query->result_array();
+
+        $this->db->select('spare_parts.id, spare_parts.name');
+        $this->db->from('tbl_stock');
+        $this->db->join('spare_parts', 'spare_parts.id = tbl_stock.spare_part_id', 'left');
+        $this->db->group_by('spare_parts.id');
+        $count = $this->db->count_all_results();
+
+        $data = array();
+        foreach ($departments as $v) {
+            $data[] = array(
+                'id' => $v['id'],
+                'text' => $v['name'],
+            );
+        }
+
+        $endCount = $offset + $resultCount;
+        $morePages = $endCount < $count;
+
+        $results = array(
+            "results" => $data,
+            "pagination" => array(
+                "more" => $morePages
+            )
+        );
+
+        echo json_encode($results);
+
+    }
+
     public function fetchStockReport(){
         if (!in_array('viewGRN', $this->permission)) {
             redirect('dashboard', 'refresh');

@@ -39,6 +39,24 @@ $(document).ready(function() {
         }
     });
 
+    $('#employee_id').select2({
+        placeholder: 'Select...',
+        width: '100%',
+        allowClear: true,
+        dropdownParent: $('#addModal'),
+        ajax: {
+            url: base_url + 'MachineServices/get_employee_id_select_id',
+            dataType: 'json',
+            data: function (params) {
+                return {
+                    term: params.term || '',
+                    page: params.page || 1
+                }
+            },
+            cache: true
+        }
+    });
+
     $('#estimated_service_items').select2({
         placeholder: 'Select...',
         width: '100%',
@@ -82,6 +100,24 @@ $(document).ready(function() {
         dropdownParent: $('#editModal'),
         ajax: {
             url: base_url + 'MachineIns/get_machine_ins_select_id',
+            dataType: 'json',
+            data: function (params) {
+                return {
+                    term: params.term || '',
+                    page: params.page || 1
+                }
+            },
+            cache: true
+        }
+    });
+
+    $('#edit_employee_id').select2({
+        placeholder: 'Select...',
+        width: '100%',
+        allowClear: true,
+        dropdownParent: $('#editModal'),
+        ajax: {
+            url: base_url + 'MachineServices/get_employee_id_select_id',
             dataType: 'json',
             data: function (params) {
                 return {

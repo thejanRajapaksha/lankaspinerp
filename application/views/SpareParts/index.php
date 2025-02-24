@@ -97,11 +97,7 @@
             </div>
 
           <div class="form-group">
-            <label for="active">Status <span class="text-danger">*</span></label>
-            <select class="form-control form-control-sm" id="active" name="active">
-              <option value="1">Active</option>
-              <option value="2">Inactive</option>
-            </select>
+            <input type="hidden" name="active" id="active" value="1">
           </div>
         </div>
 
@@ -177,11 +173,7 @@
             </div>
 
           <div class="form-group">
-            <label for="active">Status</label>
-            <select class="form-control form-control-sm" id="edit_active" name="edit_active">
-              <option value="1">Active</option>
-              <option value="2">Inactive</option>
-            </select>
+            <input type="hidden" name="active" id="active" value="1">
           </div>
         </div>
 

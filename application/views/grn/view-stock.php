@@ -12,39 +12,45 @@
             <hr>
             <div id="messages"></div>
 
-            <div class="row mb-4 ">
-                <div class="col-sm-3 mb-2">
+            <div class="row mb-4">
+                <div class="col-lg-2 col-md-3 col-sm-6 mb-2">
                     <label for="part_no_filter"> Part No </label>
-                    <select class="form-control form-control-sm" id="part_no_filter" >
+                    <select class="form-control form-control-sm" id="part_no_filter">
                         <option value="">Select...</option>
                     </select>
                 </div>
-                <div class="col-sm-3 mb-2">
+                <div class="col-lg-2 col-md-3 col-sm-6 mb-2">
                     <label for="supplier_filter"> Supplier </label>
-                    <select class="form-control form-control-sm" id="supplier_filter" >
+                    <select class="form-control form-control-sm" id="supplier_filter">
                         <option value="">Select...</option>
                     </select>
                 </div>
-                <div class="col-sm-3 mb-2">
+                <div class="col-lg-2 col-md-3 col-sm-6 mb-2">
                     <label for="machine_type_filter"> Machine Type </label>
-                    <select class="form-control form-control-sm" id="machine_type_filter" >
+                    <select class="form-control form-control-sm" id="machine_type_filter">
                         <option value="">Select...</option>
                     </select>
                 </div>
-<!--                <div class="col-sm-3 mb-2">-->
-<!--                    <label>Date From</label>-->
-<!--                    <input type="date" class="form-control form-control-sm" id="date_from_filter" name="date_from" placeholder="Date From">-->
-<!--                </div>-->
-<!--                <div class="col-sm-3 mb-2">-->
-<!--                    <label>Date To</label>-->
-<!--                    <input type="date" class="form-control form-control-sm" id="date_to_filter" name="date_to" placeholder="Date To">-->
-<!--                </div>-->
+                <div class="col-lg-2 col-md-3 col-sm-6 mb-2">
+                    <label for="spare_part_name_filter"> Part Name </label>
+                    <select class="form-control form-control-sm" id="spare_part_name_filter">
+                        <option value="">Select...</option>
+                    </select>
+                </div>
+                <!-- <div class="col-sm-3 mb-2">
+                    <label>Date From</label>
+                    <input type="date" class="form-control form-control-sm" id="date_from_filter" name="date_from" placeholder="Date From">
+                </div>
                 <div class="col-sm-3 mb-2">
+                    <label>Date To</label>
+                    <input type="date" class="form-control form-control-sm" id="date_to_filter" name="date_to" placeholder="Date To">
+                </div> -->
+                <div class="col-lg-2 col-md-3 col-sm-6 mb-2">
                     <label>&nbsp;</label> <br>
                     <button type="button" class="btn btn-primary btn-sm" id="filter_button" style="min-width: 100px;">Filter</button>
                 </div>
-
             </div>
+
             <hr>
 
             <div class="table-responsive">

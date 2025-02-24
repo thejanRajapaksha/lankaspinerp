@@ -54,6 +54,12 @@
                     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
                         <form id="createorderform" autocomplete="off">
                             <div class="form-group mb-1">
+                                <label class="small font-weight-bold text-dark">Supplier*</label>
+                                <select class="form-control form-control-sm" name="supplier" id="supplier" required>
+                                    <option value="">Select</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-1">
                                 <label class="small font-weight-bold text-dark">Purchase Order Type*</label>
                                 <select class="form-control form-control-sm" name="ordertype" id="ordertype" required>
                                     <option value="">Select</option>
@@ -77,18 +83,14 @@
                                     <input type="date" class="form-control form-control-sm" placeholder="" name="duedate" id="duedate" value="<?php echo date('Y-m-d') ?>" required>
                                 </div>
                                 <div class="col">
-                                    <label class="small font-weight-bold text-dark">Supplier*</label>
-                                    <select class="form-control form-control-sm" name="supplier" id="supplier" required>
+                                    
+                                    <label class="small font-weight-bold text-dark">Product*</label>
+                                    <select class="form-control form-control-sm" name="spare_part_id" id="spare_part_id" required>
                                         <option value="">Select</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group mb-1">
-                                <label class="small font-weight-bold text-dark">Product*</label>
-                                <select class="form-control form-control-sm" name="spare_part_id" id="spare_part_id" required>
-                                    <option value="">Select</option>
-                                </select>
-                            </div>
+                            
                             <div class="form-row mb-1">
                                 <div class="col">
                                     <label class="small font-weight-bold text-dark">Qty*</label>

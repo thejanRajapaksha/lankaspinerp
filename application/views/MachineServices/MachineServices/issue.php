@@ -20,6 +20,7 @@
                     <thead>
                     <tr>
                         <th>Service No</th>
+                        <th>Employee Name</th>
                         <th>Machine Type</th>
                         <th>Machine Serial No</th>
                         <th>Service Date From</th>
