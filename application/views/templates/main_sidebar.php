@@ -262,6 +262,86 @@
                 <?php endif; ?>
 
                 <?php if (
+                    in_array('viewCRMInquiry', $user_permission) ||
+                    in_array('createCRMInquiry', $user_permission) ||
+                    in_array('updateCRMInquiry', $user_permission) ||
+                    in_array('deleteCRMInquiry', $user_permission) ||
+
+                    in_array('viewCRMQuotation', $user_permission) ||
+                    in_array('createCRMQuotation', $user_permission) ||
+                    in_array('updateCRMQuotation', $user_permission) ||
+                    in_array('deleteCRMQuotation', $user_permission) ||
+
+                    in_array('viewCRMQuotationform', $user_permission) ||
+                    in_array('createCRMQuotationform', $user_permission) ||
+                    in_array('updateCRMQuotationform', $user_permission) ||
+                    in_array('deleteCRMQuotationform', $user_permission) ||
+
+                    in_array('viewCRMQuotationStatus', $user_permission) ||
+                    in_array('createCRMQuotationStatus', $user_permission) ||
+                    in_array('updateCRMQuotationStatus', $user_permission) ||
+                    in_array('deleteCRMQuotationStatus', $user_permission) ||
+
+                    in_array('viewCRMReason', $user_permission) ||
+                    in_array('createCRMReason', $user_permission) ||
+                    in_array('updateCRMReason', $user_permission) ||
+                    in_array('deleteCRMReason', $user_permission)
+                ) : ?>
+
+                    <a class="nav-link collapsed" id="crm_main_nav_link" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseCRM" aria-expanded="false" aria-controls="collapseCRM">
+                        <div class="nav-link-icon"><i class="fas fa-user-tie"></i></div>CRM
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseCRM" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavCRM">
+
+                            <?php if (
+                                in_array('viewCRMInquiry', $user_permission) ||
+                                in_array('createCRMInquiry', $user_permission) ||
+                                in_array('updateCRMInquiry', $user_permission) ||
+                                in_array('deleteCRMInquiry', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMInquiry/'); ?>">CRMInquiry</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewCRMQuotationform', $user_permission) ||
+                                in_array('createCRMQuotationform', $user_permission) ||
+                                in_array('updateCRMQuotationform', $user_permission) ||
+                                in_array('deleteCRMQuotationform', $user_permission) ||
+                                
+                                in_array('viewCRMQuotation', $user_permission) ||
+                                in_array('createCRMQuotation', $user_permission) ||
+                                in_array('updateCRMQuotation', $user_permission) ||
+                                in_array('deleteCRMQuotation', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMQuotation/'); ?>">CRMQuotation</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewCRMQuotationStatus', $user_permission) ||
+                                in_array('createCRMQuotationStatus', $user_permission) ||
+                                in_array('updateCRMQuotationStatus', $user_permission) ||
+                                in_array('deleteCRMQuotationStatus', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMQuotationStatus/'); ?>">CRMQuotationStatus</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewCRMReason', $user_permission) ||
+                                in_array('createCRMReason', $user_permission) ||
+                                in_array('updateCRMReason', $user_permission) ||
+                                in_array('deleteCRMReason', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMReason/'); ?>">CRMReason</a>
+                            <?php endif; ?>
+
+                        </nav>
+                    </div>
+
+                <?php endif; ?>
+
+                <?php if (
                     in_array('viewStock', $user_permission)
                     || in_array('viewGRN', $user_permission)
                     || in_array('viewEmployeeRepairs', $user_permission)
