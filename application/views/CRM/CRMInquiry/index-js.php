@@ -1,5 +1,10 @@
 <script>
     $(document).ready(function() {
+
+        $('#crm_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
+        $('#collapseCRM').addClass('show');
+
+
         var addcheck = '<?php echo (in_array('createCRMInquiry', $user_permission)) ? 1 : 0; ?>';
         var editcheck = '<?php echo (in_array('updateCRMInquiry', $user_permission)) ? 1 : 0; ?>';
         var statuscheck = '<?php echo (in_array('updateCRMInquiry', $user_permission) || in_array('deleteCRMInquiry', $user_permission)) ? 1 : 0; ?>';

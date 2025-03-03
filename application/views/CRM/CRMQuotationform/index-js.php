@@ -1,5 +1,9 @@
 <script>
 	$(document).ready(function() {
+
+		$('#crm_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
+        $('#collapseCRM').addClass('show');
+
         var addcheck = '<?php echo (in_array('createCRMQuotationform', $user_permission)) ? 1 : 0; ?>';
         var editcheck = '<?php echo (in_array('updateCRMQuotationform', $user_permission)) ? 1 : 0; ?>';
         var statuscheck = '<?php echo (in_array('updateCRMQuotationform', $user_permission) || in_array('deleteCRMQuotationform', $user_permission)) ? 1 : 0; ?>';
@@ -9,28 +13,28 @@
 
 		//alert(getid);
 
-		$('#staticBackdrop').on('shown.bs.modal', function() {
-			$('.selecter2').select2({
-				width: '100%',
-				dropdownParent: $('#staticBackdrop')
-			});
+		// $('#staticBackdrop').on('shown.bs.modal', function() {
+		// 	$('.selecter2').select2({
+		// 		width: '100%',
+		// 		dropdownParent: $('#staticBackdrop')
+		// 	});
 
-			var getid = $('#getid').val();
-			$.ajax({
-				type: "POST",
-				data: {
-					getid: getid,
+		// 	var getid = $('#getid').val();
+		// 	$.ajax({
+		// 		type: "POST",
+		// 		data: {
+		// 			getid: getid,
 
-				},
-				url: '<?php echo base_url() ?>Quotationform/Quotationformgetcustomer',
-				success: function(result) { //alert(result);
-					//console.log(result);
-					// $('#quotationmodal').modal('show');
-					// $('#getquotationdataform').html(result);
+		// 		},
+		// 		url: '<?php echo base_url() ?>CRMQuotationform/Quotationformgetcustomer',
+		// 		success: function(result) { //alert(result);
+		// 			//console.log(result);
+		// 			// $('#quotationmodal').modal('show');
+		// 			// $('#getquotationdataform').html(result);
 
-				}
-			});
-		});
+		// 		}
+		// 	});
+		// });
 
 		$('#dataTable').DataTable({
 			"destroy": true,
@@ -668,23 +672,23 @@
 
 
 
-	// $('#product').change(function() {
-	// 	var productID = $(this).val();
+	$('#product').change(function() {
+		var productID = $(this).val();
 
-	// 	$.ajax({
-	// 		type: "POST",
-	// 		data: {
-	// 			recordID: productID
-	// 		},
-	// 		url: 'Quotationform/Getproduct',
-	// 		success: function(result) { //alert(result);
-	// 			var obj = JSON.parse(result);
-	// 			$('#product').val(obj.product);
-	// 			// $('#unitprice').val(obj.unitprice);
-	// 			// $('#comment').val(obj.comment);
-	// 		}
-	// 	});
-	// });
+		$.ajax({
+			type: "POST",
+			data: {
+				recordID: productID
+			},
+			url: 'Quotationform/Getproduct',
+			success: function(result) { //alert(result);
+				var obj = JSON.parse(result);
+				$('#product').val(obj.product);
+				// $('#unitprice').val(obj.unitprice);
+				// $('#comment').val(obj.comment);
+			}
+		});
+	});
 	// $('#quater').change(function () {
 	// 	var quaterID = $(this).val();
 	// 	var mfdate = $('#mfdate').val();

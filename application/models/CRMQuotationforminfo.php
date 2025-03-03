@@ -268,7 +268,7 @@ class CRMQuotationforminfo extends CI_Model
             $Comment = $rowdata['col_2']; 
             $Qty = $rowdata['col_3']; 
             $Unitprice = $rowdata['col_4'];
-            $Total = $rowdata['col_5'];
+            $Total = $rowdata['col_7'];
 
             $data2 = array(
                 'bag_type' => $BagType, 
