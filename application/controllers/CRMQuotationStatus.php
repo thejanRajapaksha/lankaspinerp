@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 date_default_timezone_set('Asia/Colombo');
 
-class CRMQuotationStatus extends CI_Controller {
+class CRMQuotationStatus extends Admin_Controller {
     public function index(){
         $this->load->model('Commeninfo');
         $this->load->model('CRMQuotationStatusinfo');
