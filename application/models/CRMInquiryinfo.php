@@ -24,22 +24,27 @@ class CRMInquiryinfo extends CI_Model {
 
         // Insert into tbl_inquiry_detail
         foreach ($tableData as $rowdata) {
-            $tbl_salesrep_idtbl_salesrep = $rowdata['tbl_salesrep_idtbl_salesrep'];
-            $tbl_material_idtbl_material = $rowdata['tbl_material_idtbl_material'];
-            $tbl_cloth_idtbl_cloth = $rowdata['tbl_cloth_idtbl_cloth'];
             $quantity = $rowdata['quantity'];
-
+            $date = $rowdata['date'];
+            $bag_length = $rowdata['bag_length'];
+            $bag_width = $rowdata['bag_width'];
+            $bag_type = $rowdata['bag_type'];
+            $colour_no = $rowdata['colour_no'];
+            $off_print = $rowdata['off_print'];
             $detailData = [
                 'tbl_inquiry_idtbl_inquiry' => $inquiryID,
-                'tbl_salesrep_idtbl_salesrep' => $tbl_salesrep_idtbl_salesrep,
-                'tbl_cloth_idtbl_cloth' => $tbl_cloth_idtbl_cloth,
-                'tbl_material_idtbl_material' => $tbl_material_idtbl_material,                
                 'quantity' => $quantity,
+                'date' => $date,
+                'bag_length' => $bag_length,
+                'bag_width' => $bag_width,
+                'bag_type' => $bag_type,
+                'colour_no' => $colour_no,
+                'off_print' => $off_print,
                 'status' => '1',
                 'insertdatetime' => $insertdatetime,
                 'tbl_user_idtbl_user' => $userID
             ];
-            $this->db->insert('tbl_inquiry_detail', $detailData);
+           $this->db->insert('tbl_inquiry_detail', $detailData);
         }
 
         //$this->db->trans_complete();
@@ -389,30 +394,9 @@ class CRMInquiryinfo extends CI_Model {
         $this->db->from('tbl_customer');
         $this->db->where('status', 1);
 
-        return $respond=$this->db->get();
+        $query=$this->db->get();
+        return $query->result();
     }
 
-    public function Getsalesrepname(){
-        $this->db->select('idtbl_salesrep, name');
-        $this->db->from('tbl_salesrep');
-        $this->db->where('status', 1);
 
-        return $respond=$this->db->get();
-    }
-
-    public function Getclothtype(){
-        $this->db->select('idtbl_cloth, type');
-        $this->db->from('tbl_cloth');
-        $this->db->where('status', 1);
-
-        return $respond=$this->db->get();
-    }
-
-    public function Getmaterialtype(){
-        $this->db->select('idtbl_material, type');
-        $this->db->from('tbl_material');
-        $this->db->where('status', 1);
-
-        return $respond=$this->db->get();
-    }
 }

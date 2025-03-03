@@ -29,15 +29,15 @@ $primaryKey = 'idtbl_inquiry_detail';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array( 'db' => '`d`.`idtbl_inquiry_detail`', 'dt' => 'idtbl_inquiry_detail', 'field' => 'idtbl_inquiry_detail' ),
-    array( 'db' => '`d`.`tbl_inquiry_idtbl_inquiry`', 'dt' => 'tbl_inquiry_idtbl_inquiry', 'field' => 'tbl_inquiry_idtbl_inquiry' ),
-    // array( 'db' => '`u`.`tbl_cloth_idtbl_cloth`', 'dt' => 'tbl_cloth_idtbl_cloth', 'field' => 'tbl_cloth_idtbl_cloth' ),
-    array( 'db' => '`d`.`type`', 'dt' => 'type', 'field' => 'type' ),
-    // array( 'db' => '`u`.`tbl_material_idtbl_material`', 'dt' => 'tbl_material_idtbl_material', 'field' => 'tbl_material_idtbl_material' ),
-    array( 'db' => '`d`.`mattype`', 'dt' => 'mattype', 'field' => 'mattype' ),
-    array( 'db' => '`d`.`sname`', 'dt' => 'sname', 'field' => 'sname' ),
-    array( 'db' => '`d`.`quantity`', 'dt' => 'quantity', 'field' => 'quantity' ),
-    array( 'db' => '`d`.`status`', 'dt' => 'status', 'field' => 'status' )
+    array( 'db' => '`u`.`idtbl_inquiry_detail`', 'dt' => 'idtbl_inquiry_detail', 'field' => 'idtbl_inquiry_detail' ),
+    array( 'db' => '`u`.`status`', 'dt' => 'status', 'field' => 'status' ),
+    array( 'db' => '`u`.`quantity`', 'dt' => 'quantity', 'field' => 'quantity' ),
+    array( 'db' => '`u`.`date`', 'dt' => 'date', 'field' => 'date' ),
+    array( 'db' => '`u`.`bag_length`', 'dt' => 'bag_length', 'field' => 'bag_length' ),
+    array( 'db' => '`u`.`bag_width`', 'dt' => 'bag_width', 'field' => 'bag_width' ),
+    array( 'db' => '`u`.`bag_type`', 'dt' => 'bag_type', 'field' => 'bag_type' ),
+    array( 'db' => '`u`.`colour_no`', 'dt' => 'colour_no', 'field' => 'colour_no' ),
+    array( 'db' => '`u`.`off_print`', 'dt' => 'off_print', 'field' => 'off_print' ),
 );
 
 // SQL server connection information
@@ -57,16 +57,11 @@ $sql_details = array(
 // require( 'ssp.class.php' );
 require('ssp.customized.class.php');
 
-$joinQuery = "from (select u.*, c.type, m.type as mattype , s.name as sname 
-    FROM `tbl_inquiry_detail` AS `u`
-    LEFT JOIN `tbl_cloth` AS `c` ON `u`.`tbl_cloth_idtbl_cloth` = `c`.`idtbl_cloth`
-    LEFT JOIN `tbl_material` AS `m` ON `u`.`tbl_material_idtbl_material` = `m`.`idtbl_material`
-    LEFT JOIN `tbl_salesrep` AS `s` ON `u`.`tbl_salesrep_idtbl_salesrep` = `s`.`idtbl_salesrep`
-) as d";
+$joinQuery = "FROM `tbl_inquiry_detail` AS `u`";
 
 $ID = $_POST['id'];
 
-$extraWhere = "`d`.`status` IN (1, 2) AND `d`.`tbl_inquiry_idtbl_inquiry` IN ('$ID')";
+$extraWhere = "`u`.`status` IN (1, 2) AND `u`.`tbl_inquiry_idtbl_inquiry` IN ('$ID')";
 
 echo json_encode(
     SSP::simple( $_POST, $sql_details, $table, $primaryKey, $columns, $joinQuery, $extraWhere)

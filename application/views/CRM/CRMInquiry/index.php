@@ -16,7 +16,16 @@
                     <div class="col-4">
                         <form method="post" autocomplete="off" id="grnform">
                             
-                                
+                             <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Customer Name</label>
+                                <select class="form-control form-control-sm" name="customername" id="customername" required>
+                                    <option value="" selected disabled>Select Customer</option>
+                                    <?php foreach ($result['customername'] as $customernames):?>
+                                        <option value="<?php echo $customernames->idtbl_customer;?>">
+                                        <?php echo htmlspecialchars($customernames->name);?></option>
+                                    <?php endforeach;?>
+                                </select>
+                             </div>  
 
                             <div class="form-group mb-1">
                                 <label class="small font-weight-bold">Quantity*</label>
@@ -25,6 +34,32 @@
                             <div class="form-group mb-1">
                                 <label class="small font-weight-bold">Date*</label>
                                 <input type="date" class="form-control form-control-sm" name="date" id="date" required>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Bag Length*</label>
+                                <input type="number" class="form-control form-control-sm" name="bg_length" id="bg_length" required>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Bag width*</label>
+                                <input type="number" class="form-control form-control-sm" name="bg_width" id="bg_width" required>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Select Bag Type*</label>
+                                <select class="form-control form-control-sm" name="bg_type" id="bg_type" required>
+                                <option value="" selected="true" disabled="disabled">Select</option>
+                                <option value="Inner Bag">Inner Bag</option>
+                                <option value="Outer Bag">Outer Bag</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Color No*</label>
+                                <input type="number" class="form-control form-control-sm" name="col_no" id="col_no" required>
+                            </div>
+                            <div class="form-group mb-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="off_print" name="off_print" value="false">
+                                    <label class="form-check-label font-weight-bold" for="off_print">Off Print</label>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
@@ -42,11 +77,13 @@
                             <thead>
                                 <tr>
                                     <th>Customer Name</th>
-                                    <th>Sales Rep Name</th>
-                                    <th>Date</th>
-                                    <th>Cloth Type</th>
-                                    <th>Material Type</th>
                                     <th>Quantity</th>
+                                    <th>Date</th>
+                                    <th>Length</th>
+                                    <th>Width</th>
+                                    <th>Bag Type</th>
+                                    <th>Color No</th>
+                                    <th>Off Print</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -57,7 +94,7 @@
                         </div>
                     </div>
                     <div class="col-8">
-                        <table class="table table-bordered table-striped table-sm nowrap" id="inquiryTable">
+                        <table class="table table-bordered table-striped table-sm nowrap" id="inquiryTable" width="100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -83,10 +120,13 @@
                                         <thead>
                                             <tr>
                                                 <th>Inquiry ID</th>
-                                                <th>Sales Rep Name</th>
-                                                <th>Cloth Type</th>
-                                                <th>Material Type</th>
                                                 <th>Quantity</th>
+                                                <th>Date</th>
+                                                <th>Bag Length</th>
+                                                <th>Bag Width</th>
+                                                <th>Bag Type</th>
+                                                <th>Colour No</th>
+                                                <th>Off Print</th>
                                                 <th class="text-right">Actions</th>
                                             </tr>
                                         </thead>
