@@ -51,8 +51,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Cloth Type</th>
-                                        <th>Meterial Type</th>
+                                        <th>Bag Type</th>
+                                        <th>Bag Length</th>
+                                        <th>Bag Width</th>
+                                        <th>off print</th>
                                         <th>Qty</th>
                                     </tr>
                                 </thead>

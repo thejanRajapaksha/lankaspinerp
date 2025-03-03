@@ -88,9 +88,6 @@
 				},
 				{
 					"data": "name"
-					// "render": function(data, type, full) {
-					//         return "UN/GRN-0000" + data;
-					// }
 				},
 				{
 					"className": 'd-none',
@@ -106,7 +103,7 @@
 					"data": null,
 					"render": function(data, type, full) {
 						var button = '';
-						button += '<button class="btn btn-primary btn-sm btnlistview mr-1" id="' + full['idtbl_quotation'] + '" data-id="' + full['idtbl_quotation'] + '" data-toggle="tooltip" data-placement="bottom" title="View list image"><i class="fa fa-eye" aria-hidden="true"></i></button>';
+						// button += '<button class="btn btn-primary btn-sm btnlistview mr-1" id="' + full['idtbl_quotation'] + '" data-id="' + full['idtbl_quotation'] + '" data-toggle="tooltip" data-placement="bottom" title="View list image"><i class="fa fa-eye" aria-hidden="true"></i></button>';
 						// if (full['approvestatus'] == 1) {
 						// 	button += '<button  id="' + full['idtbl_quotation'] + '" target="_self" class="btn btn-secondary btn-sm mr-1 approvebtn" value ="2"  data-toggle="tooltip" data-placement="bottom" title="Disapprove Quotation"';
 						// 	if (statuscheck != 1) {
@@ -123,12 +120,12 @@
 						// }
 						button += '<button class="btn btn-primary btn-sm btninfo mr-1" id="' + full['idtbl_quotation'] + '" data-toggle="tooltip" data-placement="bottom" title="Quotation Details"><i class="fa fa-info-circle" aria-hidden="true"></i></button>';
 
-						if (full['approvestatus'] == 0) {
-							button += '<button disabled target="_blank" class="btn btn-danger btn-sm btnPdf mr-1" id="' + full['idtbl_quotation'] + '" data-toggle="tooltip" data-placement="bottom" title="Quotation PDF"><i class="fas fa-file-pdf"></i></button>';
-						} else {
-							button += '<a href="<?php echo base_url() ?>Quotationform/Quotationformpdf/' + full['idtbl_quotation'] + '" target="_blank" class="btn btn-danger btn-sm btnPdf mr-1" data-toggle="tooltip" data-placement="bottom" title="Quotation PDF"><i class="fas fa-file-pdf"></i></a>';
+						// if (full['approvestatus'] == 0) {
+						// 	button += '<button disabled target="_blank" class="btn btn-danger btn-sm btnPdf mr-1" id="' + full['idtbl_quotation'] + '" data-toggle="tooltip" data-placement="bottom" title="Quotation PDF"><i class="fas fa-file-pdf"></i></button>';
+						// } else {
+						// 	button += '<a href="<?php echo base_url() ?>CRMQuotationform/Quotationformpdf/' + full['idtbl_quotation'] + '" target="_blank" class="btn btn-danger btn-sm btnPdf mr-1" data-toggle="tooltip" data-placement="bottom" title="Quotation PDF"><i class="fas fa-file-pdf"></i></a>';
 
-						}
+						// }
 
 						if (full['status'] == 1) {
 							button += '<button id="' + full['idtbl_quotation'] + '"  target="_self" class="btn btn-success btn-sm mr-1 btnstatus" value ="2" data-toggle="tooltip" data-placement="bottom" title="Deactive"';
@@ -166,7 +163,7 @@
 				data: {
 					cusId: cusId,
 				},
-				url: '<?php echo base_url() ?>Quotationform/Quotationformgetinfodata',
+				url: '<?php echo base_url() ?>CRMQuotationform/Quotationformgetinfodata',
 				success: function(result) {
 					$('#getquotationdataform').html(result);
 					$('#quotationmodal').data('idtbl_quotation', cusId).modal('show');
@@ -177,7 +174,7 @@
 		$("#disapprovalReason").select2({
 			dropdownParent: $('#disapprovalModal'),
 			ajax: {
-				url: "<?php echo base_url() ?>Quotationform/Getreasontype",
+				url: "<?php echo base_url() ?>CRMQuotationform/Getreasontype",
 				type: "post",
 				dataType: 'json',
 				delay: 250,
@@ -211,7 +208,7 @@
 							recordID: recordID,
 							type: type,
 						},
-						url: '<?php echo base_url() ?>Quotationform/Quotationformapprovestatus',
+						url: '<?php echo base_url() ?>CRMQuotationform/Quotationformapprovestatus',
 						success: function(result) {
 							var obj = JSON.parse(result);
 							if (obj.status == 1) {
@@ -250,7 +247,7 @@
 							reasonID: reasonID,
 							reasonAdd: reasonAdd,
 						},
-						url: '<?php echo base_url() ?>Quotationform/Quotationformapprovestatus',
+						url: '<?php echo base_url() ?>CRMQuotationform/Quotationformapprovestatus',
 						success: function(result) {
 							var obj = JSON.parse(result);
 							if (obj.status == 1) {
@@ -286,7 +283,7 @@
 						type: type,
 
 					},
-					url: '<?php echo base_url() ?>Quotationform/Quotationformstatus',
+					url: '<?php echo base_url() ?>CRMQuotationform/Quotationformstatus',
 					success: function(result) { //alert(result);
 						var obj = JSON.parse(result);
 						if (obj.status == 1) {
@@ -322,7 +319,7 @@
 						type: type,
 
 					},
-					url: '<?php echo base_url() ?>Quotationform/Quotationformstatus',
+					url: '<?php echo base_url() ?>CRMQuotationform/Quotationformstatus',
 					success: function(result) { //alert(result);
 						var obj = JSON.parse(result);
 						if (obj.status == 1) {
@@ -430,7 +427,7 @@
 					cancelMsg: cancelMsg
 
 				},
-				url: '<?php echo base_url() ?>Quotationform/Quotationformstatus',
+				url: '<?php echo base_url() ?>CRMQuotationform/Quotationformstatus',
 				success: function(result) { //alert(result);
 					var obj = JSON.parse(result);
 					if (obj.status == 0) {
@@ -535,10 +532,10 @@
 			// this will just cause the browser to display the native HTML5 error messages.
 			$("#submitBtn").click();
 		} else {
-			var productID = $('#product').val();
-			var meterialID = $('#meterial').val();
-			var meterial = $("#meterial option:selected").text();
-			var product = $("#product option:selected").text();
+			var bagType = $('#bag_type').val();
+			// var meterialID = $('#meterial').val();
+			// var meterial = $("#meterial option:selected").text();
+			// var product = $("#product option:selected").text();
 			var unitprice = parseFloat($('#unitprice').val());
 			var qty = parseFloat($('#qty').val());
 			//var quotdate = $('#quot_date').val();
@@ -555,16 +552,22 @@
 
 			var showtotal = addCommas(parseFloat(total).toFixed(2));
 
-			$('#tableorder > tbody:last').append('<tr class="pointer"><td class="d-none">' + productID +
-				'</td><td>' + product + '</td><td class="d-none">' + meterialID +
-				'</td><td>' + meterial + '</td><td>' + description + '</td><td>' + qty +
-				'</td><td class="d-none">' + unitprice + '</td><td>' + addCommas(unitprice.toFixed(2)) + '</td><td>' + showtotal + '</td><td class="d-none total">' + total + '</td></tr>');
+			$('#tableorder > tbody:last').append('<tr class="pointer">' +
+			'<td>' + bagType + '</td>' +  
+			'<td>' + description + '</td>' +
+			'<td>' + qty + '</td>' +
+			'<td class="d-none">' + unitprice + '</td>' +
+			'<td>' + addCommas(unitprice.toFixed(2)) + '</td>' +
+			'<td>' + showtotal + '</td>' +
+			'<td class="d-none total">' + total + '</td>' +
+			'</tr>');
 
-			$('#product').val('');
+
+			$('#gab_type').val('');
 			$('#unitprice').val('');
 			$('#qty').val('');
 			$('#comment').val('');
-			$('#meterial').val('');
+			// $('#meterial').val('');
 
 
 			var sum = 0;
@@ -607,65 +610,62 @@
 	});
 
 	$('#btncreateorder').click(function() {
-		$('#btncreateorder').prop('disabled', true).html('<i class="fas fa-circle-notch fa-spin mr-2"></i> Create Good Receive Note');
-		var tbody = $("#tableorder tbody");
-		var formData = new FormData();
+    $('#btncreateorder').prop('disabled', true).html('<i class="fas fa-circle-notch fa-spin mr-2"></i> Create Good Receive Note');
+    var tbody = $("#tableorder tbody");
+    var formData = new FormData();
 
-		var productImages = $('#productimage')[0].files;
+    if (tbody.children().length > 0) {
+        jsonObj = [];
+        $("#tableorder tbody tr").each(function() {
+            item = {};
+            $(this).find('td').each(function(col_idx) {
+                item["col_" + (col_idx + 1)] = $(this).text();
+            });
+            jsonObj.push(item);
+        });
 
-		for (var i = 0; i < productImages.length; i++) {
-			formData.append('productimage[]', productImages[i]);
-		}
-		if (tbody.children().length > 0) {
-			jsonObj = [];
-			$("#tableorder tbody tr").each(function() {
-				item = {}
-				$(this).find('td').each(function(col_idx) {
-					item["col_" + (col_idx + 1)] = $(this).text();
-				});
-				jsonObj.push(item);
-			});
-			console.log(jsonObj);
+        console.log(jsonObj);
 
-			var remarks = $('#remark').val();
-			var getid = $('#getid').val();
-			var showsum = $('#divtotal').html();
-			var trimmedValue = $('#hidetotalorder').val();
-			var sumdis = $('#sumdis').val();
-			var recordOption = $('#recordOption').val();
-			var quotdate = $('#quot_date').val();
-			var duedate = $('#duedate').val();
-			var customer = $('#customer').val();
+        var remarks = $('#remark').val();
+        var getid = $('#getid').val();
+        var showsum = $('#divtotal').html();
+        var trimmedValue = $('#hidetotalorder').val();
+        var sumdis = $('#sumdis').val();
+        var recordOption = $('#recordOption').val();
+        var quotdate = $('#quot_date').val();
+        var duedate = $('#duedate').val();
+        var customer = $('#customer').val();
 
-			formData.append('tableData', JSON.stringify(jsonObj)); // Properly encode JSON
-			formData.append('getid', getid);
-			formData.append('recordOption', recordOption);
-			formData.append('trimmedValue', trimmedValue);
-			formData.append('sumdis', sumdis);
-			formData.append('quotdate', quotdate);
-			formData.append('duedate', duedate);
-			formData.append('customer', customer);
-			formData.append('remarks', remarks);
+        formData.append('tableData', JSON.stringify(jsonObj)); 
+        formData.append('getid', getid);
+        formData.append('recordOption', recordOption);
+        formData.append('trimmedValue', trimmedValue);
+        formData.append('sumdis', sumdis);
+        formData.append('quotdate', quotdate);
+        formData.append('duedate', duedate);
+        formData.append('customer', customer);
+        formData.append('remarks', remarks);
 
-			$.ajax({
-				type: "POST",
-				data: formData,
-				processData: false,
-				contentType: false,
-				url: '<?php echo base_url() ?>Quotationform/Quotationforminsertupdate',
-				success: function(result) {
-					var obj = JSON.parse(result);
-					$('#staticBackdrop').modal('hide');
-					if (obj.status == 1) {
-						setTimeout(function() {
-							window.location.reload();
-						}, 3000);
-					}
-					action(obj.action);
-				}
-			});
-		}
-	});
+        $.ajax({
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            url: '<?php echo base_url() ?>CRMQuotationform/Quotationforminsertupdate',
+            success: function(result) {
+                var obj = JSON.parse(result);
+                $('#staticBackdrop').modal('hide');
+                if (obj.status == 1) {
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 3000);
+                }
+                action(obj.action);
+            }
+        });
+    }
+});
+
 
 
 	// $('#product').change(function() {
@@ -701,44 +701,44 @@
 	// 		}
 	// 	});
 	// });
-	function loadlistimages(productID) {
-            $('#imagelist').addClass('text-center');
-            $('#imagelist').html('<img src="images/spinner.gif" class="img-fluid">');
+	// function loadlistimages(productID) {
+    //         $('#imagelist').addClass('text-center');
+    //         $('#imagelist').html('<img src="images/spinner.gif" class="img-fluid">');
 
-            $.ajax({
-                type: "POST",
-                data: {
-                    productID: productID,
-                },
-                url: '<?php echo base_url() ?>Quotationform/Getproductlistimages',
-                success: function(result) { //alert(result);
-                    $('#imagelist').removeClass('text-center');
-                    $('#imagelist').html(result);
-                    optionimages(productID);
-                }
-            });
-        }
+    //         $.ajax({
+    //             type: "POST",
+    //             data: {
+    //                 productID: productID,
+    //             },
+    //             url: '<?php echo base_url() ?>Quotationform/Getproductlistimages',
+    //             success: function(result) { //alert(result);
+    //                 $('#imagelist').removeClass('text-center');
+    //                 $('#imagelist').html(result);
+    //                 optionimages(productID);
+    //             }
+    //         });
+    //     }
 
-        function optionimages(productID) {
-            $('#productimagetable tbody').on('click', '.btnremoveimage', function() {
-                var imageID = $(this).attr('id');
-                var r = confirm("Are you sure, You want to Delete this ? ");
-                if (r == true) {
-                    $.ajax({
-                        type: "POST",
-                        data: {
-                            imageID: imageID,
+        // function optionimages(productID) {
+        //     $('#productimagetable tbody').on('click', '.btnremoveimage', function() {
+        //         var imageID = $(this).attr('id');
+        //         var r = confirm("Are you sure, You want to Delete this ? ");
+        //         if (r == true) {
+        //             $.ajax({
+        //                 type: "POST",
+        //                 data: {
+        //                     imageID: imageID,
 
-                        },
-                        url: '<?php echo base_url() ?>Quotationform/Getproductlistimagesdelete',
-                        success: function(result) { //alert(result);
-                            $('#imagelist').html(result);
-                            loadlistimages(productID);
-                        }
-                    });
-                }
-            });
-        }
+        //                 },
+        //                 url: '<?php echo base_url() ?>Quotationform/Getproductlistimagesdelete',
+        //                 success: function(result) { //alert(result);
+        //                     $('#imagelist').html(result);
+        //                     loadlistimages(productID);
+        //                 }
+        //             });
+        //         }
+        //     });
+        // }
 
 	function addCommas(nStr) {
 		nStr += '';

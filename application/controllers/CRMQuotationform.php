@@ -9,12 +9,11 @@ class CRMQuotationform extends Admin_Controller
 	{
 		$this->load->model('Commeninfo');
 		$this->load->model('CRMQuotationforminfo');
-		// $result['menuaccess'] = $this->Commeninfo->Getmenuprivilege();
-		$result['productlst'] = $this->CRMQuotationforminfo->Getproduct($z,$y);
+
+		$result['product'] = $this->CRMQuotationforminfo->Getproduct($z,$y);
 		$result['customerlist'] = $this->CRMQuotationforminfo->Getcustomer($z,$y);	
 		$result['getid'] = $this->CRMQuotationforminfo->Getquotationid($z,$y);
 		$this->data['result'] = $result;
-		//$result['qcustomer'] = $this->CRMQuotationforminfo->Quotationforminsertupdate();
 		$this->data['js'] = 'application/views/CRM/CRMQuotationform/index-js.php';
 		$this->render_template('CRM/CRMQuotationform/index', $this->data);
 	}

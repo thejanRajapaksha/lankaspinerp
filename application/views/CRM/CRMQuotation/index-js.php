@@ -150,10 +150,23 @@
                         "data": "idtbl_inquiry_detail"
                     },
                     {
-                        "data": "type"
+                        "data": "bag_type"
                     },
                     {
-                        "data": "mattype"
+                        "data": "bag_length"
+                    },
+                    {
+                        "data": "bag_width"
+                    },
+                    {
+                    "data": "off_print",
+                        "render": function(data, type, full) {
+                            if (data == 1) {
+                                return 'Yes';
+                            } else if (data == 0) {
+                                return 'No';
+                            }
+                        }
                     },
                     {
                         "data": "quantity"

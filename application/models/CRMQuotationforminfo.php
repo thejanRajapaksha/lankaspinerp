@@ -100,12 +100,10 @@ class CRMQuotationforminfo extends CI_Model
         $getinq = $z;
         $get = $y;
 
-        $this->db->select('u.idtbl_cloth,  u.type');
-        $this->db->from('tbl_cloth AS u');
-        $this->db->join('tbl_inquiry_detail AS ua', 'ua.tbl_cloth_idtbl_cloth = u.idtbl_cloth', 'left');
-        $this->db->where('u.status', 1);
-        $this->db->where('ua.tbl_inquiry_idtbl_inquiry', $getinq);
-        $this->db->group_by('u.idtbl_cloth');
+        $this->db->select('`quantity`,`date`,`bag_length`,`bag_width`,`bag_type`,`colour_no`,`off_print`,`status`,`tbl_inquiry_idtbl_inquiry`');
+        $this->db->from('tbl_inquiry_detail');
+        $this->db->where('status', 1);
+        $this->db->where('tbl_inquiry_idtbl_inquiry', $getinq);
 
         $query = $this->db->get();
         return $query-> result();
@@ -224,146 +222,95 @@ class CRMQuotationforminfo extends CI_Model
     }
 
     public function Quotationforminsertupdate()
-    {
-        $this->db->trans_begin();
+{
+    $this->db->trans_begin();
+    $userID = $_SESSION['id'];
+    $jsonObj = json_decode($this->input->post('tableData'), true);
+    $remarks = $this->input->post('remarks');
+    $getid = $this->input->post('getid');
+    $trimmedValue = $this->input->post('trimmedValue');
+    $sumdis = $this->input->post('sumdis');
+    $quotdate = $this->input->post('quotdate');
+    $duedate = $this->input->post('duedate');
+    $customer = $this->input->post('customer');
+    $recordOption = $this->input->post('recordOption');
+    
+    if (!empty($this->input->post('recordID'))) {
+        $recordID = $this->input->post('recordID');
+    }
 
-        $userID = $_SESSION['id'];
-        $jsonObj = json_decode($this->input->post('tableData'), true);  // Properly decode JSON
-        $remarks = $this->input->post('remarks');
-        $getid = $this->input->post('getid');
-        $trimmedValue = $this->input->post('trimmedValue');
-        $sumdis = $this->input->post('sumdis');
-        $quotdate = $this->input->post('quotdate');
-        $duedate = $this->input->post('duedate');
-        $customer = $this->input->post('customer');
-        $recordOption = $this->input->post('recordOption');
-        if (!empty($this->input->post('recordID'))) {
-            $recordID = $this->input->post('recordID');
-        }
+    $updatedatetime = date('Y-m-d H:i:s');
+    if ($recordOption == 1) { 
+        $data = array(
+            'quot_date' => $quotdate,
+            'duedate' => $duedate,
+            'total' => $trimmedValue,
+            'discount' => '0',
+            'nettotal' => '0',
+            'delivery_charge' => '0',
+            'approvestatus' => '0',
+            'approvedate' => '0',
+            'approveuser' => '0',
+            'reject_resone' => '',
+            'remarks' => $remarks,
+            'status' => '1',
+            'insertdatetime' => $updatedatetime,
+            'tbl_user_idtbl_user' => $userID,
+            'tbl_inquiry_idtbl_inquiry' => $getid,
+            'tbl_customer_idtbl_customer' => $customer,
+        );
 
-        $updatedatetime = date('Y-m-d H:i:s');
-        if ($recordOption == 1) {  //Insert
+        $this->db->insert('tbl_quotation', $data);
+        $tbl_quotation_idtbl_quotation = $this->db->insert_id();
 
-            $data = array(
-                'quot_date' => $quotdate,
-                'duedate' => $duedate,
-                'total' => $trimmedValue,
-                'discount' => '0',
-                'nettotal' => '0',
-                'delivery_charge' => '0',
-                'approvestatus' => '0',
-                'approvedate' => '0',
-                'approveuser' => '0',
-                'reject_resone' => '',
-                'remarks' => $remarks,
+        foreach ($jsonObj as $rowdata) {
+            $BagType = $rowdata['col_1']; 
+            $Comment = $rowdata['col_2']; 
+            $Qty = $rowdata['col_3']; 
+            $Unitprice = $rowdata['col_4'];
+            $Total = $rowdata['col_5'];
+
+            $data2 = array(
+                'bag_type' => $BagType, 
+                'qty' => $Qty,
+                'unitprice' => $Unitprice,
+                'total' => $Total,
+                'comment' => $Comment,
                 'status' => '1',
-                'insertdatetime' => $updatedatetime,
-                'tbl_user_idtbl_user' => $userID,
-                'tbl_inquiry_idtbl_inquiry' => $getid,
-                'tbl_customer_idtbl_customer' => $customer,
+                'tbl_quotation_idtbl_quotation' => $tbl_quotation_idtbl_quotation
             );
 
-            $this->db->insert('tbl_quotation', $data);
+            $this->db->insert('tbl_quotation_detail', $data2);
+        }
 
-            $tbl_quotation_idtbl_quotation =  $this->db->insert_id();
-            $target_path = FCPATH . "images/uploads/"; // Use FCPATH to get the full server path
-            $errors = [];
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === TRUE) {
+            $this->db->trans_commit();
 
-            if (!empty($_FILES["productimage"]["name"])) {
-                $extension = ["jpeg", "jpg", "png", "gif", "JPEG", "JPG", "PNG", "GIF"];
-                foreach ($_FILES["productimage"]["tmp_name"] as $key => $tmp_name) {
-                    $imageRandNum = rand(0, 100000000);
-                    $file_name = $_FILES["productimage"]["name"][$key];
-                    $file_tmp = $_FILES["productimage"]["tmp_name"][$key];
-                    $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            $actionObj = new stdClass();
+            $actionObj->icon = 'fas fa-save';
+            $actionObj->title = '';
+            $actionObj->message = 'Record Added Successfully';
+            $actionObj->url = '';
+            $actionObj->target = '_blank';
+            $actionObj->type = 'success';
 
-                    if (in_array($ext, $extension)) {
-                        $filename = basename($file_name, ".$ext");
-                        $newFileName = md5($filename) . date('Y-m-d') . date('h-i-sa') . $imageRandNum . "." . $ext;
-                        $newFilePath = $target_path . $newFileName;
+            echo json_encode(['status' => 1, 'action' => json_encode($actionObj)]);
+        } else {
+            $this->db->trans_rollback();
 
-                        if (move_uploaded_file($file_tmp, $newFilePath)) {
-                            $productimagepath = "images/uploads/" . $newFileName; // Correct path for storing in the database
-                            $imquery = array(
-                                'imagepath' => $productimagepath,
-                                'imgtype' => '0',
-                                'status' => '1',
-                                'updatedatetime' => $updatedatetime,
-                                'tbl_user_idtbl_user' => $userID,
-                                'tbl_quotation_idtbl_quotation' => $tbl_quotation_idtbl_quotation,
-                            );
-                            $this->db->insert('tbl_product_image', $imquery);
-                        } else {
-                            $errors[] = "Failed to upload $file_name";
-                        }
-                    } else {
-                        $errors[] = "$file_name is not a valid image file.";
-                    }
-                }
-            }
-            foreach ($jsonObj as $rowdata) {
-                $ProductId = $rowdata['col_1'];
-                $Meterial = $rowdata['col_3'];
-                $Comment = $rowdata['col_5'];
-                $Qty = $rowdata['col_6'];
-                $Unitprice = $rowdata['col_7'];
-                $Total = $rowdata['col_10'];
+            $actionObj = new stdClass();
+            $actionObj->icon = 'fas fa-warning';
+            $actionObj->title = '';
+            $actionObj->message = 'Record Error';
+            $actionObj->url = '';
+            $actionObj->target = '_blank';
+            $actionObj->type = 'danger';
 
-                $data2 = array(
-                    'qty' => $Qty,
-                    'unitprice' => $Unitprice,
-                    'discountamount' => '0',
-                    'total' => $Total,
-                    'comment' => $Comment,
-                    'status' => '1',
-                    'tbl_quotation_idtbl_quotation' => $tbl_quotation_idtbl_quotation,
-                    'tbl_material_idtbl_material' => $Meterial,
-                    'tbl_cloth_idtbl_cloth' => $ProductId,
-                );
-
-                $this->db->insert(' tbl_quotation_detail', $data2);
-            }
-            $this->db->trans_complete();
-
-            if ($this->db->trans_status() === TRUE) {
-                $this->db->trans_commit();
-
-                $actionObj = new stdClass();
-                $actionObj->icon = 'fas fa-save';
-                $actionObj->title = '';
-                $actionObj->message = 'Record Added Successfully';
-                $actionObj->url = '';
-                $actionObj->target = '_blank';
-                $actionObj->type = 'success';
-
-                $actionJSON = json_encode($actionObj);
-
-                $obj = new stdClass();
-                $obj->status = 1;
-                $obj->action = $actionJSON;
-
-                echo json_encode($obj);
-            } else {
-                $this->db->trans_rollback();
-
-                $actionObj = new stdClass();
-                $actionObj->icon = 'fas fa-warning';
-                $actionObj->title = '';
-                $actionObj->message = 'Record Error';
-                $actionObj->url = '';
-                $actionObj->target = '_blank';
-                $actionObj->type = 'danger';
-
-                $actionJSON = json_encode($actionObj);
-
-                $obj = new stdClass();
-                $obj->status = 0;
-                $obj->action = $actionJSON;
-
-                echo json_encode($obj);
-            }
+            echo json_encode(['status' => 0, 'action' => json_encode($actionObj)]);
         }
     }
+}
 
 
     public function Quotationformedit()
@@ -923,7 +870,7 @@ class CRMQuotationforminfo extends CI_Model
         $this->db->from('tbl_quotation AS u');
         $this->db->join('tbl_quotation_detail AS ua', 'ua.tbl_quotation_idtbl_quotation = u.idtbl_quotation', 'left');
         $this->db->join('tbl_customer AS ub', 'ub.idtbl_customer = u.tbl_customer_idtbl_customer', 'left');
-        $this->db->join('tbl_product AS uc', 'uc.idtbl_product = ua.tbl_product_idtbl_product', 'left');
+        // $this->db->join('tbl_product AS uc', 'uc.idtbl_product = ua.tbl_product_idtbl_product', 'left');
         $this->db->where('u.idtbl_quotation', $quotaitonid);
         $this->db->where_in('u.status', array(1, 2));
 
