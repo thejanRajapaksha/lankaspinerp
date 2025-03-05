@@ -342,6 +342,91 @@
                 <?php endif; ?>
 
                 <?php if (
+                    in_array('viewCRMOrderdetail', $user_permission) ||
+                    in_array('createCRMOrderdetail', $user_permission) ||
+                    in_array('updateCRMOrderdetail', $user_permission) ||
+                    in_array('deleteCRMOrderdetail', $user_permission) ||
+
+                    in_array('viewCRMMaterialdetail', $user_permission) ||
+                    in_array('createCRMMaterialdetail', $user_permission) ||
+                    in_array('updateCRMMaterialdetail', $user_permission) ||
+                    in_array('deleteCRMMaterialdetail', $user_permission) ||
+
+                    in_array('viewCRMPrintingdetail', $user_permission) ||
+                    in_array('createCRMPrintingdetail', $user_permission) ||
+                    in_array('updateCRMPrintingdetail', $user_permission) ||
+                    in_array('deleteCRMPrintingdetail', $user_permission) ||
+
+                    in_array('viewCRMDeliverydetail', $user_permission) ||
+                    in_array('createCRMDeliverydetail', $user_permission) ||
+                    in_array('updateCRMDeliverydetail', $user_permission) ||
+                    in_array('deleteCRMDeliverydetail', $user_permission) ||
+
+                    in_array('viewCRMCompletedorder', $user_permission) ||
+                    in_array('createCRMCompletedorder', $user_permission) ||
+                    in_array('updateCRMCompletedorder', $user_permission) ||
+                    in_array('deleteCRMCompletedorder', $user_permission)
+                ) : ?>
+
+                    <a class="nav-link collapsed" id="crmorder_main_nav_link" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseCRMOrder" aria-expanded="false" aria-controls="collapseCRMOrder">
+                        <div class="nav-link-icon"><i class="fas fa-user-tie"></i></div>CRM Order
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseCRMOrder" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavCRMOrder">
+
+                            <?php if (
+                                in_array('viewCRMOrderdetail', $user_permission) ||
+                                in_array('createCRMOrderdetail', $user_permission) ||
+                                in_array('updateCRMOrderdetail', $user_permission) ||
+                                in_array('deleteCRMOrderdetail', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMOrderdetail/'); ?>">Order detail</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewCRMMaterialdetail', $user_permission) ||
+                                in_array('createCRMMaterialdetail', $user_permission) ||
+                                in_array('updateCRMMaterialdetail', $user_permission) ||
+                                in_array('deleteCRMMaterialdetail', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMMaterialdetail/'); ?>">Material detail</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewCRMPrintingdetail', $user_permission) ||
+                                in_array('createCRMPrintingdetail', $user_permission) ||
+                                in_array('updateCRMPrintingdetail', $user_permission) ||
+                                in_array('deleteCRMPrintingdetail', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMPrintingdetail/'); ?>">Printing detail</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewCRMDeliverydetail', $user_permission) ||
+                                in_array('createCRMDeliverydetail', $user_permission) ||
+                                in_array('updateCRMDeliverydetail', $user_permission) ||
+                                in_array('deleteCRMDeliverydetail', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMDeliverydetail/'); ?>">Delivery detail</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewCRMCompletedorder', $user_permission) ||
+                                in_array('createCRMCompletedorder', $user_permission) ||
+                                in_array('updateCRMCompletedorder', $user_permission) ||
+                                in_array('deleteCRMCompletedorder', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMCompletedorder/'); ?>">Completed order</a>
+                            <?php endif; ?>
+
+                        </nav>
+                    </div>
+
+                <?php endif; ?>
+
+
+                <?php if (
                     in_array('viewStock', $user_permission)
                     || in_array('viewGRN', $user_permission)
                     || in_array('viewEmployeeRepairs', $user_permission)
