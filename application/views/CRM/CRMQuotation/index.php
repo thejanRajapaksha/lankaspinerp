@@ -44,18 +44,24 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div class="table-responsive">
                 <div class="row">
                     <div class="col-12">
                         <div class="scrollbar pb-3" id="style-2">
                             <table class="table table-bordered table-striped table-sm nowrap" id="dataTableInquiryDetail" style="width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Bag Type</th>
-                                        <th>Bag Length</th>
-                                        <th>Bag Width</th>
-                                        <th>off print</th>
-                                        <th>Qty</th>
+                                                <th>Inquiry ID</th>
+                                                <th>Item</th>
+                                                <th>Quantity</th>
+                                                <th>Delivery Date</th>
+                                                <th>Date</th>
+                                                <th>Bag Length</th>
+                                                <th>Bag Width</th>
+                                                <th>Inner Bag</th>
+                                                <th>Printing</th>
+                                                <th>Printing Type</th>
+                                                <th>Colour No</th>
                                     </tr>
                                 </thead>
                             </table>

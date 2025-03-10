@@ -32,12 +32,16 @@ $columns = array(
     array( 'db' => '`u`.`idtbl_inquiry_detail`', 'dt' => 'idtbl_inquiry_detail', 'field' => 'idtbl_inquiry_detail' ),
     array( 'db' => '`u`.`status`', 'dt' => 'status', 'field' => 'status' ),
     array( 'db' => '`u`.`quantity`', 'dt' => 'quantity', 'field' => 'quantity' ),
+    array( 'db' => '`u`.`delivarydate`', 'dt' => 'd_date', 'field' => 'delivarydate' ),
+    array( 'db' => '`u`.`inner_bag`', 'dt' => 'inner_bag', 'field' => 'inner_bag' ),
     array( 'db' => '`u`.`date`', 'dt' => 'date', 'field' => 'date' ),
     array( 'db' => '`u`.`bag_length`', 'dt' => 'bag_length', 'field' => 'bag_length' ),
     array( 'db' => '`u`.`bag_width`', 'dt' => 'bag_width', 'field' => 'bag_width' ),
-    array( 'db' => '`u`.`bag_type`', 'dt' => 'bag_type', 'field' => 'bag_type' ),
+    // array( 'db' => '`u`.`bag_type`', 'dt' => 'bag_type', 'field' => 'bag_type' ),
     array( 'db' => '`u`.`colour_no`', 'dt' => 'colour_no', 'field' => 'colour_no' ),
     array( 'db' => '`u`.`off_print`', 'dt' => 'off_print', 'field' => 'off_print' ),
+    array( 'db' => '`u`.`printing_type`', 'dt' => 'printing_type', 'field' => 'printing_type' ),
+    array( 'db' => '`u`.`item`', 'dt' => 'item', 'field' => 'item' ),
 );
 
 // SQL server connection information

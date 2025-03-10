@@ -536,30 +536,36 @@
 			// this will just cause the browser to display the native HTML5 error messages.
 			$("#submitBtn").click();
 		} else {
-			var bagType = $('#bag_type').val();
-			// var meterialID = $('#meterial').val();
-			// var meterial = $("#meterial option:selected").text();
-			// var product = $("#product option:selected").text();
+			var vat_customer = $('#vat_customer').val();
 			var unitprice = parseFloat($('#unitprice').val());
+			var item = $('#item').val();
+			var duration = $('#duration').val();
 			var qty = parseFloat($('#qty').val());
-			//var quotdate = $('#quot_date').val();
 			var description = $('#comment').val();
-			//var duedate = $('#duedate').val();
-			//var deliverycharge = $('#delivery_charge').val();
 			var customer = $('#customer').val();
 
 
 			$('.selecter2').select2();
 
+			var isVatCustomer = $('#vat_customer').prop('checked');
+			var total;
 
-			var total = unitprice * qty;
+			if (isVatCustomer) {
+				total = (unitprice * qty) * 1.15; 
+			} else {
+				total = (unitprice * 1.15) * qty; 
+			}
+
+
 
 			var showtotal = addCommas(parseFloat(total).toFixed(2));
 
 			$('#tableorder > tbody:last').append('<tr class="pointer">' +
-			'<td>' + bagType + '</td>' +  
+			'<td>' + item + '</td>' +  
+			// '<td>' + vat_customer + '</td>' +  
 			'<td>' + description + '</td>' +
 			'<td>' + qty + '</td>' +
+			'<td>' + duration + '</td>' +
 			'<td class="d-none">' + unitprice + '</td>' +
 			'<td>' + addCommas(unitprice.toFixed(2)) + '</td>' +
 			'<td>' + showtotal + '</td>' +

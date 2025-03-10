@@ -26,7 +26,10 @@
                                     <?php endforeach;?>
                                 </select>
                              </div>  
-
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Item*</label>
+                                <input type="text" class="form-control form-control-sm" name="item" id="item" required>
+                            </div>
                             <div class="form-group mb-1">
                                 <label class="small font-weight-bold">Quantity*</label>
                                 <input type="text" class="form-control form-control-sm" name="quantity" id="quantity" required>
@@ -34,6 +37,10 @@
                             <div class="form-group mb-1">
                                 <label class="small font-weight-bold">Date*</label>
                                 <input type="date" class="form-control form-control-sm" name="date" id="date" required>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Delevary Date*</label>
+                                <input type="date" class="form-control form-control-sm" name="d_date" id="d_date" required>
                             </div>
                             <div class="form-group mb-1">
                                 <label class="small font-weight-bold">Bag Length*</label>
@@ -44,22 +51,28 @@
                                 <input type="number" class="form-control form-control-sm" name="bg_width" id="bg_width" required>
                             </div>
                             <div class="form-group mb-1">
-                                <label class="small font-weight-bold">Select Bag Type*</label>
-                                <select class="form-control form-control-sm" name="bg_type" id="bg_type" required>
-                                <option value="" selected="true" disabled="disabled">Select</option>
-                                <option value="Inner Bag">Inner Bag</option>
-                                <option value="Outer Bag">Outer Bag</option>
-                                </select>
-                            </div>
-                            <div class="form-group mb-1">
-                                <label class="small font-weight-bold">Color No*</label>
-                                <input type="number" class="form-control form-control-sm" name="col_no" id="col_no" required>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="inner_bag" name="inner_bag" value="false">
+                                    <label class="form-check-label font-weight-bold" for="inner_bag">Inner Bag</label>
+                                </div>
                             </div>
                             <div class="form-group mb-1">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="off_print" name="off_print" value="false">
-                                    <label class="form-check-label font-weight-bold" for="off_print">Off Print</label>
+                                    <label class="form-check-label font-weight-bold" for="off_print">Printing</label>
                                 </div>
+                            </div>
+
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Printing type</label>
+                                <select class="form-control form-control-sm" name="printing_type" id="printing_type" required>
+                                    <option value="" selected disabled>Select Type</option>
+                                    <option value="offPrint">offPrint</option>
+                                </select>
+                             </div>  
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Color No*</label>
+                                <input type="number" class="form-control form-control-sm" name="col_no" id="col_no" required>
                             </div>
                             <div class="row">
                                 <div class="col-12">
@@ -77,13 +90,16 @@
                             <thead>
                                 <tr>
                                     <th>Customer Name</th>
+                                    <th>Item</th>
                                     <th>Quantity</th>
+                                    <th>Delevary Date</th>
                                     <th>Date</th>
                                     <th>Length</th>
                                     <th>Width</th>
-                                    <th>Bag Type</th>
-                                    <th>Color No</th>
+                                    <th>Inner Bag</th>
                                     <th>Off Print</th>
+                                    <th>Printing Type</th>
+                                    <th>Color No</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -116,17 +132,21 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-sm" id="inquiryDetailsTable" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>Inquiry ID</th>
+                                                <th>Item</th>
                                                 <th>Quantity</th>
+                                                <th>Delivery Date</th>
                                                 <th>Date</th>
                                                 <th>Bag Length</th>
                                                 <th>Bag Width</th>
-                                                <th>Bag Type</th>
+                                                <th>Inner Bag</th>
+                                                <th>Printing</th>
+                                                <th>Printing Type</th>
                                                 <th>Colour No</th>
-                                                <th>Off Print</th>
                                                 <th class="text-right">Actions</th>
                                             </tr>
                                         </thead>

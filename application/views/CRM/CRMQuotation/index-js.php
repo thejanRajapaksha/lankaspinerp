@@ -150,32 +150,28 @@
                 "order": [
                     [0, "desc"]
                 ],
-                "columns": [{
-                        "data": "idtbl_inquiry_detail"
-                    },
-                    {
-                        "data": "bag_type"
-                    },
-                    {
-                        "data": "bag_length"
-                    },
-                    {
-                        "data": "bag_width"
-                    },
-                    {
-                    "data": "off_print",
-                        "render": function(data, type, full) {
-                            if (data == 1) {
-                                return 'Yes';
-                            } else if (data == 0) {
-                                return 'No';
-                            }
+                "columns": [
+                    { "data": "idtbl_inquiry_detail" },
+                    { "data": "item" },
+                    { "data": "quantity" },
+                    { "data": "d_date" },
+                    { "data": "date" },
+                    { "data": "bag_length" },
+                    { "data": "bag_width" },
+                    { 
+                        "data": "inner_bag",
+                        "render": function (data) {
+                            return data == 1 ? 'Yes' : 'No';
                         }
                     },
-                    {
-                        "data": "quantity"
+                    { 
+                        "data": "off_print",
+                        "render": function (data) {
+                            return data == 1 ? 'Yes' : 'No';
+                        }
                     },
-
+                    { "data": "printing_type" },
+                    { "data": "colour_no" },
                 ],
                 drawCallback: function(settings) {
                     $('[data-toggle="tooltip"]').tooltip();

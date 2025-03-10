@@ -78,15 +78,28 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group mb-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="vat_customer" name="vat_customer" value="false">
+                                    <label class="form-check-label font-weight-bold" for="vat_customer">Vat Customer</label>
+                                </div>
+                            </div>
                             <div class="form-row mb-1">
                                 <div class="col">
-                                    <label class="small font-weight-bold text-dark">Bag Type*</label>
-                                    <select class="form-control form-control-sm" name="bag_type" id="bag_type" required>
-                                        <option value="">Select</option>
-                                        <?php foreach ($result['product'] as $rowproductlst) { ?>
-                                            <option value="<?php echo $rowproductlst->bag_type ?>"><?php echo $rowproductlst->bag_type ?></option>
-                                        <?php } ?>
+                                    <label class="small font-weight-bold text-dark">Item*</label>
+                                    <select class="form-control form-control-sm" name="item" id="item" >
+                                        <option value="item">item</option>
+                                        <!-- <option value="">Select</option>
+                                        <?php // foreach ($result['item'] as $rowproductlst) { ?>
+                                            <option value="<?php//  echo $rowproductlst->item ?>"><?php echo $rowproductlst->item ?></option>
+                                        <?php // } ?> -->
                                     </select>
+                                </div>
+                            </div>
+                            <div class="form-row mb-1">
+                                <div class="col">
+                                    <label for="duration" class="small font-weight-bold text-dark">Creation Duration In Days*</label>
+                                    <input type="number" class="form-control form-control-sm" name="duration" id="duration" required>
                                 </div>
                             </div>
                             <div class="form-row mb-1">
@@ -118,9 +131,10 @@
                             <table class="table table-striped table-bordered table-sm small" id="tableorder">
                                 <thead>
                                     <tr>
-                                        <th>Bag Type</th>
+                                        <th>Item</th>
                                         <th>Description</th>
                                         <th>Qty</th>
+                                        <th>Duration</th>
                                         <th>Unit Price</th>
                                         <th class="text-right">Total</th>
                                     </tr>
@@ -170,11 +184,13 @@
                             <table class="table table-bordered table-striped table-sm nowrap">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <!-- <th>#</th> -->
                                         <th class="d-none"></th>
                                         <th>Due Date</th>
                                         <th>Description</th>
+                                        <th>Item</th>
                                         <th>Quantity</th>
+                                        <th>Duration In Days</th>
                                         <th>Price</th>
                                         <th class="text-right">Total</th>
                                     </tr>

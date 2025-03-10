@@ -24,27 +24,33 @@ class CRMInquiryinfo extends CI_Model {
 
         // Insert into tbl_inquiry_detail
         foreach ($tableData as $rowdata) {
+            $item = $rowdata['item'];
             $quantity = $rowdata['quantity'];
             $date = $rowdata['date'];
+            $d_date = $rowdata['d_date'];
             $bag_length = $rowdata['bag_length'];
             $bag_width = $rowdata['bag_width'];
-            $bag_type = $rowdata['bag_type'];
-            $colour_no = $rowdata['colour_no'];
+            $inner_bag = $rowdata['inner_bag'];
             $off_print = $rowdata['off_print'];
+            $printing_type = $rowdata['printing_type'];
+            $colour_no = $rowdata['colour_no'];
             $detailData = [
                 'tbl_inquiry_idtbl_inquiry' => $inquiryID,
+                'item' => $item,
                 'quantity' => $quantity,
                 'date' => $date,
+                'delivarydate' =>$d_date,
                 'bag_length' => $bag_length,
                 'bag_width' => $bag_width,
-                'bag_type' => $bag_type,
+                'inner_bag' => $inner_bag,
                 'colour_no' => $colour_no,
                 'off_print' => $off_print,
+                'printing_type' => $printing_type,
                 'status' => '1',
                 'insertdatetime' => $insertdatetime,
                 'tbl_user_idtbl_user' => $userID
             ];
-           $this->db->insert('tbl_inquiry_detail', $detailData);
+              $this->db->insert('tbl_inquiry_detail', $detailData);
         }
 
         //$this->db->trans_complete();

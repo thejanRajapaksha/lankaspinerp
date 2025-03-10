@@ -100,7 +100,7 @@ class CRMQuotationforminfo extends CI_Model
         $getinq = $z;
         $get = $y;
 
-        $this->db->select('`quantity`,`date`,`bag_length`,`bag_width`,`bag_type`,`colour_no`,`off_print`,`status`,`tbl_inquiry_idtbl_inquiry`');
+        $this->db->select('`quantity`,`date`,`bag_length`,`bag_width`,`colour_no`,`off_print`,`status`,`tbl_inquiry_idtbl_inquiry`');
         $this->db->from('tbl_inquiry_detail');
         $this->db->where('status', 1);
         $this->db->where('tbl_inquiry_idtbl_inquiry', $getinq);
@@ -202,11 +202,13 @@ class CRMQuotationforminfo extends CI_Model
         foreach ($query->result() as $row) {
 
             $html .= '<tr>
-            <td scope="row">' . $count . '</td>
+            <td scope="row" class="d-none">' . $count . '</td>
             <td scope="row" class="d-none">' . $row->tbl_inquiry_idtbl_inquiry . '</td>
         <td scope="row">' . $row->duedate . '</td>
         <td scope="row">' . $row->comment . '</td>
+        <td scope="row">' . $row->item . '</td>
         <td scope="row">' . $row->qty . '</td>
+        <td scope="row">' . $row->duration . '</td>
         <td scope="row">' . $row->unitprice . '</td>
         <td scope="row" class="text-right">' . number_format($row->total, 2) . '</td>
         </tr>';
@@ -214,7 +216,11 @@ class CRMQuotationforminfo extends CI_Model
         }
 
         $html .= '<tr>
-    <td colspan="5" class="text-right font-weight-bold">Net Total</td>
+    <td colspan="6" class="text-right font-weight-bold">Included Vat</td>
+    <td class="text-right font-weight-bold">15%</td>
+    </tr>';
+    $html .= '<tr>
+    <td colspan="6" class="text-right font-weight-bold">Net Total</td>
     <td class="text-right font-weight-bold">' . number_format($total_amount, 2) . '</td>
     </tr>';
 
@@ -264,16 +270,18 @@ class CRMQuotationforminfo extends CI_Model
         $tbl_quotation_idtbl_quotation = $this->db->insert_id();
 
         foreach ($jsonObj as $rowdata) {
-            $BagType = $rowdata['col_1']; 
-            $Comment = $rowdata['col_2']; 
+            $item = $rowdata['col_1']; 
+            $Comment = $rowdata['col_2'];
             $Qty = $rowdata['col_3']; 
-            $Unitprice = $rowdata['col_4'];
+            $duration = $rowdata['col_4'];
+            $Unitprice = $rowdata['col_5'];
             $Total = $rowdata['col_7'];
 
             $data2 = array(
-                'bag_type' => $BagType, 
+                'item' => $item, 
                 'qty' => $Qty,
                 'unitprice' => $Unitprice,
+                'duration' => $duration,
                 'total' => $Total,
                 'comment' => $Comment,
                 'status' => '1',
