@@ -347,10 +347,10 @@
                     in_array('updateCRMOrderdetail', $user_permission) ||
                     in_array('deleteCRMOrderdetail', $user_permission) ||
 
-                    in_array('viewCRMMaterialdetail', $user_permission) ||
-                    in_array('createCRMMaterialdetail', $user_permission) ||
-                    in_array('updateCRMMaterialdetail', $user_permission) ||
-                    in_array('deleteCRMMaterialdetail', $user_permission) ||
+                    // in_array('viewCRMMaterialdetail', $user_permission) ||
+                    // in_array('createCRMMaterialdetail', $user_permission) ||
+                    // in_array('updateCRMMaterialdetail', $user_permission) ||
+                    // in_array('deleteCRMMaterialdetail', $user_permission) ||
 
                     in_array('viewCRMPrintingdetail', $user_permission) ||
                     in_array('createCRMPrintingdetail', $user_permission) ||
@@ -384,14 +384,14 @@
                                 <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMOrderdetail/'); ?>">Order detail</a>
                             <?php endif; ?>
 
-                            <?php if (
-                                in_array('viewCRMMaterialdetail', $user_permission) ||
-                                in_array('createCRMMaterialdetail', $user_permission) ||
-                                in_array('updateCRMMaterialdetail', $user_permission) ||
-                                in_array('deleteCRMMaterialdetail', $user_permission)
-                            ) : ?>
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMMaterialdetail/'); ?>">Material detail</a>
-                            <?php endif; ?>
+                            <!-- <//?php // if (
+                                // in_array('viewCRMMaterialdetail', $user_permission) ||
+                                // in_array('createCRMMaterialdetail', $user_permission) ||
+                                // in_array('updateCRMMaterialdetail', $user_permission) ||
+                                // in_array('deleteCRMMaterialdetail', $user_permission)
+                            ) //: ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<//?php //echo base_url('CRMMaterialdetail/'); ?>">Material detail</a>
+                            <//?php //endif; ?> -->
 
                             <?php if (
                                 in_array('viewCRMPrintingdetail', $user_permission) ||
