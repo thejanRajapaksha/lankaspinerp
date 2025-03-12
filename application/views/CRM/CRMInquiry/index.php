@@ -86,30 +86,35 @@
                             <input type="hidden" name="recordID" id="recordID" value="">
                             <input type="hidden" id="hinquiry_id" value="">
                         </form> &nbsp;
-                        <table class="table table-bordered table-striped table-sm nowrap mt-3" id="dataTable">
-                            <thead>
-                                <tr>
-                                    <th>Customer Name</th>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Delevary Date</th>
-                                    <th>Date</th>
-                                    <th>Length</th>
-                                    <th>Width</th>
-                                    <th>Inner Bag</th>
-                                    <th>Off Print</th>
-                                    <th>Printing Type</th>
-                                    <th>Color No</th>
-                                    <th class="text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                        <div class="form-group col-12 mt-2 text-right p-2">
-                            <button type="button" id="submitdata" class="btn btn-primary btn-sm px-4"><i class="far fa-save"></i>&nbsp;Submit All</button>
-                        </div>
+                        
                     </div>
                     <div class="col-8">
+                            <table class="table table-bordered table-striped table-sm nowrap mt-3" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Item</th>
+                                        <th>Quantity</th>
+                                        <th>Delevary Date</th>
+                                        <th>Date</th>
+                                        <th>Length</th>
+                                        <th>Width</th>
+                                        <th>Inner Bag</th>
+                                        <th>Off Print</th>
+                                        <th>Printing Type</th>
+                                        <th>Color No</th>
+                                        <th class="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>  
+                            <div class="form-group col-12 mt-2 text-right p-2">
+                                <button type="button" id="submitdata" class="btn btn-primary btn-sm px-4"><i class="far fa-save"></i>&nbsp;Submit All</button>
+                            </div>              
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-12">
                         <table class="table table-bordered table-striped table-sm nowrap" id="inquiryTable" width="100%">
                             <thead>
                                 <tr>
@@ -158,8 +163,6 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
             </div>
         </div>
     </div>

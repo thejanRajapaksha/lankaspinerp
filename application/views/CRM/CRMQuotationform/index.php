@@ -202,10 +202,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-3 text-right">
+                <!-- <div class="mt-3 text-right">
                     <button class="btn btn-success approvebtn" value="1">Approve Quotation</button>
                     <button class="btn btn-danger approvebtnelse" value="2">Disapprove Quotation</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

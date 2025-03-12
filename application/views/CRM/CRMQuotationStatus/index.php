@@ -37,7 +37,7 @@
 												<th>Due Date</th>
 												<th>Total</th>
 												<th>Remarks</th>
-												<!-- <th class="text-right">Actions</th> -->
+												<th class="text-right">Actions</th>
 											</tr>
 										</thead>
 									</table>
@@ -128,4 +128,34 @@
 			<!-- Boostrap Tabs End -->
 		</div>
 	</div>
+
+	<!-- Disapproval Modal -->
+<div class="modal fade" id="disapprovalModal" tabindex="-1" role="dialog" aria-labelledby="disapprovalModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="disapprovalModalLabel">Disapprove Quotation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="disapprovalForm">
+                    <div class="form-group mb-1">
+                        <label for="disapprovalReason">Reason for Disapproval</label>
+                        <select class="form-control form-control-sm" id="disapprovalReason" required>
+                            <option value="">Select </option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="additionalReason">Additional Comments</label>
+                        <textarea class="form-control" id="additionalReason" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger" value="2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </main>

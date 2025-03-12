@@ -55,6 +55,8 @@
 <script src="<?php echo base_url('assets/sb_admin_pro/');?>js/scripts.js"></script>
 <script src="<?php echo base_url('assets/draggable-kanban-board-ui/');?>js/kanban.js"></script>
 <script src="<?php echo base_url('assets/jqueryui/');?>jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+
 
 <script type="text/javascript">
 $(document).ready(function () {
