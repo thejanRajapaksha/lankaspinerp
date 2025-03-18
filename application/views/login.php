@@ -21,13 +21,16 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-  <div class="login-logo">
-    <a href="<?php echo base_url('auth/login');?>/"><b>Machines</b></a>
-  </div>
+  <!-- <div class="login-logo">
+    <a href="<?php //echo base_url('auth/login');?>/"></a>
+  </div> -->
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <!-- <img src="<?php //echo base_url('images/logo1.png')?>" class="center" alt="logo"> -->
+      <img src="<?php echo base_url('images/logo1.png')?>" class="d-block mx-auto" alt="logo">
+
+      <h4 class="login-box-msg">LANKA SPIN (PVT) LTD.</h4>
 
 <?php echo validation_errors('<div class="alert alert-danger" role="alert">','</div>'); ?>  
 
