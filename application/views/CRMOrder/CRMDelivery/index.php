@@ -212,12 +212,12 @@
     </div>
 </div>
 
-<!-- Delivery Modal -->
-<div class="modal fade" id="deliveryDetailModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="deliveryDetailModalLabel" aria-hidden="true">
+<!-- Job Planning Modal -->
+<div class="modal fade" id="jobPlanModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="jobPlanModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deliveryDetailModalLabel">Delivery Details</h5>
+                <h5 class="modal-title" id="jobPlanModalLabel">Job Planning</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -226,59 +226,76 @@
                 <div class="row">
                     <!-- Left-side form -->
                     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3">
-                        <form id="deliveryDetailForm" autocomplete="off" enctype="multipart/form-data" method="POST" action="your_action_url_here">
+                        <form id="jobPlanForm" autocomplete="off" enctype="multipart/form-data" method="POST" action="your_action_url_here">
+                            <div class="form-group">
+                                <label for="customerSelect" class="small font-weight-bold text-dark">Customer*</label>
+                                <select class="form-control form-control-sm" name="customerSelect" id="customerSelect" required>
+                                    <option value="">Select Customer</option>
+                                    <!-- Customer options will be loaded dynamically -->
+                                </select>
+                                <label for="inquirySelect" class="small font-weight-bold text-dark">Inquiry ID*</label>
+                                <select class="form-control form-control-sm" name="inquirySelect" id="inquirySelect" required>
+                                    <option value="">Select Inquiry</option>
+                                    <!-- Inquiry IDs will be loaded dynamically based on customer selection -->
+                                </select>
+                                <label for="productSelect" class="small font-weight-bold text-dark">Product*</label>
+                                <select class="form-control form-control-sm" name="productSelect" id="productSelect" required>
+                                    <option value="">Select Product</option>
+                                    <!-- Inquiry IDs will be loaded dynamically based on customer selection -->
+                                </select>
+                                <label for="machineSelect" class="small font-weight-bold text-dark">Machine*</label>
+                                <select class="form-control form-control-sm" name="machineSelect" id="machineSelect" required>
+                                    <option value="">Select Machine</option>
+                                    <!-- Machines will be loaded dynamically -->
+                                </select>
+                            </div>
+                            <!-- <div class="form-group">
+                                
+                            </div> -->
                             <div class="form-row mb-1">
                                 <div class="col">
-                                    <label for="dclothtype" class="small font-weight-bold text-dark">Cloth Type*</label>
-                                    <select class="form-control form-control-sm" name="dclothtype" id="dclothtype" required>
-                                        <option value="">Select</option>
-                                        <!-- Add options here -->
-                                    </select>
+                                    <label for="jobQuantity" class="small font-weight-bold text-dark">Quantity*</label>
+                                    <input type="number" class="form-control form-control-sm" name="jobQuantity" id="jobQuantity" required>
                                 </div>
                                 <div class="col">
-                                    <label for="dsize" class="small font-weight-bold text-dark">Size*</label>
-                                    <select class="form-control form-control-sm" name="dsize" id="dsize" required>
-                                        <option value="">Select</option>
-                                        <!-- Add options here -->
-                                    </select>
+                                    <label for="startDate" class="small font-weight-bold text-dark">Start Date*</label>
+                                    <input type="datetime-local" class="form-control form-control-sm" name="startDate" id="startDate" required>
                                 </div>
                             </div>
                             <div class="form-row mb-1">
                                 <div class="col">
-                                    <label for="deliveryQuantity" class="small font-weight-bold text-dark">Quantity*</label>
-                                    <input type="number" class="form-control form-control-sm" name="deliveryQuantity" id="deliveryQuantity" required>
-                                </div>
-                                <div class="col">
-                                    <label for="deliveryDate" class="small font-weight-bold text-dark">Delivery Date*</label>
-                                    <input type="date" class="form-control form-control-sm" name="deliveryDate" id="deliveryDate" required>
+                                    <label for="endDate" class="small font-weight-bold text-dark">End Date*</label>
+                                    <input type="datetime-local" class="form-control form-control-sm" name="endDate" id="endDate" required>
                                 </div>
                             </div>
-                            <hr class="border-dark">
-                            <div class="form-group mt-3 text-right">
-                                <button type="button" id="addDeliveryBtn" class="btn btn-primary btn-sm px-4"><i class="fas fa-plus"></i>&nbsp;Add to list</button>
-                                <input type="hidden" id="inquiryid" name="inquiryid" value="">
+                            <div class="form-group mt-2 text-right">
+                                <button type="button" id="checkMachineAvailability" class="btn btn-warning btn-sm"><i class="fas fa-search"></i>&nbsp;Check Availability</button>
+                                <button type="button" id="addJobBtn" class="btn btn-primary btn-sm px-4"><i class="fas fa-plus"></i>&nbsp;Add to Plan</button>
                             </div>
                         </form>
                     </div>
                     <!-- Right-side table -->
                     <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9">
                         <div class="scrollbar pb-3" id="style-2">
-                            <table class="table table-striped table-bordered table-sm small" id="deliveryDetailTable">
+                            <table class="table table-striped table-bordered table-sm small" id="jobPlanTable">
                                 <thead>
                                     <tr>
-                                        <th>Cloth Type</th>
+                                        <th>Customer</th>
+                                        <th>Inquiry ID</th>
                                         <th>Size</th>
                                         <th>Quantity</th>
-                                        <th>Delivery Date</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Machine</th>
                                     </tr>
                                 </thead>
-                                <tbody id="deliveryDetailTableBody">
-                                    <!-- Delivery records will be added here -->
+                                <tbody id="jobPlanTableBody">
+                                    <!-- Job plan records will be added here -->
                                 </tbody>
                             </table>
                         </div>
                         <div class="form-group mt-2">
-                            <button type="button" id="btnSaveDelivery" class="btn btn-outline-primary btn-sm fa-pull-right"><i class="fas fa-save"></i>&nbsp;Save details</button>
+                            <button type="button" id="btnSaveJobPlan" class="btn btn-outline-primary btn-sm fa-pull-right"><i class="fas fa-save"></i>&nbsp;Save Plan</button>
                         </div>
                     </div>
                 </div>
@@ -286,3 +303,4 @@
         </div>
     </div>
 </div>
+
