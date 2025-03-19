@@ -17,6 +17,7 @@
                 <table id="manageTable" class="table table-bordered table-striped table-sm" width="100%">
                     <thead>
                     <tr>
+                        <th class="d-none">ID</th>
                         <th>Spare Part name</th>
                         <th>Model</th>
                         <th>Type</th>

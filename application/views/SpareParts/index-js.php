@@ -8,6 +8,84 @@ $(document).ready(function() {
     //$('#machines_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
    // $('#collapseLayoutsMachines').addClass('show');
 
+    var addcheck = '<?php echo (in_array('createSupplierInfo', $user_permission)) ? 1 : 0; ?>';
+		var editcheck = '<?php echo (in_array('updateSupplierInfo', $user_permission)) ? 1 : 0; ?>';
+		var statuscheck = '<?php echo (in_array('updateSupplierInfo', $user_permission) || in_array('deleteSupplierInfo', $user_permission)) ? 1 : 0; ?>';
+		var deletecheck = '<?php echo (in_array('deleteSupplierInfo', $user_permission)) ? 1 : 0; ?>';
+
+    var manageTable = $('#manageTable').DataTable({
+			"destroy": true,
+			"processing": true,
+			"serverSide": true,
+
+			ajax: {
+				url: "<?php echo base_url() ?>scripts/sparepartslist.php",
+				type: "POST", // you can use GET
+			},
+			"order": [
+				[0, "desc"]
+			],
+			"columns": [
+        {
+					"className": 'd-none',
+					"data": "id"
+        },
+        {
+					"data": "name"
+				},
+				{
+					"data": "machine_models"
+				},
+				{
+					"data": "machine_types"
+				},
+				{
+          "data": "suppliername",
+          "render": function(data, type, row) {
+              return '<span class="badge badge-info">' + row.suppliername + '</span>';
+          }
+        },
+        {
+					"data":  "part_no"
+				},
+        {
+					"data":  "rack_no"
+				},
+        {
+					"data":  "unit_price"
+				},
+        {
+            "data": "active",
+            "render": function(data, type, row) {
+                return (data == 1) 
+                    ? '<span class="badge badge-success">Active</span>' 
+                    : '<span class="badge badge-warning">Inactive</span>';
+            }
+        },
+				{
+					"targets": -1,
+          "className": 'text-right',
+          "data": null,
+          "render": function (data, type, full) {
+              var button = '';
+              if (editcheck == 1) {
+                  button += '<button type="button" class="btn btn-default btn-sm btnEdit mr-1" onclick="editFunc(' + full['id'] + ')" data-toggle="modal" data-target="#editModal">' +
+                      '<i class="text-primary fa fa-edit"></i></button>';
+              }
+              if (deletecheck == 1) {
+                  button += '<button type="button" class="btn btn-default btn-sm" onclick="removeFunc(' + full['id'] + ')" data-toggle="modal" data-target="#removeModal">' +
+                      '<i class="text-danger fa fa-trash"></i></button>';
+              }
+
+              return button;
+					}
+				}
+			],
+			drawCallback: function (settings) {
+				$('[data-toggle="tooltip"]').tooltip();
+			}
+		});
+
     $('#machine_type_id').select2({
         placeholder: 'Select...',
         width: '100%',
@@ -121,11 +199,11 @@ $(document).ready(function() {
 
 
 
-  // initialize the datatable 
-  manageTable = $('#manageTable').DataTable({
-    'ajax': base_url + 'SpareParts/fetchCategoryData',
-    'order': []
-  });
+  // // initialize the datatable 
+  // manageTable = $('#manageTable').DataTable({
+  //   'ajax': base_url + 'SpareParts/fetchCategoryData',
+  //   'order': []
+  // });
 
   // submit the create from 
   $("#createForm").unbind('submit').on('submit', function() {
