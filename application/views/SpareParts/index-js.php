@@ -311,7 +311,10 @@ function editFunc(id)
         });
 
       // submit the edit from 
-      $("#updateForm").unbind('submit').bind('submit', function() {
+      // $("#updateForm").unbind('submit').bind('submit', function()
+      $("#updateForm").off('submit').on('submit', function(e) {
+        e.preventDefault();
+
         var form = $(this);
 
         // remove the text-danger
@@ -322,21 +325,31 @@ function editFunc(id)
           type: form.attr('method'),
           data: form.serialize(), // /converting the form data into array and sending it to server
           dataType: 'json',
-          success:function(response) {
+          success: function(response) {
 
-            manageTable.ajax.reload(null, false); 
+          //   manageTable.ajax.reload(null, false); 
 
-            if(response.success === true) {
-              $("#messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
-                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-                '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
-              '</div>');
+          //   if(response.success === true) {
+              // $("#messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+              //   '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+              //   '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
+              // '</div>');
+          if (response.success === true) {
+                        // Reload DataTable
+                        if ($.fn.DataTable.isDataTable("#manageTable")) {
+                            $("#manageTable").DataTable().ajax.reload(null, false);
+                        }
 
 
               // hide the modal
               $("#editModal").modal('hide');
               // reset the form 
               $("#updateForm .form-group").removeClass('has-error').removeClass('has-success');
+
+              $("#messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
+              '</div>');
 
             } else {
 
@@ -382,49 +395,54 @@ function editFunc(id)
 }
 
 // remove functions 
-function removeFunc(id)
-{
-  if(id) {
-    $("#removeForm").on('submit', function() {
+function removeFunc(id) {
+    if (id) {
+        $("#removeForm").off('submit').on('submit', function(e) {
+            e.preventDefault();
 
-      var form = $(this);
+            console.log("Deleting ID:", id);
 
-      // remove the text-danger
-      $(".text-danger").remove();
+            var form = $(this);
+            $(".text-danger").remove();
 
-      $.ajax({
-        url: form.attr('action'),
-        type: form.attr('method'),
-        data: { machine_type_id:id },
-        dataType: 'json',
-        success:function(response) {
+            $.ajax({
+                url: form.attr('action'),
+                type: form.attr('method'),
+                data: { machine_type_id: id },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success === true) {
+                        // Reload DataTable
+                        if ($.fn.DataTable.isDataTable("#manageTable")) {
+                            $("#manageTable").DataTable().ajax.reload(null, false);
+                        }
 
-          manageTable.ajax.reload(null, false); 
-          // hide the modal
-            $("#removeModal").modal('hide');
+                        // Hide the modal
+                        $("#removeModal").modal('hide');
+                        $(".modal-backdrop").remove();
 
-          if(response.success === true) {
-            $("#messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
-              '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-              '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
-            '</div>');
-
-            
-
-          } else {
-
-            $("#messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
-              '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-              '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
-            '</div>'); 
-          }
-        }
-      }); 
-
-      return false;
-    });
-  }
+                        // Show success message
+                        $("#messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+                            '<span aria-hidden="true">&times;</span></button>'+
+                            '<strong><span class="glyphicon glyphicon-ok-sign"></span></strong> ' + response.messages +
+                        '</div>');
+                    } else {
+                        $("#messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+                            '<span aria-hidden="true">&times;</span></button>'+
+                            '<strong><span class="glyphicon glyphicon-exclamation-sign"></span></strong> ' + response.messages +
+                        '</div>');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", error);
+                }
+            });
+        });
+    }
 }
+
 
 
 </script>

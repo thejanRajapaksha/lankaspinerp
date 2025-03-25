@@ -33,15 +33,17 @@ $joinQuery = "FROM `spare_parts`
               LEFT JOIN (SELECT id, name AS machine_types FROM `machine_types`) AS `ua` ON `ua`.`id` = `spare_parts`.`type`
               LEFT JOIN (SELECT id, name AS machine_models FROM `machine_models`) AS `ub` ON `ub`.`id` = `spare_parts`.`model`
               LEFT JOIN `spare_part_suppliers` AS `sps` ON `sps`.`sp_id` = `spare_parts`.`id`
-              LEFT JOIN (SELECT idtbl_supplier, suppliername FROM`tbl_supplier`) AS `ts` ON `ts`.`idtbl_supplier` = `sps`.`supplier_id`";
+              LEFT JOIN (SELECT idtbl_supplier, suppliername FROM `tbl_supplier`) AS `ts` ON `ts`.`idtbl_supplier` = `sps`.`supplier_id`";
 
+// Extra WHERE condition to exclude deleted records
+$extraWhere = "spare_parts.is_deleted = 0";
 
 // Include customized SSP class
 require('ssp.customized.class.php');
 
 // Output JSON response for DataTables
 echo json_encode(
-    SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns, $joinQuery)
+    SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns, $joinQuery, $extraWhere)
 );
 
 ?>

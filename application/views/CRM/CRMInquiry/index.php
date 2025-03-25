@@ -26,9 +26,17 @@
                                     <?php endforeach;?>
                                 </select>
                              </div>  
-                            <div class="form-group mb-1">
-                                <label class="small font-weight-bold">Item*</label>
-                                <input type="text" class="form-control form-control-sm" name="item" id="item" required>
+                             <div class="form-row mb-1">
+                                <div class="col">
+                                    <label class="small font-weight-bold text-dark">Item*</label>
+                                    <select class="form-control form-control-sm" name="item" id="item" required>
+                                        <option selected disabled>Select</option>
+                                        <?php foreach($result['product'] as $products):?>
+                                            <option value="<?php echo $products->idtbl_product; ?>">
+                                            <?php echo $products->product;?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group mb-1">
                                 <label class="small font-weight-bold">Quantity*</label>

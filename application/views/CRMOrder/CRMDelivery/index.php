@@ -224,14 +224,12 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <!-- Left-side form -->
                     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3">
                         <form id="jobPlanForm" autocomplete="off" enctype="multipart/form-data" method="POST" action="your_action_url_here">
                             <div class="form-group">
                                 <label for="customerSelect" class="small font-weight-bold text-dark">Customer*</label>
                                 <select class="form-control form-control-sm" name="customerSelect" id="customerSelect" required>
                                     <option value="">Select Customer</option>
-                                    <!-- Customer options will be loaded dynamically -->
                                 </select>
                                 <label for="inquirySelect" class="small font-weight-bold text-dark">Inquiry ID*</label>
                                 <select class="form-control form-control-sm" name="inquirySelect" id="inquirySelect" required>
@@ -241,13 +239,12 @@
                                 <label for="productSelect" class="small font-weight-bold text-dark">Product*</label>
                                 <select class="form-control form-control-sm" name="productSelect" id="productSelect" required>
                                     <option value="">Select Product</option>
-                                    <!-- Inquiry IDs will be loaded dynamically based on customer selection -->
                                 </select>
-                                <label for="machineSelect" class="small font-weight-bold text-dark">Machine*</label>
-                                <select class="form-control form-control-sm" name="machineSelect" id="machineSelect" required>
+                                <label for="checkMachineAvailability" class="small font-weight-bold text-dark">Machine*</label>
+                                <select class="form-control form-control-sm" name="checkMachineAvailability" id="checkMachineAvailability" required>
                                     <option value="">Select Machine</option>
-                                    <!-- Machines will be loaded dynamically -->
                                 </select>
+                                <input type="hidden" id="selectedMachineId" name="selectedMachineId">
                             </div>
                             <!-- <div class="form-group">
                                 
@@ -269,7 +266,7 @@
                                 </div>
                             </div>
                             <div class="form-group mt-2 text-right">
-                                <button type="button" id="checkMachineAvailability" class="btn btn-warning btn-sm"><i class="fas fa-search"></i>&nbsp;Check Availability</button>
+                                <!-- <button type="button" id="checkMachineAvailability" class="btn btn-warning btn-sm"><i class="fas fa-search"></i>&nbsp;Check Availability</button> -->
                                 <button type="button" id="addJobBtn" class="btn btn-primary btn-sm px-4"><i class="fas fa-plus"></i>&nbsp;Add to Plan</button>
                             </div>
                         </form>
@@ -303,4 +300,38 @@
         </div>
     </div>
 </div>
+
+<!-- Machine Availability Modal -->
+<div class="modal fade" id="machineAvailabilityModal" tabindex="-1" aria-labelledby="machineAvailabilityLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="machineAvailabilityLabel">Machine Availability</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="machineTable" class="table table-bordered table-striped" width="100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Machine Name</th>
+                            <th>Machine Modal</th>
+                            <th>Machine Type</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <!-- <th>Location</th> -->
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 

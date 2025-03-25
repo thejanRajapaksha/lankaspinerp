@@ -379,5 +379,16 @@ class Deliverydetailinfo extends CI_Model{
             }
         }
     }
+    public function getAllAvailableMachines() {
+        $this->db->select('machine_ins.id, machine_ins.active, machine_ins.s_no,machine_ins.booking_startdate,machine_ins.booking_enddate, mt.name, mm.name as model');
+        $this->db->from('machine_ins');
+        $this->db->join('machine_types mt', 'machine_ins.machine_type_id = mt.id', 'left');
+        $this->db->join('machine_models mm', 'machine_ins.machine_model_id = mm.id', 'left');
+        $this->db->where('machine_ins.active', '1'); 
+    
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
     
 }

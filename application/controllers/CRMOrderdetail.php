@@ -7,8 +7,12 @@ class CRMOrderdetail extends Admin_Controller {
     public function index(){
         $this->load->model('Commeninfo');
         $this->load->model('Orderdetailinfo');
+		$this->load->model('Productinfo');
+		$this->load->model('Customerinfo');
 		$result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
         $result['Quotationid']=$this->Orderdetailinfo->GetQuotationid();
+		$result['product']= $this->Productinfo->getProduct();
+		$result['customername']= $this->Customerinfo->GetCustomerList();
         // $result['Clothtype'] = $this->Orderdetailinfo->Getclothtype($z,$y);
 		// $result['Customername'] = $this->Orderdetailinfo->Getcustomer($z,$y);	
 		// $result['getid'] = $this->Orderdetailinfo->Getid($z,$y);
@@ -90,4 +94,18 @@ class CRMOrderdetail extends Admin_Controller {
 			echo json_encode(['success' => false]);
 		}
 	}
+
+	public function getItemsByCustomer(){
+		$customer_id = $this->input->post('customer_id'); 
+
+		if ($customer_id) {
+			$this->load->model('Orderdetailinfo'); 
+			$result = $this->Orderdetailinfo->getItemsByCustomer($customer_id);
+
+			echo json_encode($result); 
+		} else {
+			echo json_encode([]); 
+		}
+	}
+
 }

@@ -522,8 +522,56 @@
         });
     });
 
+    $(document).ready(function() {
+    $('#checkMachineAvailability').on('click', function() {
+        $('#machineAvailabilityModal').modal('show');
 
+        $('#machineTable').DataTable().destroy();
+
+        $('#machineTable').DataTable({
+            "processing": true,
+            "serverSide": false, 
+            "ajax": {
+                "url": "<?php echo base_url()?>CRMDeliverydetail/GetAllAvailableMachines", 
+                "type": "GET",
+                "dataSrc": "" 
+            },
+            "columns": [
+                { "data": "id" },
+                { "data": "s_no" },
+                { "data": "name"},
+                { "data": "model"},
+                {
+                    "data": "booking_startdate",
+                    "render": function(data, type, row) {
+                        return data ? data : "Not set"; 
+                    }
+                },
+                {
+                    "data": "booking_enddate",
+                    "render": function(data, type, row) {
+                        return data ? data : "Not set"; 
+                    }
+                },
+                { 
+                    "data": "id",
+                    "render": function(data, type, row) {
+                        return `<button class="btn btn-success btn-sm select-machine" data-id="${data}">Select</button>`;
+                    }
+                }
+            ]
+        });
+        
     });
+
+    $(document).on('click', '.select-machine', function() {
+        let machineId = $(this).data('id');
+        $('#selectedMachineId').val(machineId);
+        $('#machineAvailabilityModal').modal('hide');
+    });
+});
+});
+
 
     function deactive_confirm() {
         return confirm("Are you sure you want to complete order?");

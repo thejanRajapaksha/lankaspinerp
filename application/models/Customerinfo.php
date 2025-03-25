@@ -380,7 +380,8 @@ public function GetCustomerList() {
 	$this->db->from('tbl_customer');
 	$this->db->where('status', 1);
 
-	return $respond=$this->db->get();
+	$query=$this->db->get();
+	return $query->result();
 }
 
 }

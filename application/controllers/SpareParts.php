@@ -23,61 +23,61 @@ class SpareParts extends Admin_Controller
         $this->render_template('SpareParts/index', $this->data);
     }
 
-    public function fetchCategoryData()
-    {
-        if(!in_array('viewSparePart', $this->permission)) {
-            redirect('dashboard', 'refresh');
-        }
+    // public function fetchCategoryData()
+    // {
+    //     if(!in_array('viewSparePart', $this->permission)) {
+    //         redirect('dashboard', 'refresh');
+    //     }
 
-        $result = array('data' => array());
+    //     $result = array('data' => array());
 
-        $data = $this->model_spare_parts->getSparePartsData();
+    //     $data = $this->model_spare_parts->getSparePartsData();
 
-        foreach ($data as $key => $value) {
-            // button
-            $buttons = '';
+    //     foreach ($data as $key => $value) {
+    //         // button
+    //         $buttons = '';
 
-            if(in_array('updateSparePart', $this->permission)) {
-                $buttons = '<button type="button" class="btn btn-default btn-sm" onclick="editFunc('.$value['id'].')" data-toggle="modal" data-target="#editModal"><i class="text-primary fa fa-edit"></i></button>';
-            }
+    //         if(in_array('updateSparePart', $this->permission)) {
+    //             $buttons = '<button type="button" class="btn btn-default btn-sm" onclick="editFunc('.$value['id'].')" data-toggle="modal" data-target="#editModal"><i class="text-primary fa fa-edit"></i></button>';
+    //         }
 
-            if(in_array('deleteSparePart', $this->permission)) {
-                $buttons .= ' <button type="button" class="btn btn-default btn-sm" onclick="removeFunc('.$value['id'].')" data-toggle="modal" data-target="#removeModal"><i class="text-danger fa fa-trash"></i></button>';
-            }
+    //         if(in_array('deleteSparePart', $this->permission)) {
+    //             $buttons .= ' <button type="button" class="btn btn-default btn-sm" onclick="removeFunc('.$value['id'].')" data-toggle="modal" data-target="#removeModal"><i class="text-danger fa fa-trash"></i></button>';
+    //         }
 
-            $status = ($value['active'] == 1) ? '<span class="badge badge-success ">Active</span>' : '<span class="badge badge-warning">Inactive</span>';
+    //         $status = ($value['active'] == 1) ? '<span class="badge badge-success ">Active</span>' : '<span class="badge badge-warning">Inactive</span>';
 
-            $id = $value['id'];
+    //         $id = $value['id'];
 
-            $sql = "SELECT ts.suppliername as sup_name 
-                    FROM spare_parts sp
-                    LEFT JOIN spare_part_suppliers sps ON sps.sp_id = sp.id 
-                    LEFT JOIN tbl_supplier ts ON ts.idtbl_supplier = sps.supplier_id 
-                    WHERE sps.sp_id = '$id' 
-                    ";
-            $query = $this->db->query($sql);
-            $sc = $query->result_array();
+    //         $sql = "SELECT ts.suppliername as sup_name 
+    //                 FROM spare_parts sp
+    //                 LEFT JOIN spare_part_suppliers sps ON sps.sp_id = sp.id 
+    //                 LEFT JOIN tbl_supplier ts ON ts.idtbl_supplier = sps.supplier_id 
+    //                 WHERE sps.sp_id = '$id' 
+    //                 ";
+    //         $query = $this->db->query($sql);
+    //         $sc = $query->result_array();
 
-            $sc_label = '';
-            foreach ($sc as $s){
-                $sc_label .= ' <badge class="badge badge-info"> '.$s['sup_name'].' </badge>';
-            }
+    //         $sc_label = '';
+    //         foreach ($sc as $s){
+    //             $sc_label .= ' <badge class="badge badge-info"> '.$s['sup_name'].' </badge>';
+    //         }
 
-            $result['data'][$key] = array(
-                $value['name'],
-                $value['machine_model'],
-                $value['machine_type_name'],
-                $sc_label,
-                $value['part_no'],
-                $value['rack_no'],
-                $value['unit_price'],
-                $status,
-                $buttons
-            );
-        } // /foreach
+    //         $result['data'][$key] = array(
+    //             $value['name'],
+    //             $value['machine_model'],
+    //             $value['machine_type_name'],
+    //             $sc_label,
+    //             $value['part_no'],
+    //             $value['rack_no'],
+    //             $value['unit_price'],
+    //             $status,
+    //             $buttons
+    //         );
+    //     } // /foreach
 
-        echo json_encode($result);
-    }
+    //     echo json_encode($result);
+    // }
 
     public function create()
     {
@@ -251,38 +251,39 @@ class SpareParts extends Admin_Controller
 
     public function remove()
     {
-        if(!in_array('deleteSparePart', $this->permission)) {
+        if (!in_array('deleteSparePart', $this->permission)) {
             redirect('dashboard', 'refresh');
         }
-
+    
         $machine_type_id = $this->input->post('machine_type_id');
-
+    
         $response = array();
-        if($machine_type_id) {
+    
+        if ($machine_type_id) {
             $data = array(
                 'is_deleted' => 1,
                 'deleted_by' => $this->session->userdata('id'),
                 'deleted_at' => date('Y-m-d H:i:s')
             );
-
+    
             $delete = $this->model_spare_parts->update($machine_type_id, $data);
-
-            if($delete == true) {
+    
+            if ($delete) {
                 $response['success'] = true;
                 $response['messages'] = "Successfully removed";
-            }
-            else {
+            } else {
                 $response['success'] = false;
-                $response['messages'] = "Error in the database while removing the information";
+                $response['messages'] = "Database error while removing the record";
             }
-        }
-        else {
+        } else {
             $response['success'] = false;
-            $response['messages'] = "Refresh the page again!!";
+            $response['messages'] = "Refresh the page and try again!";
         }
-
+    
         echo json_encode($response);
+        exit;
     }
+    
 
     public function get_parts_select()
     {

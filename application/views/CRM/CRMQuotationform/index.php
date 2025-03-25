@@ -88,11 +88,10 @@
                                 <div class="col">
                                     <label class="small font-weight-bold text-dark">Item*</label>
                                     <select class="form-control form-control-sm" name="item" id="item" >
-                                        <option value="item">item</option>
-                                        <!-- <option value="">Select</option>
-                                        <?php // foreach ($result['item'] as $rowproductlst) { ?>
-                                            <option value="<?php//  echo $rowproductlst->item ?>"><?php echo $rowproductlst->item ?></option>
-                                        <?php // } ?> -->
+                                        <option value="">Select</option>
+                                        <?php foreach ($result['product'] as $rowproductlst) { ?>
+                                            <option value="<?php echo $rowproductlst->idtbl_product ?>"><?php echo $rowproductlst->product ?></option>
+                                        <?php  } ?> 
                                     </select>
                                 </div>
                             </div>

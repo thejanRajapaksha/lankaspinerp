@@ -98,7 +98,13 @@
             </div>
 
           <div class="form-group">
-            <input type="hidden" name="active" id="active" value="1">
+                <label for="machine_model_id">Select Status <span class="text-danger">*</span></label>
+                <select class="form-control form-control-sm" name="active" id="active">
+                <option value="1">Active</option>
+                <option value="2">In Active</option>
+                </select>
+                <!-- <div id="machine_model_id_error"></div> -->
+            <!-- <input type="hidden" name="active" id="active" value="1"> -->
           </div>
         </div>
 
@@ -174,7 +180,11 @@
             </div>
 
           <div class="form-group">
-            <input type="hidden" name="active" id="active" value="1">
+          <label for="machine_model_id">Select Status <span class="text-danger">*</span></label>
+                <select class="form-control form-control-sm" name="edit_active" id="edit_active">
+                <option value="1">Active</option>
+                <option value="2">In Active</option>
+                </select>
           </div>
         </div>
 

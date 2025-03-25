@@ -74,6 +74,32 @@
             }
         });
 
+        $('#customer').on('change', function () {
+        var customer_id = $(this).val(); 
+
+        if (customer_id) {
+            $.ajax({
+                url: '<?= base_url("CRMOrderdetail/getItemsByCustomer") ?>', 
+                type: 'POST',
+                data: { customer_id: customer_id },
+                dataType: 'json',
+                success: function (response) {
+                    $('#d_item').html('<option selected disabled>Select</option>'); // Reset dropdown
+
+                    if (response.length > 0) {
+                        $.each(response, function (index, product) {
+                            $('#d_item').append('<option value="' + product.idtbl_product + '">' + product.product + '</option>');
+                        });
+                    } else {
+                        $('#d_item').append('<option disabled>No items available</option>');
+                    }
+                }
+            });
+        } else {
+            $('#d_item').html('<option selected disabled>Select</option>'); 
+        }
+    });
+
         $('#dataTableAccepted').on('click', '.btnquotation', function() {
             var qid = $(this).data('qid');
             var id = $(this).data('id');
@@ -87,6 +113,10 @@
             var id = $(this).data('id');
             $('#inquiryid').val(id);
         });
+
+        $('#directorder').on('click', function () {
+        $('#directordermodal').modal('show');
+     });
 
         $('#dataTableAccepted').on('click', '.btnview', function() {
             var id = $(this).data('id');
@@ -358,40 +388,41 @@
             // this will just cause the browser to display the native HTML5 error messages.
             $("#submitBtn").click();
         } else {
-            var clothTypeID = $('#clothtype').val();
-            var materialTypeID = $('#materialtype').val();
-            var sizeTypeID = $('#sizetype').val();
-            var clothType = $("#clothtype option:selected").text();
-            var materialType = $("#materialtype option:selected").text();
-            var sizeType = $("#sizetype option:selected").text();
+            // var clothTypeID = $('#clothtype').val();
+            // var materialTypeID = $('#materialtype').val();
+            // var sizeTypeID = $('#sizetype').val();
+            // var clothType = $("#clothtype option:selected").text();
+            // var materialType = $("#materialtype option:selected").text();
+            // var sizeType = $("#sizetype option:selected").text();
+            var recordOption = $('#recordOption').val();
+            var itemId = $('#item').val();
+            var item = $("#item option:selected").text();
+            var orderDate = $('#order_date').val();
             var qty = parseFloat($('#qty').val());
-            var description = $('#remark').val(); // Use 'remark' instead of 'comment'
+            var description = $('#remark').val();
 
-            $('.selecter2').select2();
+            // $('.selecter2').select2();
 
             $('#tableorder > tbody:last').append(
                 '<tr class="pointer">' +
-                '<td class="d-none">' + clothTypeID + '</td>' +
-                '<td>' + clothType + '</td>' +
-                '<td class="d-none">' + materialTypeID + '</td>' +
-                '<td>' + materialType + '</td>' +
-                '<td class="d-none">' + sizeTypeID + '</td>' +
-                '<td>' + sizeType + '</td>' +
+                '<td class="d-none">' + recordOption + '</td>' +
+                '<td class="d-none">' + itemId + '</td>' +
+                '<td>' + item + '</td>' +
+                '<td>' + orderDate + '</td>' +
                 '<td>' + qty + '</td>' +
-                '<td class="d-none total">' + qty + '</td>' + // Use 'qty' instead of 'unitprice'
+                '<td class="d-none total">' + qty + '</td>' + 
                 '</tr>'
             );
 
-            $('#clothtype').val('').trigger('change');
-            $('#materialtype').val('').trigger('change');
-            $('#sizetype').val('').trigger('change');
+            $('#item').val('').trigger('change');
+            $('#order_date').val('').trigger('change');
             $('#qty').val('');
-            $('#remark').val(''); // Clear the remark field
+            $('#remark').val(''); 
 
-            var sum = 0;
-            $(".total").each(function() {
-                sum += parseFloat($(this).text());
-            });
+            // var sum = 0;
+            // $(".total").each(function() {
+            //     sum += parseFloat($(this).text());
+            // });
         }
     });
 
@@ -412,20 +443,19 @@
             });
 
             console.log(jsonObj);
-
-            var clothTypeID = $('#clothtype').val();
-            var materialTypeID = $('#materialtype').val();
-            var sizeTypeID = $('#sizetype').val();
+            var recordOption = $('recordOption').val();
+            var itemId = $('#item').val();
+            var date = $('#order_date').val();
             var qty = parseFloat($('#qty').val());
-            var inquiryid = $('#inquiryid').val();
+            // var inquiryid = $('#inquiryid').val();
             var quotationid = $('#quotationid').val();
 
             formData.append('tableData', JSON.stringify(jsonObj)); 
-            formData.append('clothTypeID', clothTypeID);
-            formData.append('materialTypeID', materialTypeID);
-            formData.append('sizeTypeID', sizeTypeID);
+            formData.append('recordOption',recordOption);
+            formData.append('itemId', itemId);
+            formData.append('date', date);
             formData.append('qty', qty);
-            formData.append('inquiryid', inquiryid);
+            // formData.append('inquiryid', inquiryid);
             formData.append('quotationid', quotationid);
 
             $.ajax({
@@ -437,6 +467,7 @@
                 success: function(result) {
                     var obj = result;//JSON.parse(result);
                     $('#staticBackdrop').modal('hide');
+                    $('#btncreateorder').prop('disabled', false).html('<i class="fas fa-save mr-2"></i> Create Order');
                     if (obj.status == 1) {
                         setTimeout(function() {
                             window.location.reload();
@@ -451,6 +482,96 @@
             });
         }
     });
+
+    // direct order formsubmit
+    $("#formsubmitdirectorder").click(function() {
+        if (!$("#createdirectorderform")[0].checkValidity()) {
+            $("#submitBtn").click();
+        } else {
+            var custId = $('#customer').val();
+            var customer = $("#customer option:selected").text();
+            var itemId = $('#d_item').val();
+            var item = $("#d_item option:selected").text();
+            var orderDate = $('#d_order_date').val();
+            var qty = parseFloat($('#d_qty').val());
+            var description = $('#remark').val();
+
+            $('#tabledirectorder > tbody:last').append(
+                '<tr class="pointer">' +
+                '<td class="d-none">' + custId + '</td>' +
+                '<td>' + customer + '</td>' +
+                '<td class="d-none">' + itemId + '</td>' +
+                '<td>' + item + '</td>' +
+                '<td>' + orderDate + '</td>' +
+                '<td>' + qty + '</td>' +
+                '<td class="d-none total">' + qty + '</td>' + 
+                '</tr>'
+            );
+
+            $('#d_item option:selected').text('').trigger('change');
+            $('#d_item').val('').trigger('change');
+            $('#d_order_date').val('').trigger('change');
+            $('#d_qty').val('');
+            $('#remark').val(''); 
+        }
+    });
+
+    $('#btncreatedirectorder').click(function() {
+        $('#btncreatedirectorder').prop('disabled', true).html('<i class="fas fa-circle-notch fa-spin mr-2"></i> Creating Order');
+
+        var tbody = $("#tabledirectorder tbody");
+        var formData = new FormData();
+
+        if (tbody.children().length > 0) {
+            var jsonObj = [];
+            $("#tabledirectorder tbody tr").each(function() {
+                item = {}
+				$(this).find('td').each(function(col_idx) {
+					item["col_" + (col_idx + 1)] = $(this).text();
+				});
+				jsonObj.push(item);
+            });
+
+            // console.log(jsonObj);
+            var custId =$('#customer').val();
+            var itemId = $('#d_item').val();
+            var date = $('#d_order_date').val();
+            var qty = parseFloat($('#d_qty').val());
+            var inquiryid = $('#inquiryid').val();
+            var quotationid = $('#quotationid').val();
+
+            formData.append('tableData', JSON.stringify(jsonObj)); 
+            formData.append('itemId', itemId);
+            formData.append('date', date);
+            formData.append('qty', qty);
+            formData.append('inquiryid', inquiryid);
+            formData.append('quotationid', quotationid);
+
+            $.ajax({
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                url: '<?php echo base_url() ?>CRMOrderdetail/Orderdetailinsertupdate',
+                success: function(result) {
+                    var obj = result;//JSON.parse(result);
+                    $('#staticBackdrop').modal('hide');
+                    $('#btncreatedirectorder').prop('disabled', false).html('<i class="fas fa-save mr-2"></i> Create Order');
+                    if (obj.status == 1) {
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 3000);
+                    }
+                    action(obj);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error: ' + error);
+                    $('#btncreatedirectorder').prop('disabled', false).html('Create Order');
+                }
+            });
+        }
+    });
+
 
 
 

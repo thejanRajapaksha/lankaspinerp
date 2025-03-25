@@ -7,7 +7,9 @@ class CRMInquiry extends Admin_Controller {
     public function index(){
         $this->load->model('Commeninfo');
         $this->load->model('CRMInquiryinfo');
+		$this->load->model('Productinfo');
 		// $result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
+		$result['product'] = $this->Productinfo->getProduct();
 		$result['customername'] = $this->CRMInquiryinfo->Getcustomername();
 		$this->data['result']  = $result;
 		$this->data['js'] = 'application/views/CRM/CRMInquiry/index-js.php';

@@ -189,6 +189,7 @@ class CRMQuotationforminfo extends CI_Model
         $this->db->select('*');
         $this->db->from('tbl_quotation AS u');
         $this->db->join('tbl_quotation_detail AS ua', 'ua.tbl_quotation_idtbl_quotation = u.idtbl_quotation', 'left');
+        $this->db->join('tbl_products AS uc', 'uc.idtbl_product = ua.idtbl_product', 'left');
         $this->db->join('tbl_customer AS ub', 'ub.idtbl_customer = u.tbl_customer_idtbl_customer', 'left');
         $this->db->where('u.idtbl_quotation', $cusId);
         $this->db->where_in('u.status', array(1, 2));
@@ -206,7 +207,7 @@ class CRMQuotationforminfo extends CI_Model
             <td scope="row" class="d-none">' . $row->tbl_inquiry_idtbl_inquiry . '</td>
         <td scope="row">' . $row->duedate . '</td>
         <td scope="row">' . $row->comment . '</td>
-        <td scope="row">' . $row->item . '</td>
+        <td scope="row">' . $row->product . '</td>
         <td scope="row">' . $row->qty . '</td>
         <td scope="row">' . $row->duration . '</td>
         <td scope="row">' . $row->unitprice . '</td>
@@ -278,7 +279,7 @@ class CRMQuotationforminfo extends CI_Model
             $Total = $rowdata['col_7'];
 
             $data2 = array(
-                'item' => $item, 
+                'idtbl_product' => $item, 
                 'qty' => $Qty,
                 'unitprice' => $Unitprice,
                 'duration' => $duration,

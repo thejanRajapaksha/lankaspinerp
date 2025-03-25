@@ -3,13 +3,14 @@ class Orderdetailinfo extends CI_Model{
     public function Orderdetailinsertupdate() {
         $this->db->trans_begin();
     
-        $userID = $_SESSION['userid'];
+        $userID = $_SESSION['id'];
+        $orderID = null; 
     
         // Retrieve data from POST
         $jsonObj = json_decode($this->input->post('tableData'), true);
-        $clothTypeID = $this->input->post('clothTypeID');
-        $materialTypeID = $this->input->post('materialTypeID');
-        $sizeTypeID = $this->input->post('sizeTypeID');
+        $recordID = $this->input->post('recordOption');
+        $itemId = $this->input->post('itemId');
+        $date = $this->input->post('date');
         $qty = $this->input->post('qty');
         $inquiryid = $this->input->post('inquiryid');
         $quotationid = $this->input->post('quotationid');
@@ -23,7 +24,7 @@ class Orderdetailinfo extends CI_Model{
         $query = $this->db->get('tbl_order');
         $order = $query->row();
     
-        if (!$order) {
+        if (!$order && $recordID == 1) {
             // Create a new order if it doesn't exist
             $orderData = array(
                 'tbl_inquiry_idtbl_inquiry' => $inquiryid,
@@ -34,23 +35,23 @@ class Orderdetailinfo extends CI_Model{
     
             $this->db->insert('tbl_order', $orderData);
             $orderID = $this->db->insert_id();
-        } else {
+        } elseif($recordID == 1) {
             $orderID = $order->idtbl_order;
         }
     
         // Loop through each record and insert into tbl_order_detail
         foreach ($jsonObj as $rowdata) {
-            $clothType = $rowdata['col_1'];
-            $materialType = $rowdata['col_3'];
-            $sizeType = $rowdata['col_5'];
-            $quantity = $rowdata['col_7'];
+            $item = $rowdata['col_1'];
+            $orderDate = $rowdata['col_3'];
+            $quantity = $rowdata['col_4'];
+            // $quantity = $rowdata['col_7'];
     
             $orderDetailData = array(
                 'tbl_order_idtbl_order' => $orderID,
                 'tbl_inquiry_idtbl_inquiry' => $inquiryid,
-                'tbl_cloth_idtbl_cloth' => $clothType,
-                'tbl_material_idtbl_material' => $materialType,
-                'tbl_size_idtbl_size' => $sizeType,
+                'tbl_products_idtbl_products' => $item,
+                // 'tbl_material_idtbl_material' => $materialType,
+                'order_date' => $orderDate,
                 'quantity' => $quantity,
                 'status' => '1',
                 'insertdatetime' => $insertdatetime,
@@ -91,6 +92,9 @@ class Orderdetailinfo extends CI_Model{
 
         echo $actionJSON;
     }    
+
+
+    
     
     public function PaymentDetailInsertUpdate() {
         $this->db->trans_begin();
@@ -427,4 +431,19 @@ class Orderdetailinfo extends CI_Model{
         $this->db->where('idtbl_order_detail ', $id); // Adjust this according to your schema
         $this->db->update('tbl_order_detail');
     }
+
+    public function getItemsByCustomer($customer_id)
+    {
+        $this->db->select('tbl_inquiry_detail.tbl_products_idtbl_product AS idtbl_product, tbl_products.product');
+        $this->db->from('tbl_inquiry_detail');
+        $this->db->join('tbl_inquiry', 'tbl_inquiry_detail.idtbl_inquiry_detail = tbl_inquiry.idtbl_inquiry');
+        $this->db->join('tbl_products', 'tbl_inquiry_detail.tbl_products_idtbl_product = tbl_products.idtbl_product');
+        $this->db->where('tbl_inquiry.tbl_customer_idtbl_customer', $customer_id);
+        $this->db->group_by('tbl_inquiry_detail.tbl_products_idtbl_product');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+
 }

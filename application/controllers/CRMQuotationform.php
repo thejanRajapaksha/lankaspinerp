@@ -9,8 +9,9 @@ class CRMQuotationform extends Admin_Controller
 	{
 		$this->load->model('Commeninfo');
 		$this->load->model('CRMQuotationforminfo');
+		$this->load->model('Productinfo');
 
-		$result['product'] = $this->CRMQuotationforminfo->Getproduct($z,$y);
+		$result['product'] = $this->Productinfo->getProduct();
 		$result['customerlist'] = $this->CRMQuotationforminfo->Getcustomer($z,$y);	
 		$result['getid'] = $this->CRMQuotationforminfo->Getquotationid($z,$y);
 		$this->data['result'] = $result;
@@ -106,4 +107,5 @@ class CRMQuotationform extends Admin_Controller
 		$this->load->model('CRMQuotationforminfo');
 		$result = $this->CRMQuotationforminfo->QuotationformDetailsstatus($x, $y);
 	}
+
 }

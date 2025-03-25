@@ -65,5 +65,10 @@ class CRMDeliverydetail extends Admin_Controller {
 		$result = $this->Deliverydetailinfo->GetDeliveryAndPackagingDetails();
 		echo json_encode($result);
 	}
+	public function GetAllAvailableMachines(){
+		$this->load->model('Deliverydetailinfo');
+		$result = $this->Deliverydetailinfo->getAllAvailableMachines();
+		echo json_encode($result);
+	}
 	
 }
