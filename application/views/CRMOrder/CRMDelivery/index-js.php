@@ -110,68 +110,84 @@
             }
         });
 
-        // $("#clothtype").select2({
-        //     dropdownParent: $('#Deliverymodal'),
-        //     ajax: {
-        //         url: "<?php echo base_url() ?>CRMDeliverydetail/Getclothtype",
-        //         type: "post",
-        //         dataType: 'json',
-        //         delay: 250,
-        //         data: function(params) {
-        //             return {
-        //                 inquiryid: $('#inquiryid').val(),
-        //                 searchTerm: params.term // search term
-        //             };
-        //         },
-        //         processResults: function(response) {
-        //             return {
-        //                 results: response
-        //             };
-        //         },
-        //         cache: true
-        //     }
-        // });
-        // $("#size").select2({  
-        //     dropdownParent: $('#Deliverymodal'),
-        //     ajax: {
-        //         url: "<?php echo base_url() ?>CRMDeliverydetail/Getsizetype",
-        //         type: "post",
-        //         dataType: 'json',
-        //         delay: 250,
-        //         data: function(params) {
-        //             return {
-        //                 searchTerm: params.term // search term
-        //             };
-        //         },
-        //         processResults: function(response) {
-        //             return {
-        //                 results: response
-        //             };
-        //         },
-        //         cache: true
-        //     }
-        // });
+        $("#machineType").select2({
+            dropdownParent: $('#jobPlanModal'),
+            ajax: {
+                url: "<?php echo base_url() ?>CRMDeliverydetail/GetMachineType",
+                type: "post",
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term // search term
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+                    };
+                },
+                cache: true
+            }
+        });
+        $("#machineModel").select2({  
+            dropdownParent: $('#jobPlanModal'),
+            ajax: {
+                url: "<?php echo base_url() ?>CRMDeliverydetail/GetMachineModel",
+                type: "post",
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        machineType: $("#machineType").val(),
+                        searchTerm: params.term // search term
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+                    };
+                },
+                cache: true
+            }
+        });
 
-        // $("#dsize").select2({  
-        //     dropdownParent: $('#deliveryDetailModal'),
-        //     ajax: {
-        //         url: "<?php echo base_url() ?>CRMDeliverydetail/Getsizetype",
-        //         type: "post",
-        //         dataType: 'json',
-        //         delay: 250,
-        //         data: function(params) {
-        //             return {
-        //                 searchTerm: params.term // search term
-        //             };
-        //         },
-        //         processResults: function(response) {
-        //             return {
-        //                 results: response
-        //             };
-        //         },
-        //         cache: true
-        //     }
-        // });
+        $("#serialNumber").select2({  
+            dropdownParent: $('#jobPlanModal'),
+            ajax: {
+                url: "<?php echo base_url() ?>CRMDeliverydetail/GetSerialNumber",
+                type: "post",
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        machineType: $("#machineType").val(),
+                        machineModel: $("#machineModel").val(),
+                        searchTerm: params.term // search term
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+                    };
+                },
+                cache: true
+            }
+        });
+
+        // Disable dependent dropdowns until a selection is made
+        $("#machineModel, #serialNumber").prop("disabled", true);
+
+        // Enable Machine Model when Machine Type is selected
+        $("#machineType").on("change", function() {
+            $("#machineModel").prop("disabled", false).val(null).trigger("change");
+            $("#serialNumber").prop("disabled", true).val(null).trigger("change");
+        });
+
+        // Enable Serial Number when Machine Model is selected
+        $("#machineModel").on("change", function() {
+            $("#serialNumber").prop("disabled", false).val(null).trigger("change");
+        });
         // $("#dclothtype").select2({
         //     dropdownParent: $('#deliveryDetailModal'),
         //     ajax: {

@@ -33,10 +33,6 @@ class CRMDeliverydetail extends Admin_Controller {
 		$this->load->model('Deliverydetailinfo');
         $result=$this->Deliverydetailinfo->Deliverydetailcheck();
 	}
-	public function Getclothtype(){		
-		$this->load->model('Deliverydetailinfo');
-		$result=$this->Deliverydetailinfo->Getclothtype();		
-	}
 	public function Getpaymenttype(){		
 		$this->load->model('Deliverydetailinfo');
 		$result=$this->Deliverydetailinfo->Getpaymenttype();		
@@ -56,9 +52,17 @@ class CRMDeliverydetail extends Admin_Controller {
 		$payments = $this->Deliverydetailinfo->GetPaymentDetails();
 		echo json_encode($payments);
 	}	
-	public function Getsizetype(){		
+	public function GetMachineType(){		
 		$this->load->model('Deliverydetailinfo');
-		$result=$this->Deliverydetailinfo->Getsizetype();		
+		$result=$this->Deliverydetailinfo->GetMachineType();		
+	}
+	public function GetMachineModel(){		
+		$this->load->model('Deliverydetailinfo');
+		$result=$this->Deliverydetailinfo->GetMachineModel();		
+	}
+	public function GetSerialNumber(){		
+		$this->load->model('Deliverydetailinfo');
+		$result=$this->Deliverydetailinfo->GetSerialNumber();		
 	}
 	public function GetDeliveryAndPackagingDetails() {
 		$this->load->model('Deliverydetailinfo');
