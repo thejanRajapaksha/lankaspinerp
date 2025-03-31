@@ -63,7 +63,8 @@ $sql_details = array(
 // require( 'ssp.class.php' );
 require('ssp.customized.class.php' );
 
-$joinQuery = "FROM `tbl_material_info` AS `u` LEFT JOIN `tbl_material_code` AS `ua` ON (`ua`.`idtbl_material_code` = `u`.`tbl_material_code_idtbl_material_code`) LEFT JOIN `tbl_material_category` AS `ub` ON (`ub`.`idtbl_material_category` = `u`.`tbl_material_category_idtbl_material_category`) LEFT JOIN `tbl_brand` AS `uc` ON (`uc`.`idtbl_brand` = `u`.`tbl_brand_idtbl_brand`) LEFT JOIN `tbl_unit` AS `ud` ON (`ud`.`idtbl_unit` = `u`.`tbl_unit_idtbl_unit`) LEFT JOIN `tbl_form` AS `ue` ON (`ue`.`idtbl_form` = `u`.`tbl_form_idtbl_form`) LEFT JOIN `tbl_grade` AS `uf` ON (`uf`.`idtbl_grade` = `u`.`tbl_grade_idtbl_grade`) LEFT JOIN `tbl_size` AS `ug` ON (`ug`.`idtbl_size` = `u`.`tbl_size_idtbl_size`) LEFT JOIN `tbl_side` AS `uh` ON (`uh`.`idtbl_side` = `u`.`tbl_side_idtbl_side`) LEFT JOIN `tbl_unit_type` AS `ui` ON (`ui`.`idtbl_unit_type` = `u`.`tbl_unit_type_idtbl_unit_type`)";
+$joinQuery = "FROM `tbl_material_info` AS `u` 
+LEFT JOIN `tbl_material_code` AS `ua` ON (`ua`.`idtbl_material_code` = `u`.`tbl_material_code_idtbl_material_code`) LEFT JOIN `tbl_material_category` AS `ub` ON (`ub`.`idtbl_material_category` = `u`.`tbl_material_category_idtbl_material_category`) LEFT JOIN `tbl_brand` AS `uc` ON (`uc`.`idtbl_brand` = `u`.`tbl_brand_idtbl_brand`) LEFT JOIN `tbl_unit` AS `ud` ON (`ud`.`idtbl_unit` = `u`.`tbl_unit_idtbl_unit`) LEFT JOIN `tbl_form` AS `ue` ON (`ue`.`idtbl_form` = `u`.`tbl_form_idtbl_form`) LEFT JOIN `tbl_grade` AS `uf` ON (`uf`.`idtbl_grade` = `u`.`tbl_grade_idtbl_grade`) LEFT JOIN `tbl_size` AS `ug` ON (`ug`.`idtbl_size` = `u`.`tbl_size_idtbl_size`) LEFT JOIN `tbl_side` AS `uh` ON (`uh`.`idtbl_side` = `u`.`tbl_side_idtbl_side`) LEFT JOIN `tbl_unit_type` AS `ui` ON (`ui`.`idtbl_unit_type` = `u`.`tbl_unit_type_idtbl_unit_type`)";
 
 $extraWhere = "`u`.`status` IN (1, 2)";
 

@@ -35,15 +35,15 @@ class Orderdetailinfo extends CI_Model{
     
             $this->db->insert('tbl_order', $orderData);
             $orderID = $this->db->insert_id();
-        } elseif($recordID == 1) {
+        } else {
             $orderID = $order->idtbl_order;
         }
     
         // Loop through each record and insert into tbl_order_detail
         foreach ($jsonObj as $rowdata) {
-            $item = $rowdata['col_1'];
-            $orderDate = $rowdata['col_3'];
-            $quantity = $rowdata['col_4'];
+            $item = $rowdata['col_2'];
+            $orderDate = $rowdata['col_4'];
+            $quantity = $rowdata['col_5'];
             // $quantity = $rowdata['col_7'];
     
             $orderDetailData = array(

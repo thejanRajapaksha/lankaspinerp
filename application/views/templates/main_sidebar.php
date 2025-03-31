@@ -393,14 +393,14 @@
                                 <a class="nav-link p-0 px-3 py-1" href="<//?php //echo base_url('CRMMaterialdetail/'); ?>">Material detail</a>
                             <//?php //endif; ?> -->
 
-                            <?php if (
+                            <!-- < //?php if (
                                 in_array('viewCRMPrintingdetail', $user_permission) ||
                                 in_array('createCRMPrintingdetail', $user_permission) ||
                                 in_array('updateCRMPrintingdetail', $user_permission) ||
                                 in_array('deleteCRMPrintingdetail', $user_permission)
                             ) : ?>
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMPrintingdetail/'); ?>">Printing detail</a>
-                            <?php endif; ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<//?php echo base_url('CRMPrintingdetail/'); ?>">Printing detail</a>
+                            <//?php endif; ?> -->
 
                             <?php if (
                                 in_array('viewCRMDeliverydetail', $user_permission) ||

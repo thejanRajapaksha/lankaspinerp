@@ -17,24 +17,35 @@
             } else {
                 var customernameid = $('#customername').val();
                 var customername = $('#customername option:selected').text();
-                var item = $('#item').val();
+                var itemId = $('#item').val();
+                var item = $('#item option:selected').text();
                 var quantity = $('#quantity').val();
                 var d_date = $('#d_date').val();
                 var date = $('#date').val();
                 var bg_length = $('#bg_length').val();
                 var bg_width = $('#bg_width').val();
+                var liner_size =$('#liner_size').val();
+                var liner_color = $('#liner_color').val();
+                var bg_weight = $('#bg_weight').val();
+                var ln_weight =$('#ln_weight').val();
                 var inner_bag = $('#inner_bag').is(':checked') ? 'Yes' : 'No'; 
                 var off_print = $('#off_print').is(':checked') ? 'Yes' : 'No'; 
                 var printing_type = $('#printing_type').val();
                 var col_no = $('#col_no').val();
 
-                $('#dataTable > tbody:last').append('<tr><td>' + customername +
+                $('#dataTable > tbody:last').append(
+                    '<tr><td>' + customername +
+                    '<td class="d-none">' + itemId + '</td>' +
                     '</td><td>' + item +
                     '</td><td>' + quantity +
                     '</td><td>' + d_date +
                     '</td><td>' + date +
                     '</td><td>' + bg_length +
                     '</td><td>' + bg_width +
+                    '</td><td>' + liner_size +
+                    '</td><td>' + liner_color +
+                    '</td><td>' + bg_weight +
+                    '</td><td>' + ln_weight +
                     '</td><td>' + inner_bag +
                     '</td><td>' + off_print +
                     '</td><td>' + printing_type +
@@ -42,10 +53,14 @@
                     '</td><td class="text-right"><button type="button" class="btn btn-danger btn-sm remove-row">Remove</button></td></tr>');
 
                 //$('#customername').val(null).trigger('change');
-                $('#item').val('');
+                // $('#item').val('');
                 $('#quantity').val('');
                 $('#bg_length').val('');
                 $('#bg_width').val('');
+                $('#liner_size').val('');
+                $('#liner_color').val('');
+                $('#bg_weight').val('');
+                $('#ln_weight').val('');
                 $('#inner_bag').prop('checked', false);
                 $('#off_print').prop('checked', false);
                 $('#printing_type').val('');
@@ -59,19 +74,24 @@
             $('#dataTable tbody tr').each(function() {
                 var row = {
                     tbl_customer_idtbl_customer: $('#customername').val(),
-                    item: $(this).find('td:eq(1)').text(),
-                    date: $(this).find('td:eq(4)').text(),
-                    quantity: $(this).find('td:eq(2)').text(),
-                    d_date: $(this).find('td:eq(3)').text(),
-                    bag_length: $(this).find('td:eq(5)').text(),
-                    bag_width: $(this).find('td:eq(6)').text(),
-                    inner_bag: $(this).find('td:eq(7)').text() === 'Yes' ? true : false,
-                    off_print: $(this).find('td:eq(8)').text() === 'Yes' ? true : false,
-                    printing_type: $(this).find('td:eq(9)').text(),
-                    colour_no: $(this).find('td:eq(10)').text()
+                    itemId: $(this).find('td:eq(1)').text(),
+                    date: $(this).find('td:eq(5)').text(),
+                    quantity: $(this).find('td:eq(3)').text(),
+                    d_date: $(this).find('td:eq(4)').text(),
+                    bag_length: $(this).find('td:eq(6)').text(),
+                    bag_width: $(this).find('td:eq(7)').text(),
+                    liner_size: $(this).find('td:eq(8)').text(),
+                    liner_color: $(this).find('td:eq(9)').text(),
+                    bg_weight: $(this).find('td:eq(10)').text(),
+                    ln_weight: $(this).find('td:eq(11)').text(),
+                    inner_bag: $(this).find('td:eq(12)').text() === 'Yes' ? true : false,
+                    off_print: $(this).find('td:eq(13)').text() === 'Yes' ? true : false,
+                    printing_type: $(this).find('td:eq(14)').text(),
+                    colour_no: $(this).find('td:eq(15)').text()
                 };
                
-               tableData.push(row);
+                  tableData.push(row);
+            // console.log(row);
             });
 
             if (tableData.length === 0) {
@@ -188,6 +208,10 @@ $(document).ready(function () {
             { "data": "date" },
             { "data": "bag_length" },
             { "data": "bag_width" },
+            { "data": "liner_size" },
+            { "data": "liner_color" },
+            { "data": "bg_weight" },
+            { "data": "ln_weight" },
             { 
                 "data": "inner_bag",
                 "render": function (data) {

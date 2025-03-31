@@ -59,6 +59,22 @@
                                 <input type="number" class="form-control form-control-sm" name="bg_width" id="bg_width" required>
                             </div>
                             <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Liner Size*</label>
+                                <input type="number" class="form-control form-control-sm" name="liner_size" id="liner_size" required>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Liner color*</label>
+                                <input type="number" class="form-control form-control-sm" name="liner_color" id="liner_color" required>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Bag weight*</label>
+                                <input type="number" class="form-control form-control-sm" name="bg_weight" id="bg_weight" required>
+                            </div>
+                            <div class="form-group mb-1">
+                                <label class="small font-weight-bold">Liner weight*</label>
+                                <input type="number" class="form-control form-control-sm" name="ln_weight" id="ln_weight" required>
+                            </div>
+                            <div class="form-group mb-1">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="inner_bag" name="inner_bag" value="false">
                                     <label class="form-check-label font-weight-bold" for="inner_bag">Inner Bag</label>
@@ -107,6 +123,10 @@
                                         <th>Date</th>
                                         <th>Length</th>
                                         <th>Width</th>
+                                        <th>Liner Size</th>
+                                        <th>Liner Color</th>
+                                        <th>Bag Weight</th>
+                                        <th>Liner Weight</th>
                                         <th>Inner Bag</th>
                                         <th>Off Print</th>
                                         <th>Printing Type</th>
@@ -156,6 +176,10 @@
                                                 <th>Date</th>
                                                 <th>Bag Length</th>
                                                 <th>Bag Width</th>
+                                                <th>Liner Size</th>
+                                                <th>Liner Color</th>
+                                                <th>Bag weight</th>
+                                                <th>Liner weight</th>
                                                 <th>Inner Bag</th>
                                                 <th>Printing</th>
                                                 <th>Printing Type</th>

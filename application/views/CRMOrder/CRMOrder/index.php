@@ -12,9 +12,9 @@
     <div class="container-fluid mt-2 p-0 p-2">
         <div class="card">
             <div class="card-body p-0 p-2">
-                 <div class="col-12 text-right">
+                 <!-- <div class="col-12 text-right">
 					<button class="btn btn-primary btn-sm mb-3" id="directorder"><i class="fas fa-plus mr-2"></i>Add Direct Order</button>
-			    </div>
+			    </div> -->
                 <table class="table table-bordered table-striped table-sm nowrap" id="dataTableAccepted" style="width: 100%;">
                     <thead>
                         <tr>
@@ -47,15 +47,11 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3">
                         <form id="createorderform" autocomplete="off" enctype="multipart/form-data">
-                            <div class="form-row mb-1">
+                        <div class="form-row mb-1">
                                 <div class="col">
                                     <label class="small font-weight-bold text-dark">Item*</label>
                                     <select class="form-control form-control-sm" name="item" id="item" required>
                                         <option selected disabled>Select</option>
-                                        <?php foreach($result['product'] as $products):?>
-                                            <option value="<?php echo $products->idtbl_product; ?>">
-                                            <?php echo $products->product;?></option>
-                                        <?php endforeach;?>
                                     </select>
                                 </div>
                             </div>
@@ -115,100 +111,6 @@
                         
                         <div class="form-group mt-2">
                             <button type="button" id="btncreateorder" class="btn btn-outline-primary btn-sm fa-pull-right"><i class="fas fa-save"></i>&nbsp;Create Order</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Direct Order Modal -->
-<div class="modal fade" id="directordermodal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="directordermodalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="directordermodalLabel">Create Direct Order</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3">
-                        <form id="createdirectorderform" autocomplete="off" enctype="multipart/form-data">
-                        <div class="form-group mb-1">
-                                <label class="small font-weight-bold">Customer Name</label>
-                                <select class="form-control form-control-sm" name="customer" id="customer" required>
-                                    <option value="" selected disabled>Select Customer</option>
-                                    <?php foreach ($result['customername'] as $customernames):?>
-                                        <option value="<?php echo $customernames->idtbl_customer;?>">
-                                        <?php echo htmlspecialchars($customernames->name);?></option>
-                                    <?php endforeach;?>
-                                </select>
-                             </div> 
-
-                             <div class="form-row mb-1">
-                                <div class="col">
-                                    <label class="small font-weight-bold text-dark">Item*</label>
-                                    <select class="form-control form-control-sm" name="d_item" id="d_item" required>
-                                        <option selected disabled>Select</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row mb-1">
-                                <div class="col">
-                                    <label class="small font-weight-bold text-dark">Order Date*</label>
-                                    <input type="date" class="form-control form-control-sm" name="d_order_date" id="d_order_date" required>
-                                </div>
-                                <div class="col">
-                                    <label class="small font-weight-bold text-dark">Quantity*</label>
-                                    <input type="number" class="form-control form-control-sm" placeholder="" name="d_qty" id="d_qty" required>
-                                </div>
-                            </div>
-                            <hr class="border-dark">
-                            <div class="form-group mt-3 text-right">
-                                <?php if (in_array('createCRMOrderdetail', $user_permission)) : ?>
-                                    <button type="button" id="formsubmitdirectorder" class="btn btn-primary btn-sm px-5">
-                                        <i class="far fa-save"></i>&nbsp;Add to list
-                                    </button>
-                                <?php endif; ?>
-                                <input name="submitBtn" type="submit" value="Save" id="submitBtn" class="d-none">
-                                <input type="hidden" id="recordOption" value="1">
-                                <input type="hidden" id="inquiryid" value="">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9">
-                        <div class="scrollbar pb-3" id="style-2">
-                            <table class="table table-striped table-bordered table-sm small" id="tabledirectorder">
-                                <thead>
-                                    <tr>
-                                        <th>Customer Name</th>
-                                        <th>Item</th>
-                                        <th>Date</th>
-                                        <th class="d-none">Order details ID</th>
-                                        <th class="text-right">Quantity</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                        <div class="form-group">
-                            <label class="small font-weight-bold text-dark">Remark</label>
-                            <textarea name="remark" id="remark" class="form-control form-control-sm"></textarea>
-                        </div>
-                        <div class="row">
-                            <div class="col text-right">
-                                <!-- <h1 class="font-weight-600" id="divtotal">Rs. 0.00</h1> -->
-                            </div>
-                            <input type="hidden" id="hidetotalorder" value="0">
-                            <input type="hidden" id="sumdis" value="0">
-                        </div>
-                        <hr>
-                        
-                        <div class="form-group mt-2">
-                            <button type="button" id="btncreatedirectorder" class="btn btn-outline-primary btn-sm fa-pull-right"><i class="fas fa-save"></i>&nbsp;Create Order</button>
                         </div>
                     </div>
                 </div>

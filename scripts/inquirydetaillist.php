@@ -41,7 +41,12 @@ $columns = array(
     array( 'db' => '`u`.`colour_no`', 'dt' => 'colour_no', 'field' => 'colour_no' ),
     array( 'db' => '`u`.`off_print`', 'dt' => 'off_print', 'field' => 'off_print' ),
     array( 'db' => '`u`.`printing_type`', 'dt' => 'printing_type', 'field' => 'printing_type' ),
-    array( 'db' => '`u`.`item`', 'dt' => 'item', 'field' => 'item' ),
+    array( 'db' => '`p`.`product`', 'dt' => 'item', 'field' => 'product' ),
+    array( 'db' => '`u`.`liner_size`', 'dt' => 'liner_size', 'field' => 'liner_size' ),
+    array( 'db' => '`u`.`liner_color`', 'dt' => 'liner_color', 'field' => 'liner_color' ),
+    array( 'db' => '`u`.`bg_weight`', 'dt' => 'bg_weight', 'field' => 'bg_weight' ),
+    array( 'db' => '`u`.`ln_weight`', 'dt' => 'ln_weight', 'field' => 'ln_weight' ),
+
 );
 
 // SQL server connection information
@@ -61,7 +66,9 @@ $sql_details = array(
 // require( 'ssp.class.php' );
 require('ssp.customized.class.php');
 
-$joinQuery = "FROM `tbl_inquiry_detail` AS `u`";
+$joinQuery = "FROM `tbl_inquiry_detail` AS `u`
+LEFT JOIN `tbl_products` AS `p` 
+ON u.tbl_products_idtbl_product = p.idtbl_product;";
 
 $ID = $_POST['id'];
 

@@ -24,24 +24,32 @@ class CRMInquiryinfo extends CI_Model {
 
         // Insert into tbl_inquiry_detail
         foreach ($tableData as $rowdata) {
-            $item = $rowdata['item'];
+            $item = $rowdata['itemId'];
             $quantity = $rowdata['quantity'];
             $date = $rowdata['date'];
             $d_date = $rowdata['d_date'];
             $bag_length = $rowdata['bag_length'];
             $bag_width = $rowdata['bag_width'];
+            $liner_size = $rowdata['liner_size'];
+            $liner_color = $rowdata['liner_color'];
+            $bg_weight = $rowdata['bg_weight'];
+            $ln_weight = $rowdata['ln_weight'];
             $inner_bag = $rowdata['inner_bag'];
             $off_print = $rowdata['off_print'];
             $printing_type = $rowdata['printing_type'];
             $colour_no = $rowdata['colour_no'];
             $detailData = [
                 'tbl_inquiry_idtbl_inquiry' => $inquiryID,
-                'item' => $item,
+                'tbl_products_idtbl_product' => $item,
                 'quantity' => $quantity,
                 'date' => $date,
                 'delivarydate' =>$d_date,
                 'bag_length' => $bag_length,
                 'bag_width' => $bag_width,
+                'liner_size' => $liner_size,
+                'liner_color' => $liner_color,
+                'bg_weight' => $bg_weight,
+                'ln_weight' => $ln_weight,
                 'inner_bag' => $inner_bag,
                 'colour_no' => $colour_no,
                 'off_print' => $off_print,
