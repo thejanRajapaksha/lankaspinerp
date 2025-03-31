@@ -1,3 +1,8 @@
+<style>
+  .select2-container {
+    width: 260px !important;
+  }
+</style>
 <main>
     <div class="page-header page-header-light bg-white shadow">
         <div class="container-fluid">
@@ -234,39 +239,46 @@
                                 <label for="inquirySelect" class="small font-weight-bold text-dark">Inquiry ID*</label>
                                 <select class="form-control form-control-sm" name="inquirySelect" id="inquirySelect" required>
                                     <option value="">Select Inquiry</option>
-                                    <!-- Inquiry IDs will be loaded dynamically based on customer selection -->
                                 </select>
                                 <label for="productSelect" class="small font-weight-bold text-dark">Product*</label>
                                 <select class="form-control form-control-sm" name="productSelect" id="productSelect" required>
                                     <option value="">Select Product</option>
                                 </select>
-                                <label for="checkMachineAvailability" class="small font-weight-bold text-dark">Machine*</label>
-                                <select class="form-control form-control-sm" name="checkMachineAvailability" id="checkMachineAvailability" required>
-                                    <option value="">Select Machine</option>
+
+                                <label for="jobQuantity" class="small font-weight-bold text-dark">Quantity*</label>
+                                <input type="number" class="form-control form-control-sm" name="jobQuantity" id="jobQuantity" required>
+
+                                <label for="machineType" class="small font-weight-bold text-dark">Machine Type*</label>
+                                <select class="form-control form-control-sm select2" name="machineType" id="machineType" required>
+                                    <option value="">Select Machine Type</option>
                                 </select>
-                                <input type="hidden" id="selectedMachineId" name="selectedMachineId">
+
+                                <label for="machineModel" class="small font-weight-bold text-dark">Machine Model*</label>
+                                <select class="form-control form-control-sm select2" name="machineModel" id="machineModel" required>
+                                    <option value="">Select Machine Model</option>
+                                </select><br>
+
+                                <label for="serialNumber" class="small font-weight-bold text-dark">S No*</label>
+                                <select class="form-control form-control-sm select2" name="serialNumber" id="serialNumber" required>
+                                    <option value="">Select Serial Number</option>
+                                </select>
+                                <!-- <input type="hidden" id="selectedMachineId" name="selectedMachineId"> -->
                             </div>
-                            <!-- <div class="form-group">
-                                
-                            </div> -->
                             <div class="form-row mb-1">
-                                <div class="col">
-                                    <label for="jobQuantity" class="small font-weight-bold text-dark">Quantity*</label>
-                                    <input type="number" class="form-control form-control-sm" name="jobQuantity" id="jobQuantity" required>
-                                </div>
-                                <div class="col">
+                                
+                                <!-- <div class="col">
                                     <label for="startDate" class="small font-weight-bold text-dark">Start Date*</label>
                                     <input type="datetime-local" class="form-control form-control-sm" name="startDate" id="startDate" required>
-                                </div>
+                                </div> -->
                             </div>
-                            <div class="form-row mb-1">
+                            <!-- <div class="form-row mb-1">
                                 <div class="col">
                                     <label for="endDate" class="small font-weight-bold text-dark">End Date*</label>
                                     <input type="datetime-local" class="form-control form-control-sm" name="endDate" id="endDate" required>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group mt-2 text-right">
-                                <!-- <button type="button" id="checkMachineAvailability" class="btn btn-warning btn-sm"><i class="fas fa-search"></i>&nbsp;Check Availability</button> -->
+                                <div><button type="button" id="checkMachineAvailability" class="btn btn-warning btn-sm"><i class="fas fa-search"></i>&nbsp;Check Availability</button></div><br>
                                 <button type="button" id="addJobBtn" class="btn btn-primary btn-sm px-4"><i class="fas fa-plus"></i>&nbsp;Add to Plan</button>
                             </div>
                         </form>

@@ -301,7 +301,7 @@
                                 in_array('updateCRMInquiry', $user_permission) ||
                                 in_array('deleteCRMInquiry', $user_permission)
                             ) : ?>
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMInquiry/'); ?>">CRMInquiry</a>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMInquiry/'); ?>">CRM Inquiry</a>
                             <?php endif; ?>
 
                             <?php if (
@@ -315,7 +315,7 @@
                                 in_array('updateCRMQuotation', $user_permission) ||
                                 in_array('deleteCRMQuotation', $user_permission)
                             ) : ?>
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMQuotation/'); ?>">CRMQuotation</a>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMQuotation/'); ?>">CRM Quotation</a>
                             <?php endif; ?>
 
                             <?php if (
@@ -324,7 +324,7 @@
                                 in_array('updateCRMQuotationStatus', $user_permission) ||
                                 in_array('deleteCRMQuotationStatus', $user_permission)
                             ) : ?>
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMQuotationStatus/'); ?>">CRMQuotationStatus</a>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMQuotationStatus/'); ?>">CRM QuotationStatus</a>
                             <?php endif; ?>
 
                             <?php if (
@@ -333,7 +333,7 @@
                                 in_array('updateCRMReason', $user_permission) ||
                                 in_array('deleteCRMReason', $user_permission)
                             ) : ?>
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMReason/'); ?>">CRMReason</a>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMReason/'); ?>">CRM Reason</a>
                             <?php endif; ?>
 
                         </nav>
@@ -342,30 +342,35 @@
                 <?php endif; ?>
 
                 <?php if (
-                    in_array('viewCRMOrderdetail', $user_permission) ||
+                    in_array('viewCRMOrderdetail', $user_permission)   ||
                     in_array('createCRMOrderdetail', $user_permission) ||
                     in_array('updateCRMOrderdetail', $user_permission) ||
                     in_array('deleteCRMOrderdetail', $user_permission) ||
 
-                    // in_array('viewCRMMaterialdetail', $user_permission) ||
+                    // in_array('viewCRMMaterialdetail', $user_permission)   ||
                     // in_array('createCRMMaterialdetail', $user_permission) ||
                     // in_array('updateCRMMaterialdetail', $user_permission) ||
                     // in_array('deleteCRMMaterialdetail', $user_permission) ||
 
-                    in_array('viewCRMPrintingdetail', $user_permission) ||
+                    in_array('viewCRMPrintingdetail', $user_permission)   ||
                     in_array('createCRMPrintingdetail', $user_permission) ||
                     in_array('updateCRMPrintingdetail', $user_permission) ||
                     in_array('deleteCRMPrintingdetail', $user_permission) ||
 
-                    in_array('viewCRMDeliverydetail', $user_permission) ||
+                    in_array('viewCRMDeliverydetail', $user_permission)   ||
                     in_array('createCRMDeliverydetail', $user_permission) ||
                     in_array('updateCRMDeliverydetail', $user_permission) ||
                     in_array('deleteCRMDeliverydetail', $user_permission) ||
 
-                    in_array('viewCRMCompletedorder', $user_permission) ||
+                    in_array('viewCRMCompletedorder', $user_permission)   ||
                     in_array('createCRMCompletedorder', $user_permission) ||
                     in_array('updateCRMCompletedorder', $user_permission) ||
-                    in_array('deleteCRMCompletedorder', $user_permission)
+                    in_array('deleteCRMCompletedorder', $user_permission) ||
+
+                    in_array('viewMachineallocation', $user_permission)   ||
+                    in_array('createMachineallocation', $user_permission) ||
+                    in_array('updateMachineallocation', $user_permission) ||
+                    in_array('deleteMachineallocation', $user_permission)
                 ) : ?>
 
                     <a class="nav-link collapsed" id="crmorder_main_nav_link" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseCRMOrder" aria-expanded="false" aria-controls="collapseCRMOrder">
@@ -418,6 +423,15 @@
                                 in_array('deleteCRMCompletedorder', $user_permission)
                             ) : ?>
                                 <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMCompletedorder/'); ?>">Completed order</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewMachineallocation', $user_permission) ||
+                                in_array('createMachineallocation', $user_permission) ||
+                                in_array('updateMachineallocation', $user_permission) ||
+                                in_array('deleteMachineallocation', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Machinealloction/'); ?>">Machine Allocation</a>
                             <?php endif; ?>
 
                         </nav>

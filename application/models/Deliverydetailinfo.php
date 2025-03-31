@@ -178,15 +178,14 @@ class Deliverydetailinfo extends CI_Model{
         
     }
     
-    public function Getclothtype() {
+    public function GetMachineType() {
         $inquiryid = $this->input->post('inquiryid');
 
-        $this->db->select('u.idtbl_cloth, u.type');
-        $this->db->from('tbl_cloth AS u');
-        $this->db->join('tbl_order_detail AS ua', 'ua.tbl_cloth_idtbl_cloth = u.idtbl_cloth', 'left');
-        $this->db->where('u.status', 1);
-        $this->db->where('ua.tbl_inquiry_idtbl_inquiry', $inquiryid);
-        $this->db->group_by('u.idtbl_cloth');
+        $this->db->distinct(); // Apply DISTINCT correctly
+        $this->db->select('u.id, u.name');
+        $this->db->from('machine_types AS u');
+        $this->db->join('machine_ins AS mi', 'mi.machine_type_id = u.id', 'inner'); 
+        $this->db->where('u.active', 1);
 
         // return $this->db->get()->result();
         $respond=$this->db->get();
@@ -194,7 +193,49 @@ class Deliverydetailinfo extends CI_Model{
         $data=array();
 
         foreach ($respond->result() as $row) {
-            $data[]=array("id"=>$row->idtbl_cloth, "text"=>$row->type);
+            $data[]=array("id"=>$row->id, "text"=>$row->name);
+        }
+
+        echo json_encode($data);
+    }
+
+    public function GetMachineModel() {
+        $machineType = $this->input->post('machineType');
+
+        $this->db->select('m.id, m.name');
+        $this->db->from('machine_models AS m');
+        $this->db->join('machine_ins AS mi', 'mi.machine_model_id = m.id', 'left');
+        $this->db->where('mi.machine_type_id', $machineType); 
+        $this->db->where('m.active', 1);
+        $this->db->group_by('m.id'); 
+
+        $respond=$this->db->get();
+
+        $data=array();
+
+        foreach ($respond->result() as $row) {
+            $data[]=array("id"=>$row->id, "text"=>$row->name);
+        }
+
+        echo json_encode($data);
+    }
+    
+    public function GetSerialNumber() {
+        $machineType = $this->input->post('machineType');
+        $machineModel = $this->input->post('machineModel');
+
+        $this->db->select('s_no');
+        $this->db->from('machine_ins');
+        $this->db->where('machine_type_id', $machineType); 
+        $this->db->where('machine_model_id', $machineModel);
+        $this->db->where('active', 1);
+
+        $respond=$this->db->get();
+
+        $data=array();
+
+        foreach ($respond->result() as $row) {
+            $data[]=array("id"=>$row->s_no, "text"=>$row->s_no);
         }
 
         echo json_encode($data);
@@ -213,22 +254,6 @@ class Deliverydetailinfo extends CI_Model{
 
         foreach ($respond->result() as $row) {
             $data[]=array("id"=>$row->idtbl_payment, "text"=>$row->p_type);
-        }
-
-        echo json_encode($data);
-    }
-
-    public function Getsizetype() {
-        $this->db->select('idtbl_size, type');
-        $this->db->from('tbl_size');
-        $this->db->where('status', 1);
-
-        $respond=$this->db->get();
-
-        $data=array();
-
-        foreach ($respond->result() as $row) {
-            $data[]=array("id"=>$row->idtbl_size, "text"=>$row->type);
         }
 
         echo json_encode($data);
