@@ -48,27 +48,27 @@
                 {
                     "data": "quot_date"
                 },
-                {
-                    "data": "duedate"
-                },
-                {
-                    "data": "total"
-                },
+                // {
+                //     "data": "duedate"
+                // },
+                // {
+                //     "data": "total"
+                // },
                 {
                     "targets": -1,
                     "className": 'text-right',
                     "data": null,
                     "render": function(data, type, full) {
                         var button = '';
-                        button += '<button class="btn btn-dark btn-sm btnview mr-1" data-toggle="modal" data-target="#deliverydetail" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Packaging details view"><i class="fas fa-eye"></i></button>';
-                        button += '<button class="btn btn-dark btn-sm btnquotation mr-1" data-toggle="modal" data-target="#Deliverymodal" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Enter Packaging Details"><i class="fas fa-box"></i></button>';
-                        button += '<button class="btn btn-dark btn-sm btnpayment mr-1" data-toggle="modal" data-target="#paymentDetailModal" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" data-total="' + full['total'] + '" title="payment details"><i class="fas fa-credit-card"></i></button>';
+                        // button += '<button class="btn btn-dark btn-sm btnview mr-1" data-toggle="modal" data-target="#deliverydetail" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Packaging details view"><i class="fas fa-eye"></i></button>';
+                        // button += '<button class="btn btn-dark btn-sm btnquotation mr-1" data-toggle="modal" data-target="#Deliverymodal" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Enter Packaging Details"><i class="fas fa-box"></i></button>';
+                        // button += '<button class="btn btn-dark btn-sm btnpayment mr-1" data-toggle="modal" data-target="#paymentDetailModal" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" data-total="' + full['total'] + '" title="payment details"><i class="fas fa-credit-card"></i></button>';
                         button += '<button class="btn btn-dark btn-sm btndelivery mr-1" data-toggle="modal" data-target="#jobPlanModal" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Delivery details"><i class="fas fa-truck"></i></button>';
-                        if(full['status']==1){
-                            button+='<a href="<?php echo base_url() ?>CRMDeliverydetail/Deliverydetailstatus/'+full['idtbl_quotation']+'/4" onclick="return deactive_confirm()" target="_self" class="btn btn-dark btn-sm mr-1 ';if(statuscheck!=1){button+='d-none';}button+='"><i class="fas fa-check"></i></a>';
-                        }else{
-                            button+='<a href="<?php echo base_url() ?>CRMDeliverydetail/Deliverydetailstatus/'+full['idtbl_quotation']+'/1" onclick="return active_confirm()" target="_self" class="btn btn-success btn-sm mr-1 ';if(statuscheck!=1){button+='d-none';}button+='"><i class="fas fa-times"></i></a>';
-                        }
+                        // if(full['status']==1){
+                        //     button+='<a href="<?php echo base_url() ?>CRMDeliverydetail/Deliverydetailstatus/'+full['idtbl_quotation']+'/4" onclick="return deactive_confirm()" target="_self" class="btn btn-dark btn-sm mr-1 ';if(statuscheck!=1){button+='d-none';}button+='"><i class="fas fa-check"></i></a>';
+                        // }else{
+                        //     button+='<a href="<?php echo base_url() ?>CRMDeliverydetail/Deliverydetailstatus/'+full['idtbl_quotation']+'/1" onclick="return active_confirm()" target="_self" class="btn btn-success btn-sm mr-1 ';if(statuscheck!=1){button+='d-none';}button+='"><i class="fas fa-times"></i></a>';
+                        // }
                         return button;
                     }
                 }

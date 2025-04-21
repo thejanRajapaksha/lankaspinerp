@@ -85,21 +85,21 @@ class MachineRepairsEmployee extends Admin_Controller
         $resultCount = 25;
         $offset = ($page - 1) * $resultCount;
 
-        $this->db->select('employees.name_with_initial, employees.id');
+        $this->db->select('employees.emp_name_with_initial, employees.id');
         $this->db->from('employees');
         $this->db->join('machine_repair_details', 'employees.id = machine_repair_details.repair_done_by', 'left');
         $this->db->where('machine_repair_details.is_deleted', 0 );
-        $this->db->like('employees.name_with_initial', $term, 'both');
+        $this->db->like('employees.emp_name_with_initial', $term, 'both');
         $this->db->group_by('employees.id');
         $query = $this->db->get();
         $this->db->limit($resultCount, $offset);
         $departments = $query->result_array();
 
-        $this->db->select('employees.name_with_initial, employees.id');
+        $this->db->select('employees.emp_name_with_initial, employees.id');
         $this->db->from('employees');
         $this->db->join('machine_repair_details', 'employees.id = machine_repair_details.repair_done_by', 'left');
         $this->db->where('machine_repair_details.is_deleted', 0 );
-        $this->db->like('employees.name_with_initial', $term, 'both');
+        $this->db->like('employees.emp_name_with_initial', $term, 'both');
         $this->db->group_by('employees.id');
         $count = $this->db->count_all_results();
 
@@ -107,7 +107,7 @@ class MachineRepairsEmployee extends Admin_Controller
         foreach ($departments as $v) {
             $data[] = array(
                 'id' => $v['id'],
-                'text' => $v['name_with_initial'],
+                'text' => $v['emp_name_with_initial'],
             );
         }
 

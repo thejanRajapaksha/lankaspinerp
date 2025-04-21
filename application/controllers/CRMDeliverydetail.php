@@ -6,16 +6,15 @@ date_default_timezone_set('Asia/Colombo');
 class CRMDeliverydetail extends Admin_Controller {
     public function index(){
         $this->load->model('Commeninfo');
-        $this->load->model('Deliverydetailinfo');
-		$result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
+        $this->load->model('Customerinfo');
+		$this->load->model('Customerinfo');
+		//$result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
+		$result['customer'] = $this->Customerinfo->GetCustomerList();
 		$this->data['result']  = $result;
 		$this->data['js'] = 'application/views/CRMOrder/CRMDelivery/index-js.php';
 		$this->render_template('CRMOrder/CRMDelivery/index', $this->data);
 	}
-    public function Packagingdetailinsertupdate(){
-		$this->load->model('Deliverydetailinfo');
-        $result=$this->Deliverydetailinfo->Packagingdetailinsertupdate();
-	}
+
 	public function Deliverydetailinsertupdate(){
 		$this->load->model('Deliverydetailinfo');
         $result=$this->Deliverydetailinfo->Deliverydetailinsertupdate();
@@ -33,46 +32,67 @@ class CRMDeliverydetail extends Admin_Controller {
 		$this->load->model('Deliverydetailinfo');
         $result=$this->Deliverydetailinfo->Deliverydetailcheck();
 	}
-	public function Getpaymenttype(){		
+	public function getInquiryByCustomerId() {
+		$customer_id = $this->input->post('customer_id');
 		$this->load->model('Deliverydetailinfo');
-		$result=$this->Deliverydetailinfo->Getpaymenttype();		
-	}
-	public function Getadvancepayment(){		
-		$this->load->model('Deliverydetailinfo');
-		$result=$this->Deliverydetailinfo->Getadvancepayment();		
+		$result = $this->Deliverydetailinfo->getInquiryByCustomerId($customer_id);
+	
 		echo json_encode($result);
 	}
-	public function AddPayment(){		
+
+	public function getOrderByInquiryId() {
+		$inquiry_id = $this->input->post('inquiry_id');
 		$this->load->model('Deliverydetailinfo');
-		$result=$this->Deliverydetailinfo->AddPayment();		
-		echo json_encode(['status' => 'success']);
-	}
-	public function GetPaymentDetails() {
-		$this->load->model('Deliverydetailinfo');
-		$payments = $this->Deliverydetailinfo->GetPaymentDetails();
-		echo json_encode($payments);
-	}	
-	public function GetMachineType(){		
-		$this->load->model('Deliverydetailinfo');
-		$result=$this->Deliverydetailinfo->GetMachineType();		
-	}
-	public function GetMachineModel(){		
-		$this->load->model('Deliverydetailinfo');
-		$result=$this->Deliverydetailinfo->GetMachineModel();		
-	}
-	public function GetSerialNumber(){		
-		$this->load->model('Deliverydetailinfo');
-		$result=$this->Deliverydetailinfo->GetSerialNumber();		
-	}
-	public function GetDeliveryAndPackagingDetails() {
-		$this->load->model('Deliverydetailinfo');
-		$result = $this->Deliverydetailinfo->GetDeliveryAndPackagingDetails();
+		$result = $this->Deliverydetailinfo->getOrderByInquiryId($inquiry_id);
+	
 		echo json_encode($result);
 	}
-	public function GetAllAvailableMachines(){
+	public function getOrderQuantityById() {
+		$order_id = $this->input->post('order_id');
 		$this->load->model('Deliverydetailinfo');
-		$result = $this->Deliverydetailinfo->getAllAvailableMachines();
+		$result = $this->Deliverydetailinfo->getOrderQuantityById($order_id);
+	
 		echo json_encode($result);
 	}
+	
+	
+
+	// public function Getadvancepayment(){		
+	// 	$this->load->model('Deliverydetailinfo');
+	// 	$result=$this->Deliverydetailinfo->Getadvancepayment();		
+	// 	echo json_encode($result);
+	// }
+	// public function AddPayment(){		
+	// 	$this->load->model('Deliverydetailinfo');
+	// 	$result=$this->Deliverydetailinfo->AddPayment();		
+	// 	echo json_encode(['status' => 'success']);
+	// }
+	// public function GetPaymentDetails() {
+	// 	$this->load->model('Deliverydetailinfo');
+	// 	$payments = $this->Deliverydetailinfo->GetPaymentDetails();
+	// 	echo json_encode($payments);
+	// }	
+	// public function GetMachineType(){		
+	// 	$this->load->model('Deliverydetailinfo');
+	// 	$result=$this->Deliverydetailinfo->GetMachineType();		
+	// }
+	// public function GetMachineModel(){		
+	// 	$this->load->model('Deliverydetailinfo');
+	// 	$result=$this->Deliverydetailinfo->GetMachineModel();		
+	// }
+	// public function GetSerialNumber(){		
+	// 	$this->load->model('Deliverydetailinfo');
+	// 	$result=$this->Deliverydetailinfo->GetSerialNumber();		
+	// }
+	// public function GetDeliveryAndPackagingDetails() {
+	// 	$this->load->model('Deliverydetailinfo');
+	// 	$result = $this->Deliverydetailinfo->GetDeliveryAndPackagingDetails();
+	// 	echo json_encode($result);
+	// }
+	// public function GetAllAvailableMachines(){
+	// 	$this->load->model('Deliverydetailinfo');
+	// 	$result = $this->Deliverydetailinfo->getAllAvailableMachines();
+	// 	echo json_encode($result);
+	// }
 	
 }

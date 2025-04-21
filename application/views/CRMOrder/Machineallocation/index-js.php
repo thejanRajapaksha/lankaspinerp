@@ -1,4 +1,5 @@
 <script>
+
 	$("#tblmachinelist").on('click', '.btnDeleterow', function () {
 		$(this).closest('tr').remove();
 	});
@@ -115,13 +116,13 @@
                 recordId: recordId
             },
             success: function (result) {
+				// console.log(result);
                 var obj = JSON.parse(result);
-
                 var html1 = '';
                 html1 += '<option value="">Select</option>';
                 $.each(obj, function (i, item) {
-                    // alert(result[i].id);
-                    html1 += '<option value="' + obj[i].idtbl_customerinquiry_detail + '">';
+                    // alert(obj[i].idtbl_inquiry_detail);
+                    html1 += '<option value="' + obj[i].idtbl_inquiry_detail + '">';
                     html1 += obj[i].job;
                     html1 += '</option>';
                 });
@@ -166,10 +167,11 @@
 
 
 	$(document).ready(function () {
-		var addcheck = '<?php echo $addcheck; ?>';
-		var editcheck = '<?php echo $editcheck; ?>';
-		var statuscheck = '<?php echo $statuscheck; ?>';
-		var deletecheck = '<?php echo $deletecheck; ?>';
+
+		// var addcheck = '<?php// echo $addcheck; ?>';
+		// var editcheck = '<?php //echo $editcheck; ?>';
+		// var statuscheck = '<?php //echo $statuscheck; ?>';
+		// var deletecheck = '<?php //echo $deletecheck; ?>';
 
 		// $('#machineAllocationTable').DataTable({
 		// 	"destroy": true,

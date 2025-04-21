@@ -342,27 +342,27 @@ class Goodreceive extends Admin_Controller {
         $resultCount = 25;
         $offset = ($page - 1) * $resultCount;
 
-        $this->db->select('tbl_machine_type.idtbl_machine_type, tbl_machine_type.type');
+        $this->db->select('machine_types.id, machine_types.name');
         $this->db->from('tbl_stock');
         $this->db->join('spare_parts', 'spare_parts.id = tbl_stock.spare_part_id', 'left');
-        $this->db->join('tbl_machine_type', 'tbl_machine_type.idtbl_machine_type = spare_parts.type', 'left');
-        $this->db->group_by('tbl_machine_type.idtbl_machine_type');
+        $this->db->join('machine_types', 'machine_types.id = spare_parts.type', 'left');
+        $this->db->group_by('machine_types.id');
         $query = $this->db->get();
         $this->db->limit($resultCount, $offset);
         $departments = $query->result_array();
 
-        $this->db->select('tbl_machine_type.idtbl_machine_type, tbl_machine_type.type');
+        $this->db->select('machine_types.id, machine_types.name');
         $this->db->from('tbl_stock');
         $this->db->join('spare_parts', 'spare_parts.id = tbl_stock.spare_part_id', 'left');
-        $this->db->join('tbl_machine_type', 'tbl_machine_type.idtbl_machine_type = spare_parts.type', 'left');
-        $this->db->group_by('tbl_machine_type.idtbl_machine_type');
+        $this->db->join('machine_types', 'machine_types.id = spare_parts.type', 'left');
+        $this->db->group_by('machine_types.id');
         $count = $this->db->count_all_results();
 
         $data = array();
         foreach ($departments as $v) {
             $data[] = array(
-                'id' => $v['idtbl_machine_type'],
-                'text' => $v['type'],
+                'id' => $v['id'],
+                'text' => $v['name'],
             );
         }
 

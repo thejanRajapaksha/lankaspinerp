@@ -1,13 +1,24 @@
 <?php
 class Machineallocationinfo extends CI_Model{
+    // public function GetAllCustomerInquiries(){
+
+    //     $this->db->select('*');
+    //     $this->db->from('tbl_inquiry');
+    //     $this->db->join('tbl_customer', 'tbl_customer.idtbl_customer = tbl_inquiry.tbl_customer_idtbl_customer');
+    //     $this->db->where('tbl_inquiry.status', 1);
+
+    //     return $respond=$this->db->get();
+    // }
+
     public function GetAllCustomerInquiries(){
 
         $this->db->select('*');
         $this->db->from('tbl_inquiry');
-        $this->db->join('tbl_customer', 'tbl_customer.idtbl_customer = tbl_inquiry.tbl_customer_idtbl_customer');
+        // $this->db->join('tbl_customer', 'tbl_customer.idtbl_customer = tbl_inquiry.tbl_customer_idtbl_customer');
         $this->db->where('tbl_inquiry.status', 1);
 
-        return $respond=$this->db->get();
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function Getmachinelist(){
@@ -161,7 +172,7 @@ class Machineallocationinfo extends CI_Model{
     public function GetInquieryDetails(){
         $recordID=$this->input->post('recordId');
 
-        $sql="SELECT * FROM `tbl_customerinquiry_detail` WHERE `tbl_customerinquiry_idtbl_customerinquiry` = '$recordID'";
+        $sql="SELECT * FROM `tbl_inquiry_detail` WHERE `tbl_inquiry_idtbl_inquiry` = '$recordID'";
         $respond=$this->db->query($sql);
         return $respond->result_array();
     }

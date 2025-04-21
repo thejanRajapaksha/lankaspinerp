@@ -22,7 +22,7 @@
                                     <option value="">Select</option>
                                     <?php foreach ($result['inquiryinfo'] as $rowInquiry): ?>
 										<option value="<?php echo $rowInquiry->idtbl_inquiry; ?>">
-											<?php echo $rowInquiry->tbl_customer_idtbl_customer; ?>
+											PO<?php echo $rowInquiry->idtbl_inquiry; ?>
 										</option>
 									<?php endforeach; ?>
                                 </select>

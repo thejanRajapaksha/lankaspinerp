@@ -386,7 +386,7 @@
                                 in_array('updateCRMOrderdetail', $user_permission) ||
                                 in_array('deleteCRMOrderdetail', $user_permission)
                             ) : ?>
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMOrderdetail/'); ?>">Order detail</a>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CRMOrderdetail/'); ?>">CRM Order</a>
                             <?php endif; ?>
 
                             <!-- <//?php // if (
@@ -486,11 +486,6 @@
                                 <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Goodreceive/grn_report'); ?>">GRN</a>
                             <?php endif; ?>
 
-                            <?php if (
-                            in_array('viewBinCart', $user_permission)
-                            ) : ?>
-                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('BinCart'); ?>">Bin Cart</a>
-                            <?php endif; ?>
 
 
                             <?php if (

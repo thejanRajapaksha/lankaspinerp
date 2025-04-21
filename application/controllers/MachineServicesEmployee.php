@@ -85,20 +85,20 @@ class MachineServicesEmployee extends Admin_Controller
         $resultCount = 25;
         $offset = ($page - 1) * $resultCount;
 
-        $this->db->select('employees.name_with_initial, employees.id');
+        $this->db->select('employees.emp_name_with_initial, employees.id');
         $this->db->from('employees');
         $this->db->join('machine_service_details', 'employees.id = machine_service_details.service_done_by', 'left');
         $this->db->where('machine_service_details.is_deleted', 0 );
-        $this->db->like('employees.name_with_initial', $term, 'both');
+        $this->db->like('employees.emp_name_with_initial', $term, 'both');
         $query = $this->db->get();
         $this->db->limit($resultCount, $offset);
         $departments = $query->result_array();
 
-        $this->db->select('employees.name_with_initial, employees.id');
+        $this->db->select('employees.emp_name_with_initial, employees.id');
         $this->db->from('employees');
         $this->db->join('machine_service_details', 'employees.id = machine_service_details.service_done_by', 'left');
         $this->db->where('machine_service_details.is_deleted', 0 );
-        $this->db->like('employees.name_with_initial', $term, 'both');
+        $this->db->like('employees.emp_name_with_initial', $term, 'both');
         $count = $this->db->count_all_results();
 
         $data = array();

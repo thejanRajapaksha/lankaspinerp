@@ -77,7 +77,14 @@
       </p>
     </div>
     <!-- /.login-card-body -->
+     <hr>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-md-12 small text-center">Copyright &copy; Erav Technology <?php echo date('Y') ?></div>
+          </div>
+    </div>
   </div>
+  
 </div>
 <!-- /.login-box -->
 

@@ -22,14 +22,26 @@ class MachineServicesCalendar extends Admin_Controller
         //sp for today jobs
         $date = date('Y-m-d');
 
+        // $sql = "
+        //         SELECT sp.*, SUM(msei.qty) as total_rec
+        //         FROM spare_parts sp
+        //         LEFT JOIN machine_service_estimated_items msei on sp.id = msei.spare_part_id
+        //         LEFT JOIN machine_services ms ON msei.machine_service_id = ms.id
+        //         WHERE ms.service_date_from <= '$date' OR ms.service_date_to >= '$date'
+        //         AND ms.is_deleted = 0
+        //         GROUP BY msei.spare_part_id
+        // ";
         $sql = "
-                SELECT sp.*, SUM(msei.qty) as total_rec
-                FROM spare_parts sp
-                LEFT JOIN machine_service_estimated_items msei on sp.id = msei.spare_part_id
-                LEFT JOIN machine_services ms ON msei.machine_service_id = ms.id
-                WHERE ms.service_date_from <= '$date' OR ms.service_date_to >= '$date'
-                AND ms.is_deleted = 0
-                GROUP BY msei.spare_part_id
+        SELECT sp.*, SUM(msei.qty) AS total_rec
+        FROM spare_parts sp
+        LEFT JOIN machine_service_estimated_items msei ON sp.id = msei.spare_part_id
+        LEFT JOIN machine_services ms ON msei.machine_service_id = ms.id
+        WHERE (
+            ms.service_date_from <= '$date' AND 
+            ms.service_date_to >= '$date'
+        ) AND ms.is_deleted = 0
+         AND sp.is_deleted = 0
+        GROUP BY sp.id
         ";
 
         $query = $this->db->query($sql);
@@ -308,23 +320,23 @@ class MachineServicesCalendar extends Admin_Controller
 
         $this->db->select('*');
         $this->db->from('employees');
-        $this->db->where('factory_id', $user_factory);
-        $this->db->like('name_with_initial', $term, 'both');
+        // $this->db->where('factory_id', $user_factory);
+        $this->db->like('emp_name_with_initial', $term, 'both');
         $query = $this->db->get();
         $this->db->limit($resultCount, $offset);
         $departments = $query->result_array();
 
         $this->db->select('*');
         $this->db->from('employees');
-        $this->db->where('factory_id', $user_factory);
-        $this->db->like('name_with_initial', $term, 'both');
+        // $this->db->where('factory_id', $user_factory);
+        $this->db->like('emp_name_with_initial', $term, 'both');
         $count = $this->db->count_all_results();
 
         $data = array();
         foreach ($departments as $v) {
             $data[] = array(
                 'id' => $v['id'],
-                'text' => $v['name_with_initial']
+                'text' => $v['emp_name_with_initial']
             );
         }
 

@@ -14,7 +14,7 @@ class Model_machine_repairs_employee extends CI_Model
         $date_to = $data['date_to'];
 
             $sql = "SELECT msd.*,  
-                e.name_with_initial as employee_name,
+                e.emp_name_with_initial as employee_name,
                 e.id as employee_id,
                 COUNT(msd.id) as repair_count
                 FROM employees e 

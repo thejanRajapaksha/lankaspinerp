@@ -150,7 +150,7 @@ class MachineDashboard extends Admin_Controller
 
         $machine_type_id = $this->input->post('id');
 
-        //machine_ins not in machine_allocation_current
+       // machine_ins not in machine_allocation_current
         $this->db->select('COUNT(machine_ins.id) AS total_count');
         $this->db->from('machine_ins');
         $this->db->where('machine_type_id', $machine_type_id);
@@ -173,13 +173,12 @@ class MachineDashboard extends Admin_Controller
         $repairing_machines = $result['total_count'];
 
         //machine_ins in machine_allocation_current
-        $this->db->select('machine_ins.*, machine_allocation_current.allocated_date, slots.name as slot_name, mlinelist.line_name as line_name, sections.name as section_name, departments.name as department_name, mbranchlist.br_name as factory_name');
+        $this->db->select('machine_ins.*, machine_allocation_current.allocated_date, slots.name as slot_name, mlinelist.line_name as line_name, sections.name as section_name, departments.name as department_name');
         $this->db->from('machine_allocation_current');
         $this->db->join('slots', 'slots.id = machine_allocation_current.slot_id', 'left');
         $this->db->join('mlinelist', 'mlinelist.id = slots.line', 'left');
         $this->db->join('sections', 'sections.id = mlinelist.section', 'left');
         $this->db->join('departments', 'departments.id = sections.department', 'left');
-        $this->db->join('mbranchlist', 'mbranchlist.id = departments.factory_id', 'left');
         $this->db->join('machine_ins', 'machine_ins.id = machine_allocation_current.machine_in_id');
         $this->db->where('machine_ins.machine_type_id', $machine_type_id);
         $this->db->where('machine_ins.is_deleted', 0);
@@ -206,14 +205,12 @@ class MachineDashboard extends Admin_Controller
         $this->db->select('machine_ins.*,
                            mt.name as machine_type_name,
                            mm.name as machine_model_name,
-                           it.name as in_type_name,
-                           f.br_name as factory_name');
+                           it.name as in_type_name');
 
         $this->db->from('machine_ins');
         $this->db->join('machine_types mt', 'machine_ins.machine_type_id = mt.id');
         $this->db->join('machine_models mm', 'machine_ins.machine_model_id = mm.id');
         $this->db->join('in_types it', 'machine_ins.in_type_id = it.id');
-        $this->db->join('mbranchlist f', 'machine_ins.factory_id = f.id');
         $this->db->where('machine_ins.is_deleted', 0);
         $this->db->where('machine_ins.machine_type_id', $machine_type_id);
         $this->db->where('machine_ins.id NOT IN (SELECT machine_in_id FROM machine_allocation_current)');
@@ -232,30 +229,25 @@ class MachineDashboard extends Admin_Controller
         }
 
         $machine_type_id = $this->input->post('machine_type_id');
-
         $this->db->select('machine_ins.*,
-                           mt.name as machine_type_name,
-                           mm.name as machine_model_name,
-                           it.name as in_type_name,
-                           f.br_name as factory_name,
-                           machine_repairs.repair_in_date
-                           ');
-
+                                mt.name as machine_type_name,
+                                mm.name as machine_model_name,
+                                it.name as in_type_name,
+                                machine_repairs.repair_in_date
+                                ');
         $this->db->from('machine_repairs');
         $this->db->join('machine_ins', 'machine_ins.id = machine_repairs.machine_in_id');
         $this->db->join('machine_types mt', 'machine_ins.machine_type_id = mt.id');
         $this->db->join('machine_models mm', 'machine_ins.machine_model_id = mm.id');
         $this->db->join('in_types it', 'machine_ins.in_type_id = it.id');
-        $this->db->join('mbranchlist f', 'machine_ins.factory_id = f.id');
-        $this->db->where('machine_ins.is_deleted', 0);
         $this->db->where('machine_ins.machine_type_id', $machine_type_id);
         $this->db->where('machine_repairs.is_deleted', 0);
         $this->db->where('machine_ins.is_deleted', 0);
         $this->db->where('machine_repairs.repair_out_date', null);
         $this->db->order_by('machine_ins.id', 'DESC');
+
         $query = $this->db->get();
         $result = $query->result_array();
-
         echo json_encode($result);
 
     }

@@ -16,7 +16,7 @@
 
                 },
                 success:function(response) {
-
+                    machine_type_id
                     var xValues = response.machine_types;
                     var yValues = response.total_counts;
                     var barColors = response.colors;
@@ -114,41 +114,41 @@
 
                     $('.count_div').html(html);
 
-                    let $allocated_machines = response.allocated_machines;
+                    // let $allocated_machines = response.allocated_machines;
 
-                    let html2 = '<h4> Allocated Machines </h4>' +
-                        '<hr>';
-                    html2 += '<div class="table-responsive">' +
-                            '<table class="table table-striped table-bordered table-hover table-sm">' +
-                            '<thead>' +
-                                '<tr>' +
-                                    '<th>Serial No</th>' +
-                                    '<th>Allocated Date</th>' +
-                                    '<th>Slot</th>' +
-                                    '<th>Line</th>' +
-                                    '<th>Section</th>' +
-                                    '<th>Department</th>' +
-                                    '<th>Factory</th>' +
-                                '</tr>' +
-                            '</thead>' +
-                            '<tbody>';
-                    $.each($allocated_machines, function(key, value){
-                        html2 += '<tr>' +
-                            '<td>' + value.s_no + '</td>' +
-                            '<td>' + value.allocated_date + '</td>' +
-                            '<td>' + value.slot_name + '</td>' +
-                            '<td>' + value.line_name + '</td>' +
-                            '<td>' + value.section_name + '</td>' +
-                            '<td>' + value.department_name + '</td>' +
-                            '<td>' + value.factory_name + '</td>' +
-                        '</tr>';
-                    });
+                    // let html2 = '<h4> Allocated Machines </h4>' +
+                    //     '<hr>';
+                    // html2 += '<div class="table-responsive">' +
+                    //         '<table class="table table-striped table-bordered table-hover table-sm">' +
+                    //         '<thead>' +
+                    //             '<tr>' +
+                    //                 '<th>Serial No</th>' +
+                    //                 '<th>Allocated Date</th>' +
+                    //                 '<th>Slot</th>' +
+                    //                 '<th>Line</th>' +
+                    //                 '<th>Section</th>' +
+                    //                 '<th>Department</th>' +
+                    //                 '<th>Factory</th>' +
+                    //             '</tr>' +
+                    //         '</thead>' +
+                    //         '<tbody>';
+                    // $.each($allocated_machines, function(key, value){
+                    //     html2 += '<tr>' +
+                    //         '<td>' + value.s_no + '</td>' +
+                    //         '<td>' + value.allocated_date + '</td>' +
+                    //         '<td>' + value.slot_name + '</td>' +
+                    //         '<td>' + value.line_name + '</td>' +
+                    //         '<td>' + value.section_name + '</td>' +
+                    //         '<td>' + value.department_name + '</td>' +
+                    //         '<td>' + value.factory_name + '</td>' +
+                    //     '</tr>';
+                    // });
 
-                    html2 += '</tbody>' +
-                            '</table>' +
-                            '</div>';
+                    // html2 += '</tbody>' +
+                    //         '</table>' +
+                    //         '</div>';
 
-                    $('.allocated_machines_div').html(html2);
+                    // $('.allocated_machines_div').html(html2);
 
                 },
                 error:function(response) {
@@ -183,7 +183,7 @@
                                 '<th>In Type</th>' +
                                 '<th>Next Service Date</th>' +
                                 '<th>Origin Date</th>' +
-                                '<th>Factory</th>' +
+                                // '<th>Factory</th>' +
                             '</tr>' +
                         '</thead>' +
                         '<tbody>';
@@ -191,6 +191,7 @@
                     let machine_type_name = '';
 
                     $.each(response, function(key, value){
+                        // console.log(value);
                         machine_type_name = value.machine_type_name;
                         html += '<tr>' +
                             '<td>' + value.s_no + '</td>' +
@@ -200,7 +201,7 @@
                             '<td>' + value.in_type_name + '</td>' +
                             '<td>' + value.next_service_date + '</td>' +
                             '<td>' + value.origin_date + '</td>' +
-                            '<td>' + value.factory_name + '</td>' +
+                            // '<td>' + value.factory_name + '</td>' +
                         '</tr>';
                     });
 
@@ -246,7 +247,7 @@
                         '<th>In Type</th>' +
                         '<th>Next Service Date</th>' +
                         '<th>Origin Date</th>' +
-                        '<th>Factory</th>' +
+                        // '<th>Factory</th>' +
                         '<th>Repair In Date</th>' +
                         '</tr>' +
                         '</thead>' +
@@ -255,6 +256,7 @@
                     let machine_type_name = '';
 
                     $.each(response, function(key, value){
+                        // console.log("Machine", value);
                         machine_type_name = value.machine_type_name;
                         html += '<tr>' +
                             '<td>' + value.s_no + '</td>' +
@@ -264,7 +266,7 @@
                             '<td>' + value.in_type_name + '</td>' +
                             '<td>' + value.next_service_date + '</td>' +
                             '<td>' + value.origin_date + '</td>' +
-                            '<td>' + value.factory_name + '</td>' +
+                            // '<td>' + value.factory_name + '</td>' +
                             '<td>' + value.repair_in_date + '</td>' +
                             '</tr>';
                     });

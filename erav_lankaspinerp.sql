@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2025 at 07:23 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Apr 07, 2025 at 08:49 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `erav_grptechspase`
+-- Database: `erav_lankaspinerp`
 --
 
 -- --------------------------------------------------------
@@ -220,6 +220,288 @@ CREATE TABLE `csvlog` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `employees`
+--
+
+CREATE TABLE `employees` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `emp_id` int(11) NOT NULL,
+  `emp_fp_id` int(11) NOT NULL,
+  `emp_etfno` varchar(255) NOT NULL,
+  `service_no` varchar(150) NOT NULL,
+  `emp_etfno_a` int(11) NOT NULL,
+  `is_resigned` int(11) NOT NULL,
+  `emp_name_with_initial` varchar(255) NOT NULL,
+  `calling_name` varchar(255) NOT NULL,
+  `emp_first_name` varchar(255) NOT NULL,
+  `emp_med_name` varchar(255) DEFAULT NULL,
+  `emp_last_name` varchar(255) NOT NULL,
+  `emp_fullname` varchar(450) NOT NULL,
+  `emp_nick_name` varchar(255) DEFAULT NULL,
+  `emp_status` varchar(255) NOT NULL,
+  `emp_birthday` date DEFAULT NULL,
+  `emp_gender` varchar(255) DEFAULT NULL,
+  `emp_marital_status` varchar(255) DEFAULT NULL,
+  `emp_nationality` varchar(255) DEFAULT NULL,
+  `emp_salary_grade` varchar(255) DEFAULT NULL,
+  `emp_join_date` date DEFAULT NULL,
+  `emp_permanent_date` varchar(255) NOT NULL,
+  `emp_assign_date` varchar(255) NOT NULL,
+  `tp1` varchar(45) DEFAULT NULL,
+  `tp2` varchar(45) DEFAULT NULL,
+  `emp_address` varchar(255) DEFAULT NULL,
+  `emp_address_2` varchar(255) DEFAULT NULL,
+  `emp_addressT1` varchar(255) NOT NULL,
+  `emp_address_T2` varchar(255) NOT NULL,
+  `emp_national_id` varchar(255) DEFAULT NULL,
+  `emp_con_mobile` varchar(255) DEFAULT NULL,
+  `emp_work_telephone` varchar(255) DEFAULT NULL,
+  `emp_mobile` varchar(255) DEFAULT NULL,
+  `emp_department` int(5) DEFAULT NULL,
+  `no_of_casual_leaves` decimal(10,1) NOT NULL,
+  `no_of_annual_leaves` decimal(10,1) NOT NULL,
+  `emp_drive_license` varchar(255) DEFAULT NULL,
+  `emp_license_expire_date` varchar(255) DEFAULT NULL,
+  `emp_work_phone_no` varchar(255) DEFAULT NULL,
+  `emp_email` varchar(255) DEFAULT NULL,
+  `emp_other_email` varchar(255) DEFAULT NULL,
+  `emp_home_no` varchar(255) DEFAULT NULL,
+  `emp_location` varchar(255) DEFAULT NULL,
+  `emp_shift` varchar(255) NOT NULL,
+  `emp_city` varchar(255) DEFAULT NULL,
+  `emp_province` varchar(255) DEFAULT NULL,
+  `emp_country` varchar(255) DEFAULT NULL,
+  `emp_postal_code` varchar(255) DEFAULT NULL,
+  `emp_job_code` varchar(255) DEFAULT NULL,
+  `emp_company` varchar(255) DEFAULT NULL,
+  `emergency_contact_person` varchar(200) DEFAULT NULL,
+  `emergency_contact_tp` varchar(15) DEFAULT NULL,
+  `deleted` int(11) NOT NULL,
+  `modified_user_id` varchar(255) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `factory_id` int(11) DEFAULT NULL,
+  `job_category_id` int(11) DEFAULT NULL,
+  `work_category_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`id`, `emp_id`, `emp_fp_id`, `emp_etfno`, `service_no`, `emp_etfno_a`, `is_resigned`, `emp_name_with_initial`, `calling_name`, `emp_first_name`, `emp_med_name`, `emp_last_name`, `emp_fullname`, `emp_nick_name`, `emp_status`, `emp_birthday`, `emp_gender`, `emp_marital_status`, `emp_nationality`, `emp_salary_grade`, `emp_join_date`, `emp_permanent_date`, `emp_assign_date`, `tp1`, `tp2`, `emp_address`, `emp_address_2`, `emp_addressT1`, `emp_address_T2`, `emp_national_id`, `emp_con_mobile`, `emp_work_telephone`, `emp_mobile`, `emp_department`, `no_of_casual_leaves`, `no_of_annual_leaves`, `emp_drive_license`, `emp_license_expire_date`, `emp_work_phone_no`, `emp_email`, `emp_other_email`, `emp_home_no`, `emp_location`, `emp_shift`, `emp_city`, `emp_province`, `emp_country`, `emp_postal_code`, `emp_job_code`, `emp_company`, `emergency_contact_person`, `emergency_contact_tp`, `deleted`, `modified_user_id`, `created_by`, `created_at`, `updated_at`, `factory_id`, `job_category_id`, `work_category_id`) VALUES
+(1, 123, 0, '123', '', 0, 0, 'TEst', 'Test', 'TEst', 'teST', 'teST', 'Test Employee', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234567890', NULL, NULL, NULL, '', '', '123456789v', NULL, NULL, '1234567890', 8, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-04-02 03:58:27', '2024-04-02 03:58:27', NULL, NULL, NULL),
+(2, 88, 0, '88', '', 0, 0, 'P S Herath', 'Sunethra', 'Piyadasage', 'Sunethra', 'Herath', 'P Sunethra Herath', NULL, '1', '1973-10-20', 'Female', 'Married', 'Srilankan', NULL, '2008-06-23', '', '', '0765674216', NULL, '72,Kondom, Premarathra Road, Liyanagemulla, Seeduwa', NULL, '', '', '737942708V', NULL, '0112260060', '0765674216', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-04-14 22:47:40', '2024-04-15 00:48:47', NULL, 4, NULL),
+(3, 149, 0, '149', '', 0, 0, 'B Swarnathilaka Perera', 'Swarna', 'Biyanwilage', 'Swarnathilaka', 'Perera', 'Biyanwilage Swarnathilaka Perera', NULL, '1', '1960-11-25', 'Female', 'Married', 'Srilankan', NULL, '2010-09-07', '', '', '762631006', NULL, '185/C1,Samagi Mawatha, Kotugoda', NULL, '', '', '608303987V', NULL, '0112260060', '762631006', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-04-14 23:08:32', '2024-04-15 01:08:06', NULL, 4, NULL),
+(4, 167, 0, '167', '', 0, 0, 'W M N Damayanthi Weerasingha', 'Nayana', 'Nayana', 'Damayanthi', 'Weerasingha', 'Nayana Damayanthi  Weerasingha', NULL, '1', '1979-02-22', 'Female', 'Married', 'Srilankan', NULL, '2011-10-06', '', '', '776224194', NULL, '23/11/1, Pallawewa aadi, Ambalama', 'no.30, Policiya Pitipasa, Hingurangala', '', '', '795534180V', NULL, '0112260060', '776224194', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-04-15 00:13:26', '2024-08-26 01:28:13', NULL, 4, NULL),
+(5, 178, 0, '178', '', 0, 0, 'S Chandramalar', 'malar', 'Sonaiah', 'Chandra', 'malar', 'Sonaiah Chadramalar', NULL, '1', '1984-03-05', 'Female', 'Unmarried', 'Srilankan', NULL, '2011-12-05', '', '', '763115673', NULL, 'Ruwanella estate,Ruwanwella', NULL, '', '', '845653038V', NULL, '0112260060', '763115673', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-04-15 01:23:36', '2024-04-15 01:24:33', NULL, 4, NULL),
+(6, 191, 0, '191', '', 0, 0, 'N Kusuma Fernando', 'kusuma', 'Nangalage', 'Kusuma', 'Fernando', 'Nangalage Kusuma Fernando', NULL, '1', '1958-04-13', 'Female', 'Married', 'Srilankan', NULL, '2012-05-11', '', '', '779477350', NULL, '445/5, Kandha Mawatha, kurana, Katunayaka', NULL, '', '', '586041681V', NULL, '0112260060', '779477350', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-04-15 03:37:18', '2024-04-15 03:40:30', NULL, 4, NULL),
+(7, 215, 0, '215', '', 0, 0, 'K P J Silva', 'Pearly', 'Kovilage', 'Pearly Jayalath', 'Silva', 'Kovilage Pearly Jayalath Silva', NULL, '1', '1959-02-17', 'Female', 'Married', 'Srilankan', NULL, '2012-10-11', '', '', '764047690', NULL, '222/5, Mukalangamuwa South, Seeduwa', NULL, '', '', '595483050V', NULL, '0112260060', '764047690', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-04-15 03:48:43', '2024-04-15 03:49:42', NULL, 4, NULL),
+(8, 328, 0, '328', '', 0, 0, 'B M Irangani', 'Irangani', 'Balasuriya', 'Mudiyansalage Irangani', 'Jayarathna', 'Balasuriya Mudiyansalage Irangani Jayarathna', NULL, '1', '1961-09-29', 'Female', 'Married', 'Srilankan', NULL, '2014-03-12', '', '', '773464132', NULL, '72/A, Nadagamuwa, Kotugoda', NULL, '', '', '617730774V', NULL, '0112260060', '773464132', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-04-15 03:57:15', '2024-04-15 03:58:10', NULL, 4, NULL),
+(9, 568, 0, '568', '', 0, 0, 'S M Malani', 'Kumari', 'Samaranayake', 'Mudiyansalage', 'Malani', 'Samaranayake Mudiyansalage Malani', NULL, '1', '1975-04-06', 'Female', 'Married', 'Srilankan', NULL, '2017-01-19', '', '', '771035359', NULL, 'R.P.801,14 Mawatha Rajapaksha pura, Seeduwa', NULL, '', '', '757973688V', NULL, '0112260060', '771035359', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-04-15 04:02:01', '2024-04-15 04:03:30', NULL, 4, NULL),
+(10, 547, 0, '547', '', 0, 0, 'J A D Sandiya', 'Sandiya', 'Jayakodi Arachige', 'Dhon', 'Sandiya', 'Jayakodi Arachige Dhon Sandiya', NULL, '1', '1962-04-17', 'Female', 'Married', 'Srilankan', NULL, '2016-11-01', '', '', '778301330', NULL, '61, Aangampitiya East, Waikkala', NULL, '', '', '626082785V', NULL, '0112260060', '778301330', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-04-15 04:18:39', '2024-04-17 04:28:13', NULL, 4, NULL),
+(11, 577, 0, '577', '', 0, 0, 'W D Gishan Lakmal', 'Lakmal', 'Walimulidewage', 'Gishan Lakmal', 'Fernando', 'Walimulidewage Gishan Lakmal', NULL, '1', '1990-10-28', 'Male', 'Married', 'Srilankan', NULL, '2017-02-22', '', '', '771796605', NULL, '37/05 Yatiyan, Minuwangoda', NULL, '', '', '903023414V', NULL, '0112260060', '771796605', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '50', '1', NULL, NULL, 0, NULL, NULL, '2024-04-17 01:00:59', '2024-04-17 01:10:46', NULL, 4, NULL),
+(12, 520, 0, '520', '', 0, 0, 'Y Dinesh', 'Dinesh', 'Yogarathnam', 'Dinesh', 'Dinesh', 'Yogarathnam Dinesh', NULL, '1', '1996-04-02', 'Male', 'Unmarried', 'Srilankan', NULL, '2016-07-22', '', '', '778096735', NULL, 'Rook Wood Estate, Hewhate.', NULL, '', '', '960934172V', NULL, '0112260060', '778096735', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '60', '1', NULL, NULL, 0, NULL, NULL, '2024-04-17 01:15:36', '2024-10-01 09:42:28', NULL, 4, NULL),
+(13, 598, 0, '598', '', 0, 0, 'S K Alexander', 'Rajah', 'S', 'K', 'Raja', 'S K Alexander', NULL, '1', '1964-12-25', 'Male', 'Married', 'Srilankan', NULL, '2017-07-01', '', '', '123456789', NULL, 'Rawanagoda, Akaramalai', NULL, '', '', 'n/a', NULL, '0112260060', '123456789', 13, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-04-17 23:41:11', '2024-04-17 23:42:17', NULL, 4, NULL),
+(14, 654, 0, '654', '', 0, 0, 'M K A Mukthadeer', 'Abdul', 'Mohamed', 'Kaleel abdul', 'Mukthadeer', 'Mohamed Kaleel Abdul Mukthadeer', NULL, '1', '1972-06-29', 'Male', 'Select', 'Select', NULL, '2001-01-20', '', '', '767996599', NULL, '293,Hijra Mawatha, Old Town, Madampe', NULL, '', '', '19721810105', NULL, '0112260060', '767996599', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-04-17 23:50:32', '2024-08-30 04:57:03', NULL, 4, NULL),
+(15, 667, 0, '667', '', 0, 0, 'P Vimalakumaran', 'Vimal', 'Paramanathan', 'Vimalakumaran', 'Vimalakumaran', 'Paramanathan Vimalakumaran', NULL, '1', '1970-03-07', 'Male', 'Married', 'Srilankan', NULL, '2018-03-19', '', '', '123456789', NULL, 'Nelukulam, Vavuniya', NULL, '', '', '700670139V', NULL, '0112260060', '123456789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '48', '1', NULL, NULL, 0, NULL, NULL, '2024-04-17 23:55:12', '2024-04-17 23:56:20', NULL, 4, NULL),
+(16, 685, 0, '685', '', 0, 0, 'D M Somawathi', 'Somawathi', 'Dondasekara', 'Mudiyansalage', 'Somawathi', 'Dondasekara Mudiyansalage Somawathi', NULL, '1', '1977-09-02', 'Female', 'Married', 'Srilankan', NULL, '2018-06-02', '', '', '704246927', NULL, '01 Division, Rukwood Estate, Hewaheta', NULL, '', '', '197774603934', NULL, '0112260060', '704246927', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 00:46:35', '2024-04-18 00:48:35', NULL, 4, NULL),
+(17, 728, 0, '728', '', 0, 0, 'A Magalechumi', 'lechumi', 'Alagan', 'Magalechumi', 'Magalechumi', 'Alagan Magalechumi', NULL, '1', '1966-07-20', 'Female', 'Married', 'Srilankan', NULL, '2018-09-19', '', '', '113121222', NULL, 'Anhol Section, Mahakanda Estate, Poonagala', NULL, '', '', '667023459V', NULL, '0112260060', '113121222', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 00:52:55', '2024-04-18 02:27:17', NULL, 4, NULL),
+(18, 773, 0, '773', '', 0, 0, 'B Balendiran', 'bala', 'Balakrishnan', 'Balendiran', 'Bala', 'Balakrishnan Balendiran', NULL, '1', '1988-07-29', 'Male', 'Married', 'Srilankan', NULL, '2018-11-26', '', '', '767781545', NULL, '47/11A,Wington Estate, Lower Division, Haidry, Rozzalla', NULL, '', '', '198821110020', NULL, '0112260060', '767781545', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 01:24:40', '2024-04-18 02:25:46', NULL, 4, NULL),
+(19, 1264, 0, '1264', '', 0, 0, 'T G J Hemalatha', 'janaki', 'Telkara Gedara', 'Janaki', 'Hemalatha', 'Telkara Gedara Janaki Hemalatha', NULL, '1', '1960-08-26', 'Female', 'Married', 'Srilankan', NULL, '2019-01-09', '', '', '743360982', NULL, '446/2/B,St.Sebastiyan Mawatha, Katunayaka', NULL, '', '', '196073910048', NULL, '0112260060', '743360982', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 02:30:39', '2024-12-31 00:38:13', NULL, 4, NULL),
+(20, 795, 0, '795', '', 0, 0, 'A P Swarnalatha', 'Paranawithana', 'Ahagama', 'Paranawithanage', 'Swarnalatha', 'Ahagama Paranawithanage Swarnalatha', NULL, '1', '1963-08-13', 'Female', 'Married', 'Srilankan', NULL, '2019-01-18', '', '', '725831712', NULL, 'Liyanagemulla, seeduwa', NULL, '', '', '637262491V', NULL, '0112260060', '725831712', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 03:06:46', '2024-10-16 04:39:07', NULL, 4, NULL),
+(21, 797, 0, '797', '', 0, 0, 'H.M.Nandawathi', 'Nandawathi', 'Herath', 'Mudiyansalage', 'Nandawathi', 'Herath Mudiyansalage Nandawathi', NULL, '1', '1961-12-21', 'Female', 'Married', 'Srilankan', NULL, '2019-02-11', '', '', '727257417', NULL, 'School House, Yalagamuwa', NULL, '', '', '618562964V', NULL, '0112260060', '727257417', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 03:54:40', '2024-04-18 03:57:25', NULL, 4, NULL),
+(22, 1228, 0, '1228', '', 0, 0, 'R Nadeesh', 'Nadeesh', 'Rengaraj', 'Nadeesh', 'Nadeesh', 'Rengaraj Nadeesh', NULL, '1', '2000-01-30', 'Male', 'Married', 'Srilankan', NULL, '2019-03-05', '', '', '741188140', NULL, 'Muruganthenna Estate, Norton Bridge', NULL, '', '', '200003002324', NULL, '0112260060', '741188140', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 04:03:19', '2024-10-30 00:11:04', NULL, 4, NULL),
+(23, 832, 0, '832', '', 0, 0, 'J A K Jayasinghe', 'Jayasinghe', 'Jayasinghe Arachilage', 'Karunawathi', 'Jayasinghe', 'Jayasinghe Arachilage Karunawathi Jayasinghe', NULL, '1', '1966-01-19', 'Female', 'Married', 'Srilankan', NULL, '2019-05-16', '', '', '711420730', NULL, '128, Uthanvida, Melsiripura', NULL, '', '', '665192296V', NULL, '0112260060', '711420730', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 1, NULL, NULL, '2024-04-18 04:08:42', '2024-04-18 04:10:08', NULL, 4, NULL),
+(24, 848, 0, '848', '', 0, 0, 'B Karunawathi', 'Karunawathi', 'B', 'Karunawathi', 'karunawathi', 'B Karunawathi', NULL, '1', '1969-01-15', 'Female', 'Married', 'Srilankan', NULL, '2019-07-15', '', '', '743867569', NULL, NULL, NULL, '', '', '695153619V', NULL, '0112260060', '743867569', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 04:16:35', '2024-04-18 04:17:09', NULL, 4, NULL),
+(25, 863, 0, '863', '', 0, 0, 'W Ranjani', 'Ranjani', 'Wallayya', 'Ranjanie', 'Ranjani', 'Wallayya Ranjani', NULL, '1', '1969-03-11', 'Female', 'Married', 'Srilankan', NULL, '2019-07-18', '', '', '778122667', NULL, '59, Station Road, Seeduwa', NULL, '', '', '196957103169', NULL, '0112260060', '778122667', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 04:20:02', '2024-04-18 04:21:07', NULL, 4, NULL),
+(26, 865, 0, '865', '', 0, 0, 'H Ruparanjani', 'Ruparanjani', 'Hendalandya', 'Ruparanjani', 'Ruparanjani', 'Hendalandya Ruparanjani', NULL, '1', '1953-05-20', 'Female', 'Married', 'Srilankan', NULL, '2019-09-01', '', '', '765375937', NULL, '176/1, Udammita, JA-ELA', NULL, '', '', '536351388V', NULL, '0112260060', '765375937', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 04:23:45', '2024-04-18 04:24:39', NULL, 4, NULL),
+(27, 870, 0, '870', '', 0, 0, 'T Ramesh kumar', 'Ramesh kumar', 'Thangavel', 'Rameshkumar', 'Rameshkumar', 'Thangavel Rameshkumar', NULL, '1', '1983-04-27', 'Male', 'Married', 'Srilankan', NULL, '2019-09-03', '', '', '123456789', NULL, 'Eonwil, Rattota', NULL, '', '', '831182580V', NULL, '0112260060', '123456789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 04:27:17', '2024-04-18 04:28:22', NULL, 4, NULL),
+(28, 1303, 0, '1303', '', 0, 0, 'M A D Ilanga Mangalika', 'Ilanga Mangalika', 'Welalawa Arachige', 'Don Ilanga', 'Mangalika', 'Welalawa Arachige Don Ilanga Mangalika', NULL, '1', '1969-09-29', 'Female', 'Married', 'Srilankan', NULL, '2019-10-15', '', '', '755159457', NULL, '222/2, Mukalangamuwa south, seeduwa', NULL, '', '', '697732268V', NULL, '0112260060', '755159457', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 04:32:22', '2025-02-23 22:14:22', NULL, 4, NULL),
+(29, 880, 0, '880', '', 0, 0, 'D A Karunathilaka', 'Karunathilaka', 'Disanayaka', 'Achchillage', 'karunathilaka', 'Disanayaka Achchilage Karunathilaka', NULL, '1', '1957-12-28', 'Male', 'Married', 'Srilankan', NULL, '2019-11-19', '', '', '123456789', NULL, '494/7, Mukalangamuwa, Seeduwa', NULL, '', '', '573631978V', NULL, '0112260060', '123456789', 13, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 04:38:37', '2024-04-18 04:40:29', NULL, 4, NULL),
+(30, 888, 0, '888', '', 0, 0, 'H A S Jayasinghe', 'H A S Jayasinghe', 'Hewa Adepitiyage', 'Sunil', 'Jayasinghe', 'Hewa Adepitiyage Sunil Jayasinghe', NULL, '1', '1955-12-21', 'Male', 'Married', 'Srilankan', NULL, '2019-08-01', '', '', '0114554556', NULL, 'R.P.537, Ecolanis Road, Rajapakshapura, Bandarawatha, seeduwa', NULL, '', '', '553563755V', NULL, '0112260060', '0716587255', 7, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 04:45:06', '2024-04-18 04:47:43', NULL, 4, NULL),
+(31, 892, 0, '892', '', 0, 0, 'R N Lakshmi Silva', 'Lakshmi Silva', 'Ranmuni', 'Nirupa', 'Lakshmi Silva', 'Ranmuni Nirupa Lakshmi silva', NULL, '1', '1967-05-25', 'Female', 'Married', 'Srilankan', NULL, '2019-12-03', '', '', '764483720', NULL, '111/1, Gama Mada Road, Ambalamulla, seeduwa', NULL, '', '', '196764604484', NULL, '0112260060', '764483720', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 05:12:38', '2024-04-18 05:13:34', NULL, 4, NULL),
+(32, 900, 0, '900', '', 0, 0, 'M B Sathiyaraj', 'Sathiyaraj', 'Manikam', 'Balachandran', 'Sathiyaraj', 'M B Sathiyaraj', NULL, '1', '2001-11-25', 'Male', 'Married', 'Srilankan', NULL, '2020-02-05', '', '', '761211856', NULL, 'Molala, Ratthota,Dhanrantha', NULL, '', '', '200133002729', NULL, '0112260060', '761211856', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 05:15:50', '2024-04-18 05:16:54', NULL, 4, NULL),
+(33, 903, 0, '903', '', 0, 0, 'R I B Sittamma', 'Ratnamala', 'Ratnamala Irugal', 'Bandaralage', 'Sittamma', 'Ratnamala Irugal Bandaralage Sittamma', NULL, '1', '1957-09-20', 'Female', 'Married', 'Srilankan', NULL, '2020-02-01', '', '', '762408970', NULL, '454/A,3, Weliwata, Ratholuwa', NULL, '', '', '195777401212', NULL, '0112260060', '762408970', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-04-18 05:19:50', '2024-04-18 05:20:50', NULL, 4, NULL),
+(34, 915, 0, '915', '', 915, 0, 'C.Manoj kumar', 'Manoj', 'Chandra Mohan', 'Manoj Kumar', 'Manoj Kumar', 'Chandra Mohan Manoj kumar', NULL, '1', '1991-12-30', 'Male', 'Married', 'Srilankan', NULL, '2020-05-04', '', '', '0766614491', NULL, '149, Vijayakatupotha, Chilaw', NULL, '', '', '913651596 V', NULL, '0112260060', '0775423325', 2, '0.0', '0.0', NULL, '14', NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '42', '1', NULL, NULL, 0, NULL, NULL, '2024-05-07 00:30:51', '2024-05-14 04:18:41', NULL, 3, NULL),
+(35, 920, 0, '920', '', 0, 0, 'M Premalatha silva', 'Premalatha', 'Malvahandi', 'Premalatha', 'Silva', 'Malvahandi Premalatha Silva', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12456789', NULL, NULL, NULL, '', '', '636383163V', NULL, '0112260060', '123465789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-05-14 04:26:13', '2024-08-21 01:08:28', NULL, 4, NULL),
+(36, 930, 0, '930', '', 0, 0, 'M F M Arafath', 'Arafath', 'Mohamed', 'F', 'Arafath', 'M F M Arafath', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '200304213265', NULL, '0112260060', '123456789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '50', '1', NULL, NULL, 0, NULL, NULL, '2024-05-14 04:28:42', '2024-10-02 05:01:51', NULL, 4, NULL),
+(37, 936, 0, '936', '', 0, 0, 'A Kumar', 'Kumar', 'A', 'Kumar', 'Kumar', 'A Kumar', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '196934401854', NULL, '0112260060', '123456789', 3, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '8', '1', NULL, NULL, 0, NULL, NULL, '2024-05-14 04:30:33', '2024-05-14 04:30:33', NULL, NULL, NULL),
+(38, 937, 0, '937', '', 0, 0, 'D P Jayarathnam', 'Patrik', 'Dorairaja', 'Patrik', 'Rajaratnam', 'D P Jayarathnam', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '6822418641V', NULL, '0112260060', '123456789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '59', '1', NULL, NULL, 0, NULL, NULL, '2024-05-14 04:34:58', '2024-10-02 05:41:53', NULL, 4, NULL),
+(39, 948, 0, '948', '', 0, 0, 'S Indrani Rosa', 'Indrani', 'S', 'Indrani Rosa', 'Indrani', 'S Indrani Rosa', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '596483542V', NULL, '0112260060', '123456789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-05-14 04:37:18', '2024-08-23 02:29:06', NULL, 4, NULL),
+(40, 965, 0, '965', '', 0, 0, 'S B M Rajakaruna', 'Rajakaruna', 'Subadra', 'Bandaramanike', 'Rajakaruna', 'S B M Rajakaruna', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '688572657V', NULL, NULL, '123456789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-05-14 04:41:25', '2024-08-23 02:29:47', NULL, 4, NULL),
+(41, 1007, 0, '1007', '', 0, 0, 'G Pradeepan', 'Pradeep', 'Ghanasekaran', 'Pradeepan', 'Pradeep', 'G Pradeepan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200014410088', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-05-14 04:56:33', '2024-10-15 22:24:27', NULL, 4, NULL),
+(42, 1037, 0, '1037', '', 0, 0, 'V Kanagaratnam', 'kanagaratnam', 'V', 'Kanagaratnam', 'Kanagaratnam', 'V Kanagaratnam', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '903101393 V', NULL, '0112260060', '12345789', 3, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '8', '1', NULL, NULL, 0, NULL, NULL, '2024-05-14 05:14:08', '2024-09-23 22:23:53', NULL, 4, NULL),
+(43, 1038, 0, '1038', '', 0, 0, 'K H Shameera Prasanna', 'Shameera', 'K H', 'Shameera', 'Prasanna', 'K H Shameera Prasanna', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '199314800456', NULL, '0112260060', '12345789', 6, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '47', '1', NULL, NULL, 0, NULL, NULL, '2024-05-14 05:17:18', '2024-10-02 05:47:37', NULL, 4, NULL),
+(44, 1040, 0, '1040', '', 0, 0, 'M L M L Perera', 'Lorita', 'M L M L', 'Perera', 'Perera', 'M L M L Perera', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '615490423V', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-05-14 22:00:55', '2024-10-02 00:22:39', NULL, 4, NULL),
+(45, 1041, 0, '1041', '', 0, 0, 'S Mahendran', 'Vijay', 'S', 'Mahendran', 'Mahendran', 'S Mahendran', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '200035103896', NULL, '0112260060', '077123478', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '58', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 08:46:30', '2024-10-02 05:18:21', NULL, 4, NULL),
+(46, 1046, 0, '1046', '', 0, 0, 'G Kobinath', 'Gobi', 'G', 'Kobinath', 'Kobinath', 'G Kobinath', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '993600920 V', NULL, '0112260060', '1234789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 08:58:35', '2024-08-23 02:31:11', NULL, 4, NULL),
+(47, 1051, 0, '1051', '', 0, 0, 'G Thivya', 'Thivya', 'Gobalakrishnan', 'Thivya', 'Thivya', 'Gobalakrishnan  Thivya', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '975321045v', NULL, '0112260060', '1234789', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '62', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:05:16', '2024-08-25 07:33:08', NULL, 3, NULL),
+(48, 1058, 0, '1058', '', 0, 0, 'A Niroshan', 'Niroshan', 'A', 'Niroshan', 'Niroshan', 'A Niroshan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '851794778 V', NULL, '0112260060', '1234789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:07:22', '2024-10-02 00:36:56', NULL, 4, NULL),
+(49, 1071, 0, '1071', '', 0, 0, 'G Selvanathan', 'Nadan', 'G', 'Selvanathan', 'Selvanathan', 'G Selvanathan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '762280655V', NULL, '0112260060', '1234789', 3, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '8', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:09:30', '2024-09-23 22:23:41', NULL, 4, NULL),
+(50, 1075, 0, '1075', '', 0, 0, 'N Balendiran', 'Bala', 'N', 'Balendran', 'Balendiran', 'N Balendiran', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '650843134 X', NULL, '0112260060', '1234789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:13:07', '2024-08-23 02:43:47', NULL, 4, NULL),
+(51, 1078, 0, '1078', '', 0, 0, 'S Sridaran', 'Sridar', 'S', 'Sridaran', 'Sridaran', 'S Sridaran', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '860613573V', NULL, '0112260060', '1234789', 13, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:15:19', '2024-08-27 00:59:46', NULL, 5, NULL),
+(52, 1080, 0, '1080', '', 0, 0, 'R Rajeewan', 'Rajeewan', 'R', 'Rajeewan', 'Rajeewan', 'R Rajeewan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '199204602340', NULL, '0112260060', '1234789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:17:00', '2024-07-22 00:47:35', NULL, 4, NULL),
+(53, 1089, 0, '1089', '', 0, 0, 'R Rammyawathi', 'Rammya', 'R P', 'Rammyawathi', 'Rammyawathi', 'R Rammyawathi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '705621128V', NULL, '0112260060', '1234789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:18:33', '2024-08-23 02:42:06', NULL, 4, NULL),
+(54, 1093, 0, '1093', '', 0, 0, 'R Ganesan', 'Ganesan', 'R', 'Ganesan', 'Ganesan', 'R Ganesan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '198730704523', NULL, '0112260060', '1234789', 7, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:21:29', '2024-08-23 02:48:50', NULL, 4, NULL),
+(55, 1094, 0, '1094', '', 0, 0, 'N Ganesan', 'Ganesan', 'N', 'Ganesan', 'Ganesan', 'N Ganesan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '196126600468', NULL, '0112260060', '1234789', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '61', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:23:22', '2024-08-25 07:52:52', NULL, 3, NULL),
+(56, 1098, 0, '1098', '', 0, 0, 'K M Kanthi', 'Kanthi', 'K M', 'Kanthi', 'Kanthi', 'K M Kanthi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '705311129V', NULL, '0112260060', '1234789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:24:58', '2024-08-23 04:49:20', NULL, 4, NULL),
+(57, 1101, 0, '1101', '', 0, 0, 'G Samantha Silva', 'Samantha', 'G', 'Samantha', 'Silva', 'G Samantha Silva', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234789', NULL, NULL, NULL, '', '', '636654094V', NULL, '0112260060', '1234789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-05-27 09:27:07', '2024-08-23 05:03:54', NULL, 4, NULL),
+(58, 1102, 0, '1102', '', 0, 0, 'W Bommi Amma', 'Bommi', 'W', 'Bommi', 'Amma', 'W Bommi Amma', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12347890', NULL, NULL, NULL, '', '', '1234789v', NULL, '0112260060', '12347890', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-06-09 11:26:38', '2024-08-23 05:12:03', NULL, 4, NULL),
+(59, 1111, 0, '1111', '', 0, 0, 'M Chandrani Silva', 'Chandrani', 'M', 'Chandrani', 'Silva', 'M Chandrani Silva', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234567', NULL, NULL, NULL, '', '', '1234789v', NULL, '0112260060', '1234567', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-09 11:48:17', '2024-08-23 05:24:05', NULL, 4, NULL),
+(60, 1112, 0, '1112', '', 0, 0, 'A A G Pathma somalatha', 'pathma', 'A A G', 'Pathma', 'somalatha', 'A A G Pathma Somalatha', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '696032009V', NULL, '0112260060', '123456789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 00:54:28', '2024-08-23 05:34:14', NULL, 4, NULL),
+(61, 1113, 0, '1113', '', 0, 0, 'R G Kamalawathi', 'Kamala', 'R G', 'Kamalawathi', 'kamalawathi', 'R G Kamalawathi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '637821458v', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 00:55:56', '2024-08-27 01:18:59', NULL, 4, NULL),
+(62, 1116, 0, '1116', '', 0, 0, 'A A Rohana', 'Rohana', 'A A', 'Rohana', 'Rohana', 'A A Rohana', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '711670718V', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 01:06:15', '2024-10-02 00:59:06', NULL, 4, NULL),
+(63, 1114, 0, '1114', '', 0, 0, 'G Subashini', 'Suba', 'Gobalakrishnan', 'Subashini', 'Subashini', 'Gobalakrishnan Subashini', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '0776779159', NULL, NULL, NULL, '', '', '985903034 V', NULL, '0112260060', '0775423325', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '5', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 01:07:06', '2024-08-25 08:39:48', NULL, 3, NULL),
+(64, 1117, 0, '1117', '', 0, 0, 'T H Piyal Rohan', 'Piyal Rohan', 'T H', 'Piyal', 'Rohan', 'T H Piyal Rohan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '622740451V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 01:08:32', '2024-10-02 04:36:32', NULL, 4, NULL),
+(65, 1118, 0, '1118', '', 0, 0, 'R Antony', 'Antony', 'R', 'Antony', 'Antony', 'R Antony', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '900832710V', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 01:09:37', '2024-08-24 00:34:16', NULL, 4, NULL),
+(66, 1124, 0, '1124', '', 0, 0, 'S S N Piriyadarshani', 'Piriyadarshani', 'S S N', 'Piriyadarshani', 'Priyadarshani', 'S S N Priyadarshani', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '885492610V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 01:13:39', '2024-08-24 01:37:39', NULL, 4, NULL),
+(67, 1125, 0, '1125', '', 0, 0, 'W C Damayanthi', 'Damayanthi', 'W C', 'Damayanthi', 'Damayanthi', 'W C Damayanthi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '765232163V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 02:53:18', '2024-08-24 01:48:27', NULL, 4, NULL),
+(68, 1302, 0, '1302', '', 0, 0, 'M A M Justin Deroshan', 'Justin', 'M A M', 'Justin', 'Deroshan', 'M A M Justin Deroshan', NULL, '1', NULL, 'Male', 'Married', 'Srilankan', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '872921826V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '48', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 02:55:59', '2025-02-20 05:47:46', NULL, 4, NULL),
+(69, 1128, 0, '1128', '', 0, 0, 'S Kusumawathi Silva', 'Kusuma', 'S', 'Kusumawathi', 'Silva', 'S Kusumawathi Silva', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '586822640V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 02:57:59', '2024-06-11 02:57:59', NULL, NULL, NULL),
+(70, 1131, 0, '1131', '', 0, 0, 'S Gunarathnam', 'Guna', 'S', 'Gunarathnam', 'Gunarathnam', 'S Gunarathnam', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '650592476 V', NULL, '0112260060', '12345789', 3, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '8', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 02:59:23', '2024-09-23 22:23:28', NULL, 4, NULL),
+(71, 1135, 0, '1135', '', 0, 0, 'S Vijayakanth', 'Vijayakanth', 'S', 'Vijayakanth', 'Vijayakanth', 'S Vijayakanth', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '921082169 V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:00:45', '2024-08-24 03:20:30', NULL, 4, NULL),
+(72, 1136, 0, '1136', '', 0, 0, 'S Diluk Sampath', 'Sampath', 'S', 'Diluk Sampath', 'Fernando', 'S Diluk Sampath', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '961013631V', NULL, '0112260060', '12345789', 6, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '47', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:02:29', '2024-06-11 03:02:29', NULL, NULL, NULL),
+(73, 1137, 0, '1137', '', 0, 0, 'L P C Damayanthi', 'Damayanthi', 'L P C', 'Damayanthi', 'Damayanthi', 'L P C Damayanthi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '798324373V', NULL, NULL, '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:04:11', '2024-08-24 03:18:25', NULL, 4, NULL),
+(74, 1143, 0, '1143', '', 0, 0, 'S Saranya', 'Saranya', 'S', 'Saranya', 'Saranya', 'S Saranya', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200650604966', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:06:58', '2024-08-24 03:59:45', NULL, 4, NULL),
+(75, 1149, 0, '1149', '', 0, 0, 'H M Sunethra Herath', 'Herath', 'H M', 'Sunethra', 'Herath', 'H M Sunethra Herath', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '795885536V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:08:21', '2024-08-24 04:56:44', NULL, 4, NULL),
+(76, 1151, 0, '1151', '', 0, 0, 'H Nandawathi Silva', 'Nandawathi', 'H', 'Nandawathi', 'Silva', 'H Nandawathi Silva', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '557643850V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:10:13', '2024-08-24 05:09:57', NULL, 4, NULL),
+(77, 1152, 0, '1152', '', 0, 0, 'M K Sunil Thisera', 'Sunil Thisera', 'M K', 'Sunil', 'Thisera', 'M K Sunil Thisera', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '532250650V', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:12:37', '2024-08-24 05:39:33', NULL, 4, NULL),
+(78, 1157, 0, '1157', '', 0, 0, 'G Malith Chamika', 'Malith', 'G', 'Malth', 'Chamika', 'G Malith Chamika', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200427904614', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:44:04', '2024-08-24 05:54:58', NULL, 4, NULL),
+(79, 1161, 0, '1161', '', 0, 0, 'D V D Sudhath Kumar', 'Sudhath', 'D V D', 'Sudhath', 'Kumar', 'D V D Sudhath Kumar', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '771181104 V', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:45:56', '2024-10-02 03:22:14', NULL, 4, NULL),
+(80, 1166, 0, '1166', '', 0, 0, 'M A Chandrika Manorathna', 'Chandrika', 'M A', 'Chandirika', 'Manorathna', 'M A Chandrika Manorathna', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '806602043V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:48:19', '2024-08-24 06:03:35', NULL, 4, NULL),
+(81, 1167, 0, '1167', '', 0, 0, 'B M L M Basanayaka', 'Lakshan', 'B M L M', 'Basanayaka', 'Basanayaka', 'B M L M Basanayaka', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200229410145', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:50:41', '2024-08-24 06:23:46', NULL, 4, NULL),
+(82, 1168, 0, '1168', '', 0, 0, 'M Udayaraj', 'Udaya', 'M', 'Udayaraj', 'Udaya', 'M Udayaraj', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '931974149V', NULL, '0112260060', '12345789', 3, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '8', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:52:05', '2024-09-27 01:09:29', NULL, 4, NULL),
+(83, 1169, 0, '1169', '', 0, 0, 'C Valiekannu', 'Vasanthi', 'C', 'Valliekannu', 'Vallikannu', 'C Valliekannu', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '196052003582', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:53:49', '2024-08-24 06:53:37', NULL, 4, NULL),
+(84, 1170, 0, '1170', '', 0, 0, 'K Santhikumar', 'Chandru', 'K', 'Santhikumar', 'Santhikumar', 'K Santhi kumar', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', NULL, NULL, NULL, NULL, '', '', '931734288V', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '48', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:55:14', '2024-09-24 04:24:32', NULL, 4, NULL),
+(85, 1172, 0, '1172', '', 0, 0, 'R Sri Vidhya', 'Vidhya', 'R', 'Srividhya', 'Srividhya', 'R Srividya', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '199151301891', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '48', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 03:57:36', '2024-09-30 21:54:25', NULL, 4, NULL),
+(86, 1173, 0, '1173', '', 0, 0, 'M M I S B Manthilaka', 'Manthilaka', 'M M I S B', 'Manthilaka', 'Manthilaka', 'M M I S B Manthilaka', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200409512088', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '59', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:00:01', '2024-08-24 07:36:39', NULL, 4, NULL),
+(87, 1174, 0, '1174', '', 0, 0, 'M G M Rajapaksha', 'Mahinda Rajapaksha', 'M G', 'Mahinda', 'Rajapaksha', 'M G M Rajapaksha', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '199122301453', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:02:00', '2024-08-24 07:35:21', NULL, 4, NULL),
+(88, 1175, 0, '1175', '', 0, 0, 'M M Y Dilrukshi', 'Yamuna', 'M M', 'Yamuna', 'Dilrukshi', 'M M Yamuna Dilrukshi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '796070293 V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:03:56', '2024-08-24 07:49:48', NULL, 4, NULL),
+(89, 1176, 0, '1176', '', 0, 0, 'N S N Kanthi Silva', 'Kanthi', 'N S N', 'Kanthi', 'Silva', 'N S N Kanthi Silva', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '196762504382', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:05:34', '2024-08-24 08:01:26', NULL, 4, NULL),
+(90, 1177, 0, '1177', '', 0, 0, 'S S Wimalawansa', 'Sampath Wimalawansa', 'S', 'Sampath', 'Wimalawansa', 'S S Wimalawansa', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '903494387V', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:07:28', '2024-06-11 04:07:28', NULL, NULL, NULL),
+(91, 1299, 0, '1299', '', 0, 0, 'G Indirawathi', 'Indirawathi', 'G', 'Indirawathi', 'Indirawathi', 'G Indirawathi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '678172260V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:09:37', '2025-01-30 02:54:49', NULL, 4, NULL),
+(92, 1181, 0, '1181', '', 0, 0, 'L Lakshini', 'Lakshini', 'L', 'Lakshini', 'Lakshini', 'L Lakshini', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200557303622', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:12:08', '2024-06-11 04:12:08', NULL, NULL, NULL),
+(93, 1182, 0, '1182', '', 0, 0, 'J K R Malkanthi', 'Malkanthi', 'J K R', 'Malkanthi', 'Malkanthi', 'J K R Malkanthi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '836632192V', NULL, NULL, '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:31:23', '2024-08-24 08:31:40', NULL, 4, NULL),
+(94, 1183, 0, '1183', '', 0, 0, 'N Thanujan', 'Thanujan', 'N', 'Thanujan', 'Thanujan', 'N Thanujan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '199932412899', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:34:32', '2024-08-24 09:58:15', NULL, 4, NULL),
+(95, 1185, 0, '1185', '', 0, 0, 'R Perimbanayaki', 'Perimbanayaki', 'R', 'Perimbanayaki', 'Perimbanayaki', 'R Perimbanayaki', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '896194011v', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:49:45', '2024-06-11 04:49:45', NULL, NULL, NULL),
+(96, 1187, 0, '1187', '', 0, 0, 'A Vignesh', 'Vignesh', 'A', 'Vignesh', 'Vignesh', 'A Vignesh', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '962761011V', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:51:07', '2024-08-24 10:42:36', NULL, 4, NULL),
+(97, 1189, 0, '1189', '', 0, 0, 'P M Pushpamala Perera', 'Pushpamala', 'P M', 'Pushpamala', 'Perera', 'P M Pushpamala Perera', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '735201743V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:56:13', '2024-08-24 23:05:31', NULL, 4, NULL),
+(98, 1190, 0, '1190', '', 0, 0, 'C Dammika Fernando', 'Dammika', 'C', 'Dammika', 'Fernando', 'C Dammika Fernando', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '648173105V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:57:50', '2024-08-24 23:38:47', NULL, 4, NULL),
+(99, 1191, 0, '1191', '', 0, 0, 'P Agila', 'Agila', 'P', 'Agila', 'Agila', 'P Agila', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '955121635V', NULL, '0112260060', '12345789', 7, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '46', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 04:59:18', '2024-10-02 06:04:28', NULL, 4, NULL),
+(100, 1192, 0, '1192', '', 0, 0, 'S Pushpakumar', 'Pushpakumar', 'S', 'Pushpakumar', 'Kumar', 'S Pushpakumar', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '950973269V', NULL, NULL, '12345789', 7, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:08:23', '2024-08-24 22:42:12', NULL, 4, NULL),
+(101, 1193, 0, '1193', '', 0, 0, 'H M Gihan Maduranga', 'Maduranga', 'H M', 'Gihan', 'Maduranga', 'H M Gihan Maduranga', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '981940881V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:10:27', '2024-08-24 22:31:31', NULL, 4, NULL),
+(102, 1194, 0, '1194', '', 0, 0, 'K Hema Malani', 'Hema malani', 'K', 'Hema', 'Malani', 'K Hema Malani', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200263903938', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:21:16', '2024-08-24 22:13:52', NULL, 4, NULL),
+(103, 1195, 0, '1195', '', 0, 0, 'T Dinogen', 'Dinogen', 'T', 'Dinogen', 'Dinogen', 'T Dinogen', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200124103950', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '4', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:22:43', '2024-08-24 23:58:18', NULL, 4, NULL),
+(104, 1197, 0, '1197', '', 0, 0, 'H A D Pupudu Dharshani', 'Darshani', 'H A D', 'Puputhu', 'Dharshani', 'H A D Pupudu Dharshani', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '846282505V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:24:44', '2024-08-25 00:05:18', NULL, 4, NULL);
+INSERT INTO `employees` (`id`, `emp_id`, `emp_fp_id`, `emp_etfno`, `service_no`, `emp_etfno_a`, `is_resigned`, `emp_name_with_initial`, `calling_name`, `emp_first_name`, `emp_med_name`, `emp_last_name`, `emp_fullname`, `emp_nick_name`, `emp_status`, `emp_birthday`, `emp_gender`, `emp_marital_status`, `emp_nationality`, `emp_salary_grade`, `emp_join_date`, `emp_permanent_date`, `emp_assign_date`, `tp1`, `tp2`, `emp_address`, `emp_address_2`, `emp_addressT1`, `emp_address_T2`, `emp_national_id`, `emp_con_mobile`, `emp_work_telephone`, `emp_mobile`, `emp_department`, `no_of_casual_leaves`, `no_of_annual_leaves`, `emp_drive_license`, `emp_license_expire_date`, `emp_work_phone_no`, `emp_email`, `emp_other_email`, `emp_home_no`, `emp_location`, `emp_shift`, `emp_city`, `emp_province`, `emp_country`, `emp_postal_code`, `emp_job_code`, `emp_company`, `emergency_contact_person`, `emergency_contact_tp`, `deleted`, `modified_user_id`, `created_by`, `created_at`, `updated_at`, `factory_id`, `job_category_id`, `work_category_id`) VALUES
+(105, 1198, 0, '1198', '', 0, 0, 'M M Yasoda Dilhani', 'Yasoda Dilhani', 'M M', 'Yasoda Dilhani', 'Dilhani', 'M M Yasoda Dilhani', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200380412791', NULL, NULL, '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:28:57', '2024-08-25 00:08:38', NULL, 4, NULL),
+(106, 1199, 0, '1199', '', 0, 0, 'M G Nilushana Widuranga', 'Nilushana Widuranga', 'M G', 'Nilushana', 'Widuranga', 'M G Nilushana Widuranga', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200108101851', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '4', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:31:47', '2024-08-26 05:43:46', NULL, 4, NULL),
+(107, 1200, 0, '1200', '', 0, 0, 'K Shanmugaraja', 'Shanmugaraja', 'k', 'Shanumugaraja', 'Shanmugaraja', 'K Shanmugaraja', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '197810905834', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:34:06', '2024-08-26 09:25:16', NULL, 4, NULL),
+(108, 1201, 0, '1201', '', 0, 0, 'D M Renuka Perera', 'Renuka Perera', 'D M', 'Renuka', 'Perera', 'D M Renuka Perera', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '736810735 V', NULL, NULL, '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:35:33', '2024-08-24 23:48:16', NULL, 4, NULL),
+(109, 1202, 0, '1202', '', 0, 0, 'S Devirani', 'Devirani', 'S', 'Devirani', 'Devirani', 'S Devirani', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '965434267 V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:41:48', '2024-10-02 02:26:11', NULL, 4, NULL),
+(110, 1203, 0, '1203', '', 0, 0, 'M K Ratnawathi', 'Ratnawathi', 'M K', 'Ratnawathi', 'Ratnawathi', 'M K Ratnawathi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '196068201557', NULL, NULL, '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:43:32', '2024-08-26 09:29:01', NULL, 4, NULL),
+(111, 1204, 0, '1204', '', 0, 0, 'R M Nandini Kumari', 'Nandini Kumari', 'R M', 'Nandini Kumari', 'Nandini Kumari', 'R M Nandini Kumari', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '196680502096', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:45:27', '2024-08-26 10:33:12', NULL, 4, NULL),
+(112, 1207, 0, '1207', '', 0, 0, 'Y Hiroshan', 'Y Hiroshan', 'Y', 'Hiroshan', 'Hiroshan', 'Y Hiroshan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '199914003388', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:47:10', '2024-08-26 23:54:41', NULL, 4, NULL),
+(113, 1209, 0, '1209', '', 0, 0, 'T Thushanthan', 'T Thushanthan', 'T', 'Thushanthan', 'Thushanthan', 'T Thushanthan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200234800706', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 1, NULL, NULL, '2024-06-11 05:49:17', '2024-12-05 05:23:27', NULL, 4, NULL),
+(114, 1210, 0, '1210', '', 0, 0, 'K Shashini', 'Shashini', 'K', 'Shashini', '.Shashini', 'K Shashini', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200357512887', NULL, '0112260060', '12345789', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '46', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:50:37', '2024-08-25 09:17:20', NULL, 3, NULL),
+(115, 1211, 0, '1211', '', 0, 0, 'N Yamuna', 'Yamuna', 'N', 'Yamuna', 'Yamuna', 'N Yamuna', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '995532590V', NULL, '0112260060', '12345789', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '24', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:54:57', '2024-08-25 09:19:45', NULL, 3, NULL),
+(116, 1212, 0, '1212', '', 0, 0, 'S Sathiyanadan', 'Sathiyanadan', 'S', 'Sathiyanadan', 'Sathiyanadan', 'S Sathiyanadan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '199933011402', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:57:32', '2024-08-27 00:02:04', NULL, 4, NULL),
+(117, 1213, 0, '1213', '', 0, 0, 'S Dheniyal Skepar', 'Dheniyal Skepar', 'S', 'Dheniyal Skepar', 'Dheniyal Skepar', 'S Dheniyal Skepar', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200304813110', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-06-11 05:58:58', '2024-08-27 00:17:27', NULL, 4, NULL),
+(118, 1153, 0, '1153', '', 0, 0, 'P Prabhu', 'Prabhu', 'P', 'Prabhu', 'Prabhu', 'P Prabhu', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '1234567899', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 1, NULL, NULL, '2024-06-11 23:13:25', '2025-01-08 03:28:12', NULL, 4, NULL),
+(119, 1180, 0, '1180', '', 0, 0, 'M Mery Snika', 'Mery snika', 'M', 'Mery Snika', 'Mery Snika', 'M Mery Snika', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200170500570', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-06-12 00:42:22', '2024-06-12 00:42:22', NULL, NULL, NULL),
+(120, 1307, 0, '1307', '', 0, 0, 'S Thangaraja', 'S Thangaraja', 'S', 'Thangaraja', 'Thangaraja', 'S Thangaraja', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200021900309', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-12 01:20:27', '2025-02-23 22:21:56', NULL, NULL, NULL),
+(121, 1186, 0, '1186', '', 0, 0, 'M Manonmani', 'Manonmani', 'M', 'Manonmani', 'Manonmani', 'M Manonmani', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '776931470X', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-12 01:30:25', '2024-07-18 01:07:25', NULL, 4, NULL),
+(122, 1196, 0, '1196', '', 0, 0, 'H M A Pushpa kumara Herath', 'Herath', 'H M A', 'Pushpakumara', 'Herath', 'H M A Pushpa kumara Herath', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '811981745V', NULL, '0112260060', '12345789', 7, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-12 04:13:52', '2024-06-12 04:13:52', NULL, NULL, NULL),
+(123, 1205, 0, '1205', '', 0, 0, 'P Sivakumar', 'Sivakumar', 'P', 'Sivakumar', 'Sivakumar', 'P Sivakumar', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200011500826', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-12 05:52:29', '2024-06-12 05:52:29', NULL, NULL, NULL),
+(124, 1206, 0, '1206', '', 0, 0, 'C Danushan', 'Danushan', 'C', 'Danushan', 'Danushan', 'C Danushan', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '12347890', NULL, NULL, NULL, '', '', '1234789v', NULL, '0112260060', '12347890', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-12 09:15:06', '2024-06-12 09:15:06', NULL, NULL, NULL),
+(125, 1208, 0, '1208', '', 0, 0, 'D S Sureshan', 'Sureshan', 'D S', 'Sureshan', 'Sureshan', 'D S Sureshan', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '12347890', NULL, NULL, NULL, '', '', '1234789v', NULL, '0112260060', '12347890', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-06-12 09:18:36', '2024-06-12 09:18:36', NULL, NULL, NULL),
+(126, 1301, 0, '1301', '', 0, 0, 'K P D Anulawathi', 'Anulawathi', 'K P D', 'Anulawathi', 'Anulawathi', 'K P D Anulawathi', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '12347890', NULL, NULL, NULL, '', '', '1234789v', NULL, '0112260060', '12347890', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 1, NULL, NULL, '2024-06-12 09:24:05', '2024-06-12 09:24:05', NULL, NULL, NULL),
+(127, 842, 0, '842', '', 0, 0, 'H R T I Jayasingha', 'Tharindu', 'H R T I', 'Jayasingha', 'Jayasinghe', 'H R T I Jayasingha', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '893050949 V', NULL, '0112260060', '12345789', 6, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '47', '1', NULL, NULL, 0, NULL, NULL, '2024-06-13 23:46:20', '2024-09-27 23:28:09', NULL, 4, NULL),
+(128, 890, 0, '890', '', 0, 0, 'M Manoj Prasath', 'Manoj Prasath', 'M', 'Manoj Prasath', 'Manoj Prasath', 'M Manoj Prasath', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '980713288 V', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '48', '1', NULL, NULL, 0, NULL, NULL, '2024-06-14 01:06:19', '2024-09-28 00:23:14', NULL, 4, NULL),
+(129, 1108, 0, '1108', '', 0, 0, 'M S B Imrani', 'Imrani', 'M S B', 'Imrani', 'Imrani', 'M S B Imrani', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '618325300 V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-06-14 03:56:22', '2024-10-02 05:06:59', NULL, 4, NULL),
+(130, 1171, 0, '1171', '', 0, 0, 'A M Sisira Kumara', 'sisira', 'A M', 'Sisira Kumara', 'Sisira', 'A M Sisira Kumara', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '831002042V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '47', '1', NULL, NULL, 0, NULL, NULL, '2024-06-18 00:49:06', '2024-06-18 00:49:06', NULL, NULL, NULL),
+(131, 1301, 0, '1301', '', 0, 0, 'G Swarna Priya', 'priya', 'G', 'Swarna Priya', 'priya', 'G Swarna Priya', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200164203896', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '48', '1', NULL, NULL, 0, NULL, NULL, '2024-06-18 05:13:57', '2024-10-02 02:58:23', NULL, 4, NULL),
+(132, 1302, 0, '1302', '', 0, 0, 'M Krishanth', 'krishanth', 'M', 'Krishanth', 'Krishanth', 'M Krishanth', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200204403095', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '48', '1', NULL, NULL, 0, NULL, NULL, '2024-06-18 05:15:05', '2024-10-02 02:57:21', NULL, 4, NULL),
+(133, 307, 0, '307', '', 0, 0, 'k Sivakumar', 'Siva', 'k', 'Sivakumar', 'Kumar', 'K Sivakumar', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '0777226005', NULL, NULL, NULL, '', '', '860592460V', NULL, '0112260060', '0777226005', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '43', '1', NULL, NULL, 0, NULL, NULL, '2024-07-31 01:15:48', '2024-08-25 04:34:04', NULL, 3, NULL),
+(134, 623, 0, '623', '', 623, 0, 'G.Ilanjiya', 'Ilanjiya', 'G', 'Ilanjiya', 'Ilanjiya', 'G.Ilanjiya', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '0766607242', NULL, NULL, NULL, '', '', '905901907V', NULL, '0112260060', '0766607242', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '5', '1', NULL, NULL, 0, NULL, NULL, '2024-07-31 01:18:32', '2024-08-25 04:56:12', NULL, 3, NULL),
+(135, 645, 0, '645', '', 0, 0, 'P Vasudevan', 'Vasu', 'P', 'Vasudevan', 'Vasu', 'P Vasudevan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '0775200484', NULL, NULL, NULL, '', '', '743641442V', NULL, '0112260060', '0775200484', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '63', '1', NULL, NULL, 0, NULL, NULL, '2024-07-31 01:25:40', '2024-08-25 05:14:31', NULL, 3, NULL),
+(136, 0, 0, 't1', '', 0, 0, 'M Pradeepkumar', 'Pradeep', 'M Pradeepkumar', 'M Pradeepkumar', 'M Pradeepkumar', 'M Pradeepkumar', NULL, '2', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-08-15 03:03:04', '2024-08-15 03:03:04', NULL, NULL, NULL),
+(137, 800, 0, '800', '', 0, 0, 'S Harini', 'Harini', 'S', 'Harini', 'Harini', 'S Harini', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12347890', NULL, NULL, NULL, '', '', '1234789v', NULL, '0112260060', '12347890', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '46', '1', NULL, NULL, 0, NULL, NULL, '2024-08-25 05:38:53', '2024-08-25 05:39:14', NULL, 3, NULL),
+(138, 887, 0, '887', '', 0, 0, 'P Ushani Devi', 'Ushani', 'P', 'Ushani', 'Devi', 'P Ushani Devi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12347890', NULL, NULL, NULL, '', '', '1234789v', NULL, '0112260060', '12347890', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '65', '1', NULL, NULL, 0, NULL, NULL, '2024-08-25 07:07:53', '2024-08-25 07:08:17', NULL, 3, NULL),
+(139, 1159, 0, '1159', '', 0, 0, 'B Thinithi Kavindiya', 'Thinithi', 'B', 'Thinithi', 'Kavindiya', 'B Thinithi Kavindiya', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12347890', NULL, NULL, NULL, '', '', '1234789v', NULL, '0112260060', '12347890', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '5', '1', NULL, NULL, 0, NULL, NULL, '2024-08-25 08:57:49', '2024-08-25 08:58:28', NULL, 3, NULL),
+(140, 1160, 0, '1160', '', 0, 0, 'S Kowshika', 'Kowshika', 'S', 'Kowshika', 'Kowshika', 'S Kowshika', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12347890', NULL, NULL, NULL, '', '', '1234789v', NULL, '0112260060', '12347890', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '53', '1', NULL, NULL, 0, NULL, NULL, '2024-08-25 09:15:04', '2024-08-25 09:56:50', NULL, 3, NULL),
+(141, 1214, 0, '1214', '', 0, 0, 'R Jesudas', 'Jesudas', 'R', 'Jesudas', 'Jesudas', 'R Jesudas', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '59', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 03:59:34', '2024-08-27 03:59:58', NULL, 4, NULL),
+(142, 1217, 0, '1217', '', 1217, 0, 'K M K R Peries', 'Peries', 'K M K R', 'Peries', 'Peries', 'K M K R Peries', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 04:01:56', '2024-09-30 23:41:22', NULL, 4, NULL),
+(143, 1218, 0, '1218', '', 0, 0, 'J A S Pradeep', 'Pradeep', 'J A S', 'Pradeep', 'Pradeep', 'J A S Pradeep', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 04:07:02', '2024-09-30 23:22:58', NULL, 4, NULL),
+(144, 1220, 0, '1220', '', 0, 0, 'M krishan', 'krishan', 'M', 'Krishan', 'Krishan', 'M krishan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '59', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 04:08:45', '2024-10-02 02:35:00', NULL, 4, NULL),
+(145, 1223, 0, '1223', '', 0, 0, 'P P Deivanai', 'Deivanai', 'P P', 'Deivanai', 'Deivanai', 'P P Deivanai', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 05:13:08', '2024-09-25 22:59:31', NULL, 4, NULL),
+(146, 1224, 0, '1224', '', 0, 0, 'D M Kumari', 'Kumari', 'D M', 'Kumari', 'Kumari', 'D M Kumari', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '54', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 05:17:58', '2024-08-27 05:17:58', NULL, NULL, NULL),
+(147, 1225, 0, '1225', '', 0, 0, 'V Susila Kanthi', 'Susila Kanthi', 'V', 'Susila', 'Kanthi', 'V Susila Kanthi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 05:19:26', '2024-10-02 02:06:29', NULL, 4, NULL),
+(148, 1226, 0, '1226', '', 0, 0, 'S M D Chathurika', 'Chathurika', 'S M D', 'Chathurika', 'Chathurika', 'S M D Chathurika', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 05:20:37', '2024-10-02 02:05:17', NULL, 4, NULL),
+(149, 1227, 0, '1227', '', 0, 0, 'P Kirushanthi', 'Kirushanthi', 'P', 'Kirushanthi', 'Kirushanthi', 'P Kirushanthi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 05:22:01', '2024-10-02 02:18:04', NULL, 4, NULL),
+(150, 1229, 0, '1229', '', 0, 0, 'R Kethiswaran', 'Kethis', 'R', 'Kethiswaran', 'Kethiswaran', 'R Kethiswaran', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 05:23:18', '2024-08-27 05:23:18', NULL, NULL, NULL),
+(151, 1230, 0, '1230', '', 0, 0, 'T K Kirushanthi', 'Kirushanthi', 'T K', 'Kirushanthi', 'Kirushanthi', 'T K Kirushanthi', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 7, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 05:26:27', '2024-08-27 05:26:27', NULL, NULL, NULL),
+(152, 1231, 0, '1231', '', 0, 0, 'V Sugetharan', 'Sugi', 'V', 'Sugetharan', 'Sugi', 'V Sugetharan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '49', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 05:27:39', '2024-10-02 02:33:09', NULL, 4, NULL),
+(153, 1232, 0, '1232', '', 0, 0, 'S Yogachandran', 'Yogachandran', 'S', 'Yogachandran', 'Yogachandran', 'S Yogachandran', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 7, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-08-27 05:29:07', '2024-08-27 05:29:07', NULL, NULL, NULL),
+(154, 1221, 0, '1221', '', 0, 0, 'M Thiruganasampanthar', 'Thiruganasampanthar', 'M', 'Thiruganasampanthar', 'Thiruganasampanthar', 'M Thiruganasampanthar', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '197232702351', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-09-25 22:53:55', '2024-09-25 22:54:15', NULL, 4, NULL),
+(155, 1235, 0, '1235', '', 0, 0, 'M G N Tharu prabha', 'Tharu prabha', 'M G N', 'Tharu prabha', 'Tharu prabha', 'M G N Tharu prabha', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200683302368', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 02:42:29', '2024-09-26 02:42:56', NULL, 4, NULL),
+(156, 1237, 0, '1237', '', 0, 0, 'T Sasidran', 'T Sasidran', 'T', 'Sasidran', 'Sasidran', 'T Sasidran', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '933234665v', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '59', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 02:49:42', '2024-10-02 03:02:03', NULL, 4, NULL),
+(157, 1238, 0, '1238', '', 0, 0, 'Y Kaseedaran', 'Kaseedaran', 'Y', 'Kaseedaran', 'Kaseedaran', 'Y Kaseedaran', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200422904883', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 02:51:48', '2024-10-02 00:11:31', NULL, 4, NULL),
+(158, 1242, 0, '1242', '', 0, 0, 'W Krishan Kumar', 'Krishan Kumar', 'W', 'Krishan Kumar', 'Kumar', 'W Krishan Kumar', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '199131804106', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '59', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 02:53:32', '2024-10-02 00:18:22', NULL, 4, NULL),
+(159, 1244, 0, '1244', '', 0, 0, 'D M Chandani Menike', 'Chandani Menike', 'D M', 'Chandani Menike', 'Chandani Menike', 'D M Chandani Menike', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '725220634V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 03:33:47', '2024-10-02 02:19:51', NULL, 4, NULL),
+(160, 1246, 0, '1246', '', 0, 0, 'S Yogakumar', 'S Yogakumar', 'S', 'Yogakumar', 'Yogakumar', 'S Yogakumar', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200421105040', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 03:35:15', '2024-10-02 01:39:51', NULL, 4, NULL),
+(161, 1248, 0, '1248', '', 0, 0, 'N Y G Indika Jayasurendra', 'Indika Jayasurendra', 'N Y G', 'Indika Jayasurendra', 'Indika Jayasurendra', 'N Y G Indika Jayasurendra', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '841151631V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 03:36:52', '2024-10-02 01:38:31', NULL, 4, NULL),
+(162, 1250, 0, '1250', '', 0, 0, 'R Kitnasamy', 'Kitnasamy', 'R', 'Kitnasamy', 'Kitnasamy', 'R Kitnasamy', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '198013203642', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '59', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 03:45:18', '2024-10-02 00:16:51', NULL, 4, NULL),
+(163, 1251, 0, '1251', '', 0, 0, 'P Visagan', 'Visagan', 'P', 'Visagan', 'Visagan', 'P Visagan', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200119904399', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '58', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 03:49:42', '2024-09-26 03:49:42', NULL, NULL, NULL),
+(164, 1260, 0, '1260', '', 0, 0, 'L P D Jayantha', 'Jayantha', 'L P D', 'Jayantha', 'Jayantha', 'L P D Jayantha', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '735113976V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 03:51:14', '2024-10-02 02:18:47', NULL, 4, NULL),
+(165, 1261, 0, '1261', '', 0, 0, 'M Selladurai', 'Selladurai', 'M', 'Selladurai', 'Selladurai', 'M Selladurai', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '196301005935', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '48', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 03:54:47', '2024-09-27 00:44:53', NULL, 4, NULL),
+(166, 1262, 0, '1262', '', 0, 0, 'D G K Chamara Banadara', 'D G K Chamara Banadara', 'D G K', 'Chamara Banadara', 'Chamara Banadara', 'D G K Chamara Banadara', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200120200266', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 03:58:36', '2024-10-02 00:15:26', NULL, 4, NULL),
+(167, 1263, 0, '1263', '', 0, 0, 'I Yogaraj', 'Yogaraj', 'I', 'Yogaraj', 'Yogaraj', 'I Yogaraj', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '721271560V', NULL, '0112260060', '12345789', 3, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '8', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 04:05:23', '2024-09-27 01:09:46', NULL, 4, NULL),
+(168, 1264, 0, '1264', '', 0, 0, 'T G J Hemalatha', 'Janaki Hemalatha', 'T G J', 'Hemalatha', 'Hemalatha', 'T G J Hemalatha', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '196073910048', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '57', '1', NULL, NULL, 1, NULL, NULL, '2024-09-26 04:08:38', '2024-09-27 02:32:16', NULL, 4, NULL),
+(169, 1266, 0, '1266', '', 0, 0, 'V Lidushan', 'Lidushan', 'V', 'Lidushan', 'Lidushan', 'V Lidushan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200232401710', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '59', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 04:10:58', '2024-10-02 01:31:00', NULL, 4, NULL),
+(170, 1267, 0, '1267', '', 0, 0, 'S Kirushanthan', 'Kirushanthan', 'S', 'Kirushanthan', 'Kirushanthan', 'S Kirushanthan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200418704444', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 04:12:40', '2024-09-27 03:13:10', NULL, 4, NULL),
+(171, 1300, 0, '1300', '', 0, 0, 'K P D Anulawathi', 'Anulawathi', 'K P D', 'Anulawathi', 'Anulawathi', 'K P D Anulawathi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '635452161V', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-09-26 04:16:25', '2024-10-02 02:54:27', NULL, 4, NULL),
+(172, 1268, 0, '1268', '', 0, 0, 'D G R Udayangani', 'Ramya', 'D G R', 'Udayangani', 'Udayangani', 'D G R Udayangani', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456789', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-10-01 00:36:47', '2024-10-02 02:13:44', NULL, 4, NULL),
+(173, 1269, 0, '1269', '', 0, 0, 'S Thiyageswaran', 'Thiyageswaran', 'S', 'Thiyageswaran', 'Thiyageswaran', 'S Thiyageswaran', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12345678', NULL, NULL, NULL, '', '', '1234568', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-10-01 00:38:04', '2024-10-01 22:40:45', NULL, 4, NULL),
+(174, 1270, 0, '1270', '', 0, 0, 'W N Pushpa Malkanthi', 'Pushpa Malkanthi', 'W N', 'Pushpa Malkanthi', 'Pushpa Malkanthi', 'W N Pushpa Malkanthi', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '1234568', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-10-01 00:39:18', '2024-10-02 02:15:02', NULL, 4, NULL),
+(175, 1271, 0, '1271', '', 0, 0, 'J A K Jayasinghe', 'J A K Jayasinghe', 'J A K', 'Jayasinghe', 'Jayasinghe', 'J A K Jayasinghe', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '1234568', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-10-01 00:41:08', '2024-10-02 02:14:34', NULL, 4, NULL),
+(176, 1272, 0, '1272', '', 0, 0, 'W Ranjanie', 'Ranjanie', 'W', 'Ranjanie', 'Ranjanie', 'W Ranjanie', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '1234568', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 1, NULL, NULL, '2024-10-01 00:42:26', '2024-10-02 02:14:47', NULL, 4, NULL),
+(177, 1272, 0, '1272', '', 0, 0, 'R Iraj', 'Iraj', 'R', 'Iraj', 'Iraj', 'R Iraj', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '1234568', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-10-01 00:43:29', '2024-10-09 04:24:02', NULL, 4, NULL),
+(178, 1273, 0, '1273', '', 0, 0, 'J Praveen Kumar', 'Praveen', 'J', 'Praveen', 'Kumar', 'J Praveen Kumar', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '200232510126', NULL, '0112260060', '123456789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-10-24 05:19:01', '2024-10-24 05:36:50', NULL, 4, NULL),
+(179, 1274, 0, '1274', '', 0, 0, 'S Deivarasa', 'Deivarasa', 'S', 'Deivarasa', 'Deivarasa', 'S Deivarasa', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '953173689V', NULL, '0112260060', '123456789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '59', '1', NULL, NULL, 0, NULL, NULL, '2024-10-24 05:20:38', '2024-10-24 05:37:02', NULL, 4, NULL),
+(180, 1275, 0, '1275', '', 0, 0, 'G S Nawaneedan', 'navaneedan', 'G S', 'Nawaneedan', 'nawaneedan', 'G S Nawaneedan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '200022210081', NULL, '0112260060', '123456789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '58', '1', NULL, NULL, 0, NULL, NULL, '2024-10-24 05:22:54', '2024-10-24 05:37:16', NULL, 4, NULL),
+(181, 1276, 0, '1276', '', 0, 0, 'S Suganthan', 'Suganthan', 'S', 'Suganthan', 'Suganthan', 'S Suganthan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '123456789', NULL, NULL, NULL, '', '', '200229502213', NULL, '0112260060', '123456789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '55', '1', NULL, NULL, 0, NULL, NULL, '2024-10-24 05:24:53', '2024-10-24 05:37:35', NULL, 4, NULL),
+(182, 1277, 0, '1277', '', 0, 0, 'B G Chandurika', 'Chandurika', 'B G', 'Chandurika', 'Chandurika', 'B G Chandurika', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12345678', NULL, NULL, NULL, '', '', '748620621V', NULL, '0112260060', '12345678', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-10-24 05:26:26', '2024-10-24 05:37:49', NULL, 4, NULL),
+(183, 1278, 0, '1278', '', 0, 0, 'A  G D Chandralatha Menike', 'Chandralatha', 'A  G D', 'Chandralatha', 'Menike', 'A  G D Chandralatha Menike', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12345678', NULL, NULL, NULL, '', '', '705723486V', NULL, '0112260060', '12345678', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-10-24 05:28:42', '2024-10-24 05:38:05', NULL, 4, NULL),
+(184, 1279, 0, '1279', '', 0, 0, 'A RamShankar', 'Shankar', 'A', 'Ram', 'Shangar', 'A RamShankar', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12345678', NULL, NULL, NULL, '', '', '750763960V', NULL, '0112260060', '12345678', 3, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '8', '1', NULL, NULL, 0, NULL, NULL, '2024-10-24 05:30:43', '2024-10-30 00:26:14', NULL, 4, NULL),
+(185, 1280, 0, '1280', '', 0, 0, 'S Saji kanth', 'Sajith', 'S', 'Sajith', 'Kanth', 'S Saji kanth', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '12345678', NULL, NULL, NULL, '', '', '200501601876', NULL, '0112260060', '12345678', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '62', '1', NULL, NULL, 0, NULL, NULL, '2024-10-25 01:08:34', '2024-10-25 01:09:38', NULL, 3, NULL),
+(186, 1281, 0, '1281', '', 0, 0, 's sadurshini', 'sadu', 's', 'Sadurshini', 'sadu', 's sadurshini', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '123457891', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-12-05 02:44:43', '2025-01-30 02:30:08', NULL, 4, NULL),
+(187, 1282, 0, '1282', '', 0, 0, 'S.Sadhurshika', 'sadu', 's', 'Sadhurshika', 'sadu', 'Sadhurshika', NULL, '1', NULL, 'Female', 'Unmarried', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-12-05 03:07:46', '2025-01-30 02:29:12', NULL, 4, NULL),
+(188, 1285, 0, '1285', '', 0, 0, 'k Nalika Fernando', 'Nalika', 'K', 'Nalika', 'Fernando', 'Nalika fernando', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, NULL, '1234566789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-12-05 04:09:50', '2024-12-05 04:20:11', NULL, 4, NULL),
+(189, 1283, 0, '1283', '', 0, 0, 'A sadurshan', 'Sadu', 'A', 'Sadurshan', 'sadu', 'A sadurshan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '123457891', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-12-05 04:29:36', '2024-12-24 00:09:11', NULL, 4, NULL),
+(190, 1284, 0, '1284', '', 0, 0, 'M Rasalingam', 'rasalingam', 'M', 'Rasalingam', 'lingam', 'M Rasalingam', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '123457891', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-12-05 04:51:55', '2025-01-08 03:56:21', NULL, 4, NULL),
+(191, 1286, 0, '1286', '', 1286, 0, 'T.Thushanthan', 'Thushan', 'T', 'Thushanthan', 'Thushan', 'T.Thushanthan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '123457891', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-12-05 05:05:50', '2024-12-05 05:18:50', NULL, 4, NULL),
+(192, 1287, 0, '1287', '', 0, 0, 'Roy', 'Roy', 'Roy', 'Roy', 'Roy', 'Roy', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '123457891', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-12-05 05:27:24', '2024-12-05 05:27:46', NULL, 4, NULL),
+(193, 1288, 0, '1288', '', 0, 0, 'E G N K Ratnayaka', 'Ratnaya', 'E G N K', 'Ratnayaka', 'ratnayaka', 'E G N K Ratnayaka', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, NULL, '123457891', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2024-12-05 05:52:01', '2024-12-05 06:00:49', NULL, 4, NULL),
+(194, 1289, 0, '1289', '', 0, 0, 'S Srimala', 'mala', 'S', 'Sri', 'mala', 'S Srimala', NULL, '1', NULL, 'Female', 'Unmarried', 'Select', NULL, '2024-11-25', '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '12345789', 2, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '24', '1', NULL, NULL, 0, NULL, NULL, '2024-12-06 00:58:00', '2024-12-19 03:57:59', NULL, 3, NULL),
+(195, 1290, 0, '1290', '', 0, 0, 'R Shanthamma', 'R Shantha', 'R', 'Shanthamma', 'Shantha', 'R Shanthamma', NULL, '1', NULL, 'Female', 'Select', 'Select', NULL, '2024-08-23', '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '1234566789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2025-01-07 21:55:54', '2025-01-07 22:30:42', NULL, 4, NULL),
+(196, 1291, 0, '1291', '', 0, 0, 'S M A G G Wijayakon', 'Wijayakon', 'S M A G', 'G', 'Wijayakon', 'S M A G G Wijayakon', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, NULL, '1234566789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2025-01-07 22:58:28', '2025-01-07 23:23:13', NULL, 4, NULL),
+(197, 1296, 0, '1296', '', 0, 0, 'R Madusha', 'madu', 'R', 'Madusha', 'Madu', 'R Madusha', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2025-01-08 00:21:09', '2025-01-08 00:31:27', NULL, 4, NULL),
+(198, 1292, 0, '1292', '', 0, 0, 'P C Rajakaruna', 'karuna', 'P', 'c', 'Rajakaruna', 'P C Rajakaruna', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '1234566789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '2', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2025-01-08 00:42:49', '2025-01-08 00:51:35', NULL, 3, NULL),
+(199, 1293, 0, '1293', '', 0, 0, 'Anujan', 'Anu', 'Anujan', 'Anujan', 'Anujan', 'Anujan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2025-01-08 01:06:11', '2025-01-08 01:06:35', NULL, 4, NULL),
+(200, 1294, 0, '1294', '', 0, 0, 'R Aswin', 'Aswin', 'R', 'Aswin', 'Aswin', 'R Aswin', NULL, '1', NULL, 'Male', 'Select', 'Select', NULL, '2024-08-29', '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, '0112260060', '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 1, NULL, NULL, '2025-01-08 01:40:41', '2025-01-08 02:59:45', NULL, 4, NULL),
+(201, 1295, 0, '1295', '', 0, 0, 'K G D M PushpaKumara', 'Kumara', 'K G D M', 'Pushpa', 'Kumara', 'K G D M PushpaKumara', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '123456891111', NULL, NULL, '12345789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2025-01-08 02:01:41', '2025-01-08 02:56:09', NULL, 4, NULL),
+(202, 1297, 0, '1297', '', 0, 0, 'P Srikanthan', 'Srikanthan', 'P', NULL, 'Srikanthan', 'P Srikanthan', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', 'P Srikanthan', NULL, '0112260060', '12345789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2025-01-08 02:03:50', '2025-01-08 03:09:46', NULL, 4, NULL),
+(203, 1298, 0, '1298', '', 0, 0, 'P Prabhu', 'Prabhu', 'P', 'Prabhu', 'Prabhu', 'P Prabhu', NULL, '1', NULL, NULL, 'Select', 'Select', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '199715510182', NULL, '0112260060', '1234566789', 5, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '59', '1', NULL, NULL, 0, NULL, NULL, '2025-01-08 02:22:53', '2025-01-08 03:40:15', NULL, 4, NULL),
+(204, 1294, 0, '1294', '', 0, 0, 'R Aswin', 'Aswin', 'R', 'Aswin', 'Aswin', 'R Aswin', NULL, '1', NULL, NULL, 'Unmarried', 'Srilankan', NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '200631105830', NULL, '0112260060', '1234566789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2025-01-08 03:24:32', '2025-01-24 04:42:55', NULL, 4, NULL),
+(205, 1306, 0, '1306', '', 0, 0, 'D M D M Disanayake', 'Disanayake', 'D M', 'D M', 'Disanayake', 'D M D M Disanayake', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '922601798V', NULL, NULL, '1234566789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '9', '1', NULL, NULL, 0, NULL, NULL, '2025-02-23 22:12:18', '2025-02-23 22:12:18', NULL, NULL, NULL),
+(206, 1308, 0, '1308', '', 0, 0, 'S Udaya Kumar', 'Kumar', 'S', 'Udaya', 'Kumar', 'S Udaya Kumar', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '1234566789', NULL, NULL, NULL, '', '', '931963538V', NULL, NULL, '1234566789', 10, '0.0', '0.0', NULL, NULL, NULL, NULL, NULL, NULL, '1', '5', NULL, NULL, NULL, NULL, '56', '1', NULL, NULL, 0, NULL, NULL, '2025-02-23 22:20:32', '2025-02-23 22:20:32', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `goodsreceived_info`
 --
 
@@ -273,7 +555,7 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `group_name`, `permission`) VALUES
-(1, 'Super Administrator', 'a:251:{i:0;s:10:\"createUser\";i:1;s:10:\"updateUser\";i:2;s:8:\"viewUser\";i:3;s:10:\"deleteUser\";i:4;s:11:\"createGroup\";i:5;s:11:\"updateGroup\";i:6;s:9:\"viewGroup\";i:7;s:11:\"deleteGroup\";i:8;s:17:\"createMachineType\";i:9;s:17:\"updateMachineType\";i:10;s:15:\"viewMachineType\";i:11;s:17:\"deleteMachineType\";i:12;s:11:\"createStore\";i:13;s:11:\"updateStore\";i:14;s:9:\"viewStore\";i:15;s:11:\"deleteStore\";i:16;s:11:\"createStyle\";i:17;s:11:\"updateStyle\";i:18;s:9:\"viewStyle\";i:19;s:11:\"deleteStyle\";i:20;s:16:\"createDepartment\";i:21;s:16:\"updateDepartment\";i:22;s:14:\"viewDepartment\";i:23;s:16:\"deleteDepartment\";i:24;s:13:\"createSection\";i:25;s:13:\"updateSection\";i:26;s:11:\"viewSection\";i:27;s:13:\"deleteSection\";i:28;s:13:\"createMachine\";i:29;s:13:\"updateMachine\";i:30;s:11:\"viewMachine\";i:31;s:13:\"deleteMachine\";i:32;s:26:\"createOperationsForMachine\";i:33;s:26:\"updateOperationsForMachine\";i:34;s:24:\"viewOperationsForMachine\";i:35;s:26:\"deleteOperationsForMachine\";i:36;s:10:\"createLine\";i:37;s:10:\"updateLine\";i:38;s:8:\"viewLine\";i:39;s:10:\"deleteLine\";i:40;s:13:\"updateCompany\";i:41;s:13:\"updateSetting\";i:42;s:11:\"viewProfile\";i:43;s:18:\"createMachineModel\";i:44;s:18:\"updateMachineModel\";i:45;s:16:\"viewMachineModel\";i:46;s:18:\"deleteMachineModel\";i:47;s:18:\"createMachineBrand\";i:48;s:18:\"updateMachineBrand\";i:49;s:16:\"viewMachineBrand\";i:50;s:18:\"deleteMachineBrand\";i:51;s:13:\"createFactory\";i:52;s:13:\"updateFactory\";i:53;s:11:\"viewFactory\";i:54;s:13:\"deleteFactory\";i:55;s:15:\"createMachineIn\";i:56;s:15:\"updateMachineIn\";i:57;s:13:\"viewMachineIn\";i:58;s:15:\"deleteMachineIn\";i:59;s:14:\"createEmployee\";i:60;s:14:\"updateEmployee\";i:61;s:12:\"viewEmployee\";i:62;s:14:\"deleteEmployee\";i:63;s:22:\"createMachineOperation\";i:64;s:22:\"updateMachineOperation\";i:65;s:20:\"viewMachineOperation\";i:66;s:22:\"deleteMachineOperation\";i:67;s:20:\"createMachineRequest\";i:68;s:20:\"updateMachineRequest\";i:69;s:18:\"viewMachineRequest\";i:70;s:20:\"deleteMachineRequest\";i:71;s:16:\"createStyleColor\";i:72;s:16:\"updateStyleColor\";i:73;s:14:\"viewStyleColor\";i:74;s:16:\"deleteStyleColor\";i:75;s:15:\"viewMachineScan\";i:76;s:24:\"createOperationBreakdown\";i:77;s:24:\"updateOperationBreakdown\";i:78;s:22:\"viewOperationBreakdown\";i:79;s:24:\"deleteOperationBreakdown\";i:80;s:10:\"createSlot\";i:81;s:10:\"updateSlot\";i:82;s:8:\"viewSlot\";i:83;s:10:\"deleteSlot\";i:84;s:20:\"createMachineRelease\";i:85;s:21:\"createMachineAllocate\";i:86;s:19:\"createMachineRepair\";i:87;s:19:\"updateMachineRepair\";i:88;s:17:\"viewMachineRepair\";i:89;s:19:\"deleteMachineRepair\";i:90;s:15:\"createStyleSize\";i:91;s:15:\"updateStyleSize\";i:92;s:13:\"viewStyleSize\";i:93;s:15:\"deleteStyleSize\";i:94;s:24:\"createEmployeeAllocation\";i:95;s:24:\"updateEmployeeAllocation\";i:96;s:22:\"viewEmployeeAllocation\";i:97;s:24:\"deleteEmployeeAllocation\";i:98;s:34:\"createOperationBreakdownAllocation\";i:99;s:34:\"updateOperationBreakdownAllocation\";i:100;s:32:\"viewOperationBreakdownAllocation\";i:101;s:34:\"deleteOperationBreakdownAllocation\";i:102;s:24:\"createMachineRentRequest\";i:103;s:24:\"updateMachineRentRequest\";i:104;s:22:\"viewMachineRentRequest\";i:105;s:24:\"deleteMachineRentRequest\";i:106;s:27:\"createMachineRequestApprove\";i:107;s:27:\"deleteMachineRequestApprove\";i:108;s:26:\"createMachineOnLoanRequest\";i:109;s:26:\"updateMachineOnLoanRequest\";i:110;s:24:\"viewMachineOnLoanRequest\";i:111;s:26:\"deleteMachineOnLoanRequest\";i:112;s:38:\"createMachineRentRequestReceiveMachine\";i:113;s:38:\"updateMachineRentRequestReceiveMachine\";i:114;s:36:\"viewMachineRentRequestReceiveMachine\";i:115;s:38:\"deleteMachineRentRequestReceiveMachine\";i:116;s:20:\"createMachineService\";i:117;s:20:\"updateMachineService\";i:118;s:18:\"viewMachineService\";i:119;s:20:\"deleteMachineService\";i:120;s:28:\"createMachineServicePostpone\";i:121;s:27:\"createMachineServiceCreated\";i:122;s:27:\"updateMachineServiceCreated\";i:123;s:25:\"viewMachineServiceCreated\";i:124;s:27:\"deleteMachineServiceCreated\";i:125;s:35:\"createMachineServiceCreatedComplete\";i:126;s:41:\"createMachineServiceCreatedCompleteRemove\";i:127;s:20:\"viewEmployeeServices\";i:128;s:23:\"viewServiceCostAnalysis\";i:129;s:20:\"viewUsedServiceItems\";i:130;s:26:\"createMachineRepairRequest\";i:131;s:26:\"updateMachineRepairRequest\";i:132;s:24:\"viewMachineRepairRequest\";i:133;s:26:\"deleteMachineRepairRequest\";i:134;s:27:\"createMachineRepairPostpone\";i:135;s:26:\"createMachineRepairCreated\";i:136;s:26:\"updateMachineRepairCreated\";i:137;s:24:\"viewMachineRepairCreated\";i:138;s:26:\"deleteMachineRepairCreated\";i:139;s:34:\"createMachineRepairCreatedComplete\";i:140;s:40:\"createMachineRepairCreatedCompleteRemove\";i:141;s:19:\"viewEmployeeRepairs\";i:142;s:22:\"viewRepairCostAnalysis\";i:143;s:19:\"viewUsedRepairItems\";i:144;s:20:\"viewMachineDashboard\";i:145;s:24:\"createMachineRequirement\";i:146;s:24:\"updateMachineRequirement\";i:147;s:22:\"viewMachineRequirement\";i:148;s:24:\"deleteMachineRequirement\";i:149;s:44:\"createMachineRentRequestReceiveMachineReturn\";i:150;s:32:\"createMachineOnLoanRequestReturn\";i:151;s:22:\"createSkillRequirement\";i:152;s:22:\"updateSkillRequirement\";i:153;s:20:\"viewSkillRequirement\";i:154;s:22:\"deleteSkillRequirement\";i:155;s:21:\"createTrainingProgram\";i:156;s:21:\"updateTrainingProgram\";i:157;s:19:\"viewTrainingProgram\";i:158;s:21:\"deleteTrainingProgram\";i:159;s:40:\"viewApprovedOperationBreakdownAllocation\";i:160;s:41:\"createOperationBreakdownAllocationApprove\";i:161;s:17:\"createLineBalance\";i:162;s:17:\"updateLineBalance\";i:163;s:15:\"viewLineBalance\";i:164;s:17:\"deleteLineBalance\";i:165;s:9:\"createGRN\";i:166;s:9:\"updateGRN\";i:167;s:7:\"viewGRN\";i:168;s:9:\"deleteGRN\";i:169;s:26:\"createMachineOperationDesc\";i:170;s:26:\"updateMachineOperationDesc\";i:171;s:24:\"viewMachineOperationDesc\";i:172;s:26:\"deleteMachineOperationDesc\";i:173;s:29:\"createMachineOperationProduct\";i:174;s:29:\"updateMachineOperationProduct\";i:175;s:27:\"viewMachineOperationProduct\";i:176;s:29:\"deleteMachineOperationProduct\";i:177;s:19:\"createStyleSchedule\";i:178;s:19:\"updateStyleSchedule\";i:179;s:17:\"viewStyleSchedule\";i:180;s:19:\"deleteStyleSchedule\";i:181;s:20:\"createLineAllocation\";i:182;s:20:\"updateLineAllocation\";i:183;s:18:\"viewLineAllocation\";i:184;s:20:\"deleteLineAllocation\";i:185;s:20:\"createStyleComponent\";i:186;s:20:\"updateStyleComponent\";i:187;s:18:\"viewStyleComponent\";i:188;s:20:\"deleteStyleComponent\";i:189;s:33:\"createMachineOperationDescApprove\";i:190;s:33:\"updateMachineOperationDescApprove\";i:191;s:31:\"viewMachineOperationDescApprove\";i:192;s:33:\"deleteMachineOperationDescApprove\";i:193;s:27:\"createStyleComponentApprove\";i:194;s:27:\"updateStyleComponentApprove\";i:195;s:25:\"viewStyleComponentApprove\";i:196;s:27:\"deleteStyleComponentApprove\";i:197;s:36:\"createMachineOperationProductApprove\";i:198;s:36:\"updateMachineOperationProductApprove\";i:199;s:34:\"viewMachineOperationProductApprove\";i:200;s:36:\"deleteMachineOperationProductApprove\";i:201;s:26:\"createStyleScheduleApprove\";i:202;s:26:\"updateStyleScheduleApprove\";i:203;s:24:\"viewStyleScheduleApprove\";i:204;s:26:\"deleteStyleScheduleApprove\";i:205;s:15:\"createSparePart\";i:206;s:15:\"updateSparePart\";i:207;s:13:\"viewSparePart\";i:208;s:15:\"deleteSparePart\";i:209;s:19:\"createPurchaseOrder\";i:210;s:19:\"updatePurchaseOrder\";i:211;s:17:\"viewPurchaseOrder\";i:212;s:19:\"deletePurchaseOrder\";i:213;s:26:\"createPurchaseOrderApprove\";i:214;s:16:\"createGRNApprove\";i:215;s:11:\"createStock\";i:216;s:11:\"updateStock\";i:217;s:9:\"viewStock\";i:218;s:11:\"deleteStock\";i:219;s:32:\"createMachineServiceItemAllocate\";i:220;s:32:\"updateMachineServiceItemAllocate\";i:221;s:30:\"viewMachineServiceItemAllocate\";i:222;s:32:\"deleteMachineServiceItemAllocate\";i:223;s:29:\"createMachineServiceItemIssue\";i:224;s:29:\"updateMachineServiceItemIssue\";i:225;s:27:\"viewMachineServiceItemIssue\";i:226;s:29:\"deleteMachineServiceItemIssue\";i:227;s:31:\"createMachineServiceItemReceive\";i:228;s:31:\"updateMachineServiceItemReceive\";i:229;s:29:\"viewMachineServiceItemReceive\";i:230;s:31:\"deleteMachineServiceItemReceive\";i:231;s:30:\"createMachineServiceItemReturn\";i:232;s:30:\"updateMachineServiceItemReturn\";i:233;s:28:\"viewMachineServiceItemReturn\";i:234;s:30:\"deleteMachineServiceItemReturn\";i:235;s:31:\"createSparePartReturnToSupplier\";i:236;s:31:\"updateSparePartReturnToSupplier\";i:237;s:29:\"viewSparePartReturnToSupplier\";i:238;s:31:\"deleteSparePartReturnToSupplier\";i:239;s:36:\"createMachineServiceItemReturnAccept\";i:240;s:36:\"updateMachineServiceItemReturnAccept\";i:241;s:34:\"viewMachineServiceItemReturnAccept\";i:242;s:36:\"deleteMachineServiceItemReturnAccept\";i:243;s:38:\"createSparePartReturnToSupplierApprove\";i:244;s:38:\"updateSparePartReturnToSupplierApprove\";i:245;s:36:\"viewSparePartReturnToSupplierApprove\";i:246;s:38:\"deleteSparePartReturnToSupplierApprove\";i:247;s:20:\"createHourlyDoneRate\";i:248;s:20:\"updateHourlyDoneRate\";i:249;s:18:\"viewHourlyDoneRate\";i:250;s:20:\"deleteHourlyDoneRate\";}'),
+(1, 'Super Administrator', 'a:304:{i:0;s:10:\"createUser\";i:1;s:10:\"updateUser\";i:2;s:8:\"viewUser\";i:3;s:10:\"deleteUser\";i:4;s:11:\"createGroup\";i:5;s:11:\"updateGroup\";i:6;s:9:\"viewGroup\";i:7;s:11:\"deleteGroup\";i:8;s:17:\"createMachineType\";i:9;s:17:\"updateMachineType\";i:10;s:15:\"viewMachineType\";i:11;s:17:\"deleteMachineType\";i:12;s:11:\"createStore\";i:13;s:11:\"updateStore\";i:14;s:9:\"viewStore\";i:15;s:11:\"deleteStore\";i:16;s:11:\"createStyle\";i:17;s:11:\"updateStyle\";i:18;s:9:\"viewStyle\";i:19;s:11:\"deleteStyle\";i:20;s:16:\"createDepartment\";i:21;s:16:\"updateDepartment\";i:22;s:14:\"viewDepartment\";i:23;s:16:\"deleteDepartment\";i:24;s:13:\"createSection\";i:25;s:13:\"updateSection\";i:26;s:11:\"viewSection\";i:27;s:13:\"deleteSection\";i:28;s:13:\"createMachine\";i:29;s:13:\"updateMachine\";i:30;s:11:\"viewMachine\";i:31;s:13:\"deleteMachine\";i:32;s:26:\"createOperationsForMachine\";i:33;s:26:\"updateOperationsForMachine\";i:34;s:24:\"viewOperationsForMachine\";i:35;s:26:\"deleteOperationsForMachine\";i:36;s:10:\"createLine\";i:37;s:10:\"updateLine\";i:38;s:8:\"viewLine\";i:39;s:10:\"deleteLine\";i:40;s:13:\"updateCompany\";i:41;s:13:\"updateSetting\";i:42;s:11:\"viewProfile\";i:43;s:18:\"createMachineModel\";i:44;s:18:\"updateMachineModel\";i:45;s:16:\"viewMachineModel\";i:46;s:18:\"deleteMachineModel\";i:47;s:18:\"createMachineBrand\";i:48;s:18:\"updateMachineBrand\";i:49;s:16:\"viewMachineBrand\";i:50;s:18:\"deleteMachineBrand\";i:51;s:13:\"createFactory\";i:52;s:13:\"updateFactory\";i:53;s:11:\"viewFactory\";i:54;s:13:\"deleteFactory\";i:55;s:15:\"createMachineIn\";i:56;s:15:\"updateMachineIn\";i:57;s:13:\"viewMachineIn\";i:58;s:15:\"deleteMachineIn\";i:59;s:14:\"createEmployee\";i:60;s:14:\"updateEmployee\";i:61;s:12:\"viewEmployee\";i:62;s:14:\"deleteEmployee\";i:63;s:22:\"createMachineOperation\";i:64;s:22:\"updateMachineOperation\";i:65;s:20:\"viewMachineOperation\";i:66;s:22:\"deleteMachineOperation\";i:67;s:20:\"createMachineRequest\";i:68;s:20:\"updateMachineRequest\";i:69;s:18:\"viewMachineRequest\";i:70;s:20:\"deleteMachineRequest\";i:71;s:16:\"createStyleColor\";i:72;s:16:\"updateStyleColor\";i:73;s:14:\"viewStyleColor\";i:74;s:16:\"deleteStyleColor\";i:75;s:15:\"viewMachineScan\";i:76;s:24:\"createOperationBreakdown\";i:77;s:24:\"updateOperationBreakdown\";i:78;s:22:\"viewOperationBreakdown\";i:79;s:24:\"deleteOperationBreakdown\";i:80;s:10:\"createSlot\";i:81;s:10:\"updateSlot\";i:82;s:8:\"viewSlot\";i:83;s:10:\"deleteSlot\";i:84;s:20:\"createMachineRelease\";i:85;s:21:\"createMachineAllocate\";i:86;s:19:\"createMachineRepair\";i:87;s:19:\"updateMachineRepair\";i:88;s:17:\"viewMachineRepair\";i:89;s:19:\"deleteMachineRepair\";i:90;s:15:\"createStyleSize\";i:91;s:15:\"updateStyleSize\";i:92;s:13:\"viewStyleSize\";i:93;s:15:\"deleteStyleSize\";i:94;s:24:\"createEmployeeAllocation\";i:95;s:24:\"updateEmployeeAllocation\";i:96;s:22:\"viewEmployeeAllocation\";i:97;s:24:\"deleteEmployeeAllocation\";i:98;s:34:\"createOperationBreakdownAllocation\";i:99;s:34:\"updateOperationBreakdownAllocation\";i:100;s:32:\"viewOperationBreakdownAllocation\";i:101;s:34:\"deleteOperationBreakdownAllocation\";i:102;s:24:\"createMachineRentRequest\";i:103;s:24:\"updateMachineRentRequest\";i:104;s:22:\"viewMachineRentRequest\";i:105;s:24:\"deleteMachineRentRequest\";i:106;s:27:\"createMachineRequestApprove\";i:107;s:27:\"deleteMachineRequestApprove\";i:108;s:26:\"createMachineOnLoanRequest\";i:109;s:26:\"updateMachineOnLoanRequest\";i:110;s:24:\"viewMachineOnLoanRequest\";i:111;s:26:\"deleteMachineOnLoanRequest\";i:112;s:38:\"createMachineRentRequestReceiveMachine\";i:113;s:38:\"updateMachineRentRequestReceiveMachine\";i:114;s:36:\"viewMachineRentRequestReceiveMachine\";i:115;s:38:\"deleteMachineRentRequestReceiveMachine\";i:116;s:20:\"createMachineService\";i:117;s:20:\"updateMachineService\";i:118;s:18:\"viewMachineService\";i:119;s:20:\"deleteMachineService\";i:120;s:28:\"createMachineServicePostpone\";i:121;s:27:\"createMachineServiceCreated\";i:122;s:27:\"updateMachineServiceCreated\";i:123;s:25:\"viewMachineServiceCreated\";i:124;s:27:\"deleteMachineServiceCreated\";i:125;s:35:\"createMachineServiceCreatedComplete\";i:126;s:41:\"createMachineServiceCreatedCompleteRemove\";i:127;s:20:\"viewEmployeeServices\";i:128;s:23:\"viewServiceCostAnalysis\";i:129;s:20:\"viewUsedServiceItems\";i:130;s:26:\"createMachineRepairRequest\";i:131;s:26:\"updateMachineRepairRequest\";i:132;s:24:\"viewMachineRepairRequest\";i:133;s:26:\"deleteMachineRepairRequest\";i:134;s:27:\"createMachineRepairPostpone\";i:135;s:26:\"createMachineRepairCreated\";i:136;s:26:\"updateMachineRepairCreated\";i:137;s:24:\"viewMachineRepairCreated\";i:138;s:26:\"deleteMachineRepairCreated\";i:139;s:34:\"createMachineRepairCreatedComplete\";i:140;s:40:\"createMachineRepairCreatedCompleteRemove\";i:141;s:19:\"viewEmployeeRepairs\";i:142;s:22:\"viewRepairCostAnalysis\";i:143;s:19:\"viewUsedRepairItems\";i:144;s:20:\"viewMachineDashboard\";i:145;s:24:\"createMachineRequirement\";i:146;s:24:\"updateMachineRequirement\";i:147;s:22:\"viewMachineRequirement\";i:148;s:24:\"deleteMachineRequirement\";i:149;s:44:\"createMachineRentRequestReceiveMachineReturn\";i:150;s:32:\"createMachineOnLoanRequestReturn\";i:151;s:22:\"createSkillRequirement\";i:152;s:22:\"updateSkillRequirement\";i:153;s:20:\"viewSkillRequirement\";i:154;s:22:\"deleteSkillRequirement\";i:155;s:21:\"createTrainingProgram\";i:156;s:21:\"updateTrainingProgram\";i:157;s:19:\"viewTrainingProgram\";i:158;s:21:\"deleteTrainingProgram\";i:159;s:40:\"viewApprovedOperationBreakdownAllocation\";i:160;s:41:\"createOperationBreakdownAllocationApprove\";i:161;s:17:\"createLineBalance\";i:162;s:17:\"updateLineBalance\";i:163;s:15:\"viewLineBalance\";i:164;s:17:\"deleteLineBalance\";i:165;s:9:\"createGRN\";i:166;s:9:\"updateGRN\";i:167;s:7:\"viewGRN\";i:168;s:9:\"deleteGRN\";i:169;s:26:\"createMachineOperationDesc\";i:170;s:26:\"updateMachineOperationDesc\";i:171;s:24:\"viewMachineOperationDesc\";i:172;s:26:\"deleteMachineOperationDesc\";i:173;s:29:\"createMachineOperationProduct\";i:174;s:29:\"updateMachineOperationProduct\";i:175;s:27:\"viewMachineOperationProduct\";i:176;s:29:\"deleteMachineOperationProduct\";i:177;s:19:\"createStyleSchedule\";i:178;s:19:\"updateStyleSchedule\";i:179;s:17:\"viewStyleSchedule\";i:180;s:19:\"deleteStyleSchedule\";i:181;s:20:\"createLineAllocation\";i:182;s:20:\"updateLineAllocation\";i:183;s:18:\"viewLineAllocation\";i:184;s:20:\"deleteLineAllocation\";i:185;s:20:\"createStyleComponent\";i:186;s:20:\"updateStyleComponent\";i:187;s:18:\"viewStyleComponent\";i:188;s:20:\"deleteStyleComponent\";i:189;s:33:\"createMachineOperationDescApprove\";i:190;s:33:\"updateMachineOperationDescApprove\";i:191;s:31:\"viewMachineOperationDescApprove\";i:192;s:33:\"deleteMachineOperationDescApprove\";i:193;s:27:\"createStyleComponentApprove\";i:194;s:27:\"updateStyleComponentApprove\";i:195;s:25:\"viewStyleComponentApprove\";i:196;s:27:\"deleteStyleComponentApprove\";i:197;s:36:\"createMachineOperationProductApprove\";i:198;s:36:\"updateMachineOperationProductApprove\";i:199;s:34:\"viewMachineOperationProductApprove\";i:200;s:36:\"deleteMachineOperationProductApprove\";i:201;s:26:\"createStyleScheduleApprove\";i:202;s:26:\"updateStyleScheduleApprove\";i:203;s:24:\"viewStyleScheduleApprove\";i:204;s:26:\"deleteStyleScheduleApprove\";i:205;s:15:\"createSparePart\";i:206;s:15:\"updateSparePart\";i:207;s:13:\"viewSparePart\";i:208;s:15:\"deleteSparePart\";i:209;s:19:\"createPurchaseOrder\";i:210;s:19:\"updatePurchaseOrder\";i:211;s:17:\"viewPurchaseOrder\";i:212;s:19:\"deletePurchaseOrder\";i:213;s:26:\"createPurchaseOrderApprove\";i:214;s:16:\"createGRNApprove\";i:215;s:11:\"createStock\";i:216;s:11:\"updateStock\";i:217;s:9:\"viewStock\";i:218;s:11:\"deleteStock\";i:219;s:32:\"createMachineServiceItemAllocate\";i:220;s:32:\"updateMachineServiceItemAllocate\";i:221;s:30:\"viewMachineServiceItemAllocate\";i:222;s:32:\"deleteMachineServiceItemAllocate\";i:223;s:29:\"createMachineServiceItemIssue\";i:224;s:29:\"updateMachineServiceItemIssue\";i:225;s:27:\"viewMachineServiceItemIssue\";i:226;s:29:\"deleteMachineServiceItemIssue\";i:227;s:31:\"createMachineServiceItemReceive\";i:228;s:31:\"updateMachineServiceItemReceive\";i:229;s:29:\"viewMachineServiceItemReceive\";i:230;s:31:\"deleteMachineServiceItemReceive\";i:231;s:30:\"createMachineServiceItemReturn\";i:232;s:30:\"updateMachineServiceItemReturn\";i:233;s:28:\"viewMachineServiceItemReturn\";i:234;s:30:\"deleteMachineServiceItemReturn\";i:235;s:31:\"createSparePartReturnToSupplier\";i:236;s:31:\"updateSparePartReturnToSupplier\";i:237;s:29:\"viewSparePartReturnToSupplier\";i:238;s:31:\"deleteSparePartReturnToSupplier\";i:239;s:36:\"createMachineServiceItemReturnAccept\";i:240;s:36:\"updateMachineServiceItemReturnAccept\";i:241;s:34:\"viewMachineServiceItemReturnAccept\";i:242;s:36:\"deleteMachineServiceItemReturnAccept\";i:243;s:38:\"createSparePartReturnToSupplierApprove\";i:244;s:38:\"updateSparePartReturnToSupplierApprove\";i:245;s:36:\"viewSparePartReturnToSupplierApprove\";i:246;s:38:\"deleteSparePartReturnToSupplierApprove\";i:247;s:20:\"createHourlyDoneRate\";i:248;s:20:\"updateHourlyDoneRate\";i:249;s:18:\"viewHourlyDoneRate\";i:250;s:20:\"deleteHourlyDoneRate\";i:251;s:18:\"createCustomerInfo\";i:252;s:18:\"updateCustomerInfo\";i:253;s:16:\"viewCustomerInfo\";i:254;s:18:\"deleteCustomerInfo\";i:255;s:18:\"createSupplierInfo\";i:256;s:18:\"updateSupplierInfo\";i:257;s:16:\"viewSupplierInfo\";i:258;s:18:\"deleteSupplierInfo\";i:259;s:11:\"viewBinCart\";i:260;s:16:\"createCRMInquiry\";i:261;s:16:\"updateCRMInquiry\";i:262;s:14:\"viewCRMInquiry\";i:263;s:16:\"deleteCRMInquiry\";i:264;s:18:\"createCRMQuotation\";i:265;s:18:\"updateCRMQuotation\";i:266;s:16:\"viewCRMQuotation\";i:267;s:18:\"deleteCRMQuotation\";i:268;s:24:\"createCRMQuotationStatus\";i:269;s:24:\"updateCRMQuotationStatus\";i:270;s:22:\"viewCRMQuotationStatus\";i:271;s:24:\"deleteCRMQuotationStatus\";i:272;s:15:\"createCRMReason\";i:273;s:15:\"updateCRMReason\";i:274;s:13:\"viewCRMReason\";i:275;s:15:\"deleteCRMReason\";i:276;s:22:\"createCRMQuotationform\";i:277;s:22:\"updateCRMQuotationform\";i:278;s:20:\"viewCRMQuotationform\";i:279;s:22:\"deleteCRMQuotationform\";i:280;s:20:\"createCRMOrderdetail\";i:281;s:20:\"updateCRMOrderdetail\";i:282;s:18:\"viewCRMOrderdetail\";i:283;s:20:\"deleteCRMOrderdetail\";i:284;s:23:\"createCRMMaterialdetail\";i:285;s:23:\"updateCRMMaterialdetail\";i:286;s:21:\"viewCRMMaterialdetail\";i:287;s:23:\"deleteCRMMaterialdetail\";i:288;s:23:\"createCRMPrintingdetail\";i:289;s:23:\"updateCRMPrintingdetail\";i:290;s:21:\"viewCRMPrintingdetail\";i:291;s:23:\"deleteCRMPrintingdetail\";i:292;s:23:\"createCRMDeliverydetail\";i:293;s:23:\"updateCRMDeliverydetail\";i:294;s:21:\"viewCRMDeliverydetail\";i:295;s:23:\"deleteCRMDeliverydetail\";i:296;s:23:\"createCRMCompletedorder\";i:297;s:23:\"updateCRMCompletedorder\";i:298;s:21:\"viewCRMCompletedorder\";i:299;s:23:\"deleteCRMCompletedorder\";i:300;s:23:\"createMachineallocation\";i:301;s:23:\"updateMachineallocation\";i:302;s:21:\"viewMachineallocation\";i:303;s:23:\"deleteMachineallocation\";}'),
 (10, 'Manager', 'a:47:{i:0;s:10:\"createUser\";i:1;s:10:\"updateUser\";i:2;s:8:\"viewUser\";i:3;s:10:\"deleteUser\";i:4;s:11:\"createGroup\";i:5;s:11:\"updateGroup\";i:6;s:9:\"viewGroup\";i:7;s:11:\"deleteGroup\";i:8;s:17:\"createMachineType\";i:9;s:17:\"updateMachineType\";i:10;s:15:\"viewMachineType\";i:11;s:17:\"deleteMachineType\";i:12;s:11:\"createStore\";i:13;s:11:\"updateStore\";i:14;s:9:\"viewStore\";i:15;s:11:\"deleteStore\";i:16;s:11:\"createStyle\";i:17;s:11:\"updateStyle\";i:18;s:9:\"viewStyle\";i:19;s:11:\"deleteStyle\";i:20;s:16:\"createDepartment\";i:21;s:16:\"updateDepartment\";i:22;s:14:\"viewDepartment\";i:23;s:16:\"deleteDepartment\";i:24;s:13:\"createSection\";i:25;s:13:\"updateSection\";i:26;s:11:\"viewSection\";i:27;s:13:\"deleteSection\";i:28;s:13:\"createMachine\";i:29;s:13:\"updateMachine\";i:30;s:11:\"viewMachine\";i:31;s:13:\"deleteMachine\";i:32;s:26:\"createOperationsForMachine\";i:33;s:26:\"updateOperationsForMachine\";i:34;s:24:\"viewOperationsForMachine\";i:35;s:26:\"deleteOperationsForMachine\";i:36;s:10:\"createLine\";i:37;s:10:\"updateLine\";i:38;s:8:\"viewLine\";i:39;s:10:\"deleteLine\";i:40;s:13:\"updateCompany\";i:41;s:13:\"updateSetting\";i:42;s:11:\"viewProfile\";i:43;s:18:\"createMachineModel\";i:44;s:18:\"updateMachineModel\";i:45;s:16:\"viewMachineModel\";i:46;s:18:\"deleteMachineModel\";}'),
 (11, 'User', 'a:2:{i:0;s:13:\"updateSetting\";i:1;s:11:\"viewProfile\";}'),
 (12, 'abc', 'a:5:{i:0;s:10:\"createUser\";i:1;s:10:\"updateUser\";i:2;s:8:\"viewUser\";i:3;s:10:\"deleteUser\";i:4;s:11:\"updateGroup\";}'),
@@ -427,12 +709,7 @@ CREATE TABLE `machine_brands` (
 --
 
 INSERT INTO `machine_brands` (`id`, `name`, `active`) VALUES
-(1, 'JUKI', 1),
-(2, 'BROTHER', 1),
-(3, 'PEGASUS', 1),
-(4, 'SIRUBA', 1),
-(5, 'YAMATO', 1),
-(6, 'MAKITHA', 1);
+(7, 'MKITHA', 1);
 
 -- --------------------------------------------------------
 
@@ -458,18 +735,28 @@ CREATE TABLE `machine_ins` (
   `updated_by` int(11) DEFAULT NULL,
   `is_deleted` int(11) NOT NULL DEFAULT 0,
   `deleted_at` timestamp NULL DEFAULT NULL,
-  `deleted_by` int(11) DEFAULT NULL
+  `deleted_by` int(11) DEFAULT NULL,
+  `booking_startdate` datetime DEFAULT NULL,
+  `booking_enddate` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `machine_ins`
 --
 
-INSERT INTO `machine_ins` (`id`, `active`, `machine_type_id`, `machine_model_id`, `s_no`, `bar_code`, `in_type_id`, `next_service_date`, `origin_date`, `factory_id`, `reference`, `created_at`, `updated_at`, `created_by`, `updated_by`, `is_deleted`, `deleted_at`, `deleted_by`) VALUES
-(1, 1, 1, 1, 'S1', 'S1', 1, NULL, NULL, 1, 'w', '2023-03-15 09:00:13', NULL, NULL, NULL, 0, NULL, NULL),
-(2, 1, 1, 1, 'S2', 'S2', 1, NULL, NULL, 1, 'w', '2023-03-15 09:00:13', NULL, NULL, NULL, 0, NULL, NULL),
-(3, 1, 1, 1, 'S3', 'S3', 1, NULL, NULL, 1, 'w', '2023-03-15 09:00:13', NULL, NULL, NULL, 0, NULL, NULL),
-(4, 1, 10, 2, 'sv24', 'aaaaa', 1, '2025-01-25', '2025-01-25', 0, 'ssss', '2025-01-23 00:09:25', NULL, 1, NULL, 0, NULL, NULL);
+INSERT INTO `machine_ins` (`id`, `active`, `machine_type_id`, `machine_model_id`, `s_no`, `bar_code`, `in_type_id`, `next_service_date`, `origin_date`, `factory_id`, `reference`, `created_at`, `updated_at`, `created_by`, `updated_by`, `is_deleted`, `deleted_at`, `deleted_by`, `booking_startdate`, `booking_enddate`) VALUES
+(1, 1, 1, 1, 'S1', 'S1', 1, NULL, NULL, 1, 'w', '2023-03-15 09:00:13', NULL, NULL, NULL, 1, '2025-02-16 23:46:26', 1, '2025-03-20 12:25:46', '1900-01-21 12:25:57'),
+(2, 1, 1, 1, 'S2', 'S2', 1, NULL, NULL, 1, 'w', '2023-03-15 09:00:13', NULL, NULL, NULL, 1, '2025-02-16 23:46:26', 1, NULL, NULL),
+(3, 1, 1, 1, 'S3', 'S3', 1, NULL, NULL, 1, 'w', '2023-03-15 09:00:13', NULL, NULL, NULL, 1, '2025-02-16 23:46:26', 1, NULL, NULL),
+(4, 1, 10, 2, 'sv24', 'aaaaa', 1, '2025-01-25', '2025-01-25', 0, 'ssss', '2025-01-23 00:09:25', NULL, 1, NULL, 1, '2025-02-16 23:46:26', 1, NULL, NULL),
+(5, 1, 13, 3, 'sv23', 'aaaaa', 1, '0000-00-00', '2025-02-20', 0, 'ccccc', '2025-02-16 23:46:12', '2025-02-19 23:30:39', 1, 1, 0, NULL, NULL, NULL, NULL),
+(6, 1, 13, 3, 'sv4', '45634', 1, '2025-02-20', '2025-02-21', 0, 'fff', '2025-02-20 00:27:55', NULL, 1, NULL, 0, NULL, NULL, NULL, NULL),
+(7, 1, 13, 3, 'sv24', '45634', 1, '2025-02-21', '2025-02-20', 0, 'ttt', '2025-02-20 00:41:51', NULL, 1, NULL, 0, NULL, NULL, NULL, NULL),
+(8, 1, 13, 3, 'sv23', '456677', 1, '2025-02-21', '2025-02-22', 0, 'dddd', '2025-02-20 00:50:46', NULL, 1, NULL, 0, NULL, NULL, NULL, NULL),
+(9, 1, 13, 3, 'sv23', '456677', 1, '2025-02-20', '2025-02-21', 0, 'dddd', '2025-02-20 00:53:17', NULL, 1, NULL, 0, NULL, NULL, NULL, NULL),
+(10, 1, 13, 3, 'sv23', '456677', 1, '2025-02-21', '2025-02-21', 0, 'ffff', '2025-02-20 00:57:32', NULL, 1, NULL, 0, NULL, NULL, NULL, NULL),
+(11, 1, 13, 3, 'sv23', '456677', 1, '0000-00-00', '0000-00-00', 0, 'ddd', '2025-02-20 01:29:10', NULL, 1, NULL, 0, NULL, NULL, NULL, NULL),
+(12, 1, 13, 3, '4444', '4444444', 1, '0000-00-00', '0000-00-00', 0, 'ddd', '2025-02-20 01:29:34', NULL, 1, NULL, 0, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -488,8 +775,7 @@ CREATE TABLE `machine_models` (
 --
 
 INSERT INTO `machine_models` (`id`, `name`, `active`) VALUES
-(1, 'mm1', 1),
-(2, 'mm2', 1);
+(3, 'YANMAR', 1);
 
 -- --------------------------------------------------------
 
@@ -738,7 +1024,8 @@ CREATE TABLE `machine_repairs` (
 --
 
 INSERT INTO `machine_repairs` (`id`, `machine_in_id`, `repair_in_date`, `repair_out_date`, `is_postponed`, `original_date`, `postpone_reason`, `created_at`, `updated_at`, `created_by`, `updated_by`, `is_deleted`, `deleted_at`, `deleted_by`) VALUES
-(1, 3, '2023-04-22', NULL, 0, NULL, NULL, '2023-04-22 10:51:44', NULL, NULL, NULL, 0, NULL, NULL);
+(1, 3, '2023-04-22', NULL, 0, NULL, NULL, '2023-04-22 10:51:44', NULL, NULL, NULL, 1, '2025-02-13 05:55:50', 1),
+(2, 3, '2025-02-20', NULL, 0, NULL, NULL, '2025-02-19 08:16:06', NULL, NULL, NULL, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -877,6 +1164,7 @@ CREATE TABLE `machine_requirements` (
 CREATE TABLE `machine_services` (
   `id` int(11) NOT NULL,
   `machine_in_id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
   `service_no` varchar(150) NOT NULL,
   `is_repair` int(11) NOT NULL DEFAULT 0,
   `service_date_from` datetime DEFAULT NULL,
@@ -898,10 +1186,13 @@ CREATE TABLE `machine_services` (
 -- Dumping data for table `machine_services`
 --
 
-INSERT INTO `machine_services` (`id`, `machine_in_id`, `service_no`, `is_repair`, `service_date_from`, `service_date_to`, `estimated_service_hours`, `is_postponed`, `original_date`, `postpone_reason`, `created_at`, `updated_at`, `created_by`, `updated_by`, `is_deleted`, `deleted_at`, `deleted_by`) VALUES
-(1, 1, 'SRV0001', 0, '2024-04-08 11:16:00', '2024-04-09 11:16:00', 12.00, 0, NULL, NULL, '2024-04-09 00:16:57', NULL, 1, NULL, 1, '2025-01-22 00:12:34', 1),
-(2, 2, 'SRV0002', 0, '2025-01-22 10:12:00', '2025-01-25 10:12:00', 12.00, 0, NULL, NULL, '2025-01-22 00:12:24', NULL, 1, NULL, 0, NULL, NULL),
-(3, 2, 'SRV0003', 0, '2025-01-23 10:03:00', '2025-01-23 02:08:00', 5.00, 0, NULL, NULL, '2025-01-23 00:04:34', NULL, 1, NULL, 0, NULL, NULL);
+INSERT INTO `machine_services` (`id`, `machine_in_id`, `employee_id`, `service_no`, `is_repair`, `service_date_from`, `service_date_to`, `estimated_service_hours`, `is_postponed`, `original_date`, `postpone_reason`, `created_at`, `updated_at`, `created_by`, `updated_by`, `is_deleted`, `deleted_at`, `deleted_by`) VALUES
+(1, 1, 205, 'SRV0001', 0, '2024-04-08 11:16:00', '2024-04-09 11:16:00', 12.00, 0, NULL, NULL, '2024-04-09 00:16:57', NULL, 1, NULL, 1, '2025-01-22 00:12:34', 1),
+(2, 2, 204, 'SRV0002', 0, '2025-01-22 10:12:00', '2025-01-25 10:12:00', 12.00, 0, NULL, NULL, '2025-01-22 00:12:24', NULL, 1, NULL, 1, '2025-02-13 05:53:12', 1),
+(3, 2, 203, 'SRV0003', 0, '2025-01-23 10:03:00', '2025-01-23 02:08:00', 5.00, 0, NULL, NULL, '2025-01-23 00:04:34', NULL, 1, NULL, 1, '2025-02-13 05:53:12', 1),
+(4, 1, 202, 'SRV0004', 0, '2025-02-17 09:26:00', '2025-02-17 09:26:00', 3.00, 0, NULL, NULL, '2025-02-16 23:27:05', NULL, 1, NULL, 0, NULL, NULL),
+(5, 2, 201, 'SRV0005', 0, '2025-02-20 09:20:00', '2025-02-25 09:20:00', 7.00, 0, NULL, NULL, '2025-02-19 23:20:42', NULL, 1, NULL, 0, NULL, NULL),
+(6, 3, 200, 'SRV0006', 0, '2025-02-24 09:16:00', '2025-02-26 09:17:00', 12.00, 0, NULL, NULL, '2025-02-23 23:17:18', NULL, 1, NULL, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -931,18 +1222,24 @@ CREATE TABLE `machine_service_allocated_items` (
 --
 
 INSERT INTO `machine_service_allocated_items` (`id`, `spare_part_id`, `machine_service_id`, `qty`, `issued_qty`, `is_finished`, `estimate_id`, `is_deleted`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_by`, `deleted_at`) VALUES
-(1, 1, 1, 1, NULL, 0, 14, 0, '2023-03-18 00:00:21', 1, NULL, NULL, NULL, NULL),
+(1, 1, 1, 1, NULL, 0, 14, 1, '2023-03-18 00:00:21', 1, NULL, NULL, 1, '2025-02-24 00:00:59'),
 (2, 2, 1, 2, NULL, 1, 15, 0, '2023-03-18 00:00:21', 1, NULL, NULL, NULL, NULL),
 (3, 3, 1, 3, NULL, 1, 16, 0, '2023-03-18 00:00:21', 1, NULL, NULL, NULL, NULL),
 (4, 4, 1, 2, NULL, 1, 17, 0, '2023-03-18 00:00:21', 1, NULL, NULL, NULL, NULL),
 (5, 1, 2, 1, NULL, 1, 5, 0, '2023-03-18 01:21:40', 1, NULL, NULL, NULL, NULL),
 (6, 2, 2, 1, NULL, 1, 6, 0, '2023-03-18 01:21:40', 1, NULL, NULL, NULL, NULL),
 (7, 1, 4, 1, NULL, 0, 12, 0, '2023-03-23 11:59:29', 1, NULL, NULL, NULL, NULL),
-(8, 4, 4, 2, NULL, 0, 13, 0, '2023-03-23 11:59:29', 1, NULL, NULL, NULL, NULL),
+(8, 4, 4, 2, NULL, 1, 13, 0, '2023-03-23 11:59:29', 1, NULL, NULL, NULL, NULL),
 (9, 1, 5, 2, NULL, 1, 24, 0, '2023-04-23 23:55:46', 1, NULL, NULL, NULL, NULL),
 (10, 2, 5, 4, NULL, 1, 25, 0, '2023-04-23 23:55:46', 1, NULL, NULL, NULL, NULL),
 (11, 1, 6, 2, NULL, 1, 26, 0, '2023-04-24 09:43:59', 1, NULL, NULL, NULL, NULL),
-(12, 2, 6, 3, NULL, 1, 27, 0, '2023-04-24 09:43:59', 1, NULL, NULL, NULL, NULL);
+(12, 2, 6, 3, NULL, 1, 27, 0, '2023-04-24 09:43:59', 1, NULL, NULL, NULL, NULL),
+(13, 4, 4, 2, NULL, 0, 13, 0, '2025-02-23 23:14:42', 1, NULL, NULL, NULL, NULL),
+(14, 1, 3, 1, NULL, 0, 9, 1, '2025-02-23 23:15:18', 1, NULL, NULL, 1, '2025-02-24 00:00:59'),
+(15, 1, 3, 1, NULL, 0, 30, 0, '2025-02-23 23:15:18', 1, NULL, NULL, NULL, NULL),
+(16, 3, 3, 1, NULL, 0, 11, 0, '2025-02-23 23:15:18', 1, NULL, NULL, NULL, NULL),
+(17, 2, 3, 1, NULL, 0, 10, 0, '2025-02-23 23:15:18', 1, NULL, NULL, NULL, NULL),
+(18, 2, 3, 2, NULL, 0, 10, 0, '2025-02-23 23:16:41', 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1035,7 +1332,10 @@ INSERT INTO `machine_service_estimated_items` (`id`, `spare_part_id`, `machine_s
 (27, 2, 6, 3, 0, NULL, NULL, NULL, NULL, NULL),
 (28, 1, 1, 1, 0, NULL, NULL, NULL, NULL, NULL),
 (29, 1, 2, 2, 0, NULL, NULL, NULL, NULL, NULL),
-(30, 1, 3, 1, 0, NULL, NULL, NULL, NULL, NULL);
+(30, 1, 3, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(31, 3, 4, 1, 0, NULL, NULL, NULL, NULL, NULL),
+(32, 3, 5, 3, 0, NULL, NULL, NULL, NULL, NULL),
+(33, 2, 6, 1, 0, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1072,7 +1372,11 @@ INSERT INTO `machine_service_issued_items` (`id`, `a_id`, `spare_part_id`, `mach
 (6, 9, 1, 5, 2, 0, '2023-04-23 23:56:11', 1, NULL, NULL, NULL, NULL, 1),
 (7, 10, 2, 5, 4, 0, '2023-04-23 23:56:11', 1, NULL, NULL, NULL, NULL, 1),
 (8, 11, 1, 6, 2, 0, '2023-04-24 09:44:09', 1, NULL, NULL, NULL, NULL, 1),
-(9, 12, 2, 6, 3, 0, '2023-04-24 09:44:09', 1, NULL, NULL, NULL, NULL, 1);
+(9, 12, 2, 6, 3, 0, '2023-04-24 09:44:09', 1, NULL, NULL, NULL, NULL, 1),
+(10, 8, 4, 4, 2, 0, '2025-02-16 23:27:56', 1, NULL, NULL, NULL, NULL, 1),
+(11, 8, 4, 4, 2, 0, '2025-02-16 23:27:59', 1, NULL, NULL, NULL, NULL, 1),
+(12, 5, 1, 2, -1, 0, '2025-02-24 01:40:14', 1, NULL, NULL, NULL, NULL, 0),
+(13, 6, 2, 2, 1, 0, '2025-02-24 01:40:14', 1, NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1106,7 +1410,9 @@ INSERT INTO `machine_service_received_items` (`id`, `issue_id`, `spare_part_id`,
 (4, 7, 2, 5, 4, 1, '2023-04-23 23:56:33', 0, NULL, NULL, NULL, NULL),
 (5, 8, 1, 6, 2, 1, '2023-04-24 09:44:19', 0, NULL, NULL, NULL, NULL),
 (6, 9, 2, 6, 3, 1, '2023-04-24 09:44:19', 0, NULL, NULL, NULL, NULL),
-(7, 4, 1, 2, 2, 1, '2025-01-22 00:13:33', 0, NULL, NULL, NULL, NULL);
+(7, 4, 1, 2, 2, 1, '2025-01-22 00:13:33', 0, NULL, NULL, NULL, NULL),
+(8, 10, 4, 4, 2, 1, '2025-02-16 23:28:16', 0, NULL, NULL, NULL, NULL),
+(9, 11, 4, 4, 2, 1, '2025-02-16 23:28:16', 0, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1201,7 +1507,16 @@ INSERT INTO `machine_service_returned_items` (`id`, `header_id`, `issue_id`, `sp
 (3, 1, 4, 1, 2, 4, 1, '2023-03-19 23:23:36', 1, 1, '2023-03-21 11:53:03', '2023-03-21 01:36:54', 1),
 (4, 4, 8, 1, 6, 1, 1, '2023-04-24 09:49:18', 0, NULL, NULL, NULL, NULL),
 (5, 4, 9, 2, 6, 1, 1, '2023-04-24 09:49:18', 0, NULL, NULL, NULL, NULL),
-(6, 5, 4, 1, 2, 1, 1, '2025-01-23 00:06:05', 0, NULL, NULL, NULL, NULL);
+(6, 5, 4, 1, 2, 1, 1, '2025-01-23 00:06:05', 0, NULL, NULL, NULL, NULL),
+(7, 6, 3, 4, 1, 1, 1, '2025-02-14 00:09:27', 0, NULL, NULL, NULL, NULL),
+(8, 6, 2, 3, 1, 1, 1, '2025-02-14 00:09:27', 0, NULL, NULL, NULL, NULL),
+(9, 6, 1, 2, 1, 1, 1, '2025-02-14 00:09:27', 0, NULL, NULL, NULL, NULL),
+(10, 7, 3, 4, 1, 3, 1, '2025-02-14 00:09:50', 0, NULL, NULL, NULL, NULL),
+(11, 7, 2, 3, 1, 1, 1, '2025-02-14 00:09:50', 0, NULL, NULL, NULL, NULL),
+(12, 7, 1, 2, 1, 1, 1, '2025-02-14 00:09:50', 0, NULL, NULL, NULL, NULL),
+(13, 8, 3, 4, 1, 1, 1, '2025-02-19 23:18:11', 0, NULL, NULL, NULL, NULL),
+(14, 8, 2, 3, 1, 1, 1, '2025-02-19 23:18:11', 0, NULL, NULL, NULL, NULL),
+(15, 8, 1, 2, 1, 1, 1, '2025-02-19 23:18:11', 0, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1231,7 +1546,10 @@ INSERT INTO `machine_service_returned_items_header` (`id`, `machine_service_id`,
 (2, 1, 'rdf22', NULL, NULL, 0, NULL, NULL, '2023-03-21 01:36:54', 1),
 (3, 1, 'a3', NULL, NULL, 0, NULL, NULL, '2023-03-21 01:36:54', 1),
 (4, 6, 't', NULL, NULL, 0, NULL, NULL, NULL, NULL),
-(5, 2, '', NULL, NULL, 0, NULL, NULL, NULL, NULL);
+(5, 2, '', NULL, NULL, 0, NULL, NULL, NULL, NULL),
+(6, 1, '', NULL, NULL, 0, NULL, NULL, NULL, NULL),
+(7, 1, '', NULL, NULL, 0, NULL, NULL, NULL, NULL),
+(8, 1, '', NULL, NULL, 0, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1251,16 +1569,7 @@ CREATE TABLE `machine_types` (
 --
 
 INSERT INTO `machine_types` (`id`, `name`, `code`, `active`) VALUES
-(1, 'FLC', 'FCM', 1),
-(2, '4OL', 'OL', 1),
-(3, 'SNL', '', 1),
-(5, 'MAN', '', 1),
-(6, 'FLT', '', 1),
-(7, 'SNE', '', 1),
-(8, 'FLT', '', 1),
-(9, 'BTN', '', 1),
-(10, 'BTH', '', 1),
-(11, 'BTK', '', 1);
+(13, 'BTC', '', 1);
 
 -- --------------------------------------------------------
 
@@ -1633,7 +1942,8 @@ INSERT INTO `permissions` (`id`, `name`, `create`, `update`, `view`, `delete`, `
 (69, 'MachineOperationDescApprove', 1, 1, 1, 1, 'MachineOperationDesc'),
 (70, 'StyleComponentApprove', 1, 1, 1, 1, 'Style'),
 (71, 'MachineOperationProductApprove', 1, 1, 1, 1, 'MachineOperationProducts'),
-(72, 'StyleScheduleApprove', 1, 1, 1, 1, 'StyleSchedule');
+(72, 'StyleScheduleApprove', 1, 1, 1, 1, 'StyleSchedule'),
+(73, 'Supplier', 0, 0, 0, 0, 'Supplier');
 
 -- --------------------------------------------------------
 
@@ -1740,7 +2050,21 @@ INSERT INTO `permissions_machines` (`id`, `name`, `create`, `update`, `view`, `d
 (82, 'SparePartReturnToSupplier', 1, 1, 1, 1, 'Return'),
 (83, 'MachineServiceItemReturnAccept', 1, 1, 1, 1, 'Return'),
 (84, 'SparePartReturnToSupplierApprove', 1, 1, 1, 1, 'Return'),
-(85, 'HourlyDoneRate', 1, 1, 1, 1, 'HourlyDoneRate');
+(85, 'HourlyDoneRate', 1, 1, 1, 1, 'HourlyDoneRate'),
+(86, 'CustomerInfo', 1, 1, 1, 1, 'Customer'),
+(87, 'SupplierInfo', 1, 1, 1, 1, 'SupplierInfo'),
+(88, 'BinCart', 1, 1, 1, 1, 'BinCart'),
+(89, 'CRMInquiry', 1, 1, 1, 1, 'CRMInquiry'),
+(90, 'CRMQuotation', 1, 1, 1, 1, 'CRMQuotation'),
+(91, 'CRMQuotationStatus', 1, 1, 1, 1, 'CRMQuotationStatus'),
+(92, 'CRMReason', 1, 1, 1, 1, 'CRMReason'),
+(93, 'CRMQuotationform', 1, 1, 1, 1, 'CRMQuotationform'),
+(94, 'CRMOrderdetail', 1, 1, 1, 1, 'CRMOrderdetail'),
+(95, 'CRMMaterialdetail', 1, 1, 1, 1, 'CRMMaterialdetail'),
+(96, 'CRMPrintingdetail', 1, 1, 1, 1, 'CRMPrintingdetail'),
+(97, 'CRMDeliverydetail', 1, 1, 1, 1, 'CRMDeliverydetail'),
+(98, 'CRMCompletedorder', 1, 1, 1, 1, 'CRMCompletedorder\r\n'),
+(99, 'Machineallocation', 1, 1, 1, 1, 'Machineallocation');
 
 -- --------------------------------------------------------
 
@@ -2024,7 +2348,8 @@ INSERT INTO `return_to_supplier` (`id`, `header_id`, `spare_part_id`, `qty`, `cr
 (6, 1, 2, 3, NULL, NULL, 0, NULL, NULL, NULL, NULL),
 (5, 1, 1, 1, NULL, NULL, 0, NULL, NULL, NULL, NULL),
 (7, 1, 3, 3, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-(8, 2, 1, 3, NULL, NULL, 0, NULL, NULL, NULL, NULL);
+(8, 2, 1, 3, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+(9, 3, 1, 2, NULL, NULL, 0, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2054,8 +2379,9 @@ CREATE TABLE `return_to_supplier_header` (
 --
 
 INSERT INTO `return_to_supplier_header` (`id`, `supplier_id`, `date`, `remarks`, `created_by`, `created_at`, `is_deleted`, `deleted_by`, `deleted_at`, `updated_at`, `updated_by`, `is_approved`, `approved_at`, `approved_by`) VALUES
-(1, 3, '2023-03-18', 'sxs', 1, '2023-03-18 09:45:32', 0, 1, '2023-03-18 10:14:32', '2023-03-21 06:45:41', 1, 1, '2023-04-24 09:49:50', 1),
-(2, 3, '2023-04-24', 't', 1, '2023-04-24 09:49:41', 0, NULL, NULL, NULL, NULL, 1, '2025-01-23 00:06:51', 1);
+(1, 3, '2023-03-18', 'sxs', 1, '2023-03-18 09:45:32', 1, 1, '2025-02-13 05:54:01', '2023-03-21 06:45:41', 1, 1, '2023-04-24 09:49:50', 1),
+(2, 3, '2023-04-24', 't', 1, '2023-04-24 09:49:41', 1, 1, '2025-02-13 02:15:51', NULL, NULL, 1, '2025-01-23 00:06:51', 1),
+(3, 1, '2025-02-14', '', 1, '2025-02-14 00:08:41', 0, NULL, NULL, NULL, NULL, 1, '2025-02-14 00:08:51', 1);
 
 -- --------------------------------------------------------
 
@@ -2246,8 +2572,17 @@ CREATE TABLE `spare_parts` (
 --
 
 INSERT INTO `spare_parts` (`id`, `name`, `model`, `type`, `supplier_id`, `part_no`, `rack_no`, `unit_price`, `active`, `is_deleted`, `deleted_at`, `deleted_by`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-(1, 'qqqqq', 1, 1, NULL, '123', '12', 111.00, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'wwww', 1, 3, NULL, 'sp3', '4', 1500.00, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'qqqqq', 1, 1, NULL, '123', '12', 111.00, 1, 1, '2025-03-20 00:00:09', 1, NULL, NULL, NULL, NULL),
+(2, 'wwww', 1, 3, NULL, 'sp3', '4', 1500.00, 1, 1, '2025-03-20 01:54:07', 1, NULL, NULL, NULL, NULL),
+(3, 'ssss', 1, 2, NULL, '876', '22', 123.00, 1, 1, '2025-03-19 23:59:59', 1, NULL, NULL, NULL, NULL),
+(4, 'sp33', 3, 13, NULL, '1', '2', 1500.00, 1, 0, '2025-03-19 02:43:35', 1, NULL, NULL, NULL, NULL),
+(5, 'www', 3, 13, NULL, '3', '4', 130.00, 1, 1, '2025-03-20 00:11:20', 1, NULL, NULL, NULL, NULL),
+(6, 'sq3', 3, 13, NULL, '4', '2', 150.00, 1, 1, '2025-03-20 00:04:38', 1, NULL, NULL, NULL, NULL),
+(7, 'ssss', 3, 13, NULL, '4', '3', 1200.00, 1, 1, '2025-03-20 02:06:14', 1, NULL, NULL, NULL, NULL),
+(8, 'ddd', 3, 13, NULL, '3', '4', 2222.00, 1, 1, '2025-03-20 02:06:19', 1, NULL, NULL, NULL, NULL),
+(9, 'rrrrr', 3, 13, NULL, '2', '3', 4.00, 2, 1, '2025-03-20 01:55:20', 1, NULL, NULL, NULL, NULL),
+(10, '444', 3, 13, NULL, '4', '2', 6.00, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, '222', 3, 13, NULL, '3', '4', 2333.00, 2, 1, '2025-03-20 02:02:28', 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2284,10 +2619,21 @@ INSERT INTO `spare_part_suppliers` (`id`, `sp_id`, `supplier_id`) VALUES
 (22, 6, 3),
 (23, 1, 3),
 (24, 2, 3),
-(26, 8, 3),
 (27, 9, 3),
 (28, 1, 3),
-(29, 2, 3);
+(29, 2, 3),
+(31, 3, 1),
+(32, 3, 2),
+(34, 5, 1),
+(35, 5, 2),
+(36, 6, 4),
+(38, 7, 1),
+(40, 8, 3),
+(41, 8, 3),
+(51, 4, 1),
+(52, 9, 3),
+(54, 10, 2),
+(55, 11, 4);
 
 -- --------------------------------------------------------
 
@@ -6447,6 +6793,31 @@ INSERT INTO `tbl_brand` (`idtbl_brand`, `brandname`, `brandcode`, `status`, `ins
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_cloth`
+--
+
+CREATE TABLE `tbl_cloth` (
+  `idtbl_cloth` int(11) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_cloth`
+--
+
+INSERT INTO `tbl_cloth` (`idtbl_cloth`, `type`, `status`, `insertdatetime`, `updatedatetime`, `updateuser`, `tbl_user_idtbl_user`) VALUES
+(1, 'shirt', 1, '2024-06-06 10:41:06', NULL, NULL, 1),
+(2, 'T-shirt', 1, '2024-06-06 10:57:02', '2024-06-06 12:03:55', NULL, 1),
+(3, 'Trouser', 3, '2024-06-06 10:58:09', '2024-06-06 11:12:00', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_currency`
 --
 
@@ -6538,7 +6909,9 @@ CREATE TABLE `tbl_customer_bank_details` (
 
 INSERT INTO `tbl_customer_bank_details` (`idtbl_customer_bank_details`, `bank_name`, `branch`, `account_no`, `account_name`, `status`, `updatedatetime`, `tbl_customer_idtbl_customer`, `tbl_user_idtbl_user`, `updateuser`) VALUES
 (38, 'Boc', 'Kuliyapitiya', '81846795', 'rajapaksha', 1, '2024-09-04 12:04:11', 11, 'admin', NULL),
-(39, 'Commercial Bank', 'Dankotuwa', '87400082', 'Rajapaksha', 1, '2025-01-30 10:39:52', 0, '1', NULL);
+(39, 'Commercial Bank', 'Dankotuwa', '87400082', 'Rajapaksha', 1, '2025-01-30 10:39:52', 0, '1', NULL),
+(40, 'HNB', 'negombo', '6789976', 'lahiru', 1, '2025-02-05 12:26:33', 4, '1', NULL),
+(41, 'HNB', 'negombo', '3546728', 'lahiru', 1, '2025-02-05 13:33:55', 3, '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -6565,7 +6938,8 @@ CREATE TABLE `tbl_customer_contact_details` (
 
 INSERT INTO `tbl_customer_contact_details` (`idtbl_customer_contact_details`, `name`, `position`, `mobile_no`, `email`, `status`, `updatedatetime`, `tbl_customer_idtbl_customer`, `tbl_user_idtbl_user`, `updateuser`) VALUES
 (22, 'jinodhya', 'manager', '0769953210', 'nikethanij198@gmail.com', 1, '2024-09-04 12:03:06', 11, 'admin', NULL),
-(23, 'Rajapaksha', 'GM', '07683', 'rejan31@gmail.com', 1, '2025-01-30 11:41:54', 0, '1', NULL);
+(23, 'Rajapaksha', 'GM', '07683', 'rejan31@gmail.com', 1, '2025-01-30 11:41:54', 0, '1', NULL),
+(24, 'Rajapaksha', 'GM', '0768360', 'rejan31@gmail.com', 1, '2025-02-05 12:26:41', 1, '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -6591,6 +6965,33 @@ CREATE TABLE `tbl_customer_job_details` (
 
 INSERT INTO `tbl_customer_job_details` (`idtbl_customer_job_details`, `job_name`, `job_code`, `measure_type_id`, `status`, `updatedatetime`, `tbl_customer_idtbl_customer`, `tbl_user_idtbl_user`, `updateuser`) VALUES
 (20, 'manager', '001', 0, 1, '2024-09-04 12:03:25', 11, 'admin', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_delivery_detail`
+--
+
+CREATE TABLE `tbl_delivery_detail` (
+  `idtbl_delivery_detail` int(11) NOT NULL,
+  `deliver_quantity` int(11) NOT NULL,
+  `delivery_date` date NOT NULL,
+  `tbl_cloth_idtbl_cloth` int(11) NOT NULL,
+  `tbl_size_idtbl_size` int(11) NOT NULL,
+  `tbl_inquiry_idtbl_inquiry` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_delivery_detail`
+--
+
+INSERT INTO `tbl_delivery_detail` (`idtbl_delivery_detail`, `deliver_quantity`, `delivery_date`, `tbl_cloth_idtbl_cloth`, `tbl_size_idtbl_size`, `tbl_inquiry_idtbl_inquiry`, `insertdatetime`, `tbl_user_idtbl_user`, `status`, `updatedatetime`, `updateuser`) VALUES
+(1, 2, '2024-09-02', 2, 5, 35, '2024-09-04 11:47:14', 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6738,11 +7139,9 @@ CREATE TABLE `tbl_grn` (
 --
 
 INSERT INTO `tbl_grn` (`idtbl_grn`, `batchno`, `grntype`, `grndate`, `total`, `invoicenum`, `dispatchnum`, `approvestatus`, `qualitycheck`, `transportcost`, `unloadingcost`, `status`, `insertdatetime`, `updateuser`, `updatedatetime`, `tbl_user_idtbl_user`, `tbl_supplier_idtbl_supplier`, `tbl_location_idtbl_location`, `tbl_porder_idtbl_porder`, `tbl_order_type_idtbl_order_type`, `remarks`, `approved_by`, `approved_at`) VALUES
-(1, 'S104032023001', 1, '2023-03-04', 4.06, '2', '21', 1, 0, 21, 21, 1, '2023-03-04 10:46:32', NULL, '2023-03-04 10:51:30', 1, 3, 1, 3, 1, NULL, 1, '2023-03-06 17:19:21'),
-(2, 'S106032023002', 1, '2023-03-06', 8.12, '3', '3', 1, 0, 32, 32, 1, '2023-03-06 16:09:39', NULL, NULL, 1, 3, 1, 4, 1, 'f', 1, '2023-03-06 17:19:21'),
-(3, 'S106032023003', 1, '2023-03-06', 14.18, '3', '3', 1, 0, 23, 32, 1, '2023-03-06 16:16:01', NULL, NULL, 1, 3, 1, 5, 1, '', 1, '2023-03-06 17:19:21'),
-(4, 'S107032023004', 1, '2023-03-07', 369, '3', '3', 1, 0, 3, 2, 1, '2023-03-07 13:43:02', NULL, NULL, 1, 3, 1, 6, 1, 'f', 1, '2023-03-07 13:43:26'),
-(5, 'S1RM26032023005', 1, '2023-03-26', 4.06, '21', '21', 1, 0, 21, 21, 1, '2023-03-26 13:43:36', NULL, NULL, 1, 3, 1, 3, 1, 's', 1, '2023-03-26 13:43:46');
+(17, '', 1, '2025-02-14', 7500, '2', '', 1, 0, 400, 300, 1, '2025-02-14 10:05:07', NULL, NULL, 1, 1, 1, 8, 1, '', 1, '2025-02-14 10:05:22'),
+(18, '', 1, '2025-02-19', 300, '111', '222', 1, 0, 1400, 300, 1, '2025-02-19 16:08:49', NULL, NULL, 1, 3, 1, 8, 1, '', 1, '2025-02-19 16:20:19'),
+(20, '', 1, '2025-02-24', 1200, '300', '600', 1, 0, 200, 300, 1, '2025-02-24 10:04:57', NULL, NULL, 1, 2, 1, 9, 1, '', 1, '2025-02-24 10:05:09');
 
 -- --------------------------------------------------------
 
@@ -6785,12 +7184,83 @@ CREATE TABLE `tbl_grndetail` (
 --
 
 INSERT INTO `tbl_grndetail` (`idtbl_grndetail`, `date`, `qty`, `unitprice`, `total`, `comment`, `mfdate`, `expdate`, `quater`, `actualqty`, `actualqtybagcarton`, `examqty`, `examqtybagcarton`, `grade`, `moisture`, `dustfm`, `lbdamage`, `colorapperance`, `size`, `remark`, `actiontobe`, `status`, `insertdatetime`, `updateuser`, `updatedatetime`, `tbl_grn_idtbl_grn`, `spare_part_id`) VALUES
-(1, '2023-03-04', 2, 2.03, 4.06, 's', '2023-03-04', '2023-03-04', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2023-03-04 10:46:32', NULL, NULL, 1, 1),
-(2, '2023-03-06', 4, 2.03, 8.12, 'f', '2023-03-06', '2023-03-06', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2023-03-06 16:09:39', NULL, NULL, 2, 1),
-(3, '2023-03-06', 3, 1.26, 3.7800000000000002, 'f', '2023-03-06', '2023-03-21', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2023-03-06 16:16:01', NULL, NULL, 3, 2),
-(4, '2023-03-06', 4, 2.6, 10.4, 'd', '2023-03-06', '2023-03-21', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2023-03-06 16:16:01', NULL, NULL, 3, 3),
-(5, '2023-03-07', 3, 123, 369, 'f', '2023-03-07', '2023-03-07', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2023-03-07 13:43:02', NULL, NULL, 4, 8),
-(6, '2023-03-26', 2, 2.03, 4.06, 'd', '2023-03-26', '2023-03-28', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2023-03-26 13:43:36', NULL, NULL, 5, 1);
+(20, '2025-02-14', 5, 1500, 7500, 'sss', '2025-02-14', '2025-02-16', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-02-14 10:05:07', NULL, NULL, 17, 1),
+(21, '2025-02-19', 2, 150, 300, 'sssss', '2025-02-19', '2025-02-20', 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-02-19 16:08:49', NULL, NULL, 18, 1),
+(23, '2025-02-24', 3, 400, 1200, 'test', '2025-02-24', '2025-02-25', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2025-02-24 10:04:57', NULL, NULL, 20, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_inquiry`
+--
+
+CREATE TABLE `tbl_inquiry` (
+  `idtbl_inquiry` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_customer_idtbl_customer` int(11) NOT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_inquiry`
+--
+
+INSERT INTO `tbl_inquiry` (`idtbl_inquiry`, `date`, `status`, `insertdatetime`, `updatedatetime`, `updateuser`, `tbl_customer_idtbl_customer`, `tbl_user_idtbl_user`) VALUES
+(2, '2025-03-02', 3, '2025-03-02 14:38:50', '2025-03-21 12:31:55', NULL, 3, 1),
+(3, '2025-03-06', 3, '2025-03-02 14:59:21', '2025-03-21 12:32:00', NULL, 1, 1),
+(4, '2025-03-05', 3, '2025-03-03 14:25:05', '2025-03-21 12:32:05', NULL, 3, 1),
+(5, '2025-03-11', 3, '2025-03-11 09:23:34', '2025-03-21 12:32:11', NULL, 1, 1),
+(6, '2025-03-17', 1, '2025-03-17 12:05:09', NULL, NULL, 1, 1),
+(12, '2025-03-25', 1, '2025-03-25 12:10:59', NULL, NULL, 3, 1),
+(13, '2025-03-26', 1, '2025-03-26 10:54:08', NULL, NULL, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_inquiry_detail`
+--
+
+CREATE TABLE `tbl_inquiry_detail` (
+  `idtbl_inquiry_detail` int(11) NOT NULL,
+  `tbl_products_idtbl_product` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `delivarydate` date DEFAULT NULL,
+  `bag_length` int(11) NOT NULL,
+  `bag_width` int(11) NOT NULL,
+  `liner_size` int(11) NOT NULL,
+  `liner_color` int(11) NOT NULL,
+  `bg_weight` int(11) NOT NULL,
+  `ln_weight` int(11) NOT NULL,
+  `inner_bag` tinyint(1) NOT NULL,
+  `colour_no` int(11) NOT NULL,
+  `off_print` tinyint(1) NOT NULL,
+  `printing_type` varchar(244) NOT NULL,
+  `job` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_inquiry_idtbl_inquiry` int(11) NOT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_inquiry_detail`
+--
+
+INSERT INTO `tbl_inquiry_detail` (`idtbl_inquiry_detail`, `tbl_products_idtbl_product`, `quantity`, `date`, `delivarydate`, `bag_length`, `bag_width`, `liner_size`, `liner_color`, `bg_weight`, `ln_weight`, `inner_bag`, `colour_no`, `off_print`, `printing_type`, `job`, `status`, `insertdatetime`, `updatedatetime`, `updateuser`, `tbl_inquiry_idtbl_inquiry`, `tbl_user_idtbl_user`) VALUES
+(2, 1, 2025, '2025-03-02', NULL, 3, 2, 0, 0, 0, 0, 0, 2, 1, '0', '', 1, '2025-03-02 14:38:50', '2025-03-02 14:54:15', NULL, 2, 1),
+(3, 2, 2025, '2025-03-06', NULL, 3, 2, 0, 0, 0, 0, 0, 2, 0, '0', '', 1, '2025-03-02 14:59:21', NULL, NULL, 3, 1),
+(4, 1, 2025, '2025-03-05', NULL, 3, 4, 0, 0, 0, 0, 0, 78, 0, '0', '', 1, '2025-03-03 14:25:05', NULL, NULL, 4, 1),
+(5, 1, 1, '2025-03-11', '2025-03-13', 2, 3, 0, 0, 0, 0, 0, 7, 0, 'offPrint', '', 1, '2025-03-11 09:23:34', NULL, NULL, 5, 1),
+(6, 1, 4, '2025-03-17', '2025-03-22', 3, 4, 0, 0, 0, 0, 0, 7, 0, 'offPrint', 'bag production and coloring', 1, '2025-03-17 12:05:09', NULL, NULL, 6, 1),
+(9, 2, 4, '2025-03-25', '2025-03-26', 5, 6, 0, 0, 0, 0, 0, 8, 0, 'offPrint', '', 1, '2025-03-25 12:10:59', NULL, NULL, 12, 1),
+(10, 1, 5, '2025-03-26', '2025-03-27', 5, 6, 7, 8, 9, 3, 0, 66, 0, 'offPrint', '', 1, '2025-03-26 10:54:08', NULL, NULL, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -6817,7 +7287,7 @@ CREATE TABLE `tbl_location` (
 --
 
 INSERT INTO `tbl_location` (`idtbl_location`, `location`, `phone`, `phone2`, `email`, `address`, `status`, `insertdatetime`, `updateuser`, `updatedatetime`, `tbl_user_idtbl_user`) VALUES
-(1, 'Head Office', '+941126351', '+94779662165', 'admin@unistar-international.com', 'No-53, 3rd Lane, Ratmalana, Colombo', 1, '2022-11-19 14:36:31', 1, '2022-11-29 16:05:48', 1);
+(1, 'Head Office', '+94112260060', '+9411260166', 'https://lankaspin.com/', 'No 531/15, Negombo Road, Seeduwa, Sri Lanka', 1, '2022-11-19 14:36:31', 1, '2022-11-29 16:05:48', 1);
 
 -- --------------------------------------------------------
 
@@ -6835,6 +7305,89 @@ CREATE TABLE `tbl_locations` (
   `updated_on` datetime DEFAULT NULL,
   `updated_by` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_material`
+--
+
+CREATE TABLE `tbl_material` (
+  `idtbl_material` int(11) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_material`
+--
+
+INSERT INTO `tbl_material` (`idtbl_material`, `type`, `status`, `insertdatetime`, `updatedatetime`, `updateuser`, `tbl_user_idtbl_user`) VALUES
+(1, 'Linen', 1, '2024-06-06 12:11:37', NULL, NULL, 1),
+(2, 'Cotton', 3, '2024-06-06 12:11:43', '2024-06-06 12:12:12', NULL, 1),
+(3, 'poliyester', 1, '2024-06-13 10:47:29', '2024-08-14 15:20:18', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_order`
+--
+
+CREATE TABLE `tbl_order` (
+  `idtbl_order` int(11) NOT NULL,
+  `advance` double NOT NULL,
+  `order_sdate` date NOT NULL,
+  `tbl_inquiry_idtbl_inquiry` int(11) NOT NULL,
+  `tbl_bank_idtbl_bank` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL,
+  `tbl_payment_idtbl_payment` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`idtbl_order`, `advance`, `order_sdate`, `tbl_inquiry_idtbl_inquiry`, `tbl_bank_idtbl_bank`, `status`, `insertdatetime`, `updatedatetime`, `updateuser`, `tbl_user_idtbl_user`, `tbl_payment_idtbl_payment`) VALUES
+(31, 0, '0000-00-00', 6, 0, 0, '2025-03-25 10:52:57', NULL, NULL, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_order_detail`
+--
+
+CREATE TABLE `tbl_order_detail` (
+  `idtbl_order_detail` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `start_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `status` int(11) NOT NULL,
+  `order_date` date NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_inquiry_idtbl_inquiry` int(11) NOT NULL,
+  `tbl_products_idtbl_products` int(11) NOT NULL,
+  `tbl_colour_idtbl_colour` int(11) DEFAULT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL,
+  `tbl_quotation_idtbl_quotation` int(11) DEFAULT NULL,
+  `tbl_order_idtbl_order` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_order_detail`
+--
+
+INSERT INTO `tbl_order_detail` (`idtbl_order_detail`, `quantity`, `start_date`, `end_date`, `status`, `order_date`, `insertdatetime`, `updatedatetime`, `updateuser`, `tbl_inquiry_idtbl_inquiry`, `tbl_products_idtbl_products`, `tbl_colour_idtbl_colour`, `tbl_user_idtbl_user`, `tbl_quotation_idtbl_quotation`, `tbl_order_idtbl_order`) VALUES
+(36, 3, NULL, NULL, 1, '2025-03-28', '2025-03-25 10:52:57', NULL, NULL, 6, 1, NULL, 1, NULL, 31);
 
 -- --------------------------------------------------------
 
@@ -6858,6 +7411,87 @@ CREATE TABLE `tbl_order_type` (
 
 INSERT INTO `tbl_order_type` (`idtbl_order_type`, `type`, `status`, `insertdatetime`, `updateuser`, `updatedatetime`, `tbl_user_idtbl_user`) VALUES
 (1, 'On Cash', 1, '2023-02-28 07:34:05', NULL, '2023-02-28 07:34:05', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_packaging_detail`
+--
+
+CREATE TABLE `tbl_packaging_detail` (
+  `idtbl_packaging_detail` int(11) NOT NULL,
+  `packed_quantity` int(11) NOT NULL,
+  `packaging_date` date NOT NULL,
+  `tbl_cloth_idtbl_cloth` int(11) NOT NULL,
+  `tbl_size_idtbl_size` int(11) NOT NULL,
+  `tbl_inquiry_idtbl_inquiry` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_packaging_detail`
+--
+
+INSERT INTO `tbl_packaging_detail` (`idtbl_packaging_detail`, `packed_quantity`, `packaging_date`, `tbl_cloth_idtbl_cloth`, `tbl_size_idtbl_size`, `tbl_inquiry_idtbl_inquiry`, `insertdatetime`, `tbl_user_idtbl_user`, `status`, `updatedatetime`, `updateuser`) VALUES
+(1, 5, '2024-09-02', 2, 1, 35, '2024-09-04 11:14:32', 1, 1, NULL, NULL),
+(2, 4, '2024-09-01', 2, 3, 35, '2024-09-04 11:16:17', 1, 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_payment`
+--
+
+CREATE TABLE `tbl_payment` (
+  `idtbl_payment` int(11) NOT NULL,
+  `p_type` varchar(45) NOT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_payment`
+--
+
+INSERT INTO `tbl_payment` (`idtbl_payment`, `p_type`, `status`, `insertdatetime`, `updatedatetime`, `updateuser`, `tbl_user_idtbl_user`) VALUES
+(1, 'Cash', 1, '2024-06-27 12:00:03', NULL, NULL, 1),
+(2, 'Bank Transfer', 1, '2024-06-27 12:00:27', '2024-06-27 12:05:58', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_payment_detail`
+--
+
+CREATE TABLE `tbl_payment_detail` (
+  `idtbl_payment_details` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `payment_date` date NOT NULL,
+  `tbl_inquiry_idtbl_inquiry` int(11) NOT NULL,
+  `tbl_payment_idtbl_payment` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_payment_detail`
+--
+
+INSERT INTO `tbl_payment_detail` (`idtbl_payment_details`, `amount`, `payment_date`, `tbl_inquiry_idtbl_inquiry`, `tbl_payment_idtbl_payment`, `status`, `insertdatetime`, `updatedatetime`, `updateuser`, `tbl_user_idtbl_user`) VALUES
+(1, 100, '2024-09-01', 35, 1, 1, '2024-09-03 14:39:44', NULL, NULL, 1),
+(2, 100, '2024-09-01', 35, 1, 1, '2024-09-03 14:44:20', NULL, NULL, 1),
+(3, 200, '2024-09-02', 35, 2, 1, '2024-09-03 14:45:23', NULL, NULL, 1),
+(4, 500, '2024-09-01', 35, 2, 1, '2024-09-03 15:53:15', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -6894,12 +7528,9 @@ CREATE TABLE `tbl_porder` (
 --
 
 INSERT INTO `tbl_porder` (`idtbl_porder`, `po_no`, `orderdate`, `duedate`, `subtotal`, `discount`, `discountamount`, `nettotal`, `confirmstatus`, `grnconfirm`, `remark`, `status`, `insertdatetime`, `updateuser`, `updatedatetime`, `tbl_user_idtbl_user`, `tbl_location_idtbl_location`, `tbl_supplier_idtbl_supplier`, `tbl_order_type_idtbl_order_type`, `approved_by`, `approved_at`) VALUES
-(2, NULL, '2023-03-02', '2023-03-02', 4.06, 0, 0, 4.06, 0, 0, 'dd', 1, '2023-03-02 12:40:11', NULL, NULL, 1, 1, 3, 1, 1, '2023-03-02 11:17:10'),
-(3, 'PO0002', '2023-03-03', '2023-03-03', 4.06, 0, 0, 4.06, 1, 0, '', 1, '2023-03-03 17:52:24', NULL, NULL, 1, 1, 3, 1, 1, '2023-03-06 11:46:53'),
-(4, 'PO0003', '2023-03-03', '2023-03-03', 6.09, 0, 0, 6.09, 0, 0, '', 1, '2023-03-03 18:10:31', NULL, NULL, 1, 1, 3, 1, 1, '2023-03-06 10:46:41'),
-(5, 'PO0004', '2023-03-06', '2023-03-06', 10.32, 0, 0, 10.32, 0, 0, 'f', 1, '2023-03-06 16:12:12', NULL, NULL, 1, 1, 3, 1, 1, '2023-03-06 10:45:04'),
-(6, 'PO0005', '2023-03-07', '2023-03-07', 250.06, 0, 0, 250.06, 1, 0, '', 1, '2023-03-07 13:40:50', NULL, NULL, 1, 1, 3, 1, 1, '2023-03-07 08:11:39'),
-(7, 'PO0006', '2025-01-23', '2025-01-25', 1500, 0, 0, 1500, 0, 0, '', 1, '2025-01-23 10:02:29', NULL, NULL, 1, 1, 3, 1, NULL, NULL);
+(8, 'PO0002', '2025-02-14', '2025-02-15', 7500, 0, 0, 7500, 1, 0, '', 1, '2025-02-14 10:03:24', NULL, NULL, 1, 1, 1, 1, 1, '2025-02-14 04:33:45'),
+(9, 'PO0003', '2025-02-24', '2025-02-24', 300, 0, 0, 300, 1, 0, '', 1, '2025-02-24 10:02:12', NULL, NULL, 1, 1, 2, 1, 1, '2025-02-24 04:32:26'),
+(10, 'PO0004', '2025-04-02', '2025-04-04', 100, 0, 0, 100, 1, 0, '', 1, '2025-04-02 11:48:20', NULL, NULL, 1, 1, 1, 1, 1, '2025-04-02 06:19:10');
 
 -- --------------------------------------------------------
 
@@ -6934,7 +7565,10 @@ INSERT INTO `tbl_porder_detail` (`idtbl_porder_detail`, `qty`, `unitprice`, `dis
 (0, 3, 2.6, 0, 0, 'f', 1, '2023-03-06 16:12:12', NULL, NULL, 5, 3),
 (0, 2, 2.03, 0, 0, 'd', 1, '2023-03-07 13:40:50', NULL, NULL, 6, 1),
 (0, 2, 123, 0, 0, 'f', 1, '2023-03-07 13:40:50', NULL, NULL, 6, 8),
-(0, 1, 1500, 0, 0, 'ssss', 1, '2025-01-23 10:02:29', NULL, NULL, 7, 2);
+(0, 1, 1500, 0, 0, 'ssss', 1, '2025-01-23 10:02:29', NULL, NULL, 7, 2),
+(0, 5, 1500, 0, 0, 'cccc', 1, '2025-02-14 10:03:24', NULL, NULL, 8, 1),
+(0, 2, 150, 0, 0, 'test', 1, '2025-02-24 10:02:12', NULL, NULL, 9, 2),
+(0, 1, 100, 0, 0, '', 1, '2025-04-02 11:48:20', NULL, NULL, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -6965,6 +7599,26 @@ CREATE TABLE `tbl_porder_payment` (
 
 INSERT INTO `tbl_porder_payment` (`idtbl_porder_payment`, `date`, `paymenttype`, `paymentmethod`, `payamount`, `balance`, `chequeno`, `chequedate`, `idtbl_bank`, `paymentcomplete`, `status`, `insertdatetime`, `insertuser`, `tbl_porder_idtbl_porder`) VALUES
 (1, '2024-11-01', 'LC', 2, 180, 0, '12345', '2024-11-14', 14, 1, 1, '2024-10-30 14:28:56', 'admin', 30);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_products`
+--
+
+CREATE TABLE `tbl_products` (
+  `idtbl_product` int(11) NOT NULL,
+  `product` varchar(255) NOT NULL,
+  `insertdatetime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_products`
+--
+
+INSERT INTO `tbl_products` (`idtbl_product`, `product`, `insertdatetime`) VALUES
+(1, 'Gross Bag', '2025-03-21 06:20:28'),
+(2, 'Red Bag', '2025-03-21 06:20:28');
 
 -- --------------------------------------------------------
 
@@ -7107,32 +7761,232 @@ INSERT INTO `tbl_purchase_order_detail` (`tbl_purchase_order_detail`, `suppliern
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_quotation`
+--
+
+CREATE TABLE `tbl_quotation` (
+  `idtbl_quotation` int(11) NOT NULL,
+  `quot_date` date NOT NULL,
+  `duedate` date NOT NULL,
+  `total` double DEFAULT NULL,
+  `discount` double DEFAULT NULL,
+  `nettotal` double DEFAULT NULL,
+  `delivery_charge` double DEFAULT NULL,
+  `approvestatus` int(11) DEFAULT NULL,
+  `approvedate` date DEFAULT NULL,
+  `approveuser` int(11) DEFAULT NULL,
+  `reject_resone` varchar(200) DEFAULT NULL,
+  `remarks` varchar(200) DEFAULT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL,
+  `tbl_inquiry_idtbl_inquiry` int(11) NOT NULL,
+  `tbl_customer_idtbl_customer` int(11) NOT NULL,
+  `tbl_reason_idtbl_reason` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_quotation`
+--
+
+INSERT INTO `tbl_quotation` (`idtbl_quotation`, `quot_date`, `duedate`, `total`, `discount`, `nettotal`, `delivery_charge`, `approvestatus`, `approvedate`, `approveuser`, `reject_resone`, `remarks`, `status`, `insertdatetime`, `updatedatetime`, `tbl_user_idtbl_user`, `tbl_inquiry_idtbl_inquiry`, `tbl_customer_idtbl_customer`, `tbl_reason_idtbl_reason`) VALUES
+(3, '2024-07-01', '2024-07-01', 35236, 0, 0, 0, 0, '2024-07-23', 1, 'rrrr', '', 3, '2024-07-01 11:48:37', '2025-03-03 14:33:05', 1, 4, 2, 2),
+(4, '2024-07-09', '2024-07-09', 17840, 0, 0, 0, 0, '2024-07-23', 1, '', '', 4, '2024-07-09 10:41:21', '2024-09-10 13:42:09', 1, 35, 1, NULL),
+(10, '2025-03-03', '2025-03-03', 450, 0, 0, 0, 0, '2025-03-03', 1, 'private', 'rrrr', 2, '2025-03-03 11:49:29', '2025-03-03 14:22:29', 1, 3, 1, NULL),
+(11, '2025-03-03', '2025-03-04', 700, 0, 0, 0, 0, '0000-00-00', 0, '', 'rrrr', 1, '2025-03-03 14:32:47', NULL, 1, 4, 3, NULL),
+(12, '2025-03-03', '2025-03-07', 300, 0, 0, 0, 0, '2025-03-03', 1, '', '', 1, '2025-03-03 14:39:20', '2025-03-03 14:59:11', 1, 4, 3, 2),
+(13, '2025-03-03', '2025-03-03', 1200, 0, 0, 0, 0, '2025-03-03', 1, '', '', 1, '2025-03-03 14:39:58', '2025-03-03 14:58:59', 1, 4, 3, NULL),
+(14, '2025-03-11', '2025-03-14', 114.99999999999999, 0, 0, 0, 1, '2025-03-11', 1, '', '', 1, '2025-03-11 09:27:01', '2025-04-02 15:13:56', 0, 5, 1, NULL),
+(15, '2025-03-21', '2025-03-22', 345, 0, 0, 0, 0, '0000-00-00', 0, 'private', '', 3, '2025-03-21 11:53:59', '2025-03-21 12:02:16', 1, 6, 1, NULL),
+(16, '2025-03-21', '2025-03-21', 11498.849999999999, 0, 0, 0, 1, '2025-03-21', 1, '', '', 1, '2025-03-21 12:02:33', '2025-03-21 12:33:02', 1, 6, 1, NULL),
+(17, '2025-03-25', '2025-03-25', 5106, 0, 0, 0, 1, '2025-03-25', 1, '', '', 1, '2025-03-25 12:12:51', '2025-03-25 12:13:16', 1, 12, 3, NULL),
+(18, '2025-03-26', '2025-03-26', 1380, 0, 0, 0, 0, '0000-00-00', 0, '', '', 1, '2025-03-26 15:35:06', NULL, 1, 13, 3, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_quotation_detail`
+--
+
+CREATE TABLE `tbl_quotation_detail` (
+  `idtbl_quotation_detail` int(11) NOT NULL,
+  `idtbl_product` int(11) NOT NULL,
+  `qty` double NOT NULL,
+  `unitprice` double NOT NULL,
+  `duration` int(11) NOT NULL,
+  `discountamount` double NOT NULL,
+  `total` double NOT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  `status` int(11) NOT NULL,
+  `tbl_quotation_idtbl_quotation` int(11) NOT NULL,
+  `tbl_material_idtbl_material` int(11) NOT NULL,
+  `tbl_cloth_idtbl_cloth` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_quotation_detail`
+--
+
+INSERT INTO `tbl_quotation_detail` (`idtbl_quotation_detail`, `idtbl_product`, `qty`, `unitprice`, `duration`, `discountamount`, `total`, `comment`, `status`, `tbl_quotation_idtbl_quotation`, `tbl_material_idtbl_material`, `tbl_cloth_idtbl_cloth`) VALUES
+(1, 1, 3, 3333, 2, 0, 11, '', 1, 16, 0, 0),
+(2, 2, 5, 888, 7, 0, 5, '', 1, 17, 0, 0),
+(3, 1, 8, 150, 8, 0, 1, '', 1, 18, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_quotation_reject`
+--
+
+CREATE TABLE `tbl_quotation_reject` (
+  `idtbl_quotation_reject` int(11) NOT NULL,
+  `remarks` varchar(150) DEFAULT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_reason_idtbl_reason` int(11) NOT NULL,
+  `tbl_quotation_idtbl_quotation` int(11) NOT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_reason`
+--
+
+CREATE TABLE `tbl_reason` (
+  `idtbl_reason` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_reason`
+--
+
+INSERT INTO `tbl_reason` (`idtbl_reason`, `type`, `status`, `insertdatetime`, `updatedatetime`, `updateuser`, `tbl_user_idtbl_user`) VALUES
+(1, 'Price miss match', 1, '2024-06-06 12:29:57', NULL, NULL, 1),
+(2, 'Material Problem', 1, '2024-06-06 12:30:16', '2024-06-06 12:30:40', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_salesrep`
+--
+
+CREATE TABLE `tbl_salesrep` (
+  `idtbl_salesrep` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `contact_1` varchar(15) NOT NULL,
+  `contact_2` varchar(15) NOT NULL,
+  `address` varchar(150) NOT NULL,
+  `nic` varchar(13) NOT NULL,
+  `status` int(11) NOT NULL,
+  `insertdatetime` datetime NOT NULL,
+  `updatedatetime` datetime DEFAULT NULL,
+  `updateuser` int(11) DEFAULT NULL,
+  `tbl_user_idtbl_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_salesrep`
+--
+
+INSERT INTO `tbl_salesrep` (`idtbl_salesrep`, `name`, `email`, `contact_1`, `contact_2`, `address`, `nic`, `status`, `insertdatetime`, `updatedatetime`, `updateuser`, `tbl_user_idtbl_user`) VALUES
+(1, 'Thejan ', 'rajapakshalista41@gmail.com', '0768305353', '', 'NO 177/A MADA GONAWILLA DANKOTUWA, GONAWILLA', '200236502892', 1, '2024-07-08 09:52:09', '2024-07-08 09:52:09', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_stock`
+--
+
+CREATE TABLE `tbl_stock` (
+  `id` int(11) NOT NULL,
+  `grn_id` int(11) DEFAULT NULL,
+  `service_id` int(11) DEFAULT NULL,
+  `allocated_id` int(11) DEFAULT NULL,
+  `issue_id` int(11) DEFAULT NULL,
+  `batchno` varchar(45) DEFAULT NULL,
+  `qty` double NOT NULL,
+  `spare_part_id` int(11) DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_stock`
+--
+
+INSERT INTO `tbl_stock` (`id`, `grn_id`, `service_id`, `allocated_id`, `issue_id`, `batchno`, `qty`, `spare_part_id`, `created_by`, `created_at`) VALUES
+(1, 18, NULL, NULL, NULL, '', 2, 1, 1, '2025-02-19 10:50:20'),
+(2, 19, NULL, NULL, NULL, '', 2, 1, 1, '2025-02-24 04:29:38'),
+(3, 20, NULL, NULL, NULL, '', 3, 2, 1, '2025-02-24 04:35:09'),
+(4, NULL, 2, 5, 12, NULL, 0, 1, 1, '2025-02-24 01:40:14'),
+(5, NULL, 2, 6, 13, NULL, -1, 2, 1, '2025-02-24 01:40:14');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_supplier`
 --
 
 CREATE TABLE `tbl_supplier` (
   `idtbl_supplier` int(11) NOT NULL,
   `suppliername` varchar(45) NOT NULL,
-  `suppliercode` varchar(15) NOT NULL,
-  `primarycontactno` varchar(12) NOT NULL,
-  `secondarycontactno` varchar(12) NOT NULL,
-  `address` mediumtext NOT NULL,
-  `email` varchar(150) NOT NULL,
-  `remark` mediumtext NOT NULL,
+  `bus_reg_no` varchar(40) DEFAULT NULL,
+  `nbt_no` varchar(45) DEFAULT NULL,
+  `svat_no` varchar(45) DEFAULT NULL,
+  `telephone_no` varchar(45) NOT NULL,
+  `fax_no` varchar(45) DEFAULT NULL,
+  `address_line1` varchar(45) NOT NULL,
+  `address_line2` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  `state` varchar(45) NOT NULL,
+  `delivery_address_line1` varchar(45) DEFAULT NULL,
+  `delivery_address_line2` varchar(45) DEFAULT NULL,
+  `delivery_city` varchar(45) DEFAULT NULL,
+  `delivery_state` varchar(45) DEFAULT NULL,
+  `business_status` varchar(45) DEFAULT NULL,
+  `payment_method` varchar(45) DEFAULT NULL,
+  `credit_days` int(11) NOT NULL,
+  `postal_code` varchar(45) NOT NULL,
+  `country` varchar(45) NOT NULL,
+  `vat_no` varchar(45) NOT NULL,
+  `imagepath` mediumtext DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL,
+  `company_branch_id` varchar(45) NOT NULL,
   `status` int(11) NOT NULL,
   `insertdatetime` datetime NOT NULL,
-  `updateuser` int(11) DEFAULT NULL,
   `updatedatetime` datetime DEFAULT NULL,
+  `tbl_supplier_type_idtbl_supplier_type` int(11) NOT NULL,
   `tbl_user_idtbl_user` int(11) NOT NULL,
-  `tbl_country_idtbl_country` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `primarycontactno` varchar(15) DEFAULT NULL,
+  `secondarycontactno` varchar(15) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_supplier`
 --
 
-INSERT INTO `tbl_supplier` (`idtbl_supplier`, `suppliername`, `suppliercode`, `primarycontactno`, `secondarycontactno`, `address`, `email`, `remark`, `status`, `insertdatetime`, `updateuser`, `updatedatetime`, `tbl_user_idtbl_user`, `tbl_country_idtbl_country`) VALUES
-(3, 'Sup 1', 'S1', '071597559', '071597559', 'd', 's@gmail.com', '1', 1, '2023-02-28 07:36:55', NULL, '2023-02-28 07:36:55', 1, 1);
+INSERT INTO `tbl_supplier` (`idtbl_supplier`, `suppliername`, `bus_reg_no`, `nbt_no`, `svat_no`, `telephone_no`, `fax_no`, `address_line1`, `address_line2`, `city`, `state`, `delivery_address_line1`, `delivery_address_line2`, `delivery_city`, `delivery_state`, `business_status`, `payment_method`, `credit_days`, `postal_code`, `country`, `vat_no`, `imagepath`, `company_id`, `company_branch_id`, `status`, `insertdatetime`, `updatedatetime`, `tbl_supplier_type_idtbl_supplier_type`, `tbl_user_idtbl_user`, `primarycontactno`, `secondarycontactno`, `address`, `email`) VALUES
+(1, 'SUP 01', '100013004', '4234234', '123123', '0119922834', '44332123', 'ADDR 3', 'ADDR 4', 'COLOMBO', 'LK', 'ADDR 3', 'ADDR 4', 'COLOMBO', 'LK', 'Proprietorship', 'Cash', 0, '', '', '123123', 'Image-023_10_33_541.jpg', 0, '0', 3, '2024-11-21 09:49:40', '2025-02-17 11:33:39', 1, 1, '+9467856789', '+9467856789', 'negombo 33', 'samarasinghe@gmail.com'),
+(2, 'asd', 'asd', 'sad', 'sd', '123', 'asd', 'asd', 'ds', 'sd', 'sd', 'asd', 'sd', 'sd', 'asd', NULL, NULL, 0, '', '', 'ds', '', 0, '0', 1, '2024-12-12 15:47:53', '2024-12-13 08:58:32', 1, 1, '+9467856789', '+9467856789', 'negombo ', 'samarasinghe@gmail.com'),
+(3, 'test', '455666', '45455', '44444', '0768360', '23245', 'aaa', 'bbb', 'negombo', 'negombo', 'aaa', 'bbb', 'negombo', 'negombo', 'Proprietorship', 'Bank', 2, '', '', '4566', '', 0, '0', 1, '2025-02-06 10:45:34', NULL, 4, 1, '0768360', '0768360', 'aaa,bbb', 'samarasinghe@gmail.com'),
+(4, 'sup3', '55555666', '43234', '098800', '07819224058', '4566', 'aaa', 'bbb', 'negombo', 'negombo', 'aaa', 'bbb', 'negombo', 'negombo', 'Partnership', 'Cash', 2, '', '', '555567', '475815287_1179098423772031_3923165119281059603_n.jpg', 0, '0', 3, '2025-02-06 12:14:53', '2025-02-13 10:41:58', 3, 1, '07819224058', '07819224058', 'aaa,bbb', NULL),
+(5, 'teeesssrt', NULL, NULL, NULL, '0781922408', NULL, '645 negomvob', '645 negomvob', 'negombo', 'negobo', NULL, NULL, NULL, NULL, 'Proprietorship', 'Cash', 10, '', '', '455667', NULL, NULL, 'test', 1, '2025-02-17 11:07:42', NULL, 3, 1, '0781922408', '0781922408', '645 negomvob,645 negomvob', NULL),
+(6, 'ffsfeg', NULL, NULL, NULL, '078456734', NULL, 'fffffkk', 'fffffeee', 'ffffdd', 'ffffffggg', NULL, NULL, NULL, NULL, 'Proprietorship', 'Cash', 8, '', '', '4466664', NULL, NULL, '', 3, '2025-02-17 11:19:27', '2025-02-17 11:25:56', 4, 1, '078456734', '078456734', 'fffffkk,fffffeee', NULL),
+(7, 'ffsfegsdsdrttt', NULL, NULL, NULL, '0764568730', NULL, 'fffffkk', 'fffffeee', 'ffffdd', 'ffffffggg', NULL, NULL, NULL, NULL, 'Proprietorship', 'Cash', 8, '', '', '4466664', NULL, NULL, 'testttttggg', 1, '2025-02-17 11:33:13', NULL, 2, 1, '0764568730', '0764568730', 'fffffkk,fffffeee', NULL);
 
 -- --------------------------------------------------------
 
@@ -7158,7 +8012,9 @@ CREATE TABLE `tbl_supplier_bank_details` (
 --
 
 INSERT INTO `tbl_supplier_bank_details` (`idtbl_supplier_bank_details`, `bank_name`, `branch`, `account_no`, `account_name`, `status`, `updatedatetime`, `tbl_supplier_idtbl_supplier`, `tbl_user_idtbl_user`, `updateuser`) VALUES
-(1, 'BOC', 'Dankotuwa', '12156445', 'Rajapaksha', 1, '2025-01-30 11:17:23', 0, '1', NULL);
+(1, 'BOC', 'Dankotuwa', '1215646', 'Rajapaksha', 1, '2025-02-05 11:47:07', 0, '1', NULL),
+(2, 'COMMERCIAL', 'divulapitiya', '87896574822', 'Lahiru', 1, '2025-02-05 11:33:30', 2, '1', NULL),
+(4, 'HNB', 'Negombo', '6848474', 'lahiru', 1, '2025-02-05 12:25:34', 2, '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -7184,7 +8040,8 @@ CREATE TABLE `tbl_supplier_contact_details` (
 --
 
 INSERT INTO `tbl_supplier_contact_details` (`idtbl_supplier_contact_details`, `name`, `position`, `mobile`, `email`, `status`, `updatedatetime`, `tbl_supplier_idtbl_supplier`, `tbl_user_idtbl_user`, `updateuser`) VALUES
-(1, 'Rajapaksha', 'GM', '0768365', 'rejan31@gmail.com', 1, '2025-01-30 11:50:06', 0, '1', NULL);
+(1, 'Rajapaksha', 'GM', '0768360', 'rejan31@gmail.com', 1, '2025-02-05 10:45:40', 0, NULL, NULL),
+(2, 'Rajapaksha', 'GM', '0768360', 'rejan31@gmail.com', 1, '2025-02-05 12:25:52', 1, '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -7207,12 +8064,14 @@ CREATE TABLE `tbl_supplier_type` (
 --
 
 INSERT INTO `tbl_supplier_type` (`idtbl_supplier_type`, `type`, `status`, `insertdatetime`, `updated_user`, `updatedatetime`, `tbl_user_idtbl_user`) VALUES
-(1, 'Insurence', 1, '2023-02-14 10:26:45', NULL, '2023-02-14 10:32:03', '1'),
+(1, 'Insurence', 3, '2023-02-14 10:26:45', NULL, '2023-02-14 10:32:03', '1'),
 (2, 'Vehicle Service', 1, '2023-02-14 10:27:10', NULL, '2023-02-14 10:31:58', '1'),
 (3, 'Printing Materials', 1, '2023-02-14 10:27:28', NULL, '2023-02-14 10:31:32', '1'),
 (4, 'Subcontract', 1, '2024-04-10 04:39:00', 'admin', '2024-05-02 00:47:47', NULL),
 (5, 'Fabric Suppliers', 1, '2024-09-03 14:56:03', 'admin', '2024-09-03 14:57:33', 'admin'),
-(6, 'Packaging Suppliers', 1, '2024-09-03 14:57:56', NULL, NULL, 'admin');
+(6, 'Packaging Suppliers', 1, '2024-09-03 14:57:56', NULL, NULL, 'admin'),
+(7, 'Stationery', 1, '2025-03-21 09:52:28', NULL, NULL, '1'),
+(8, 'General Items', 1, '2025-03-21 09:52:28', NULL, NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -7424,6 +8283,12 @@ ALTER TABLE `company`
 --
 ALTER TABLE `csvlog`
   ADD PRIMARY KEY (`batchno`);
+
+--
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `goodsreceived_info`
@@ -7896,6 +8761,13 @@ ALTER TABLE `tbl_brand`
   ADD KEY `fk_tbl_brand_tbl_material_category1_idx` (`tbl_material_category_idtbl_material_category`);
 
 --
+-- Indexes for table `tbl_cloth`
+--
+ALTER TABLE `tbl_cloth`
+  ADD PRIMARY KEY (`idtbl_cloth`),
+  ADD KEY `fk_tbl_cloth_tbl_user2_idx` (`tbl_user_idtbl_user`);
+
+--
 -- Indexes for table `tbl_currency`
 --
 ALTER TABLE `tbl_currency`
@@ -7918,6 +8790,16 @@ ALTER TABLE `tbl_customer_contact_details`
 --
 ALTER TABLE `tbl_customer_job_details`
   ADD PRIMARY KEY (`idtbl_customer_job_details`);
+
+--
+-- Indexes for table `tbl_delivery_detail`
+--
+ALTER TABLE `tbl_delivery_detail`
+  ADD PRIMARY KEY (`idtbl_delivery_detail`),
+  ADD KEY `fk_tbl_order_tbl_inquiry1_idx` (`tbl_inquiry_idtbl_inquiry`),
+  ADD KEY `fk_tbl_order_tbl_size1_idx` (`tbl_size_idtbl_size`),
+  ADD KEY `fk_tbl_order_tbl_user2_idx` (`tbl_user_idtbl_user`),
+  ADD KEY `fk_tbl_order_tbl_cloth1_idx` (`tbl_cloth_idtbl_cloth`);
 
 --
 -- Indexes for table `tbl_email_receptions`
@@ -7962,6 +8844,23 @@ ALTER TABLE `tbl_grndetail`
   ADD KEY `fk_tbl_grndetail_tbl_grn1_idx` (`tbl_grn_idtbl_grn`);
 
 --
+-- Indexes for table `tbl_inquiry`
+--
+ALTER TABLE `tbl_inquiry`
+  ADD PRIMARY KEY (`idtbl_inquiry`),
+  ADD KEY `fk_tbl_inquiry_tbl_customer1_idx` (`tbl_customer_idtbl_customer`),
+  ADD KEY `fk_tbl_inquiry_tbl_user2_idx` (`tbl_user_idtbl_user`);
+
+--
+-- Indexes for table `tbl_inquiry_detail`
+--
+ALTER TABLE `tbl_inquiry_detail`
+  ADD PRIMARY KEY (`idtbl_inquiry_detail`),
+  ADD KEY `fk_tbl_inquiry_detail_tbl_inquiry1_idx` (`tbl_inquiry_idtbl_inquiry`),
+  ADD KEY `fk_tbl_inquiry_detail_tbl_user2_idx` (`tbl_user_idtbl_user`),
+  ADD KEY `tbl_products_idtbl_product` (`tbl_products_idtbl_product`);
+
+--
 -- Indexes for table `tbl_location`
 --
 ALTER TABLE `tbl_location`
@@ -7975,11 +8874,66 @@ ALTER TABLE `tbl_locations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_material`
+--
+ALTER TABLE `tbl_material`
+  ADD PRIMARY KEY (`idtbl_material`),
+  ADD KEY `fk_tbl_material_tbl_user2_idx` (`tbl_user_idtbl_user`);
+
+--
+-- Indexes for table `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  ADD PRIMARY KEY (`idtbl_order`),
+  ADD KEY `fk_tbl_size_tbl_user2_idx` (`tbl_user_idtbl_user`),
+  ADD KEY `fk_tbl_order_tbl_bank1_idx` (`tbl_bank_idtbl_bank`),
+  ADD KEY `fk_tbl_order_tbl_inquiry2_idx` (`tbl_inquiry_idtbl_inquiry`),
+  ADD KEY `fk_tbl_order_tbl_payment1_idx` (`tbl_payment_idtbl_payment`);
+
+--
+-- Indexes for table `tbl_order_detail`
+--
+ALTER TABLE `tbl_order_detail`
+  ADD PRIMARY KEY (`idtbl_order_detail`),
+  ADD KEY `fk_tbl_order_tbl_inquiry1_idx` (`tbl_inquiry_idtbl_inquiry`),
+  ADD KEY `fk_tbl_order_tbl_colour1_idx` (`tbl_colour_idtbl_colour`),
+  ADD KEY `fk_tbl_order_tbl_user2_idx` (`tbl_user_idtbl_user`),
+  ADD KEY `fk_tbl_order_tbl_quotation1_idx` (`tbl_quotation_idtbl_quotation`),
+  ADD KEY `fk_tbl_order_detail_tbl_order1_idx` (`tbl_order_idtbl_order`),
+  ADD KEY `tbl_products_idtbl_products` (`tbl_products_idtbl_products`);
+
+--
 -- Indexes for table `tbl_order_type`
 --
 ALTER TABLE `tbl_order_type`
   ADD PRIMARY KEY (`idtbl_order_type`),
   ADD KEY `fk_tbl_order_type_tbl_user1_idx` (`tbl_user_idtbl_user`);
+
+--
+-- Indexes for table `tbl_packaging_detail`
+--
+ALTER TABLE `tbl_packaging_detail`
+  ADD PRIMARY KEY (`idtbl_packaging_detail`),
+  ADD KEY `fk_tbl_order_tbl_inquiry1_idx` (`tbl_inquiry_idtbl_inquiry`),
+  ADD KEY `fk_tbl_order_tbl_size1_idx` (`tbl_size_idtbl_size`),
+  ADD KEY `fk_tbl_order_tbl_user2_idx` (`tbl_user_idtbl_user`),
+  ADD KEY `fk_tbl_order_tbl_cloth1_idx` (`tbl_cloth_idtbl_cloth`);
+
+--
+-- Indexes for table `tbl_payment`
+--
+ALTER TABLE `tbl_payment`
+  ADD PRIMARY KEY (`idtbl_payment`),
+  ADD KEY `fk_tbl_payment_tbl_user1_idx` (`tbl_user_idtbl_user`);
+
+--
+-- Indexes for table `tbl_payment_detail`
+--
+ALTER TABLE `tbl_payment_detail`
+  ADD PRIMARY KEY (`idtbl_payment_details`),
+  ADD KEY `fk_tbl_size_tbl_user2_idx` (`tbl_user_idtbl_user`),
+  ADD KEY `fk_tbl_order_tbl_inquiry2_idx` (`tbl_inquiry_idtbl_inquiry`),
+  ADD KEY `fk_tbl_order_tbl_payment1_idx` (`tbl_payment_idtbl_payment`);
 
 --
 -- Indexes for table `tbl_porder`
@@ -7998,6 +8952,12 @@ ALTER TABLE `tbl_porder_payment`
   ADD PRIMARY KEY (`idtbl_porder_payment`),
   ADD KEY `tbl_user_idtbl_user` (`insertuser`),
   ADD KEY `tbl_porder_idtbl_porder` (`tbl_porder_idtbl_porder`);
+
+--
+-- Indexes for table `tbl_products`
+--
+ALTER TABLE `tbl_products`
+  ADD PRIMARY KEY (`idtbl_product`);
 
 --
 -- Indexes for table `tbl_provinces`
@@ -8020,12 +8980,58 @@ ALTER TABLE `tbl_purchase_order_detail`
   ADD KEY `fk_tbl_purchase_order_detail_tbl_purchase_order1_idx` (`tbl_purchase_order_idtbl_purchase_order`);
 
 --
+-- Indexes for table `tbl_quotation`
+--
+ALTER TABLE `tbl_quotation`
+  ADD PRIMARY KEY (`idtbl_quotation`),
+  ADD KEY `fk_tbl_quatation_tbl_inquiry1_idx` (`tbl_inquiry_idtbl_inquiry`),
+  ADD KEY `fk_tbl_quatation_tbl_user2_idx` (`tbl_user_idtbl_user`),
+  ADD KEY `fk_tbl_quotation_tbl_customer1_idx` (`tbl_customer_idtbl_customer`),
+  ADD KEY `fk_tbl_quotation_tbl_reason1_idx` (`tbl_reason_idtbl_reason`);
+
+--
+-- Indexes for table `tbl_quotation_detail`
+--
+ALTER TABLE `tbl_quotation_detail`
+  ADD PRIMARY KEY (`idtbl_quotation_detail`),
+  ADD KEY `idtbl_product` (`idtbl_product`);
+
+--
+-- Indexes for table `tbl_quotation_reject`
+--
+ALTER TABLE `tbl_quotation_reject`
+  ADD PRIMARY KEY (`idtbl_quotation_reject`),
+  ADD KEY `fk_tbl_quatation_reject_tbl_reason1_idx` (`tbl_reason_idtbl_reason`),
+  ADD KEY `fk_tbl_quatation_reject_tbl_user2_idx` (`tbl_user_idtbl_user`),
+  ADD KEY `fk_tbl_quatation_reject_tbl_quatation1_idx` (`tbl_quotation_idtbl_quotation`);
+
+--
+-- Indexes for table `tbl_reason`
+--
+ALTER TABLE `tbl_reason`
+  ADD PRIMARY KEY (`idtbl_reason`),
+  ADD KEY `fk_tbl_reason_tbl_user2_idx` (`tbl_user_idtbl_user`);
+
+--
+-- Indexes for table `tbl_salesrep`
+--
+ALTER TABLE `tbl_salesrep`
+  ADD PRIMARY KEY (`idtbl_salesrep`),
+  ADD KEY `fk_tbl_customer_tbl_user2_idx` (`tbl_user_idtbl_user`);
+
+--
+-- Indexes for table `tbl_stock`
+--
+ALTER TABLE `tbl_stock`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_supplier`
 --
 ALTER TABLE `tbl_supplier`
   ADD PRIMARY KEY (`idtbl_supplier`),
-  ADD KEY `fk_tbl_supplier_tbl_user1_idx` (`tbl_user_idtbl_user`),
-  ADD KEY `fk_tbl_supplier_tbl_country1_idx` (`tbl_country_idtbl_country`);
+  ADD KEY `fk_tbl_supplier_tbl_supplier_type1_idx` (`tbl_supplier_type_idtbl_supplier_type`),
+  ADD KEY `tbl_user_idtbl_user` (`tbl_user_idtbl_user`);
 
 --
 -- Indexes for table `tbl_supplier_bank_details`
@@ -8115,6 +9121,12 @@ ALTER TABLE `csvlog`
   MODIFY `batchno` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
+
+--
 -- AUTO_INCREMENT for table `goodsreceived_info`
 --
 ALTER TABLE `goodsreceived_info`
@@ -8130,7 +9142,7 @@ ALTER TABLE `goodsreceived_list`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `hourly_done_rate`
@@ -8160,19 +9172,19 @@ ALTER TABLE `machine_allocation_history`
 -- AUTO_INCREMENT for table `machine_brands`
 --
 ALTER TABLE `machine_brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `machine_ins`
 --
 ALTER TABLE `machine_ins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `machine_models`
 --
 ALTER TABLE `machine_models`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `machine_operations`
@@ -8226,7 +9238,7 @@ ALTER TABLE `machine_rent_requests_receive_machine_returns`
 -- AUTO_INCREMENT for table `machine_repairs`
 --
 ALTER TABLE `machine_repairs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `machine_repair_details`
@@ -8262,13 +9274,13 @@ ALTER TABLE `machine_requirements`
 -- AUTO_INCREMENT for table `machine_services`
 --
 ALTER TABLE `machine_services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `machine_service_allocated_items`
 --
 ALTER TABLE `machine_service_allocated_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `machine_service_details`
@@ -8286,19 +9298,19 @@ ALTER TABLE `machine_service_details_items`
 -- AUTO_INCREMENT for table `machine_service_estimated_items`
 --
 ALTER TABLE `machine_service_estimated_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `machine_service_issued_items`
 --
 ALTER TABLE `machine_service_issued_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `machine_service_received_items`
 --
 ALTER TABLE `machine_service_received_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `machine_service_returned_accepted_items`
@@ -8316,19 +9328,19 @@ ALTER TABLE `machine_service_returned_accepted_items_header`
 -- AUTO_INCREMENT for table `machine_service_returned_items`
 --
 ALTER TABLE `machine_service_returned_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `machine_service_returned_items_header`
 --
 ALTER TABLE `machine_service_returned_items_header`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `machine_types`
 --
 ALTER TABLE `machine_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `mbranchlist`
@@ -8382,13 +9394,13 @@ ALTER TABLE `operation_types`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `permissions_machines`
 --
 ALTER TABLE `permissions_machines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `prodorder_info`
@@ -8430,13 +9442,13 @@ ALTER TABLE `purchasereturn_list`
 -- AUTO_INCREMENT for table `return_to_supplier`
 --
 ALTER TABLE `return_to_supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `return_to_supplier_header`
 --
 ALTER TABLE `return_to_supplier_header`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `rm_item_location`
@@ -8466,13 +9478,13 @@ ALTER TABLE `slots`
 -- AUTO_INCREMENT for table `spare_parts`
 --
 ALTER TABLE `spare_parts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `spare_part_suppliers`
 --
 ALTER TABLE `spare_part_suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `stores`
@@ -8529,6 +9541,12 @@ ALTER TABLE `tbl_brand`
   MODIFY `idtbl_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tbl_cloth`
+--
+ALTER TABLE `tbl_cloth`
+  MODIFY `idtbl_cloth` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tbl_currency`
 --
 ALTER TABLE `tbl_currency`
@@ -8538,19 +9556,25 @@ ALTER TABLE `tbl_currency`
 -- AUTO_INCREMENT for table `tbl_customer_bank_details`
 --
 ALTER TABLE `tbl_customer_bank_details`
-  MODIFY `idtbl_customer_bank_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `idtbl_customer_bank_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tbl_customer_contact_details`
 --
 ALTER TABLE `tbl_customer_contact_details`
-  MODIFY `idtbl_customer_contact_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `idtbl_customer_contact_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_customer_job_details`
 --
 ALTER TABLE `tbl_customer_job_details`
   MODIFY `idtbl_customer_job_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `tbl_delivery_detail`
+--
+ALTER TABLE `tbl_delivery_detail`
+  MODIFY `idtbl_delivery_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_email_receptions`
@@ -8574,13 +9598,25 @@ ALTER TABLE `tbl_grade`
 -- AUTO_INCREMENT for table `tbl_grn`
 --
 ALTER TABLE `tbl_grn`
-  MODIFY `idtbl_grn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idtbl_grn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_grndetail`
 --
 ALTER TABLE `tbl_grndetail`
-  MODIFY `idtbl_grndetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idtbl_grndetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `tbl_inquiry`
+--
+ALTER TABLE `tbl_inquiry`
+  MODIFY `idtbl_inquiry` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `tbl_inquiry_detail`
+--
+ALTER TABLE `tbl_inquiry_detail`
+  MODIFY `idtbl_inquiry_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_location`
@@ -8595,22 +9631,64 @@ ALTER TABLE `tbl_locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tbl_material`
+--
+ALTER TABLE `tbl_material`
+  MODIFY `idtbl_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  MODIFY `idtbl_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `tbl_order_detail`
+--
+ALTER TABLE `tbl_order_detail`
+  MODIFY `idtbl_order_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
 -- AUTO_INCREMENT for table `tbl_order_type`
 --
 ALTER TABLE `tbl_order_type`
   MODIFY `idtbl_order_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `tbl_packaging_detail`
+--
+ALTER TABLE `tbl_packaging_detail`
+  MODIFY `idtbl_packaging_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_payment`
+--
+ALTER TABLE `tbl_payment`
+  MODIFY `idtbl_payment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_payment_detail`
+--
+ALTER TABLE `tbl_payment_detail`
+  MODIFY `idtbl_payment_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `tbl_porder`
 --
 ALTER TABLE `tbl_porder`
-  MODIFY `idtbl_porder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idtbl_porder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_porder_payment`
 --
 ALTER TABLE `tbl_porder_payment`
   MODIFY `idtbl_porder_payment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_products`
+--
+ALTER TABLE `tbl_products`
+  MODIFY `idtbl_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_provinces`
@@ -8631,28 +9709,64 @@ ALTER TABLE `tbl_purchase_order_detail`
   MODIFY `tbl_purchase_order_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
+-- AUTO_INCREMENT for table `tbl_quotation`
+--
+ALTER TABLE `tbl_quotation`
+  MODIFY `idtbl_quotation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `tbl_quotation_detail`
+--
+ALTER TABLE `tbl_quotation_detail`
+  MODIFY `idtbl_quotation_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_quotation_reject`
+--
+ALTER TABLE `tbl_quotation_reject`
+  MODIFY `idtbl_quotation_reject` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_reason`
+--
+ALTER TABLE `tbl_reason`
+  MODIFY `idtbl_reason` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_salesrep`
+--
+ALTER TABLE `tbl_salesrep`
+  MODIFY `idtbl_salesrep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_stock`
+--
+ALTER TABLE `tbl_stock`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `tbl_supplier`
 --
 ALTER TABLE `tbl_supplier`
-  MODIFY `idtbl_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idtbl_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_supplier_bank_details`
 --
 ALTER TABLE `tbl_supplier_bank_details`
-  MODIFY `idtbl_supplier_bank_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idtbl_supplier_bank_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_supplier_contact_details`
 --
 ALTER TABLE `tbl_supplier_contact_details`
-  MODIFY `idtbl_supplier_contact_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idtbl_supplier_contact_details` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_supplier_type`
 --
 ALTER TABLE `tbl_supplier_type`
-  MODIFY `idtbl_supplier_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idtbl_supplier_type` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_unit`
@@ -8699,6 +9813,24 @@ ALTER TABLE `goodsreceived_info`
 --
 ALTER TABLE `goodsreceived_list`
   ADD CONSTRAINT `goodsreceived_list_ibfk_1` FOREIGN KEY (`purchaseorder_id`) REFERENCES `purchaseorder_list` (`purchaseorder_id`);
+
+--
+-- Constraints for table `tbl_inquiry_detail`
+--
+ALTER TABLE `tbl_inquiry_detail`
+  ADD CONSTRAINT `tbl_inquiry_detail_ibfk_1` FOREIGN KEY (`tbl_products_idtbl_product`) REFERENCES `tbl_products` (`idtbl_product`);
+
+--
+-- Constraints for table `tbl_order_detail`
+--
+ALTER TABLE `tbl_order_detail`
+  ADD CONSTRAINT `tbl_order_detail_ibfk_1` FOREIGN KEY (`tbl_products_idtbl_products`) REFERENCES `tbl_products` (`idtbl_product`);
+
+--
+-- Constraints for table `tbl_quotation_detail`
+--
+ALTER TABLE `tbl_quotation_detail`
+  ADD CONSTRAINT `tbl_quotation_detail_ibfk_1` FOREIGN KEY (`idtbl_product`) REFERENCES `tbl_products` (`idtbl_product`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

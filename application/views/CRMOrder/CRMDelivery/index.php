@@ -20,11 +20,11 @@
                 <table class="table table-bordered table-striped table-sm nowrap" id="dataTableAccepted" style="width: 100%;">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>Porder Id</th>
                             <th>Customer</th>
-                            <th>Quotation Date</th>
-                            <th>Due Date</th>
-                            <th>Total</th>
+                            <th>Order Date</th>
+                            <!-- <th>Due Date</th>
+                            <th>Total</th> -->
                             <th class="text-right">Actions</th>
                         </tr>
                     </thead>

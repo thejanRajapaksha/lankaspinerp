@@ -297,6 +297,7 @@ class SpareParts extends Admin_Controller
         $this->db->from('spare_parts');
         $this->db->like('name', $term, 'both');
         $this->db->like('part_no', $term, 'both');
+        $this->db->where('is_deleted',0);
         $query = $this->db->get();
         $this->db->limit($resultCount, $offset);
         $machine_ins = $query->result_array();
@@ -305,6 +306,7 @@ class SpareParts extends Admin_Controller
         $this->db->from('spare_parts');
         $this->db->like('name', $term, 'both');
         $this->db->like('part_no', $term, 'both');
+        $this->db->where('is_deleted',0);
         $count = $this->db->count_all_results();
 
         $data = array();
