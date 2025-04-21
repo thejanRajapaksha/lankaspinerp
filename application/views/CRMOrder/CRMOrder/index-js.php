@@ -61,7 +61,7 @@
                     "data": null,
                     "render": function(data, type, full) {
                         var button = '';
-                        // button += '<button class="btn btn-primary btn-sm btnview mr-1" data-toggle="modal" data-target="#orderdet" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Payment details view"><i class="fas fa-eye"></i></button>';
+                        button += '<button class="btn btn-primary btn-sm btnview mr-1" data-toggle="modal"  data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Order details"><i class="fas fa-eye"></i></button>';
                         button += '<button class="btn btn-success btn-sm btnquotation mr-1" data-toggle="modal" data-target="#staticBackdrop" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Create Order"><i class="fas fa-list"></i></button>';
                         return button;
                     }
@@ -114,8 +114,7 @@
         });
 
 
-
-        $('#dataTableAccepted').on('click', '.btnview', function() {
+        $('#dataTableAccepted').on('click', '.btnview', function () {
             var id = $(this).data('id');
             $('#inquiryid').val(id);
 
@@ -124,45 +123,32 @@
                 type: 'POST',
                 data: { inquiryid: id },
                 dataType: 'json',
-                success: function(data) {
+                success: function (data) {
                     var tableBody = $('#orderdetailtable tbody');
                     tableBody.empty();
-                    $('#commonFields').remove();
 
                     if (data.length > 0) {
-                        var commonFields = '<div id="commonFields">' +
-                                        '<div><strong>Payment Type:</strong> ' + data[0].p_type + '</div>' +
-                                        '<div><strong>Advance &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</strong> ' + data[0].advance + '</div>';
-                        if (data[0].bname) {
-                            commonFields += '<div><strong>Bank Name &nbsp&nbsp&nbsp&nbsp:</strong>&nbsp;  ' + data[0].bname + '</div>';
-                        }
-
-                        commonFields += '</div>';
-                        $('#orderdet .modal-body').prepend(commonFields);
-                        data.forEach(function(orderDetail) {
-                            var balance = orderDetail.cutting_qty - orderDetail.quantity;
+                        data.forEach(function (orderDetail) {
                             var row = '<tr>' +
-                                    '<td>' + orderDetail.cloth_type + '</td>' +
-                                    '<td>' + orderDetail.material_type + '</td>' +
-                                    '<td>' + orderDetail.size + '</td>' +
-                                    '<td>' + orderDetail.quantity + '</td>' +
-                                    '<td><input type="number" class="form-control form-control-sm cutting-qty" data-id="' + orderDetail.idtbl_order_detail + '" value="' + orderDetail.cutting_qty + '" /></td>' +
-                                    '<td class="balance">' + (balance >= 0 ? '+' : '') + balance + '</td>' + 
-                                    '</tr>';
+                                '<td>' + orderDetail.product + '</td>' +
+                                '<td>' + orderDetail.quantity + '</td>' +
+                                '<td>' + orderDetail.order_date + '</td>' +
+                                '</tr>';
                             tableBody.append(row);
                         });
 
-                        $('#orderdet').modal('show');
+                        $('#orderdet').modal('show'); 
                     } else {
                         alert('No order details found for this inquiry.');
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.error(error);
                     alert('Failed to load order details. Please try again later.');
                 }
             });
         });
+
 
         $(document).on('input', '.cutting-qty', function() {
             var $row = $(this).closest('tr');
@@ -171,87 +157,6 @@
             var balance = cuttingQty - quantity;
             $row.find('.balance').text((balance >= 0 ? '+' : '') + balance);
         });
-
-        $('#saveCuttingDetails').on('click', function() {
-            var updatedData = [];
-
-            // Collect updated data from the table
-            $('#orderdetailtable tbody tr').each(function() {
-                var row = $(this);
-                var cuttingQty = row.find('.cutting-qty').val();
-                var id = row.find('.cutting-qty').data('id');
-
-                updatedData.push({
-                    id: id,
-                    cuttingQty: cuttingQty
-                });
-            });
-
-            // Send updated data to the server
-            $.ajax({
-                url: "<?php echo base_url() ?>CRMOrderdetail/SaveCuttingDetails",
-                type: 'POST',
-                data: {
-                    updatedData: JSON.stringify(updatedData)
-                },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.success) {
-                        alert('Cutting details saved successfully!');
-                        $('#orderdet').modal('hide');
-                    } else {
-                        alert('Failed to save cutting details. Please try again.');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                    alert('An error occurred. Please try again later.');
-                }
-            });
-        });       
-
-        // $("#clothtype").select2({
-        //     dropdownParent: $('#staticBackdrop'),
-        //     ajax: {
-        //         url: "<?php echo base_url() ?>CRMOrderdetail/Getclothtype",
-        //         type: "post",
-        //         dataType: 'json',
-        //         delay: 250,
-        //         data: function(params) {
-        //             return {
-        //                 inquiryid: $('#inquiryid').val(),
-        //                 searchTerm: params.term // search term
-        //             };
-        //         },
-        //         processResults: function(response) {
-        //             return {
-        //                 results: response
-        //             };
-        //         },
-        //         cache: true
-        //     }
-        // });
-
-        // $("#sizetype").select2({  
-        //     dropdownParent: $('#staticBackdrop'),
-        //     ajax: {
-        //         url: "<?php echo base_url() ?>CRMOrderdetail/Getsizetype",
-        //         type: "post",
-        //         dataType: 'json',
-        //         delay: 250,
-        //         data: function(params) {
-        //             return {
-        //                 searchTerm: params.term // search term
-        //             };
-        //         },
-        //         processResults: function(response) {
-        //             return {
-        //                 results: response
-        //             };
-        //         },
-        //         cache: true
-        //     }
-        // });
 
         $("#bank").select2({  
             dropdownParent: $('#Paymentmodal'),

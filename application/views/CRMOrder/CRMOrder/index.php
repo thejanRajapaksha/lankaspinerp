@@ -178,7 +178,7 @@
 
 <!-- Detail Modal -->
 <div class="modal fade" id="orderdet" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="orderdetLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="orderdetLabel">Order Details</h5>
@@ -186,28 +186,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div id="commonFields"></div>
-                <div class="row my-4"></div>
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <div class="scrollbar pb-3" id="style-2">
-                            <table class="table table-striped table-bordered table-sm small" id="orderdetailtable">
-                                <thead>
-                                    <tr>
-                                        <!-- <th>Cloth</th>
-                                        <th>Material</th>
-                                        <th>Size</th> -->
-                                        <th>Qty</th>
-                                        <th>Cutting Qty</th>
-                                        <th>Balance</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                        <button id="saveCuttingDetails" class="btn btn-primary">Save Cutting Details</button>
-                    </div>
+            <div class="modal-body p-3">
+                <div class="scrollbar" id="style-2" style="max-height: 60vh; overflow-y: auto;">
+                    <table class="table table-striped table-bordered table-sm small w-100" id="orderdetailtable">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Qty</th>
+                                <th>Order Date</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
             </div>
         </div>

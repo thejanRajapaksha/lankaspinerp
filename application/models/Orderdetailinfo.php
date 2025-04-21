@@ -30,7 +30,8 @@ class Orderdetailinfo extends CI_Model{
                 'tbl_inquiry_idtbl_inquiry' => $inquiryid,
                 'idtbl_order' => $orderID,
                 'insertdatetime' => $insertdatetime,
-                'tbl_user_idtbl_user' => $userID
+                'tbl_user_idtbl_user' => $userID,
+                'status' => '1'
             );
     
             $this->db->insert('tbl_order', $orderData);
@@ -406,16 +407,10 @@ class Orderdetailinfo extends CI_Model{
             $row = $query->row();
             $order_id = $row->tbl_order_idtbl_order;
 
-            $this->db->select('p.p_type, o.advance, o.order_sdate, b.bank as bname,
-                                od.tbl_cloth_idtbl_cloth, od.tbl_size_idtbl_size, od.quantity, od.cutting_qty, od.idtbl_order_detail,
-                                c.type as cloth_type, s.type as size, m.type as material_type');
+            $this->db->select('od.quantity, od.order_date, od.idtbl_order_detail, c.product');
             $this->db->from('tbl_order o');
             $this->db->join('tbl_order_detail od', 'o.idtbl_order = od.tbl_order_idtbl_order', 'left');
-            $this->db->join('tbl_payment p', 'o.tbl_payment_idtbl_payment = p.p_type', 'left');
-            $this->db->join('tbl_cloth c', 'od.tbl_cloth_idtbl_cloth = c.idtbl_cloth', 'left');
-            $this->db->join('tbl_size s', 'od.tbl_size_idtbl_size = s.idtbl_size', 'left');
-            $this->db->join('tbl_material m', 'od.tbl_material_idtbl_material = m.idtbl_material', 'left');
-            $this->db->join('tbl_bank b', 'o.tbl_bank_idtbl_bank  = b.idtbl_bank', 'left');
+            $this->db->join('tbl_products c', 'od.tbl_products_idtbl_products = c.idtbl_product', 'left');
             $this->db->where('o.idtbl_order', $order_id);
             $result = $this->db->get();
 
