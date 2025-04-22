@@ -2,6 +2,16 @@
     $(document).ready(function() {
         $('#crmorder_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
         $('#collapseCRMOrder').addClass('show');
+
+        document.getElementById('addDeliveryRow').addEventListener('click', function () {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td><input type="date" class="form-control form-control-sm" name="delivery_date[]" required></td>
+        <td><input type="number" class="form-control form-control-sm" name="delivery_qty[]" required></td>
+        <td><button type="button" class="btn btn-danger btn-sm" onclick="this.closest('tr').remove()">Remove</button></td>
+    `;
+    document.getElementById('deliveryRows').appendChild(row);
+});
         
         var addcheck = '<?php echo (in_array('createCRMDeliverydetail', $user_permission)) ? 1 : 0; ?>';
         var editcheck = '<?php echo (in_array('updateCRMDeliverydetail', $user_permission)) ? 1 : 0; ?>';
@@ -34,36 +44,36 @@
                 },
             ],
             ajax: {
-                url: "<?php echo base_url() ?>scripts/qutationAccList.php",
+                url: "<?php echo base_url() ?>scripts/crmdeliverydetail.php",
                 type: "POST",
             },
             "order": [[ 0, "desc" ]],
             "columns": [
                 {
-                    "data": "tbl_inquiry_idtbl_inquiry"
+                    "data": function(data, type, full) {
+                        return "PO-" + data.idtbl_order;
+                    }
                 },
                 {
                     "data": "name"
                 },
                 {
-                    "data": "quot_date"
+                    "data": "order_date"
                 },
-                // {
-                //     "data": "duedate"
-                // },
-                // {
-                //     "data": "total"
-                // },
+                {
+                    "data": "quantity"
+                },
+
                 {
                     "targets": -1,
                     "className": 'text-right',
                     "data": null,
                     "render": function(data, type, full) {
                         var button = '';
-                        // button += '<button class="btn btn-dark btn-sm btnview mr-1" data-toggle="modal" data-target="#deliverydetail" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Packaging details view"><i class="fas fa-eye"></i></button>';
+                        button += '<button class="btn btn-dark btn-sm btnview mr-1" data-toggle="modal" data-target="#deliverydetail" data-id="' + full['idtbl_order'] + '" data-customer="' + full['idtbl_customer'] + '" title="Delivery details view"><i class="fas fa-eye"></i></button>';
                         // button += '<button class="btn btn-dark btn-sm btnquotation mr-1" data-toggle="modal" data-target="#Deliverymodal" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Enter Packaging Details"><i class="fas fa-box"></i></button>';
                         // button += '<button class="btn btn-dark btn-sm btnpayment mr-1" data-toggle="modal" data-target="#paymentDetailModal" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" data-total="' + full['total'] + '" title="payment details"><i class="fas fa-credit-card"></i></button>';
-                        button += '<button class="btn btn-dark btn-sm btndelivery mr-1" data-toggle="modal" data-target="#jobPlanModal" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['tbl_inquiry_idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Delivery details"><i class="fas fa-truck"></i></button>';
+                        button += '<button class="btn btn-dark btn-sm btndelivery mr-1" data-toggle="modal" data-target="#deliveryPlanModal" data-oid="' + full['idtbl_order'] + '" data-qid="' + full['idtbl_quotation'] + '" data-id="' + full['idtbl_inquiry'] + '" data-customer="' + full['idtbl_customer'] + '" title="Delivery details"><i class="fas fa-truck"></i></button>';
                         // if(full['status']==1){
                         //     button+='<a href="<?php echo base_url() ?>CRMDeliverydetail/Deliverydetailstatus/'+full['idtbl_quotation']+'/4" onclick="return deactive_confirm()" target="_self" class="btn btn-dark btn-sm mr-1 ';if(statuscheck!=1){button+='d-none';}button+='"><i class="fas fa-check"></i></a>';
                         // }else{
@@ -86,7 +96,11 @@
         $('#dataTableAccepted').on('click', '.btndelivery', function() {
             var qid = $(this).data('qid');
             var id = $(this).data('id');
+            var oid = $(this).data('oid');
+            // console.log(id);
+            // console.log(oid);
             $('#inquiryid').val(id);
+            $('#orderid').val(oid);
         });
 
         $("#paymenttype").select2({
@@ -454,89 +468,41 @@
     });
 
 
-    $('#dataTableAccepted').on('click', '.btnview', function() {
-        var id = $(this).data('id');
-        $('#inquiryid').val(id);
+    $('#dataTableAccepted').on('click', '.btnview', function () {
+    var id = $(this).data('id');
+    $('#orderid').val(id);
 
-        $.ajax({
-            url: "<?php echo base_url() ?>CRMDeliverydetail/GetDeliveryAndPackagingDetails",
-            type: 'POST',
-            data: { inquiryid: id },
-            dataType: 'json',
-            success: function(data) {
-                var deliveryTableBody = $('#deliverydetailtable tbody');
-                var packagingTableBody = $('#packagingdetailtable tbody');
-                deliveryTableBody.empty();
-                packagingTableBody.empty();
+    $.ajax({
+        url: "<?php echo base_url('CRMDeliverydetail/GetDeliveryDetails'); ?>",
+        type: 'POST',
+        data: { orderId: id },
+        dataType: 'json',
+        success: function (data) {
+            var deliveryTableBody = $('#deliverydetailtable tbody');
+            deliveryTableBody.empty();
 
-                if (data.delivery.length > 0) {
-                    data.delivery.forEach(function(deliveryDetail) {
-                        var row = '<tr>' +
-                            '<td>' + deliveryDetail.cloth_type + '</td>' +
-                            '<td>' + deliveryDetail.size + '</td>' +
-                            '<td>' + deliveryDetail.deliver_quantity + '</td>' +
-                            '<td>' + deliveryDetail.delivery_date + '</td>' +
-                            '</tr>';
-                        deliveryTableBody.append(row);
-                    });
-                } else {
-                    alert('No delivery details found for this inquiry.');
-                }
-
-                if (data.packaging.length > 0) {
-                    data.packaging.forEach(function(packagingDetail) {
-                        var row = '<tr>' +
-                            '<td>' + packagingDetail.cloth_type + '</td>' +
-                            '<td>' + packagingDetail.size + '</td>' +
-                            '<td>' + packagingDetail.packed_quantity + '</td>' +
-                            '<td>' + packagingDetail.packaging_date + '</td>' +
-                            '</tr>';
-                        packagingTableBody.append(row);
-                    });
-                } else {
-                    alert('No packaging details found for this inquiry.');
-                }
-
-                $('#deliverydetail').modal('show');
-            },
-        });
-    });
-
-    $('#saveBalanceDetails').on('click', function() {
-        var materialBalances = [];
-
-        $('#deliverydetailtable tbody tr').each(function() {
-            var balanceInput = $(this).find('input.mat_balance');
-            var materialId = balanceInput.data('mid');
-            var orderId = balanceInput.data('oid');
-            var balanceValue = balanceInput.val();
-
-            materialBalances.push({
-                tbl_material_idtbl_material: materialId,
-                tbl_order_idtbl_order: orderId,
-                mat_balance: balanceValue
-            });
-        });
-
-        $.ajax({
-            url: "<?php echo base_url() ?>CRMDeliverydetail/Savematerialbalances",
-            type: 'POST',
-            data: { materialBalances: materialBalances },
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) {
-                    alert('Material balances saved successfully.');
-                    $('#deliverydetail').modal('hide');
-                } else {
-                    alert('Failed to save material balances. Please try again.');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-                alert('An error occurred while saving material balances. Please try again later.');
+            if (data.delivery.length > 0) {
+                data.delivery.forEach(function (delivery) {
+                    var row = '<tr>' +
+                        '<td>' + delivery.deliveryId + '</td>' +
+                        '<td>' + delivery.deliver_quantity + '</td>' +
+                        '<td>' + delivery.delivery_date + '</td>' +
+                        '</tr>';
+                    deliveryTableBody.append(row);
+                });
+            } else {
+                deliveryTableBody.append('<tr><td colspan="4" class="text-center text-muted">No delivery data found.</td></tr>');
             }
-        });
+
+            $('#deliverydetail').modal('show');
+        },
+        error: function () {
+            alert('Something went wrong while fetching the delivery details.');
+        }
     });
+});
+
+
 
     $(document).ready(function() {
     $('#checkMachineAvailability').on('click', function() {

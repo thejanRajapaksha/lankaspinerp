@@ -6,7 +6,7 @@ date_default_timezone_set('Asia/Colombo');
 class CRMDeliverydetail extends Admin_Controller {
     public function index(){
         $this->load->model('Commeninfo');
-        $this->load->model('Customerinfo');
+        // $this->load->model('Customerinfo');
 		$this->load->model('Customerinfo');
 		//$result['menuaccess']=$this->Commeninfo->Getmenuprivilege();
 		$result['customer'] = $this->Customerinfo->GetCustomerList();
@@ -15,19 +15,34 @@ class CRMDeliverydetail extends Admin_Controller {
 		$this->render_template('CRMOrder/CRMDelivery/index', $this->data);
 	}
 
-	public function Deliverydetailinsertupdate(){
+	public function Deliverydetailinsertupdate()
+	{
 		$this->load->model('Deliverydetailinfo');
-        $result=$this->Deliverydetailinfo->Deliverydetailinsertupdate();
+		$result= $this->Deliverydetailinfo->Deliverydetailinsertupdate(); 
 	}
+
+	
+
+	public function GetDeliveryDetails()
+{
+    $orderId = $this->input->post('orderId');
+
+    $this->load->model('Deliverydetailinfo');
+    $delivery = $this->Deliverydetailinfo->getDeliveryByOrderId($orderId);
+
+    echo json_encode(['delivery' => $delivery]);
+}
+
+	
     public function Deliverydetailstatus($x, $y){
 		$this->load->model('Deliverydetailinfo');
         $result=$this->Deliverydetailinfo->Deliverydetailstatus($x, $y);
 	}
-    public function Getdeliverydetails() {	
-		$this->load->model('Deliverydetailinfo');
-		$material_details = $this->Deliverydetailinfo->Getdeliverydetails();	
-		echo json_encode($material_details);
-	}
+    // public function Getdeliverydetails() {	
+	// 	$this->load->model('Deliverydetailinfo');
+	// 	$material_details = $this->Deliverydetailinfo->Getdeliverydetails();	
+	// 	echo json_encode($material_details);
+	// }
     public function Deliverydetailcheck(){
 		$this->load->model('Deliverydetailinfo');
         $result=$this->Deliverydetailinfo->Deliverydetailcheck();
