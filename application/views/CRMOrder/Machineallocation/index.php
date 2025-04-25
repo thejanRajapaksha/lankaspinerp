@@ -15,29 +15,23 @@
                 <form id="searchform">
                     <div class="form-row">
                         <div class="col-3">
-                            <label class="small font-weight-bold text-dark">PO Number*</label>
-                            <div class="input-group input-group-sm mb-3">
-                                <select class="form-control form-control-sm" name="inquiryid" id="inquiryid"
-                                    required>
-                                    <option value="">Select</option>
-                                    <?php foreach ($result['inquiryinfo'] as $rowInquiry): ?>
-										<option value="<?php echo $rowInquiry->idtbl_inquiry; ?>">
-											PO<?php echo $rowInquiry->idtbl_inquiry; ?>
-										</option>
-									<?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <label class="small font-weight-bold text-dark">Jobs*</label>
-                            <div class="input-group input-group-sm mb-3">
-                                <select type="text" class="form-control dpd1a rounded-0" id="selectedjob"
-                                    name="selectedjob" required>
-                                    <option value="">Select</option>
+							<label class="small font-weight-bold text-dark">Orders*</label>
+							<div class="input-group input-group-sm mb-3">
+								<select class="form-control form-control-sm" name="orderid" id="orderid" required>
+									<option value="">Select</option>
+								</select>
+							</div>
+						</div>
 
-                                </select>
-                            </div>
-                        </div>
+						<!-- <div class="col-3">
+							<label class="small font-weight-bold text-dark">Delivery ID*</label>
+							<div class="input-group input-group-sm mb-3">
+								<select type="text" class="form-control dpd1a rounded-0" id="selectdeliveryid" name="selectdeliveryid" required>
+									<option value="">Select</option>
+								</select>
+							</div>
+						</div> -->
+
                     </div>
                     <input type="submit" class="d-none" id="hidesubmit">
                 </form>
@@ -51,7 +45,7 @@
                                         <th>#</th>
                                         <th>Customer</th>
                                         <th>Po Number</th>
-                                        <th>Job</th>
+                                        <th>Delivery ID</th>
                                         <th>Qty</th>
                                         <th>Cost Item Name</th>
                                         <th class="text-right">Actions</th>
@@ -95,8 +89,8 @@
 									id="machine" required>
 									<option value="">Select</option>
 									<?php foreach ($result['machine'] as $rowmachine): ?>
-										<option value="<?php echo $rowmachine->idtbl_machine; ?>">
-											<?php echo $rowmachine->machine . ' - ' . $rowmachine->machinecode; ?>
+										<option value="<?php echo $rowmachine->id; ?>">
+											<?php echo $rowmachine->name . ' - ' . $rowmachine->machinecode; ?>
 										</option>
 									<?php endforeach; ?>
 								</select>

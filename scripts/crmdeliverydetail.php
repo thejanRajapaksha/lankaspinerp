@@ -68,5 +68,5 @@ $joinQuery = "FROM `tbl_order_detail` AS `u`
 // AND `u`.`tbl_inquiry_idtbl_inquiry` = '$getid'
 
 echo json_encode(
-	SSP::simple( $_POST, $sql_details, $table, $primaryKey, $columns, $joinQuery,)
+    SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns, $joinQuery)
 );

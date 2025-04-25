@@ -186,47 +186,50 @@ class Machineallocationinfo extends CI_Model{
 
     }
 
-    public function FetchItemDataForAllocation(){
-        $recordID=$this->input->post('recordId');
+    public function GetOrderList()
+    {
+        $sql = "
+            SELECT 
+                dd.tbl_order_idtbl_order,
+                dd.tbl_inquiry_idtbl_inquiry,
+                p.product,
+                id.quantity,
+                c.name
+            FROM tbl_delivery_detail dd
+            JOIN tbl_inquiry i ON dd.tbl_inquiry_idtbl_inquiry = i.idtbl_inquiry
+            JOIN tbl_inquiry_detail id ON id.tbl_inquiry_idtbl_inquiry = i.idtbl_inquiry
+            JOIN tbl_products p ON p.idtbl_product = id.tbl_products_idtbl_product
+            JOIN tbl_customer c ON c.idtbl_customer = i.tbl_customer_idtbl_customer
+            GROUP BY dd.tbl_order_idtbl_order
+        ";
 
-        $html='';
-
-		$sql="SELECT * FROM `tbl_inquiry` AS `u`
-        JOIN `tbl_inquiry_detail` AS `ub` ON `u`.`idtbl_inquiry` = `ub`.`tbl_inquiry_idtbl_inquiry`
-        JOIN `tbl_cost_items` AS `uc` ON `ub`.`idtbl_inquiry_detail` = `uc`.`tbl_inquiry_detail_idtbl_inquiry_detail`  JOIN `tbl_customer` AS `ud` ON (`ud`.`idtbl_customer` = `u`.`tbl_customer_idtbl_customer`) WHERE `u`.`status` IN (1) AND `ub`.`status` IN (1) AND `uc`.`status` IN (1) AND `uc`.`tbl_inquiry_detail_idtbl_inquiry_detail` = '$recordID'";
-
-        $respond=$this->db->query($sql, array(1, $recordID));
-
-              
-        foreach($respond->result() as $rowlist){
-            $html.='
-            <tr id ="'.$rowlist->idtbl_inquiry.'">
-                <td>'.$rowlist->idtbl_inquiry.'</td>
-                <td>'.$rowlist->name.'</td>
-                <td>'.$rowlist->po_number.'</td>
-                <td>'.$rowlist->job.'</td>
-                <td>'.$rowlist->qty.'</td>
-                <td>'.$rowlist->costitemname.'</td>
-                <td class = "text-center"><button type="button" id="'.$rowlist->idtbl_cost_items.'" class="btn btn-dark btn-sm btnAdd mr-1">
-                <i class="fas fa-tools"></i>
-                </button></td>
-             </tr>
-            
-            ';
-        }
-
-        echo $html;
+        $query = $this->db->query($sql);
+        echo json_encode($query->result());
     }
 
-    public function GetDeliveryPlanDetails(){
-        $recordID=$this->input->post('recordId');
+    public function GetDeliveryIdsForOrder()
+{
+    $orderId = $this->input->post('orderId');
 
-        $this->db->select('*');
-        $this->db->from('tbl_delivery_plan');
-        $this->db->join('tbl_delivery_plan_details', 'tbl_delivery_plan_details.tbl_delivery_plan_idtbl_delivery_plan = tbl_delivery_plan.idtbl_delivery_plan');
-        $this->db->where('tbl_delivery_plan_details.tbl_customerinquiry_detail_idtbl_customerinquiry_detail', $recordID);
-        $respond=$this->db->get();
-        return $respond->result_array();
-    }
+    $sql = "
+        SELECT 
+            d.deliveryId,
+            d.deliver_quantity,
+            d.tbl_order_idtbl_order,
+            c.name AS customer_name,
+            p.product AS cost_item_name
+        FROM tbl_delivery_detail d
+        JOIN tbl_inquiry i ON d.tbl_inquiry_idtbl_inquiry = i.idtbl_inquiry
+        JOIN tbl_inquiry_detail id ON id.tbl_inquiry_idtbl_inquiry = i.idtbl_inquiry
+        JOIN tbl_products p ON p.idtbl_product = id.tbl_products_idtbl_product
+        JOIN tbl_customer c ON c.idtbl_customer = i.tbl_customer_idtbl_customer
+        WHERE d.tbl_order_idtbl_order = ?
+
+    ";
+
+    $query = $this->db->query($sql, array($orderId));
+    echo json_encode($query->result());
+}
+
 
 }
