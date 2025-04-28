@@ -89,6 +89,7 @@
               <th>Dilevary Id</th>
               <th>Delivery Quantity</th>
               <th>Delivery Date</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -97,6 +98,41 @@
         </table>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editDeliveryModal" tabindex="-1" role="dialog" aria-labelledby="editDeliveryModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form id="editDeliveryForm" method="post" action="<?= site_url('CRMDeliverydetail/Deliverydetailupdate') ?>">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editDeliveryModalLabel">Edit Delivery</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <input type="hidden" id="editDeliveryId" name="deliveryId">
+
+          <div class="form-group">
+            <label for="editDeliverQuantity">Quantity</label>
+            <input type="number" class="form-control" id="editDeliverQuantity" name="deliver_quantity" required>
+          </div>
+
+          <div class="form-group">
+            <label for="editDeliveryDate">Delivery Date</label>
+            <input type="date" class="form-control" id="editDeliveryDate" name="delivery_date" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+
+      </div>
+    </form>
   </div>
 </div>
 

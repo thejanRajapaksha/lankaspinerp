@@ -14,6 +14,7 @@
             <div class="card-body p-0 p-2">
                 <form id="searchform">
                     <div class="form-row">
+<<<<<<< Updated upstream
                         <div class="col-3">
 							<label class="small font-weight-bold text-dark">Orders*</label>
 							<div class="input-group input-group-sm mb-3">
@@ -31,6 +32,54 @@
 								</select>
 							</div>
 						</div> -->
+=======
+					<div class="col-3">
+                            <label class="small font-weight-bold text-dark">Customer*</label>
+                            <div class="input-group input-group-sm mb-3">
+                                <select class="form-control form-control-sm" name="customer" id="customer"
+                                    required>
+                                    <option value="">Select</option>
+                                    <?php foreach ($result['customer'] as $customer): ?>
+										<option value="<?php echo $customer->idtbl_customer; ?>">
+											<?php echo $customer->name; ?>
+										</option>
+									<?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+						<div class="col-3">
+                            <label class="small font-weight-bold text-dark">Inquiry*</label>
+                            <div class="input-group input-group-sm mb-3">
+                                <select type="text" class="form-control dpd1a rounded-0" id="selectedInquiry"
+                                    name="selectedInquiry" required>
+                                    <option value="">Select</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-3">
+                            <label class="small font-weight-bold text-dark">PO Number*</label>
+                            <div class="input-group input-group-sm mb-3">
+                                <select class="form-control form-control-sm" name="inquiryid" id="inquiryid"
+                                    required>
+                                    <option value="">Select</option>
+                                    <?php //foreach ($result['inquiryinfo'] as $rowInquiry): ?>
+										<option value="<?php //echo $rowInquiry->idtbl_inquiry; ?>">
+											PO<?php // echo $rowInquiry->idtbl_inquiry; ?>
+										</option>
+									<?php // endforeach; ?>
+                                </select>
+                            </div>
+                        </div> -->
+                        <div class="col-3">
+                            <label class="small font-weight-bold text-dark">PO NUMBER*</label>
+                            <div class="input-group input-group-sm mb-3">
+                                <select type="text" class="form-control dpd1a rounded-0" id="selectedPo"
+                                    name="selectedPo" required>
+                                    <option value="">Select</option>
+>>>>>>> Stashed changes
 
                     </div>
                     <input type="submit" class="d-none" id="hidesubmit">
@@ -45,7 +94,11 @@
                                         <th>#</th>
                                         <th>Customer</th>
                                         <th>Po Number</th>
+<<<<<<< Updated upstream
                                         <th>Delivery ID</th>
+=======
+                                        <!-- <th>Job</th> -->
+>>>>>>> Stashed changes
                                         <th>Qty</th>
                                         <th>Cost Item Name</th>
                                         <th class="text-right">Actions</th>
@@ -80,6 +133,8 @@
 					<div class="col-4">
 						<form action="" id="allocationform" autocomplete="off">
 							<div class="form-row mb-1">
+								<input type="hidden" class="form-control form-control-sm" name="poid"
+									id="poid" required>
 								<input type="hidden" class="form-control form-control-sm" name="costitemid"
 									id="costitemid" required>
 								<input type="hidden" class="form-control form-control-sm" name="hiddenselectjobid"
@@ -90,7 +145,11 @@
 									<option value="">Select</option>
 									<?php foreach ($result['machine'] as $rowmachine): ?>
 										<option value="<?php echo $rowmachine->id; ?>">
+<<<<<<< Updated upstream
 											<?php echo $rowmachine->name . ' - ' . $rowmachine->machinecode; ?>
+=======
+											<?php echo $rowmachine->name . ' - ' . $rowmachine->s_no; ?>
+>>>>>>> Stashed changes
 										</option>
 									<?php endforeach; ?>
 								</select>
@@ -101,8 +160,8 @@
 									id="employee" required>
 									<option value="">Select</option>
 									<?php foreach ($result['employee'] as $rowemployee): ?>
-										<option value="<?php echo $rowemployee->idtbl_employee; ?>">
-											<?php echo $rowemployee->fullname . ' - ' . $rowemployee->empno; ?>
+										<option value="<?php echo $rowemployee->id; ?>">
+											<?php echo $rowemployee->emp_fullname . ' - ' . $rowemployee->emp_id; ?>
 										</option>
 									<?php endforeach; ?>
 								</select>
@@ -151,6 +210,7 @@
 											<th>Start Date</th>
 											<th>End Date</th>
 											<th>Allocated Qty</th>
+											<th>Action</th>
 										</thead>
 										<tbody id="tblmachinebody">
 
@@ -161,8 +221,10 @@
 						</div>
 						<div class="form-group mt-3 text-right">
 							<button type="button" id="submitBtn2" class="btn btn-outline-primary btn-sm fa-pull-right"
-								<?php if($addcheck==0){echo 'disabled';} ?>><i class="far fa-save"></i>&nbsp;Allocate
+								<?php if(in_array('createMachineallocation', $user_permission)):?>
+									><i class="far fa-save"></i>&nbsp;Allocate
 								Machine</button>
+							<?php endif;?>
 						</div>
 					</div>
 				</div>
@@ -174,7 +236,7 @@
 								<thead>
 									<th>Start Date</th>
 									<th>End Date</th>
-									<th>Cost Item</th>
+									<!-- <th>Cost Item</th> -->
 									<th>Quantity</th>
 								</thead>
 								<tbody id="tblallocationlistbody">

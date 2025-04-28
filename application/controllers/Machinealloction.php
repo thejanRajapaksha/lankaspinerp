@@ -12,6 +12,7 @@ class Machinealloction extends Admin_Controller {
         $result['machine']=$this->Machineallocationinfo->Getmachinelist();
         $result['employee']=$this->Machineallocationinfo->Getemployeelist();
         $result['inquiryinfo']=$this->Machineallocationinfo->GetAllCustomerInquiries();
+        $result['customer']=$this->Machineallocationinfo->GetAllCustomers();
         $this->data['result'] = $result;
 		$this->data['js'] = 'application/views/CRMOrder/Machineallocation/index-js.php';
 		$this->render_template('CRMOrder/Machineallocation/index.php', $this->data);
@@ -35,6 +36,11 @@ class Machinealloction extends Admin_Controller {
 		$this->load->model('Machineallocationinfo');
         $result=$this->Machineallocationinfo->FetchAllocationData();
 	}
+    public function GetOrderDetails(){
+        $this->load->model('Machineallocationinfo');
+        $result=$this->Machineallocationinfo->GetOrderDetails();
+        echo json_encode($result);
+    }
    
     public function GetInquieryDetails(){
 		$this->load->model('Machineallocationinfo');

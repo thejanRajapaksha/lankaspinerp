@@ -89,6 +89,58 @@ class Deliverydetailinfo extends CI_Model{
                 redirect('CRMDeliverydetail');
             }
         }
+        public function Deliverydetailupdate(){
+            $userID=$_SESSION['id'];
+
+            $deliveryId = $this->input->post('deliveryId');
+            $quantity = $this->input->post('deliver_quantity');
+            $date = $this->input->post('delivery_date');
+
+            $updatedatetime=date('Y-m-d H:i:s');
+            $data = array(
+                'deliver_quantity'=> $quantity,
+                'delivery_date' => $date, 
+                'updatedatetime' => $updatedatetime,
+                'updateuser' => $userID
+            );
+
+            $this->db->where('deliveryId', $deliveryId);
+            $this->db->update('tbl_delivery_detail', $data);
+
+            $this->db->trans_complete();
+
+            if ($this->db->trans_status() === TRUE) {
+                $this->db->trans_commit();
+                
+                $actionObj=new stdClass();
+                $actionObj->icon='fas fa-save';
+                $actionObj->title='';
+                $actionObj->message='Record Update Successfully';
+                $actionObj->url='';
+                $actionObj->target='_blank';
+                $actionObj->type='primary';
+
+                $actionJSON=json_encode($actionObj);
+                
+                $this->session->set_flashdata('msg', $actionJSON);
+                redirect('CRMDeliverydetail');                
+            } else {
+                $this->db->trans_rollback();
+
+                $actionObj=new stdClass();
+                $actionObj->icon='fas fa-warning';
+                $actionObj->title='';
+                $actionObj->message='Record Error';
+                $actionObj->url='';
+                $actionObj->target='_blank';
+                $actionObj->type='danger';
+
+                $actionJSON=json_encode($actionObj);
+                
+                $this->session->set_flashdata('msg', $actionJSON);
+                redirect('CRMDeliverydetail');
+            }
+        }
     
     public function GetMachineType() {
         $inquiryid = $this->input->post('inquiryid');

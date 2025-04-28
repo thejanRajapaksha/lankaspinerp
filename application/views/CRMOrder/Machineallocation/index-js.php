@@ -1,5 +1,8 @@
 <script>
-
+	$(document).ready(function(){
+		$('#crmorder_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
+        $('#collapseCRMOrder').addClass('show');
+	});
 	$("#tblmachinelist").on('click', '.btnDeleterow', function () {
 		$(this).closest('tr').remove();
 	});
@@ -62,6 +65,7 @@
 		// var jobid = $('#hiddenselectjobid').val();
 		var deliveryplan = $('#deliveryplan').val();
 		var employee = $('#employee').val();
+		var poid = $('#poid').val();
 
 		// get table data into array
 		var tbody = $('#tblmachinelist tbody');
@@ -84,7 +88,9 @@
 				jobid: jobid,
 				deliveryplan: deliveryplan,
 				employee: employee,
-				costitemid: costitemid
+				costitemid: costitemid,
+				poid:poid
+
 			},
 			url: '<?php echo base_url() ?>Machinealloction/Machineinsertupdate',
 			success: function (result) {
@@ -110,6 +116,95 @@
         });
 	})
 
+<<<<<<< Updated upstream
+=======
+
+	$('#customer').change(function () {
+        let recordId = $('#customer :selected').val();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo site_url('Machinealloction/GetInquieryDetails'); ?>",
+            data: {
+                recordId: recordId
+            },
+            success: function (result) {
+				// console.log(result);
+                var obj = JSON.parse(result);
+                var html1 = '';
+                html1 += '<option value="">Select</option>';
+                $.each(obj, function (i, item) {
+                    // alert(obj[i].idtbl_inquiry_detail);
+                    html1 += '<option value="' + obj[i].idtbl_inquiry_detail + '">';
+                    html1 += 'INQ ' + obj[i].idtbl_inquiry_detail;
+                    html1 += '</option>';
+                });
+                $('#selectedInquiry').empty().append(html1);
+            }
+        });
+	})
+
+	$('#selectedInquiry').change(function () {
+        let recordId = $('#selectedInquiry :selected').val();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo site_url('Machinealloction/GetOrderDetails'); ?>",
+            data: {
+                recordId: recordId
+            },
+            success: function (result) {
+				// console.log(result);
+                var obj = JSON.parse(result);
+                var html1 = '';
+                html1 += '<option value="">Select</option>';
+                $.each(obj, function (i, item) {
+                    // alert(obj[i].idtbl_inquiry_detail);
+                    html1 += '<option value="' + obj[i].idtbl_order + '">';
+                    html1 += 'PO- ' + obj[i].idtbl_order;
+                    html1 += '</option>';
+                });
+                $('#selectedPo').empty().append(html1);
+            }
+        });
+	})
+
+	$('#selectedPo').change(function () {
+        let recordId = $('#selectedPo :selected').val();
+        $.ajax({
+            type: "POST",
+            data: {
+                recordId: recordId
+            },
+            url: "<?php echo site_url('Machinealloction/FetchItemDataForAllocation'); ?>",
+            success: function (result) {
+                $('#machineAllocationTable> tbody:last').empty().append(result);
+            }
+        });
+
+		$.ajax({
+            type: "POST",
+            url: "<?php echo site_url('Machinealloction/GetDeliveryPlanDetails'); ?>",
+            data: {
+                recordId: recordId
+            },
+            success: function (result) {
+                var obj = JSON.parse(result);
+
+                var html1 = '';
+                html1 += '<option value="">Select</option>';
+                $.each(obj, function (i, item) {
+                    // alert(result[i].id);
+                    html1 += '<option value="' + obj[i].idtbl_delivery_detail + '">';
+                    html1 += 'Id: ' + obj[i].deliveryId + ' /Date: ' + obj[i].delivery_date + ' /Qty: ' + obj[i].deliver_quantity;
+                    html1 += '</option>';
+                });
+                $('#deliveryplan').empty().append(html1);
+            }
+        });
+	})
+
+	
+
+>>>>>>> Stashed changes
 	$(document).ready(function () {
     // Load Orders
 		$.ajax({
@@ -164,9 +259,18 @@
 
 		// Button click to open modal
 		$('#machineAllocationTable tbody').on('click', '.btnAdd', function () {
+<<<<<<< Updated upstream
 			const deliveryId = $(this).attr('id');
 			// $('#costitemid').val(''); // Update if needed
 			// $('#hiddenselectjobid').val(deliveryId);
+=======
+			var costItemId = 0;
+			var poId = $(this).attr('id');
+			var jobId = $('#selectedInquiry').val();
+			$('#poid').val(poId);
+			$('#costitemid').val(costItemId);
+			$('#hiddenselectjobid').val(jobId);
+>>>>>>> Stashed changes
 			$('#machineallocatemodal').modal('show');
 		});
 

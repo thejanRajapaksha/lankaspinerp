@@ -421,51 +421,51 @@
         }
     });
 
-    $('#btnSaveDelivery').click(function() {
-        $('#btnSaveDelivery').prop('disabled', true).html('<i class="fas fa-circle-notch fa-spin mr-2"></i> Saving delivery details');
+    // $('#btnSaveDelivery').click(function() {
+    //     $('#btnSaveDelivery').prop('disabled', true).html('<i class="fas fa-circle-notch fa-spin mr-2"></i> Saving delivery details');
 
-        var tbody = $("#deliveryDetailTableBody");
-        var formData = new FormData();
+    //     var tbody = $("#deliveryDetailTableBody");
+    //     var formData = new FormData();
 
-        if (tbody.children().length > 0) {
-            var jsonObj = [];
-            tbody.find('tr').each(function() {
-                var item = {
-                    clothTypeID: $(this).find('td').eq(0).text(),    
-                    sizeID: $(this).find('td').eq(2).text(),             
-                    quantity: $(this).find('td').eq(4).text(),    
-                    deliveryDate: $(this).find('td').eq(5).text() 
-                };
+    //     if (tbody.children().length > 0) {
+    //         var jsonObj = [];
+    //         tbody.find('tr').each(function() {
+    //             var item = {
+    //                 clothTypeID: $(this).find('td').eq(0).text(),    
+    //                 sizeID: $(this).find('td').eq(2).text(),             
+    //                 quantity: $(this).find('td').eq(4).text(),    
+    //                 deliveryDate: $(this).find('td').eq(5).text() 
+    //             };
 
-                jsonObj.push(item);
-            });
+    //             jsonObj.push(item);
+    //         });
 
-            console.log(jsonObj);
+    //         console.log(jsonObj);
 
-            var inquiryid = $('#inquiryid').val();
+    //         var inquiryid = $('#inquiryid').val();
 
-            formData.append('tableData', JSON.stringify(jsonObj)); 
-            formData.append('inquiryid', inquiryid);
+    //         formData.append('tableData', JSON.stringify(jsonObj)); 
+    //         formData.append('inquiryid', inquiryid);
 
-            $.ajax({
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                url: '<?php echo base_url() ?>CRMDeliverydetail/Deliverydetailinsertupdate',
-                success: function(result) {
-                    var obj = JSON.parse(result);
-                    $('#deliveryDetailModal').modal('hide');
-                    if (obj.status == 1) {
-                        setTimeout(function() {
-                            window.location.reload();
-                        }, 3000);
-                    }
-                    action(obj);
-                },
-            });
-        }
-    });
+    //         $.ajax({
+    //             type: "POST",
+    //             data: formData,
+    //             processData: false,
+    //             contentType: false,
+    //             url: '<?php echo base_url() ?>CRMDeliverydetail/Deliverydetailinsertupdate',
+    //             success: function(result) {
+    //                 var obj = JSON.parse(result);
+    //                 $('#deliveryDetailModal').modal('hide');
+    //                 if (obj.status == 1) {
+    //                     setTimeout(function() {
+    //                         window.location.reload();
+    //                     }, 3000);
+    //                 }
+    //                 action(obj);
+    //             },
+    //         });
+    //     }
+    // });
 
 
     $('#dataTableAccepted').on('click', '.btnview', function () {
@@ -487,6 +487,11 @@
                         '<td>' + delivery.deliveryId + '</td>' +
                         '<td>' + delivery.deliver_quantity + '</td>' +
                         '<td>' + delivery.delivery_date + '</td>' +
+                        '<td>' +
+                        '<button class="btn btn-sm btn-primary btnEdit edit-delivery" data-id="' + delivery.deliveryId + '" data-quantity="' + delivery.deliver_quantity + '" data-date="' + delivery.delivery_date + '">' +
+                            '<i class="fas fa-pen"></i>' + 
+                        '</button>' +
+                        '</td>'
                         '</tr>';
                     deliveryTableBody.append(row);
                 });
@@ -502,6 +507,20 @@
     });
 });
 
+$('#deliverydetailtable').on('click', '.edit-delivery', function () {
+    var deliveryId = $(this).data('id');
+    var quantity = $(this).data('quantity');
+    var date = $(this).data('date');
+
+    if (confirm('Are you sure you want to edit this delivery?')) {
+        $('#editDeliveryId').val(deliveryId);
+        $('#editDeliverQuantity').val(quantity);
+        $('#editDeliveryDate').val(date);
+
+        $('#deliverydetail').modal('hide');
+        $('#editDeliveryModal').modal('show');
+    }
+});
 
 
     $(document).ready(function() {
