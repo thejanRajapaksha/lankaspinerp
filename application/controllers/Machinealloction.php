@@ -28,6 +28,16 @@ class Machinealloction extends Admin_Controller {
         $result=$this->Machineallocationinfo->Checkmachineavailability();
 	}
 
+    public function FetchItemDataForAllocation(){
+		$this->load->model('Machineallocationinfo');
+        $result=$this->Machineallocationinfo->FetchItemDataForAllocation();
+	}
+    public function GetDeliveryPlanDetails(){
+		$this->load->model('Machineallocationinfo');
+        $result=$this->Machineallocationinfo->GetDeliveryPlanDetails();
+        echo json_encode($result);
+	}
+
     public function Checkissueqty(){
 		$this->load->model('Machineallocationinfo');
         $result=$this->Machineallocationinfo->Checkissueqty();

@@ -61,8 +61,8 @@
 
 	$(document).on("click", "#submitBtn2", function () {
 
-		// var costitemid = $('#costitemid').val();
-		// var jobid = $('#hiddenselectjobid').val();
+		var costitemid = $('#costitemid').val();
+		var jobid = $('#hiddenselectjobid').val();
 		var deliveryplan = $('#deliveryplan').val();
 		var employee = $('#employee').val();
 		var poid = $('#poid').val();
@@ -79,7 +79,7 @@
 				jsonObj.push(item);
 			});
 		}
-		//console.log(jsonObj);
+		// console.log(jsonObj);
 
 		$.ajax({
 			type: "POST",
@@ -116,8 +116,6 @@
         });
 	})
 
-<<<<<<< Updated upstream
-=======
 
 	$('#customer').change(function () {
         let recordId = $('#customer :selected').val();
@@ -204,7 +202,6 @@
 
 	
 
->>>>>>> Stashed changes
 	$(document).ready(function () {
     // Load Orders
 		$.ajax({
@@ -259,18 +256,12 @@
 
 		// Button click to open modal
 		$('#machineAllocationTable tbody').on('click', '.btnAdd', function () {
-<<<<<<< Updated upstream
-			const deliveryId = $(this).attr('id');
-			// $('#costitemid').val(''); // Update if needed
-			// $('#hiddenselectjobid').val(deliveryId);
-=======
 			var costItemId = 0;
 			var poId = $(this).attr('id');
 			var jobId = $('#selectedInquiry').val();
 			$('#poid').val(poId);
 			$('#costitemid').val(costItemId);
 			$('#hiddenselectjobid').val(jobId);
->>>>>>> Stashed changes
 			$('#machineallocatemodal').modal('show');
 		});
 

@@ -206,6 +206,7 @@ class Machineallocationinfo extends CI_Model{
 
     public function GetOrderList()
     {
+        
         $sql = "
             SELECT 
                 dd.tbl_order_idtbl_order,
@@ -220,13 +221,11 @@ class Machineallocationinfo extends CI_Model{
             JOIN tbl_customer c ON c.idtbl_customer = i.tbl_customer_idtbl_customer
             GROUP BY dd.tbl_order_idtbl_order
         ";
-
-<<<<<<< Updated upstream
-        $query = $this->db->query($sql);
-        echo json_encode($query->result());
-=======
-        $html='';
-
+        
+    }
+        public function FetchItemDataForAllocation(){
+         $recordID=$this->input->post('recordId');
+         $html='';
 		$sql="SELECT * FROM `tbl_inquiry` AS `u`
         JOIN `tbl_inquiry_detail` AS `ub` ON `u`.`idtbl_inquiry` = `ub`.`tbl_inquiry_idtbl_inquiry`
         JOIN `tbl_customer` AS `uc` ON `u`.`tbl_customer_idtbl_customer` = `uc`.`idtbl_customer`
@@ -257,7 +256,6 @@ class Machineallocationinfo extends CI_Model{
         }
 
         echo $html;
->>>>>>> Stashed changes
     }
 
     public function GetDeliveryIdsForOrder()
@@ -284,8 +282,9 @@ class Machineallocationinfo extends CI_Model{
     echo json_encode($query->result());
 }
 
-<<<<<<< Updated upstream
-=======
+public function GetDeliveryPlanDetails(){
+    $recordID=$this->input->post('recordId');
+
         $this->db->select('*');
         $this->db->from('tbl_delivery_detail');
         // $this->db->join('tbl_delivery_plan_details', 'tbl_delivery_plan_details.tbl_delivery_plan_idtbl_delivery_plan = tbl_delivery_plan.idtbl_delivery_plan');
@@ -293,6 +292,5 @@ class Machineallocationinfo extends CI_Model{
         $respond=$this->db->get();
         return $respond->result_array();
     }
->>>>>>> Stashed changes
 
 }
