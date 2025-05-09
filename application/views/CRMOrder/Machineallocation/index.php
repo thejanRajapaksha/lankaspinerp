@@ -29,7 +29,7 @@
                             </div>
                         </div>
 
-						<div class="col-3">
+						<!-- <div class="col-3">
                             <label class="small font-weight-bold text-dark">Inquiry*</label>
                             <div class="input-group input-group-sm mb-3">
                                 <select type="text" class="form-control dpd1a rounded-0" id="selectedInquiry"
@@ -38,7 +38,7 @@
 
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-3">
                             <label class="small font-weight-bold text-dark">PO Number*</label>
@@ -87,7 +87,11 @@
 	<div class="modal-dialog modal-dialog-centered modal-xl">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="staticBackdropLabel">Machine Allocation</h5>
+				<h5 class="modal-title" id="staticBackdropLabel">Machine Allocation</h5><hr>
+				<div class="small font-weight-bold text-dark mb-0 mt-1">
+					Customer: <span id="selectedCustomer">-</span> |
+					PO Number: <span id="selectedPO">-</span>
+				</div>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>

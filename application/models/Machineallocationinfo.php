@@ -170,6 +170,35 @@ class Machineallocationinfo extends CI_Model{
         echo ($html);
     }
 
+    public function FetchCustomerInquiryAndOrderData()
+    {
+        $recordID = $this->input->post('recordId');
+
+        $sql = "
+            SELECT 
+                i.idtbl_inquiry, 
+                id.idtbl_inquiry_detail, 
+                o.idtbl_order, 
+                od.*
+            FROM 
+                tbl_inquiry i
+            LEFT JOIN 
+                tbl_inquiry_detail id ON id.tbl_inquiry_idtbl_inquiry = i.idtbl_inquiry
+            LEFT JOIN 
+                tbl_order o ON o.tbl_inquiry_idtbl_inquiry = i.idtbl_inquiry
+            LEFT JOIN 
+                tbl_order_detail od ON od.tbl_order_idtbl_order = o.idtbl_order
+            WHERE 
+                i.tbl_customer_idtbl_customer = ?
+                AND o.idtbl_order IS NOT NULL
+                AND i.idtbl_inquiry IS NOT NULL
+        ";
+
+        $query = $this->db->query($sql, array($recordID));
+        echo json_encode($query->result_array());
+        exit;
+    }
+
     public function GetInquieryDetails(){
         $recordID=$this->input->post('recordId');
 
