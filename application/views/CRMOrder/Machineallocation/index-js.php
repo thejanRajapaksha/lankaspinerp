@@ -118,52 +118,31 @@
 
 
 	$('#customer').change(function () {
-        let recordId = $('#customer :selected').val();
-        $.ajax({
-            type: "POST",
-            url: "<?php echo site_url('Machinealloction/GetInquieryDetails'); ?>",
-            data: {
-                recordId: recordId
-            },
-            success: function (result) {
-				// console.log(result);
-                var obj = JSON.parse(result);
-                var html1 = '';
-                html1 += '<option value="">Select</option>';
-                $.each(obj, function (i, item) {
-                    // alert(obj[i].idtbl_inquiry_detail);
-                    html1 += '<option value="' + obj[i].idtbl_inquiry_detail + '">';
-                    html1 += 'INQ ' + obj[i].idtbl_inquiry_detail;
-                    html1 += '</option>';
-                });
-                $('#selectedInquiry').empty().append(html1);
-            }
-        });
-	})
-
-	$('#selectedInquiry').change(function () {
-        let recordId = $('#selectedInquiry :selected').val();
-        $.ajax({
-            type: "POST",
-            url: "<?php echo site_url('Machinealloction/GetOrderDetails'); ?>",
-            data: {
-                recordId: recordId
-            },
-            success: function (result) {
-				// console.log(result);
-                var obj = JSON.parse(result);
-                var html1 = '';
-                html1 += '<option value="">Select</option>';
-                $.each(obj, function (i, item) {
-                    // alert(obj[i].idtbl_inquiry_detail);
-                    html1 += '<option value="' + obj[i].idtbl_order + '">';
-                    html1 += 'PO- ' + obj[i].idtbl_order;
-                    html1 += '</option>';
-                });
-                $('#selectedPo').empty().append(html1);
-            }
-        });
-	})
+		let recordId = $('#customer :selected').val();
+		$.ajax({
+			type: "POST",
+			url: "<?php echo site_url('Machinealloction/FetchCustomerInquiryAndOrderData'); ?>",
+			data: { recordId: recordId },
+			success: function (result) {
+				try {
+					var obj = JSON.parse(result);
+					var html1 = '<option value="">Select</option>';
+					$.each(obj, function (i, item) {
+						// Check both fields exist before adding
+						if (item.idtbl_order && item.idtbl_inquiry) {
+							html1 += '<option value="' + item.idtbl_order + '">';
+							html1 += 'INQ ' + item.idtbl_inquiry + ' - PO ' + item.idtbl_order;
+							html1 += '</option>';
+						}
+					});
+					$('#selectedPo').empty().append(html1);
+				} catch (e) {
+					console.error("JSON parsing error: ", e);
+					console.log("Raw result: ", result);
+				}
+			}
+		});
+	});
 
 	$('#selectedPo').change(function () {
         let recordId = $('#selectedPo :selected').val();
@@ -259,9 +238,12 @@
 			var costItemId = 0;
 			var poId = $(this).attr('id');
 			var jobId = $('#selectedInquiry').val();
+			var customerName = $('#customer option:selected').text();
+			var poDisplayText = $('#selectedPo option:selected').text();
 			$('#poid').val(poId);
 			$('#costitemid').val(costItemId);
-			$('#hiddenselectjobid').val(jobId);
+			$('#hiddenselectjobid').val(jobId);$('#selectedCustomer').text(customerName);
+			$('#selectedPO').text(poDisplayText);
 			$('#machineallocatemodal').modal('show');
 		});
 

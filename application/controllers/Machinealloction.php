@@ -52,9 +52,9 @@ class Machinealloction extends Admin_Controller {
         echo json_encode($result);
     }
    
-    public function GetInquieryDetails(){
+    public function FetchCustomerInquiryAndOrderData(){
 		$this->load->model('Machineallocationinfo');
-        $result=$this->Machineallocationinfo->GetInquieryDetails();
+        $result=$this->Machineallocationinfo->FetchCustomerInquiryAndOrderData();
         echo json_encode($result);
 	}
 

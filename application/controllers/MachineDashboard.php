@@ -173,13 +173,23 @@ class MachineDashboard extends Admin_Controller
         $repairing_machines = $result['total_count'];
 
         //machine_ins in machine_allocation_current
-        $this->db->select('machine_ins.*, machine_allocation_current.allocated_date, slots.name as slot_name, mlinelist.line_name as line_name, sections.name as section_name, departments.name as department_name');
-        $this->db->from('machine_allocation_current');
-        $this->db->join('slots', 'slots.id = machine_allocation_current.slot_id', 'left');
-        $this->db->join('mlinelist', 'mlinelist.id = slots.line', 'left');
-        $this->db->join('sections', 'sections.id = mlinelist.section', 'left');
-        $this->db->join('departments', 'departments.id = sections.department', 'left');
-        $this->db->join('machine_ins', 'machine_ins.id = machine_allocation_current.machine_in_id');
+        // $this->db->select('machine_ins.*, machine_allocation_current.allocated_date, slots.name as slot_name, mlinelist.line_name as line_name, sections.name as section_name, departments.name as department_name');
+        // $this->db->from('machine_allocation_current');
+        // $this->db->join('slots', 'slots.id = machine_allocation_current.slot_id', 'left');
+        // $this->db->join('mlinelist', 'mlinelist.id = slots.line', 'left');
+        // $this->db->join('sections', 'sections.id = mlinelist.section', 'left');
+        // $this->db->join('departments', 'departments.id = sections.department', 'left');
+        // $this->db->join('machine_ins', 'machine_ins.id = machine_allocation_current.machine_in_id');
+        // $this->db->where('machine_ins.machine_type_id', $machine_type_id);
+        // $this->db->where('machine_ins.is_deleted', 0);
+        // $query = $this->db->get();
+        // $allocated_machines = $query->result_array();
+        
+        $this->db->select('machine_ins.*, ma.allocatedate, ma.startdatetime , ma.enddatetime , ma.allocatedqty , td.deliveryId');
+        $this->db->from('tbl_machine_allocation as ma');
+        $this->db->join('machine_ins', 'machine_ins.id = ma.tbl_machine_idtbl_machine', 'left');
+        $this->db->join('tbl_order', 'tbl_order.idtbl_order = ma.tbl_order_idtbl_order', 'left');
+        $this->db->join('tbl_delivery_detail as td', 'td.idtbl_delivery_detail = ma.tbl_delivery_plan_details_idtbl_delivery_plan_details', 'left');
         $this->db->where('machine_ins.machine_type_id', $machine_type_id);
         $this->db->where('machine_ins.is_deleted', 0);
         $query = $this->db->get();
