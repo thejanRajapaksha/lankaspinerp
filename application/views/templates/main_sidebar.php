@@ -434,6 +434,15 @@
                                 <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Machinealloction/'); ?>">Machine Allocation</a>
                             <?php endif; ?>
 
+                                                        <?php if (
+                                in_array('viewAllocatedMachines', $user_permission) ||
+                                in_array('createAllocatedMachines', $user_permission) ||
+                                in_array('updateAllocatedMachines', $user_permission) ||
+                                in_array('deleteAllocatedMachines', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('AllocatedMachines/'); ?>">Allocated Machines</a>
+                            <?php endif; ?>
+
                         </nav>
                     </div>
 
