@@ -111,6 +111,76 @@
                 <?php endif; ?>
 
                 <?php if (
+                    in_array('viewCuttype', $user_permission) ||
+                    in_array('createCuttype', $user_permission) ||
+                    in_array('updateCuttype', $user_permission) ||
+                    in_array('deleteCuttype', $user_permission) ||
+
+                    in_array('viewFliinformation', $user_permission) ||
+                    in_array('createFliinformation', $user_permission) ||
+                    in_array('updateFliinformation', $user_permission) ||
+                    in_array('deleteFliinformation', $user_permission) ||
+
+                    in_array('viewMaterialmaincategory', $user_permission) ||
+                    in_array('createMaterialmaincategory', $user_permission) ||
+                    in_array('updateMaterialmaincategory', $user_permission) ||
+                    in_array('deleteMaterialmaincategory', $user_permission) ||
+
+                    in_array('viewRowmaterials', $user_permission) ||
+                    in_array('createRowmaterials', $user_permission) ||
+                    in_array('updateRowmaterials', $user_permission) ||
+                    in_array('deleteRowmaterials', $user_permission) 
+                ) : ?>
+
+                    <a class="nav-link collapsed" id="crm_main_nav_link" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseMaterialData" aria-expanded="false" aria-controls="collapseMaterialData">
+                        <div class="nav-link-icon"><i class="fas fa-user-tie"></i></div>Material Data
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseMaterialData" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavMaterialData">
+
+                            <?php if (
+                                in_array('viewMaterialmaincategory', $user_permission) ||
+                                in_array('createMaterialmaincategory', $user_permission) ||
+                                in_array('updateMaterialmaincategory', $user_permission) ||
+                                in_array('deleteMaterialmaincategory', $user_permission) 
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Materialmaincategory/'); ?>">Material Main Category</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewRowmaterials', $user_permission) ||
+                                in_array('createRowmaterials', $user_permission) ||
+                                in_array('updateRowmaterials', $user_permission) ||
+                                in_array('deleteRowmaterials', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Rowmaterials/'); ?>">Row Materials</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewFliinformation', $user_permission) ||
+                                in_array('createFliinformation', $user_permission) ||
+                                in_array('updateFliinformation', $user_permission) ||
+                                in_array('deleteFliinformation', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Fliinformation/'); ?>">Fli Information</a>
+                            <?php endif; ?>
+
+                            <?php if (
+                                in_array('viewCuttype', $user_permission) ||
+                                in_array('createCuttype', $user_permission) ||
+                                in_array('updateCuttype', $user_permission) ||
+                                in_array('deleteCuttype', $user_permission)
+                            ) : ?>
+                                <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('Cuttype/'); ?>">Cut Type</a>
+                            <?php endif; ?>
+
+                        </nav>
+                    </div>
+
+                <?php endif; ?>
+
+                <?php if (
                     in_array('createMachineService', $user_permission)
                     || in_array('updateMachineService', $user_permission)
                     || in_array('viewMachineService', $user_permission)
