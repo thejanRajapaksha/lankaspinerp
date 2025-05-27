@@ -75,6 +75,14 @@
         <h5 class="modal-title">Machine Allocation Details</h5>
         <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
       </div>
+      <div class="container mt-2">
+        <div class="row">
+          <div class="col-md-12 text-right">
+            <h6><strong>Balance Quantity:</strong> <span id="balanceQty">0</span></h6>
+          </div>
+        </div>
+      </div>
+
         <div class="modal-body">
                            <div class="col-12">
                         <div class="scrollbar pb-3" id="style-2">
@@ -87,8 +95,8 @@
                                         <td>End Date</td>
                                         <td>Allocated Quantity</td>
                                         <td>Completed Quantity</td>
-                                        <td>Balance Quantity</td>
-                                        <td>Action</td>
+                                        <td>Waste Quantity</td>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody id = "tableBody">
@@ -118,15 +126,51 @@
             <label for="completedAmount">Amount Completed Today</label>
             <input type="number" class="form-control" id="completedAmount" required>
           </div>
-          <!-- <div class="form-group">
-            <label for="completedDate">Date</label>
-            <input type="date" class="form-control" id="completedDate" value="<?= //date('Y-m-d') ?>" required>
-          </div> -->
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="saveCompletedAmount">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal rejected add-->
+ <div class="modal fade" id="addRejectedModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Rejected Amount</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form id="rejectedAmountForm">
+          <input type="hidden" id="allocationMid">
+          <div class="form-group">
+            <label for="rejectedAmmount">Amount Rejected Today</label>
+            <input type="number" class="form-control" id="rejectedAmmount" required>
+          </div>
+            <div class="form-group">
+               <label for="rejectReason">Reject Reason Type*</label>
+                    <select class="form-control form-control-sm" name="rejectReason" id="rejectReason" required>
+                        <option value="">Select</option>
+                        <?php foreach ($result['reason'] as $reasons): ?>
+										<option value="<?php echo $reasons->id; ?>">
+											<?php echo $reasons->reason_type; ?>
+										</option>
+									<?php endforeach; ?>
+                  </select>
+              </div>
+          <div class="form-group">
+            <label for="comment">Comment</label>
+            <input type="text" class="form-control" id="comment" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="saveRejectedAmount">Save</button>
       </div>
     </div>
   </div>

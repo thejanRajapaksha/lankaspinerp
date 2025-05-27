@@ -40,6 +40,15 @@ $(document).ready(function () {
                                             data-id="${item.idtbl_machine_allocation}">
                                             <i class="fa fa-eye"></i>
                                         </button>
+                                        <button class="btn btn-sm btn-primary add-completed-btn" 
+                                            data-id="${item.idtbl_machine_allocation}">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-danger add-rejected-btn" 
+                                            data-id="${item.idtbl_machine_allocation}">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+
                                     </td>
                                 </tr>`;
                             $('#machineAllocationTableBody').append(row);
@@ -75,16 +84,11 @@ $(document).on('click', '.view-btn', function () {
                         <td>${item.enddatetime || 'N/A'}</td>
                         <td>${item.allocatedqty || 'N/A'}</td>
                         <td>${item.completedqty || 'N/A'}</td>
-                        <td>'N/A'</td>
-                        <td>
-                        <button class="btn btn-sm btn-primary add-completed-btn" 
-                                data-id="${item.idtbl_machine_allocation}">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </td>
+                        <td>${item.wastageqty || 'N/A'}</td>
                     </tr>`;
                     $('#tableBody').append(row);
                 });
+                calculateBalanceQty();
                 $('#allocationModal').modal('show');
               
             } else {
@@ -100,6 +104,11 @@ $(document).on('click', '.add-completed-btn', function() {
     const allocationId = $(this).data('id');
     $('#addCompletedModal #allocationId').val(allocationId);
    $('#addCompletedModal').modal('show');
+});
+$(document).on('click', '.add-rejected-btn', function() {
+    const allocationId = $(this).data('id');
+    $('#addRejectedModal #allocationMid').val(allocationId);
+   $('#addRejectedModal').modal('show');
 });
 
 $('#saveCompletedAmount').click(function() {
@@ -136,16 +145,56 @@ $('#saveCompletedAmount').click(function() {
     });
 });
 
+$('#saveRejectedAmount').click(function() {
+    const allocationId = $('#allocationMid').val();
+    const amount = $('#rejectedAmmount').val();
+    const reason = $('#rejectReason').val();
+    const comment = $('#comment').val();
+    
+    if (!amount) {
+        alert('Please fill all fields');
+        return;
+    }
 
-	function deactive_confirm() {
-		return confirm("Are you sure you want to deactive this?");
-	}
+    $.ajax({
+        url: '<?= base_url('AllocatedMachines/InsertRejectedAmmount') ?>',
+        method: 'POST',
+        data: {
+            allocationId: allocationId,
+            amount: amount,
+            reason: reason,
+            comment: comment
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                alert('Rejected amount saved successfully');
+                $('#addRejectedModal').modal('hide');
+                // You might want to refresh the data here
+            } else {
+                alert(response.message || 'Error saving rejected amount');
+            }
+        },
+        error: function() {
+            alert('Error saving Rejected amount');
+        }
+    });
+});
 
-	function active_confirm() {
-		return confirm("Are you sure you want to active this?");
-	}
+function calculateBalanceQty() {
+    let totalAllocated = 0;
+    let totalCompleted = 0;
 
-	function delete_confirm() {
-		return confirm("Are you sure you want to remove this?");
-	}
+    $('#tableBody tr').each(function() {
+        const allocated = parseInt($(this).find('td:eq(3)').text()) || 0; 
+        const completed = parseInt($(this).find('td:eq(4)').text()) || 0;
+
+        totalAllocated += allocated;
+        totalCompleted += completed;
+    });
+
+    const balance = totalAllocated - totalCompleted;
+    $('#balanceQty').text(balance);
+}
+
 </script>

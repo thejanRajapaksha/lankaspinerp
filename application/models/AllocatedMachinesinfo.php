@@ -35,7 +35,8 @@ public function getAllocationDataById($id)
         ma.enddatetime,
         ma.allocatedqty,
         ma.idtbl_machine_allocation,
-        md.completedqty
+        md.completedqty,
+        md.wastageqty
     ');
     $this->db->from('tbl_machine_allocation as ma');
     $this->db->join('machine_ins as m', 'm.id = ma.tbl_machine_idtbl_machine','left');
@@ -48,6 +49,30 @@ public function getAllocationDataById($id)
 public function InsertCompletedAmmount($data){
     return $this->db->insert('tbl_machine_allocation_details', $data);
 }
+public function getRejectReason(){
+    $this->db->select('reason_type , id_rejected_item_reason as id');
+    $this->db->from('rejected_item_reason');
+    $query = $this->db->get();
+    return $query->result();
+
+}
+ public function checkAllocationExists($allocationId)
+    {
+        $this->db->where('tbl_machine_allocation_idtbl_machine_allocation', $allocationId);
+        $query = $this->db->get('tbl_machine_allocation_details');
+        return $query->num_rows() > 0;
+    }
+
+public function updateAllocationDetailsData($allocationId, $data)
+    {
+        $this->db->where('tbl_machine_allocation_idtbl_machine_allocation', $allocationId);
+        return $this->db->update('tbl_machine_allocation_details', $data);
+    }
+
+public function insertQty($data)
+    {
+        return $this->db->insert('tbl_machine_allocation_details', $data);
+    }
 
 
 }
