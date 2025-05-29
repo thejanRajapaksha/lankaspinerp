@@ -621,6 +621,17 @@
                                     <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('UsedRepairItems/'); ?>">Used Repair Items</a>
                                 <?php endif; ?>
                             
+                                <?php if (
+                                in_array('viewMachineWIP', $user_permission)
+                                ) : ?>
+                                    <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('MachineWIP/'); ?>">Machine WIP</a>
+                                <?php endif; ?>
+                                
+                                <?php if (
+                                in_array('viewCustomerPOWIP', $user_permission)
+                                ) : ?>
+                                    <a class="nav-link p-0 px-3 py-1" href="<?php echo base_url('CustomerPOWIP/'); ?>">Customer PO WIP</a>
+                                <?php endif; ?>
 
                         </nav>
                     </div>

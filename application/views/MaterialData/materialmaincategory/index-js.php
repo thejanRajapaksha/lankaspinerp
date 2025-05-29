@@ -1,5 +1,8 @@
 <script>
     $(document).ready(function() {
+        $('#crmorder_main_nav_link').prop('aria-expanded', 'true').removeClass('collapsed');
+        $('#collapseMaterialData').addClass('show');
+        
         var addcheck = '<?php echo (in_array('createMaterialmaincategory', $user_permission)) ? 1 : 0; ?>';
         var editcheck = '<?php echo (in_array('updateMaterialmaincategory', $user_permission)) ? 1 : 0; ?>';
         var statuscheck = '<?php echo (in_array('updateMaterialmaincategory', $user_permission) || in_array('deleteMaterialmaincategory', $user_permission)) ? 1 : 0; ?>';

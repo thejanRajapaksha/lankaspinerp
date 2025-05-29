@@ -47,6 +47,10 @@ public function getAllocationDataById($id)
     return $query->result();
 }
 public function InsertCompletedAmmount($data){
+    $data = [
+            'tbl_machine_allocation_idtbl_machine_allocation' => $allocationId,
+            'completedqty' => $amount
+        ];
     return $this->db->insert('tbl_machine_allocation_details', $data);
 }
 public function getRejectReason(){
