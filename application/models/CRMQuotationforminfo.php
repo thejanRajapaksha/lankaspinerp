@@ -69,6 +69,19 @@ class CRMQuotationforminfo extends CI_Model
         // }
     }
 
+    public function GetItemByInquiry($customer_id){
+        
+		$this->db->select('DISTINCT(p.idtbl_product), p.product');
+		$this->db->from('tbl_inquiry i');
+        $this->db->join('tbl_inquiry_detail d', 'd.tbl_inquiry_idtbl_inquiry = i.idtbl_inquiry');
+		$this->db->join('tbl_products p', 'p.idtbl_product = d.tbl_products_idtbl_product');
+		$this->db->where('i.tbl_customer_idtbl_customer', $customer_id);
+
+		$query = $this->db->get();
+		return $result = $query->result();
+
+    }
+
     public function Getproductlistimages()
     {
         $productID = $this->input->post('productID');
@@ -271,12 +284,12 @@ class CRMQuotationforminfo extends CI_Model
         $tbl_quotation_idtbl_quotation = $this->db->insert_id();
 
         foreach ($jsonObj as $rowdata) {
-            $item = $rowdata['col_1']; 
-            $Comment = $rowdata['col_2'];
-            $Qty = $rowdata['col_3']; 
-            $duration = $rowdata['col_4'];
-            $Unitprice = $rowdata['col_5'];
-            $Total = $rowdata['col_7'];
+            $item = $rowdata['col_2']; 
+            $Comment = $rowdata['col_3'];
+            $Qty = $rowdata['col_4']; 
+            $duration = $rowdata['col_5'];
+            $Unitprice = $rowdata['col_6'];
+            $Total = $rowdata['col_9'];
 
             $data2 = array(
                 'idtbl_product' => $item, 
