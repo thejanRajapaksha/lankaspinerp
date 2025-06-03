@@ -41,33 +41,20 @@ public function InsertCompletedAmmount()
 
         $user = $_SESSION['id'];
         $allocationId = $this->input->post('allocation_id');
-        $wasteQty = 0;
         $completeQty = $this->input->post('amount');
-
-    if (!$allocationId) {
-        echo json_encode(['success' => false, 'message' => 'Required fields are missing']);
-        return;
-    }
+        $startTime = $this->input->post('startTime');
+        $endTime = $this->input->post('endTime');
 
     $data = [
         'tbl_machine_allocation_idtbl_machine_allocation' => $allocationId,
-        'wastageqty'=> $wasteQty,
         'completedqty' => $completeQty,
         'insertuser'=> $user,
         'status'=> '1',
+        'starttime' => $startTime,
+        'endtime' => $endTime
     ];
 
-    $exists = $this->AllocatedMachinesinfo->checkAllocationExists($allocationId);
-
-    if ($exists) {
-
-        $updateData = [
-            'completedqty' => $completeQty
-        ];
-        $this->AllocatedMachinesinfo->updateAllocationDetailsData($allocationId, $updateData);
-    } else {
-        $this->AllocatedMachinesinfo->insertQty($data);
-    }
+    $this->AllocatedMachinesinfo->InsertCompletedAmmount($data);
 
     echo json_encode(['success' => true]);
 }
@@ -79,6 +66,8 @@ public function InsertRejectedAmmount()
 
     $allocationId = $this->input->post('allocationId');
     $amount = $this->input->post('amount');
+    $startTime = $this->input->post('startTime');
+    $endTime = $this->input->post('endTime');
     $reason = $this->input->post('reason');
     $comment = $this->input->post('comment');
 
@@ -90,29 +79,25 @@ public function InsertRejectedAmmount()
     $data = [
         'tbl_machine_allocation_idtbl_machine_allocation' => $allocationId,
         'wastageqty' => $amount,
+        'starttime' => $startTime,
+        'endtime' => $endTime,
         'tbl_reject_item_reason_id_rejected_item_reason' => $reason,
         'comment' => $comment,
-        'completedqty' => 0,
         'insertuser' => $user,
         'status' => 1
     ];
 
-    $exists = $this->AllocatedMachinesinfo->checkAllocationExists($allocationId);
+    $this->AllocatedMachinesinfo->InsertRejectedAmmount($data);
 
-    if ($exists) {
-
-        $updateData = [
-            'wastageqty' => $amount,
-            'tbl_reject_item_reason_id_rejected_item_reason' => $reason,
-            'comment' => $comment,
-        ];
-        $this->AllocatedMachinesinfo->updateAllocationDetailsData($allocationId, $updateData);
-    } else {
-        $this->AllocatedMachinesinfo->insertQty($data);
-    }
 
     echo json_encode(['success' => true]);
 }
 
+    public function getTimeslots() {
+		$this->load->model('AllocatedMachinesinfo');
+		$result = $this->AllocatedMachinesinfo->getTimeslots();
+	
+		echo json_encode($result);
+	}
 
 }

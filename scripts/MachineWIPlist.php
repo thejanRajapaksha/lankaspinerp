@@ -34,7 +34,7 @@ $columns = array(
     array('db' => 'de.delivery_date',       'dt' => 'delivery_date',    'field' => 'delivery_date'),
     array('db' => 'od.quantity',          'dt' => 'quantity',          'field' => 'quantity'),
     array('db' => 'de.deliver_quantity',  'dt' => 'deliver_quantity',  'field' => 'deliver_quantity'),
-    array('db' => 'mad.completedqty',      'dt' => 'completedqty',     'field' => 'completedqty')
+    array('db' => 'SUM(mad.completedqty)', 'dt' => 'completedqty', 'field' => 'completedqty', 'as' => 'completedqty')
 );
 
 // SQL server connection information
@@ -68,6 +68,8 @@ $joinQuery = "FROM tbl_machine_allocation AS ma
     LEFT JOIN tbl_inquiry AS i ON i.idtbl_inquiry = de.tbl_inquiry_idtbl_inquiry
     LEFT JOIN tbl_customer AS c ON c.idtbl_customer = i.tbl_customer_idtbl_customer";
 
+$groupBy = "ma.idtbl_machine_allocation";
+
 $conditions = [];
 
 if (!empty($machineId)) {
@@ -81,5 +83,5 @@ if (!empty($date)) {
 $extraWhere = implode(" AND ", $conditions);
 
 echo json_encode(
-    SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns, $joinQuery, $extraWhere)
+    SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns, $joinQuery, $extraWhere, $groupBy)
 );

@@ -64,6 +64,52 @@ $(document).ready(function () {
             });
         }
     });
+
+    $('#addCompletedModal').on('show.bs.modal', function () {
+        $.ajax({
+            url: '<?php echo base_url(); ?>AllocatedMachines/getTimeslots',
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                const $startDropdown = $('#startTime');
+                const $endDropdown = $('#endTime');
+                $startDropdown.empty().append('<option value="">-- Select Start Time --</option>');
+                $endDropdown.empty().append('<option value="">-- Select End Time --</option>');
+
+                $.each(data, function (i, slot) {
+                    const label = slot.hour.slice(0, 5); // format HH:mm
+                    $startDropdown.append('<option value="' + slot.idtbl_timeslots + '">' + label + '</option>');
+                    $endDropdown.append('<option value="' + slot.idtbl_timeslots + '">' + label + '</option>');
+                });
+            },
+            error: function () {
+            alert('Failed to load time slots.');
+            }
+        });
+    });
+    $('#addRejectedModal').on('show.bs.modal', function () {
+        $.ajax({
+            url: '<?php echo base_url(); ?>AllocatedMachines/getTimeslots',
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                const $RstartDropdown = $('#RstartTime');
+                const $RendDropdown = $('#RendTime');
+                $RstartDropdown.empty().append('<option value="">-- Select Start Time --</option>');
+                $RendDropdown.empty().append('<option value="">-- Select End Time --</option>');
+
+                $.each(data, function (i, slot) {
+                    const label = slot.hour.slice(0, 5); // format HH:mm
+                    $RstartDropdown.append('<option value="' + slot.idtbl_timeslots + '">' + label + '</option>');
+                    $RendDropdown.append('<option value="' + slot.idtbl_timeslots + '">' + label + '</option>');
+                });
+            },
+            error: function () {
+            alert('Failed to load time slots.');
+            }
+        });
+    });
+
 });
 $(document).on('click', '.view-btn', function () {
     let allocationId = $(this).data('id');
@@ -114,6 +160,8 @@ $(document).on('click', '.add-rejected-btn', function() {
 $('#saveCompletedAmount').click(function() {
     const allocationId = $('#allocationId').val();
     const amount = $('#completedAmount').val();
+    const startTime = $('#startTime').val();
+    const endTime = $('#endTime').val();
     // const date = $('#completedDate').val();
     
     if (!amount) {
@@ -127,6 +175,8 @@ $('#saveCompletedAmount').click(function() {
         data: {
             allocation_id: allocationId,
             amount: amount,
+            startTime: startTime,
+            endTime: endTime,
             // date: date
         },
         dataType: 'json',
@@ -148,6 +198,8 @@ $('#saveCompletedAmount').click(function() {
 $('#saveRejectedAmount').click(function() {
     const allocationId = $('#allocationMid').val();
     const amount = $('#rejectedAmmount').val();
+    const RstartTime = $('#RstartTime').val();
+    const RendTime = $('#RendTime').val();
     const reason = $('#rejectReason').val();
     const comment = $('#comment').val();
     
@@ -162,6 +214,8 @@ $('#saveRejectedAmount').click(function() {
         data: {
             allocationId: allocationId,
             amount: amount,
+            startTime: RstartTime,
+            endTime: RendTime,
             reason: reason,
             comment: comment
         },

@@ -122,10 +122,24 @@
       <div class="modal-body">
         <form id="completedAmountForm">
           <input type="hidden" id="allocationId">
-          <div class="form-group">
-            <label for="completedAmount">Amount Completed Today</label>
-            <input type="number" class="form-control" id="completedAmount" required>
-          </div>
+            <div class="form-group">
+              <label for="completedAmount">Amount Completed Today</label>
+              <input type="number" class="form-control" id="completedAmount" required>
+            </div>
+
+            <div class="form-group">
+              <label for="startTime">Start Time</label>
+              <select class="form-control" id="startTime" required>
+                <option value="">-- Select Start Time --</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="endTime">End Time</label>
+              <select class="form-control" id="endTime" required>
+                <option value="">-- Select End Time --</option>
+              </select>
+            </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -147,10 +161,23 @@
       <div class="modal-body">
         <form id="rejectedAmountForm">
           <input type="hidden" id="allocationMid">
-          <div class="form-group">
-            <label for="rejectedAmmount">Amount Rejected Today</label>
-            <input type="number" class="form-control" id="rejectedAmmount" required>
-          </div>
+            <div class="form-group">
+              <label for="rejectedAmmount">Amount Rejected Today</label>
+              <input type="number" class="form-control" id="rejectedAmmount" required>
+            </div>
+            <div class="form-group">
+              <label for="RstartTime">Start Time</label>
+              <select class="form-control" id="RstartTime" required>
+                <option value="">-- Select Start Time --</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="RendTime">End Time</label>
+              <select class="form-control" id="RendTime" required>
+                <option value="">-- Select End Time --</option>
+              </select>
+            </div>
             <div class="form-group">
                <label for="rejectReason">Reject Reason Type*</label>
                     <select class="form-control form-control-sm" name="rejectReason" id="rejectReason" required>

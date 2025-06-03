@@ -34,7 +34,7 @@ $columns = array(
     array('db' => 'de.delivery_date',       'dt' => 'delivery_date',    'field' => 'delivery_date'),
     array('db' => 'od.quantity',            'dt' => 'quantity',         'field' => 'quantity'),
     array('db' => 'de.deliver_quantity',    'dt' => 'deliver_quantity', 'field' => 'deliver_quantity'),
-    array('db' => 'mad.completedqty',       'dt' => 'completedqty',     'field' => 'completedqty')
+    array('db' => 'SUM(mad.completedqty)', 'dt' => 'completedqty', 'field' => 'completedqty', 'as' => 'completedqty')
 );
 
 // SQL server connection information
@@ -54,8 +54,8 @@ $sql_details = array(
 // require( 'ssp.class.php' );
 require('ssp.customized.class.php');
 
-$machineId = $_POST['machineId'] ?? null;
-$date = $_POST['date'] ?? null;
+$customerId = $_POST['customerId'] ?? null;
+$poId = $_POST['poId'] ?? null;
 
 $joinQuery = "FROM tbl_machine_allocation AS ma
     LEFT JOIN machine_ins AS m ON m.id = ma.tbl_machine_idtbl_machine
@@ -65,20 +65,24 @@ $joinQuery = "FROM tbl_machine_allocation AS ma
     LEFT JOIN tbl_order AS o ON o.idtbl_order = ma.tbl_order_idtbl_order
     LEFT JOIN tbl_order_detail AS od ON od.tbl_order_idtbl_order = o.idtbl_order
     LEFT JOIN tbl_products AS p ON p.idtbl_product = od.tbl_products_idtbl_products
-    LEFT JOIN tbl_delivery_detail AS de ON de.idtbl_delivery_detail = ma.tbl_delivery_plan_details_idtbl_delivery_plan_details";
+    LEFT JOIN tbl_delivery_detail AS de ON de.idtbl_delivery_detail = ma.tbl_delivery_plan_details_idtbl_delivery_plan_details
+    LEFT JOIN tbl_inquiry AS i ON i.idtbl_inquiry = de.tbl_inquiry_idtbl_inquiry
+    LEFT JOIN tbl_customer AS c ON c.idtbl_customer = i.tbl_customer_idtbl_customer";
+
+$groupBy = "ma.idtbl_machine_allocation";
 
 $conditions = [];
 
-if (!empty($machineId)) {
-    $conditions[] = "m.id = " . intval($machineId);
+if (!empty($customerId)) {
+    $conditions[] = "c.idtbl_customer = " . intval($customerId);
 }
 
-if (!empty($date)) {
-    $conditions[] = "DATE(ma.allocatedate) = '" . date('Y-m-d', strtotime($date)) . "'";
+if (!empty($poId)) {
+    $conditions[] = "o.idtbl_order = " . intval($poId);
 }
 
 $extraWhere = implode(" AND ", $conditions);
 
 echo json_encode(
-    SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns, $joinQuery, $extraWhere)
+    SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns, $joinQuery, $extraWhere, $groupBy)
 );
