@@ -107,5 +107,13 @@ class CRMQuotationform extends Admin_Controller
 		$this->load->model('CRMQuotationforminfo');
 		$result = $this->CRMQuotationforminfo->QuotationformDetailsstatus($x, $y);
 	}
+	public function get_customer_items()
+	{
+		$this->load->model('CRMQuotationforminfo');
+		$customer_id = $this->input->post('customer_id');
+        $result = $this->CRMQuotationforminfo->GetItemByInquiry($customer_id);
+		echo json_encode($result);
+	}
+
 
 }

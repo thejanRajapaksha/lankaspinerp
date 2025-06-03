@@ -266,6 +266,35 @@
 			});
 		});
 
+		$('#customer').on('change', function () {
+			var customerId = $(this).val();
+
+			if (customerId !== '') {
+				$.ajax({
+					url: '<?= base_url("CRMQuotationform/get_customer_items") ?>',
+					type: 'POST',
+					data: { customer_id: customerId },
+					dataType: 'json',
+					success: function (response) {
+						$('#item').empty().append('<option value="">Select</option>');
+						if (response.length > 0) {
+							$.each(response, function (i, item) {
+								$('#item').append('<option value="' + item.idtbl_product + '">' + item.product + '</option>');
+							});
+						} else {
+							$('#item').append('<option value="">No items found</option>');
+						}
+					},
+					error: function () {
+						alert('Error loading items.');
+					}
+				});
+			} else {
+				$('#item').html('<option value="">Select</option>');
+			}
+		});
+
+
 
 		$('#dataTable').on('click', '.btnstatus', function() {
 
@@ -539,6 +568,7 @@
 			var vat_customer = $('#vat_customer').val();
 			var unitprice = parseFloat($('#unitprice').val());
 			var item = $('#item').val();
+			var itemText = $('#item option:selected').text();
 			var duration = $('#duration').val();
 			var qty = parseFloat($('#qty').val());
 			var description = $('#comment').val();
@@ -561,7 +591,8 @@
 			var showtotal = addCommas(parseFloat(total).toFixed(2));
 
 			$('#tableorder > tbody:last').append('<tr class="pointer">' +
-			'<td>' + item + '</td>' +  
+			'<td>' + itemText + '</td>' +  
+			'<td class="d-none">' + item + '</td>' +
 			// '<td>' + vat_customer + '</td>' +  
 			'<td>' + description + '</td>' +
 			'<td>' + qty + '</td>' +

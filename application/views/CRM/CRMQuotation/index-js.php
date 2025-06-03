@@ -100,9 +100,9 @@
 
         $('#dataTable tbody').on('click', '.btnview', function() {
             var id = $(this).attr('id')
-          //  alert(id);
+            //  alert(id);
             $('#inquirydetail').modal('show');
-
+            
             $('#dataTableInquiryDetail').DataTable({
                 "destroy": true,
                 "processing": true,
@@ -144,7 +144,7 @@
                     data: function(d) {
                         d.userID = '<?php echo $_SESSION['id']; ?>';
                         d.id = id;
-                       // console.log(id);
+                        // console.log(id);
                     }
                 },
                 "order": [

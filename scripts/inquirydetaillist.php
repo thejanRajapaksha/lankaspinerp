@@ -68,7 +68,9 @@ require('ssp.customized.class.php');
 
 $joinQuery = "FROM `tbl_inquiry_detail` AS `u`
 LEFT JOIN `tbl_products` AS `p` 
-ON u.tbl_products_idtbl_product = p.idtbl_product;";
+ON u.tbl_products_idtbl_product = p.idtbl_product
+LEFT JOIN `tbl_inquiry` AS `i` ON u.tbl_inquiry_idtbl_inquiry = i.idtbl_inquiry
+";
 
 $ID = $_POST['id'];
 

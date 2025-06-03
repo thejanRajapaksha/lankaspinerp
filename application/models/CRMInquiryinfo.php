@@ -36,6 +36,8 @@ class CRMInquiryinfo extends CI_Model {
             $ln_weight = $rowdata['ln_weight'];
             $inner_bag = $rowdata['inner_bag'];
             $off_print = $rowdata['off_print'];
+            $inner_bag = filter_var($rowdata['inner_bag'], FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
+            $off_print = filter_var($rowdata['off_print'], FILTER_VALIDATE_BOOLEAN) ? 1 : 0;    
             $printing_type = $rowdata['printing_type'];
             $colour_no = $rowdata['colour_no'];
             $detailData = [
@@ -58,7 +60,8 @@ class CRMInquiryinfo extends CI_Model {
                 'insertdatetime' => $insertdatetime,
                 'tbl_user_idtbl_user' => $userID
             ];
-              $this->db->insert('tbl_inquiry_detail', $detailData);
+             $this->db->insert('tbl_inquiry_detail', $detailData);
+            // print_r($detailData);
         }
 
         //$this->db->trans_complete();
