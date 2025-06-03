@@ -16,11 +16,29 @@
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             buttons: [
-                { extend: 'csv', className: 'btn btn-success btn-sm', title: 'Machine Allocation Data', text: '<i class="fas fa-file-csv mr-2"></i> CSV' },
-                { extend: 'pdf', className: 'btn btn-danger btn-sm', title: 'Machine Allocation Data', text: '<i class="fas fa-file-pdf mr-2"></i> PDF' },
+                { extend: 'csv', className: 'btn btn-success btn-sm', title: 'WIP Machine Report', text: '<i class="fas fa-file-csv mr-2"></i> CSV' },
+                {
+                    extend: 'pdf', 
+                    className: 'btn btn-danger btn-sm',
+                    title: 'WIP Machine Report',
+                    text: '<i class="fas fa-file-pdf mr-2"></i> PDF',
+                    orientation: 'portrait',
+                    pageSize: 'A4',
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                    customize: function (doc) {
+                        doc.content[0].alignment = 'left';
+                        doc.content[1].alignment = 'left';
+                        doc.defaultStyle.fontSize = 9;
+                        var tableBody = doc.content[1].table.body;
+                        var columnCount = tableBody[0].length;
+                        doc.content[1].table.widths = Array(columnCount).fill('*');
+                    }
+                },
                 {
                     extend: 'print',
-                    title: 'Machine Allocation Data',
+                    title: 'WIP Machine Report',
                     className: 'btn btn-primary btn-sm',
                     text: '<i class="fas fa-print mr-2"></i> Print',
                     customize: function (win) {
@@ -42,11 +60,12 @@
             "columns": [
                 { "data": "name" },
                 { "data": "order_delivery" },
-                { "data": "duedate" },
+                { "data": "order_date" },
+                { "data": "delivery_date" },
                 { "data": "quantity" },
                 { "data": "deliver_quantity" },
                 {
-                    "data": 'completedqty',
+                    "data": "completedqty",
                     render: function(data, type, row) {
                         return data ? data : 0;
                     }

@@ -28,13 +28,13 @@ $primaryKey = 'idtbl_machine_allocation';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array('db' => 'c.name',               'dt' => 'name',              'field' => 'name'),
-    array('db' => 'CONCAT(o.idtbl_order," / ",de.deliveryId)','dt' => 'order_delivery','field' => 'order_delivery','as' => 'order_delivery'),
+    array('db' => 'CONCAT(mt.name, " ", mm.name, " - ", m.s_no)',       'dt' => 'machine',          'field' => 'machine', 'as' => 'machine'),
+    array('db' => 'CONCAT(o.idtbl_order, " / ", de.deliveryId)',        'dt' => 'order_delivery',   'field' => 'order_delivery', 'as' => 'order_delivery'),
     array('db' => 'od.order_date',          'dt' => 'order_date',       'field' => 'order_date'),
     array('db' => 'de.delivery_date',       'dt' => 'delivery_date',    'field' => 'delivery_date'),
-    array('db' => 'od.quantity',          'dt' => 'quantity',          'field' => 'quantity'),
-    array('db' => 'de.deliver_quantity',  'dt' => 'deliver_quantity',  'field' => 'deliver_quantity'),
-    array('db' => 'mad.completedqty',      'dt' => 'completedqty',     'field' => 'completedqty')
+    array('db' => 'od.quantity',            'dt' => 'quantity',         'field' => 'quantity'),
+    array('db' => 'de.deliver_quantity',    'dt' => 'deliver_quantity', 'field' => 'deliver_quantity'),
+    array('db' => 'mad.completedqty',       'dt' => 'completedqty',     'field' => 'completedqty')
 );
 
 // SQL server connection information
@@ -59,14 +59,13 @@ $date = $_POST['date'] ?? null;
 
 $joinQuery = "FROM tbl_machine_allocation AS ma
     LEFT JOIN machine_ins AS m ON m.id = ma.tbl_machine_idtbl_machine
-    LEFT JOIN tbl_machine_allocation_details AS mad ON mad.tbl_machine_allocation_idtbl_machine_allocation = ma.idtbl_machine_allocation
     LEFT JOIN machine_types AS mt ON mt.id = m.machine_type_id
+    LEFT JOIN machine_models AS mm ON mm.id = m.machine_model_id
+    LEFT JOIN tbl_machine_allocation_details AS mad ON mad.tbl_machine_allocation_idtbl_machine_allocation = ma.idtbl_machine_allocation
     LEFT JOIN tbl_order AS o ON o.idtbl_order = ma.tbl_order_idtbl_order
     LEFT JOIN tbl_order_detail AS od ON od.tbl_order_idtbl_order = o.idtbl_order
     LEFT JOIN tbl_products AS p ON p.idtbl_product = od.tbl_products_idtbl_products
-    LEFT JOIN tbl_delivery_detail AS de ON de.idtbl_delivery_detail = ma.tbl_delivery_plan_details_idtbl_delivery_plan_details
-    LEFT JOIN tbl_inquiry AS i ON i.idtbl_inquiry = de.tbl_inquiry_idtbl_inquiry
-    LEFT JOIN tbl_customer AS c ON c.idtbl_customer = i.tbl_customer_idtbl_customer";
+    LEFT JOIN tbl_delivery_detail AS de ON de.idtbl_delivery_detail = ma.tbl_delivery_plan_details_idtbl_delivery_plan_details";
 
 $conditions = [];
 

@@ -41,7 +41,8 @@
                             <tr>
                                 <th>Customer</th>
                                 <th>Order / Delivery</th>
-                                <th>Due date</th>
+                                <th>End date</th>
+                                <th>Delivery date</th>
                                 <th>Order Qty</th>
                                 <th>Delivery Qty</th>
                                 <th>Completed Qty</th>

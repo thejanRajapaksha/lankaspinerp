@@ -21,7 +21,7 @@ class AllocatedMachinesinfo extends CI_Model{
     $this->db->join('tbl_products as p', 'p.idtbl_product = od.tbl_products_idtbl_products');
     $this->db->join('tbl_delivery_detail as de', 'de.idtbl_delivery_detail = ma.tbl_delivery_plan_details_idtbl_delivery_plan_details');
     $this->db->where('m.id', $machineId);
-    $this->db->where('DATE(ma.allocatedate)', $date);
+    $this->db->where('DATE(ma.startdatetime)', $date);
 
     $query = $this->db->get();
     return $query->result();
