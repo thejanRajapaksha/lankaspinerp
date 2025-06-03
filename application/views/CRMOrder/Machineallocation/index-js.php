@@ -12,8 +12,6 @@
 		var addcheck = '<?php echo (in_array('createMachineallocation', $user_permission)) ? 1 : 0; ?>';
 		
 		if (!$("#allocationform")[0].checkValidity()) {
-			// If the form is invalid, submit it. The form won't actually submit;
-			// this will just cause the browser to display the native HTML5 error messages.
 			$("#allocationsubmit").click();
 		} else {
 			var machine = $('#machine').val();
@@ -21,6 +19,7 @@
 			var startdate = $('#startdate').val();
 			var enddate = $('#enddate').val();
 			var allocationqty = $('#allocationqty').val();
+			var deliveryplan = $('#deliveryplan').val();
 
 			$.ajax({
 				type: "POST",
@@ -40,16 +39,20 @@
 						$('#alert').html(html);
 					} else {
 						
-						$('#tblmachinelist> tbody:last').append('<tr><td class="text-center">' +
-							machinelist + '</td><td class="d-none text-center">' + machine +
-							'</td><td class="text-center">' + startdate +
-							'</td><td class="text-center">' + enddate +
-							'</td> <td class="text-center">' + allocationqty +
+						$('#tblmachinelist> tbody:last').append(
+							'<tr><td class="text-center">' +machinelist + 
+							'</td><td class="d-none text-center">' + machine +
+							'</td><td class="text-center">' + startdate.replace('T', ' ') +
+    						'</td><td class="text-center">' + enddate.replace('T', ' ') +
+							'</td><td class="text-center">' + allocationqty +
+							'</td><td class="d-none text-center">' + deliveryplan +
 							'</td><td> <button type="button" class="btnDeleterow btn btn-danger btn-sm float-right"><i class="fas fa-trash-alt"></i></button></td></tr>'
 						);
 						$('#machine').val('');
 						$('#startdate').val('');
 						$('#enddate').val('');
+						$('#deliveryplan').val('');
+						$('#allocationqty').val('');
 					}
 
 				}
@@ -86,7 +89,6 @@
 			data: {
 				tableData: jsonObj,
 				jobid: jobid,
-				deliveryplan: deliveryplan,
 				employee: employee,
 				costitemid: costitemid,
 				poid:poid
@@ -220,7 +222,7 @@
 								<td>${item.deliver_quantity}</td>
 								<td>${item.cost_item_name}</td>
 								<td class="text-right">
-									<button type="button" class="btn btn-dark btn-sm btnAdd" id="${item.deliveryId}">
+									<button type="button" class="btn btn-dark btn-sm float-right btnAdd" id="${item.deliveryId}">
 										<i class="fas fa-tools"></i>
 									</button>
 								</td>

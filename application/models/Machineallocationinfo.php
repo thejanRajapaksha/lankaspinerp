@@ -68,7 +68,7 @@ class Machineallocationinfo extends CI_Model{
                 'tbl_customerinquiry_detail_idtbl_customerinquiry_detail'=> $jobid, 
                 'tbl_cost_items_idtbl_cost_items'=> $costitemid,
                 'tbl_order_idtbl_order'=> $poId,
-                'tbl_delivery_plan_details_idtbl_delivery_plan_details'=> $deliveryplan,
+                'tbl_delivery_plan_details_idtbl_delivery_plan_details'=> $rowtabledata['col_6'],
                 'tbl_employee_idtbl_employee'=> $employee
             );
 
