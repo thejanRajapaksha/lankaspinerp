@@ -7,7 +7,7 @@
                 </div>
                 <div class="col">
                     <?php if(in_array('createMachineType', $user_permission)): ?>
-                        <button class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#addModal">Add MachineType</button>
+                        <button class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#addModal">Add Machine Type</button>
                     <?php endif; ?>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <table id="manageTable" class="table table-bordered table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>MachineType name</th>
+                        <th>Machine Type name</th>
                         <th>Status</th>
                         <?php if(in_array('updateMachineType', $user_permission) || in_array('deleteMachineType', $user_permission)): ?>
                             <th>Action</th>

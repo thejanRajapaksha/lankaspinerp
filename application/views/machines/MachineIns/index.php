@@ -8,7 +8,7 @@
                 <div class="col">
                     <?php if (in_array('createMachineIn', $user_permission)): ?>
                         <button class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#addModal">
-                            Add MachineIn
+                            Add Machine In
                         </button>
                     <?php endif; ?>
                 </div>

@@ -117,23 +117,26 @@ class Machineallocationinfo extends CI_Model{
         $startdate = $_POST['startdate'];
         $enddate = $_POST['enddate'];
 
-        $sql="SELECT `tbl_machine_idtbl_machine`, `startdatetime`, `enddatetime` FROM `tbl_machine_allocation`
-        WHERE ('$startdate' BETWEEN `startdatetime` AND `enddatetime`) OR ('$enddate' BETWEEN `startdatetime` AND `enddatetime`) AND `tbl_machine_idtbl_machine`= '$machineid'  AND `status`= 1 AND `completed_status` = '0'";
-        $respond=$this->db->query($sql, array($machineid));
-        //echo $sql;die;//var_dump($respond);
-            //     WHERE new_start < existing_end
-            //   AND new_end   > existing_start;
+        $sql = "SELECT `tbl_machine_idtbl_machine`, `startdatetime`, `enddatetime` 
+                FROM `tbl_machine_allocation`
+                WHERE `tbl_machine_idtbl_machine` = ? 
+                AND `status` = 1 
+                AND `completed_status` = '0'
+                AND (
+                    (`startdatetime` < ? AND `enddatetime` > ?)
+                )";
+                
+        $respond = $this->db->query($sql, array($machineid, $enddate, $startdate));
 
-        $obj=new stdClass();
-        if($respond->num_rows() > 0){    
-            $obj->actiontype = 1; 
-        }
-        else{
-            $obj->actiontype = 2;
+        $obj = new stdClass();
+        if ($respond->num_rows() > 0) {    
+            $obj->actiontype = 1; // Conflict
+        } else {
+            $obj->actiontype = 2; // Available
         }
         echo json_encode($obj);
-
     }
+
 
     // public function Checkissueqty(){
     //     $recordID=$this->input->post('recordID');

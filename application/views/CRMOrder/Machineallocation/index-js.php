@@ -34,9 +34,20 @@
 					var html = '';
 
 					if (obj.actiontype == 1) {
-						html +=
-							'<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Sorry!</strong> Machine is Not Available.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+						let html =
+							'<div class="alert alert-warning alert-dismissible fade show" role="alert">' +
+							'<strong>Sorry!</strong> Machine is Not Available.' +
+							'<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+							'<span aria-hidden="true">&times;</span>' +
+							'</button>' +
+							'</div>';
+
 						$('#alert').html(html);
+
+						// Automatically close the alert after 4 seconds (4000 milliseconds)
+						setTimeout(function () {
+							$('.alert').alert('close');
+						}, 4000);
 					} else {
 						
 						$('#tblmachinelist> tbody:last').append(

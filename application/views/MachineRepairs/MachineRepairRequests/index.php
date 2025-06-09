@@ -20,7 +20,7 @@
                     <thead>
                     <tr>
                         <th>Machine Type</th>
-                        <th>BarCode</th>
+                        <th>Bar Code</th>
                         <th>Serial No</th>
                         <th>Repair Request Date</th>
                         <?php if (in_array('updateMachineRepairRequest', $user_permission) || in_array('deleteMachineRepairRequest', $user_permission)): ?>

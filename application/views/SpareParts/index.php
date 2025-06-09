@@ -7,7 +7,7 @@
                 </div>
                 <div class="col">
                     <?php if(in_array('createSparePart', $user_permission)): ?>
-                        <button class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#addModal">Add SparePart</button>
+                        <button class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#addModal">Add Spare Part</button>
                     <?php endif; ?>
                 </div>
             </div>

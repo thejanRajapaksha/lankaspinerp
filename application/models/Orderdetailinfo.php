@@ -427,17 +427,16 @@ class Orderdetailinfo extends CI_Model{
         $this->db->update('tbl_order_detail');
     }
 
-    public function getItemsByCustomer($customer_id)
-    {
-        $this->db->select('tbl_inquiry_detail.tbl_products_idtbl_product AS idtbl_product, tbl_products.product');
-        $this->db->from('tbl_inquiry_detail');
-        $this->db->join('tbl_inquiry', 'tbl_inquiry_detail.idtbl_inquiry_detail = tbl_inquiry.idtbl_inquiry');
-        $this->db->join('tbl_products', 'tbl_inquiry_detail.tbl_products_idtbl_product = tbl_products.idtbl_product');
-        $this->db->where('tbl_inquiry.tbl_customer_idtbl_customer', $customer_id);
-        $this->db->group_by('tbl_inquiry_detail.tbl_products_idtbl_product');
-        $query = $this->db->get();
+    public function getItemsByCustomer($customer_id){
+        $this->db->select('DISTINCT(p.idtbl_product), p.product');
+		$this->db->from('tbl_inquiry i');
+        $this->db->join('tbl_inquiry_detail d', 'd.tbl_inquiry_idtbl_inquiry = i.idtbl_inquiry');
+		$this->db->join('tbl_products p', 'p.idtbl_product = d.tbl_products_idtbl_product');
+		$this->db->where('i.tbl_customer_idtbl_customer', $customer_id);
 
-        return $query->result();
+		$query = $this->db->get();
+		return $result = $query->result();
+    
     }
 
 

@@ -7,7 +7,7 @@
                 </div>
                 <div class="col">
                     <?php if(in_array('createMachineModel', $user_permission)): ?>
-                        <button class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#addModal">Add MachineModel</button>
+                        <button class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#addModal">Add Machine Model</button>
                     <?php endif; ?>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <table id="manageTable" class="table table-bordered table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>MachineModel name</th>
+                        <th>Machine Model name</th>
                         <th>Status</th>
                         <?php if(in_array('updateMachineModel', $user_permission) || in_array('deleteMachineModel', $user_permission)): ?>
                             <th>Action</th>
